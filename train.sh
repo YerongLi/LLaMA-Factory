@@ -4,7 +4,7 @@ python src/train_bash.py \
     --stage sft \
     --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-hf \
     --do_train \
-    --dataset police \
+    --dataset police4 \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
@@ -17,5 +17,5 @@ python src/train_bash.py \
     --save_steps 10 \
     --learning_rate 5e-5 \
     --num_train_epochs 1000.0 \
-    --fp16
-    # --quantization_bit 4 \
+    --fp16 \
+    --quantization_bit 4
