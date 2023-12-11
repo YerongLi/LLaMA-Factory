@@ -10,11 +10,18 @@ from nltk.util import ngrams
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
+LOGFILE='./evaloutput.log'
+if os.path.exists(LOGFILE):
+    # Remove the file
+    os.remove(LOGFILE)
+    print(f"The file {LOGFILE} has been removed.")
+else:
+    print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
-    filename='./output.log',
+    filename=LOGFILE,
     datefmt='%m-%d %H:%M:%S')
 logging.info(f'Logger start: {os.uname()[1]}')
 try:
