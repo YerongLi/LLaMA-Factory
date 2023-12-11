@@ -765,3 +765,20 @@ register_template(
         "\n"
     ]
 )
+
+register_template(
+    name="police",
+    prefix=[
+        "{{system}}"
+    ],
+    prompt=[
+        "Citizen: {{query}}\nDispatcher:"
+    ],
+    system=(
+        "A chat between aconcerned citizen reporting a safety concern to the local police department and a dispatcher from police department. "
+        "The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen."
+    ),
+    sep=[
+        "\n"
+    ]
+)

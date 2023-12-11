@@ -66,18 +66,18 @@ def main():
 
     ans = {}
 
-    random.shuffle(data) 
-    # for record in tqdm.tqdm(data[:10]):
+    # random.shuffle(data) 
+    for record in tqdm.tqdm(data[:10]):
 
     for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
         logging.info(record["history"])
-        history = [['', record["summary"]]] + record["history"]
+        # history = [['', record["summary"]]] + record["history"]
         record_type = record.get('type', 'unknown')
 
-        response = chat_model.chat(query=instruction, history=history)[0].response_text
+        response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
 
         output = record["output"]
 
