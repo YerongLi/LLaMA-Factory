@@ -4,11 +4,11 @@ python src/train_bash.py \
     --stage sft \
     --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-hf \
     --do_train \
-    --dataset police4 \
+    --dataset police \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
-    --output_dir police \
+    --output_dir police4 \
     --overwrite_cache \
     --per_device_train_batch_size 4 \
     --gradient_accumulation_steps 4 \
