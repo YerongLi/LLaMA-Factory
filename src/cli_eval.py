@@ -63,6 +63,8 @@ def main():
         history = [['', record["summary"]]] + record["history"]
 
         response = chat_model.chat(query=instruction, history=history)[0].response_text
+        model = chat_model.model
+        logging.info(type(model))
         output = record["output"]
         try:
             rouge_score = rouge.get_scores(response, output)
