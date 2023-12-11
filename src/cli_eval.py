@@ -81,6 +81,15 @@ def main():
 
         output = record["output"]
 
+
+        prompt_ids, _ = chat_model.template.encode_oneturn(
+            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=system
+        )
+        prompt = chat_model.tokenizer.batch_decode(
+            prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+        )
+        print(prompt)
+
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'response': response,
