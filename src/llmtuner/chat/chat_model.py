@@ -1,5 +1,6 @@
 import torch
 import tiktoken
+import logging
 from dataclasses import dataclass
 from typing import Any, Dict, Generator, List, Literal, Optional, Tuple
 from threading import Thread
@@ -100,6 +101,7 @@ class ChatModel:
         Returns: [(response_text, prompt_length, response_length)] * n (default n=1)
         """
         gen_kwargs, prompt_length = self._process_args(query, history, system, **input_kwargs)
+        logging.info(gen_kwargs)
         generate_output = self.model.generate(**gen_kwargs)
         response_ids = generate_output[:, prompt_length:]
         response = self.tokenizer.batch_decode(
