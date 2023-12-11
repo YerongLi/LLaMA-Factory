@@ -189,7 +189,6 @@ def register_template(
     use_history: Optional[bool] = True,
     efficient_eos: Optional[bool] = False
 ) -> None:
-    print(name)
     template_class = Llama2Template if "llama2" in name else Template
     templates[name] = template_class(
         prefix=prefix,
@@ -216,8 +215,6 @@ def get_template_and_fix_tokenizer(
 
     if name is None:
         return None
-    print(name)
-    print(name in templates)
     template = templates.get(name, None)
     assert template is not None, "Template {} does not exist.".format(name)
     tokenizer.add_special_tokens(
@@ -769,7 +766,7 @@ register_template(
 )
 
 register_template(
-    name="police",
+    name="dispatcher",
     prefix=[
         "{{system}}"
     ],
