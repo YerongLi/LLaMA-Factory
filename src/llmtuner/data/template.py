@@ -189,6 +189,7 @@ def register_template(
     use_history: Optional[bool] = True,
     efficient_eos: Optional[bool] = False
 ) -> None:
+    print(name)
     template_class = Llama2Template if "llama2" in name else Template
     templates[name] = template_class(
         prefix=prefix,
