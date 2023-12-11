@@ -2,6 +2,7 @@ import json
 import nltk
 import logging
 import os
+import random
 import tqdm
 
 from nltk.translate.bleu_score import sentence_bleu
@@ -65,8 +66,10 @@ def main():
 
 
 
+    random.shuffle(data) 
+    for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+    # for record in tqdm.tqdm(data[:10]):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
