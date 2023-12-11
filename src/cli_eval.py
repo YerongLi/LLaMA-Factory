@@ -61,7 +61,7 @@ def main():
     batch_size = 32  # Adjust as needed
     num_batches = (len(data) + batch_size - 1) // batch_size
 
-    for batch_index in tqdm(range(num_batches)):
+    for batch_index in tqdm.tqdm(range(num_batches)):
         start_index = batch_index * batch_size
         end_index = (batch_index + 1) * batch_size
         batch_data = data[start_index:end_index]
