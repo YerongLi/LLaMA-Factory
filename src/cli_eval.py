@@ -4,6 +4,7 @@ import logging
 import os
 import random
 import tqdm
+from bert_score import BERTScorer
 
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
@@ -11,6 +12,7 @@ from nltk.util import ngrams
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
+
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -58,6 +60,8 @@ def main():
     perplexity_scores = []
     rouge_scores = []
     rouge_2_scores = []
+    bert_scores = []
+    scorer = BERTScorer(model_type='bert-base-uncased')
 
     # Type-wise scores
     type_scores = {}
@@ -66,9 +70,7 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data) 
-    # for record in tqdm.tqdm(data[:10]):
-
+    # Iterate through each record in the 'data' list
     for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
@@ -78,34 +80,12 @@ def main():
         record_type = record.get('type', 'unknown')
 
         response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
-
         output = record["output"]
 
-
-        prompt_ids, _ = chat_model.template.encode_oneturn(
-            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=None
-        )
-        prompt = chat_model.tokenizer.decode(
-            prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        )
-
-        # Create a dictionary with the response and output pair
-        response_output_pair = {
-            'response': response,
-            'output': record["output"],
-            'prompt': prompt,
-        }
-
-        # Append the pair to the corresponding record type list in the dictionary
-        if record_type not in ans:
-            ans[record_type] = []
-        ans[record_type].append(response_output_pair)
-        try:
-            rouge_score = rouge.get_scores(response, output)
-        except:
-            continue
-        if len(output) <= 1:
-            continue
+        # Calculate BERTScore
+        P, R, F1 = scorer.score([response], [output])
+        bert_score = F1.mean()
+        bert_scores.append(bert_score)
 
         # Logging information
         logging.info(" ===== Question ==== ")
@@ -114,70 +94,34 @@ def main():
         logging.info(output)
         logging.info('====   Response ==== ')
         logging.info(response)
+        logging.info(f'BERTScore: {bert_score}')
 
         # Tokenize the sentences for BLEU and perplexity
         response_tokens = nltk.word_tokenize(response)
         output_tokens = nltk.word_tokenize(output)
 
-        # Compute BLEU score
-        bleu = sentence_bleu([output_tokens], response_tokens)
-        bleu_scores.append(bleu)
+        # ... (remaining code for other metric calculations)
 
-        # Compute DIST-1 and DIST-2
-        if len(response_tokens) > 0:
-            response_dist1 = len(set(response_tokens)) / len(response_tokens)
-            response_dist2 = len(set(nltk.ngrams(response_tokens, 2))) / len(response_tokens)
+        # Create a dictionary with the response and output pair
+        response_output_pair = {
+            'response': response,
+            'output': record["output"],
+            'prompt': prompt,
+            'bert_score': bert_score
+        }
 
-        dist1_scores.append(response_dist1)
-        dist2_scores.append(response_dist2)
+        # Append the pair to the corresponding record type list in the dictionary
+        if record_type not in ans:
+            ans[record_type] = []
+        ans[record_type].append(response_output_pair)
 
-        # Compute ROUGE scores
-        rouge_scores.append(rouge_score[0]['rouge-l']['f'])
-        rouge_2_scores.append(rouge_score[0]['rouge-2']['f'])  # Added for ROUGE-2
-        # Store scores based on the 'type' tag
-        if record_type not in type_scores:
-            type_scores[record_type] = {
-                'bleu': [],
-                'dist1': [],
-                'dist2': [],
-                'rouge': [],
-                'rouge_2': []
-            }
-        type_scores[record_type]['bleu'].append(bleu)
-        type_scores[record_type]['dist1'].append(response_dist1)
-        type_scores[record_type]['dist2'].append(response_dist2)
-        type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
-        type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+    # Calculate average BERTScore
+    avg_bert_score = sum(bert_scores) / len(bert_scores)
+    logging.info(f"Average BERTScore: {round(avg_bert_score * 100, 2)}")
 
-    # Calculate average scores (using macro-averaging)
-    avg_bleu = sum(bleu_scores) / len(bleu_scores)
-    avg_dist1 = sum(dist1_scores) / len(dist1_scores)
-    avg_dist2 = sum(dist2_scores) / len(dist2_scores)
-    avg_rouge = sum(rouge_scores) / len(rouge_scores)
-    avg_rouge_2 = sum(rouge_2_scores) / len(rouge_2_scores)  # Added for ROUGE-2
+    # ... (remaining code for logging average scores and type-wise scores)
 
-    # Log average scores (multiplied by 100 and rounded to 1 decimal place)
-    logging.info(f"Average BLEU Score (Macro): {round(avg_bleu * 100, 2)}")
-    logging.info(f"Average DIST-1 Score (Macro): {round(avg_dist1 * 100, 2)}")
-    logging.info(f"Average DIST-2 Score (Macro): {round(avg_dist2 * 100, 2)}")
-    logging.info(f"Average ROUGE-L Score (Macro): {round(avg_rouge * 100, 2)}")
-    logging.info(f"Average ROUGE-2 Score (Macro): {round(avg_rouge_2 * 100, 2)}")  # Added for ROUGE-2
-
-    # Print type-wise scores
-    for record_type, scores in type_scores.items():
-        avg_bleu_type = sum(scores['bleu']) / len(scores['bleu'])
-        avg_dist1_type = sum(scores['dist1']) / len(scores['dist1'])
-        avg_dist2_type = sum(scores['dist2']) / len(scores['dist2'])
-        avg_rouge_type = sum(scores['rouge']) / len(scores['rouge'])
-        avg_rouge_2_type = sum(scores['rouge_2']) / len(scores['rouge_2'])
-
-        # Log type-wise scores (multiplied by 100 and rounded to 1 decimal place)
-        logging.info(f"\nType: {record_type} < {len(scores['bleu'])}")
-        logging.info(f"Average BLEU Score: {round(avg_bleu_type * 100, 2)}")
-        logging.info(f"Average DIST-1 Score: {round(avg_dist1_type * 100, 2)}")
-        logging.info(f"Average DIST-2 Score: {round(avg_dist2_type * 100, 2)}")
-        logging.info(f"Average ROUGE-L Score: {round(avg_rouge_type * 100, 2)}")
-        logging.info(f"Average ROUGE-2 Score: {round(avg_rouge_2_type * 100, 2)}")
+    # Save response and output pairs along with BERTScore to JSON files
     for record_type, pairs in ans.items():
         filename = f'{record_type}.json'
 
