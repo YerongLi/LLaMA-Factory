@@ -15,6 +15,7 @@ python src/train_bash.py \
     --lr_scheduler_type cosine \
     --logging_steps 10 \
     --save_steps 10 \
+    --save_total_limit 2 \
     --learning_rate 5e-5 \
     --num_train_epochs 1000.0 \
     --fp16
