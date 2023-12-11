@@ -78,20 +78,20 @@ def main():
             history = [['', record["summary"]]] + record["history"]
 
             # Assuming self._process_args returns gen_kwargs and prompt_length
-            gen_kwargs, prompt_length = self._process_args(instruction, history, system, **input_kwargs)
+            gen_kwargs, prompt_length = chat_model._process_args(instruction, history, system, **input_kwargs)
 
             batch_gen_kwargs.append(gen_kwargs)
             # batch_prompt_lengths.append(prompt_length)
 
 
-    # for record in tqdm.tqdm(data):
-    #     instruction = record["instruction"]
-    #     logging.info('Summary')
-    #     logging.info(record["summary"])
-    #     logging.info(record["history"])
-    #     history = [['', record["summary"]]] + record["history"]
+    for record in tqdm.tqdm(data):
+        instruction = record["instruction"]
+        logging.info('Summary')
+        logging.info(record["summary"])
+        logging.info(record["history"])
+        history = [['', record["summary"]]] + record["history"]
 
-    #     response = chat_model.chat(query=instruction, history=history)[0].response_text
+        response = chat_model.chat(query=instruction, history=history)[0].response_text
     #     model = chat_model.model
     #     logging.info(type(model))
     #     output = record["output"]
