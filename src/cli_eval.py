@@ -64,7 +64,7 @@ def main():
     # Iterate through each record in the 'data' list
     # for record in tqdm.tqdm(data[:10]):
 
-
+    ans = {}
 
     random.shuffle(data) 
     for record in tqdm.tqdm(data[:10]):
@@ -75,11 +75,22 @@ def main():
         logging.info(record["summary"])
         logging.info(record["history"])
         history = [['', record["summary"]]] + record["history"]
+        record_type = record.get('type', 'unknown')
 
         response = chat_model.chat(query=instruction, history=history)[0].response_text
-        model = chat_model.model
-        logging.info(type(model))
+
         output = record["output"]
+
+        # Create a dictionary with the response and output pair
+        response_output_pair = {
+            'response': response,
+            'output': record["summary"]
+        }
+
+        # Append the pair to the corresponding record type list in the dictionary
+        if record_type not in ans:
+            ans[record_type] = []
+        ans[record_type].append(response_output_pair)
         try:
             rouge_score = rouge.get_scores(response, output)
         except:
@@ -114,9 +125,7 @@ def main():
         # Compute ROUGE scores
         rouge_scores.append(rouge_score[0]['rouge-l']['f'])
         rouge_2_scores.append(rouge_score[0]['rouge-2']['f'])  # Added for ROUGE-2
-        print(record.keys())
         # Store scores based on the 'type' tag
-        record_type = record.get('type', 'unknown')
         if record_type not in type_scores:
             type_scores[record_type] = {
                 'bleu': [],
@@ -160,7 +169,18 @@ def main():
         logging.info(f"Average DIST-2 Score: {round(avg_dist2_type * 100, 2)}")
         logging.info(f"Average ROUGE-L Score: {round(avg_rouge_type * 100, 2)}")
         logging.info(f"Average ROUGE-2 Score: {round(avg_rouge_2_type * 100, 2)}")
+    for record_type, pairs in ans.items():
+        filename = f'{record_type}.json'
 
+        # Remove the original file if it exists
+        if os.path.exists(filename):
+            os.remove(filename)
+
+        # Save the pairs in the JSON file
+        with open(filename, 'a') as f:
+            for pair in pairs:
+                json.dump(pair, f)
+                f.write('\n')
 
 if __name__ == "__main__":
     main()
