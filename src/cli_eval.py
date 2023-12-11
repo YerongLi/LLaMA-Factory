@@ -74,7 +74,7 @@ def main():
         logging.info('Summary')
         logging.info(record["summary"])
         logging.info(record["history"])
-        # history = [['', record["summary"]]] + record["history"]
+        history = record["history"]
         record_type = record.get('type', 'unknown')
 
         response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
