@@ -53,7 +53,7 @@ def main():
 
     # Type-wise scores
     type_scores = {}
-
+    logging.info(chat_model.device)
     # Iterate through each record in the 'data' list
     # for record in tqdm.tqdm(data[:10]):
     for record in tqdm.tqdm(data):
