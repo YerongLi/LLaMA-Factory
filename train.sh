@@ -5,7 +5,7 @@ python src/train_bash.py \
     --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-hf \
     --do_train \
     --dataset police \
-    --template default \
+    --template dispatcher \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
     --output_dir police2 \
