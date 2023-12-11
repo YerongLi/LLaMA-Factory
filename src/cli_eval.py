@@ -93,7 +93,8 @@ def main():
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'response': response,
-            'output': record["output"]
+            'output': record["output"],
+            'prompt': prompt,
         }
 
         # Append the pair to the corresponding record type list in the dictionary
