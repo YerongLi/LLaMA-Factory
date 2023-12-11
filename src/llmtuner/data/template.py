@@ -216,7 +216,8 @@ def get_template_and_fix_tokenizer(
 
     if name is None:
         return None
-
+    print(name)
+    print(name in templates)
     template = templates.get(name, None)
     assert template is not None, "Template {} does not exist.".format(name)
     tokenizer.add_special_tokens(
