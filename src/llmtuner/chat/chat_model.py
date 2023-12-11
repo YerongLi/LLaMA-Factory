@@ -102,6 +102,7 @@ class ChatModel:
         """
         gen_kwargs, prompt_length = self._process_args(query, history, system, **input_kwargs)
         logging.info(gen_kwargs)
+        logging.info(self.model.device)
         generate_output = self.model.generate(**gen_kwargs)
         response_ids = generate_output[:, prompt_length:]
         response = self.tokenizer.batch_decode(
