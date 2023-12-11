@@ -8,7 +8,7 @@ python src/train_bash.py \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
-    --output_dir police4 \
+    --output_dir police2 \
     --overwrite_cache \
     --per_device_train_batch_size 4 \
     --gradient_accumulation_steps 4 \
@@ -17,5 +17,4 @@ python src/train_bash.py \
     --save_steps 10 \
     --learning_rate 5e-5 \
     --num_train_epochs 1000.0 \
-    --fp16 \
-    --quantization_bit 4
+    --fp16
