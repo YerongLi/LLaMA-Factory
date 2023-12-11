@@ -67,9 +67,9 @@ def main():
     ans = {}
 
     random.shuffle(data) 
-    for record in tqdm.tqdm(data[:10]):
+    # for record in tqdm.tqdm(data[:10]):
 
-    # for record in tqdm.tqdm(data):
+    for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
@@ -88,7 +88,6 @@ def main():
         prompt = chat_model.tokenizer.decode(
             prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-        print(prompt)
 
         # Create a dictionary with the response and output pair
         response_output_pair = {
