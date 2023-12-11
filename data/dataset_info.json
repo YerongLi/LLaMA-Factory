@@ -279,5 +279,14 @@
     "columns": {
       "prompt": "content"
     }
+  },
+    "police": {
+    "file_name": "police.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "",
+      "response": "output",
+      "history": "history"
+    }
   }
 }
