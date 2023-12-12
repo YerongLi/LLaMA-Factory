@@ -774,7 +774,7 @@ register_template(
         "User: {{query}}\nDispatcher:"
     ],
     system=(
-        "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department."
+        "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. "
         "The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen."
     ),
     sep=[
