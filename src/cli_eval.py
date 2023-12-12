@@ -168,13 +168,12 @@ def main():
     avg_rouge_2 = sum(rouge_2_scores) / len(rouge_2_scores)  # Added for ROUGE-2
     avg_bert_score = sum(bert_scores) / len(bert_scores)
 
-    # Log average scores (multiplied by 100 and rounded to 1 decimal place)
-    logging.info(f"Average BLEU Score (Macro): {round(avg_bleu * 100, 2)}")
-    logging.info(f"Average DIST-1 Score (Macro): {round(avg_dist1 * 100, 2)}")
-    logging.info(f"Average DIST-2 Score (Macro): {round(avg_dist2 * 100, 2)}")
-    logging.info(f"Average ROUGE-L Score (Macro): {round(avg_rouge * 100, 2)}")
-    logging.info(f"Average ROUGE-2 Score (Macro): {round(avg_rouge_2 * 100, 2)}")  # Added for ROUGE-2
-    logging.info(f"Average BERTScore: {round(avg_bert_score * 100, 2)}")
+    logging.info(f"Average BLEU Score (Macro): {avg_bleu * 100:.2f}")
+    logging.info(f"Average DIST-1 Score (Macro): {avg_dist1 * 100:.2f}")
+    logging.info(f"Average DIST-2 Score (Macro): {avg_dist2 * 100:.2f}")
+    logging.info(f"Average ROUGE-L Score (Macro): {avg_rouge * 100:.2f}")
+    logging.info(f"Average ROUGE-2 Score (Macro): {avg_rouge_2 * 100:.2f}")
+    logging.info(f"Average BERTScore: {avg_bert_score * 100:.2f}")
 
     # Print type-wise scores
     for record_type, scores in type_scores.items():
@@ -185,15 +184,14 @@ def main():
         avg_rouge_2_type = sum(scores['rouge_2']) / len(scores['rouge_2'])
         avg_bert_type = sum(scores['bert']) / len(scores['bert'])
 
-        # Log type-wise scores (multiplied by 100 and rounded to 1 decimal place)
+        # Log type-wise scores (multiplied by 100 and rounded to 2 decimal places)
         logging.info(f"\nType: {record_type} < {len(scores['bleu'])}")
-        logging.info(f"Average BLEU Score: {round(avg_bleu_type * 100, 2)}")
-        logging.info(f"Average DIST-1 Score: {round(avg_dist1_type * 100, 2)}")
-        logging.info(f"Average DIST-2 Score: {round(avg_dist2_type * 100, 2)}")
-        logging.info(f"Average ROUGE-L Score: {round(avg_rouge_type * 100, 2)}")
-        logging.info(f"Average ROUGE-2 Score: {round(avg_rouge_2_type * 100, 2)}")
-        logging.info(f"Average BERTScore: {round(avg_bert_type * 100, 2)}")
-
+        logging.info(f"Average BLEU Score: {avg_bleu_type * 100:.2f}")
+        logging.info(f"Average DIST-1 Score: {avg_dist1_type * 100:.2f}")
+        logging.info(f"Average DIST-2 Score: {avg_dist2_type * 100:.2f}")
+        logging.info(f"Average ROUGE-L Score: {avg_rouge_type * 100:.2f}")
+        logging.info(f"Average ROUGE-2 Score: {avg_rouge_2_type * 100:.2f}")
+        logging.info(f"Average BERTScore: {avg_bert_type * 100:.2f}")
     for record_type, pairs in ans.items():
         filename = f'{record_type}.json'
 
