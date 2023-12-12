@@ -150,8 +150,8 @@ def main():
                 'dist1': [],
                 'dist2': [],
                 'rouge': [],
-                'rouge_2': []
-                'bert': []
+                'rouge_2': [],
+                'bert': [],
             }
         type_scores[record_type]['bleu'].append(bleu)
         type_scores[record_type]['dist1'].append(response_dist1)
