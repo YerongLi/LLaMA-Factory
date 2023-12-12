@@ -70,10 +70,10 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data) 
-    # for record in tqdm.tqdm(data[:10]):
+    random.shuffle(data) 
+    for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+    # for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
@@ -114,7 +114,7 @@ def main():
 
         # Calculate BERTScore
         P, R, F1 = scorer.score([response], [output])
-        bert_score = F1.mean()
+        bert_score = F1.mean().item()
         bert_scores.append(bert_score)
         # # Logging information
         # logging.info(" ===== Question ==== ")
@@ -151,12 +151,14 @@ def main():
                 'dist2': [],
                 'rouge': [],
                 'rouge_2': []
+                'bert': []
             }
         type_scores[record_type]['bleu'].append(bleu)
         type_scores[record_type]['dist1'].append(response_dist1)
         type_scores[record_type]['dist2'].append(response_dist2)
         type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
         type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+        type_scores[record_type]['bert'].append(bert_score)
 
     # Calculate average scores (using macro-averaging)
     avg_bleu = sum(bleu_scores) / len(bleu_scores)
@@ -181,6 +183,7 @@ def main():
         avg_dist2_type = sum(scores['dist2']) / len(scores['dist2'])
         avg_rouge_type = sum(scores['rouge']) / len(scores['rouge'])
         avg_rouge_2_type = sum(scores['rouge_2']) / len(scores['rouge_2'])
+        avg_bert_type = sum(scores['bert']) / len(scores['bert'])
 
         # Log type-wise scores (multiplied by 100 and rounded to 1 decimal place)
         logging.info(f"\nType: {record_type} < {len(scores['bleu'])}")
@@ -189,6 +192,8 @@ def main():
         logging.info(f"Average DIST-2 Score: {round(avg_dist2_type * 100, 2)}")
         logging.info(f"Average ROUGE-L Score: {round(avg_rouge_type * 100, 2)}")
         logging.info(f"Average ROUGE-2 Score: {round(avg_rouge_2_type * 100, 2)}")
+        logging.info(f"Average BERTScore: {round(avg_bert_type * 100, 2)}")
+
     for record_type, pairs in ans.items():
         filename = f'{record_type}.json'
 
