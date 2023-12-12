@@ -86,7 +86,7 @@ def main():
 
 
         prompt_ids, _ = chat_model.template.encode_oneturn(
-            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=None
+            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
         )
         prompt = chat_model.tokenizer.decode(
             prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
