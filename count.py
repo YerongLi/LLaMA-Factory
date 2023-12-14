@@ -64,11 +64,11 @@ with open(output_file, 'a') as f:
             negative_condition_r_tone = df['r_tone'] < lower_bound
 
             # Count occurrences where 'o_tone' is negative or neutral while 'r_tone' is positive
-            count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | (df['o_tone'] == 0)) & positive_condition_r_tone
+            count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | (not df['o_tone'])) & positive_condition_r_tone
             count_negative_or_neutral_o_tone_positive_r_tone = count_negative_or_neutral_o_tone_positive_r_tone.sum()
 
             # Count occurrences where 'r_tone' is negative or neutral while 'o_tone' is positive
-            count_negative_or_neutral_r_tone_positive_o_tone = (negative_condition_r_tone | (df['r_tone'] == 0)) & positive_condition_o_tone
+            count_negative_or_neutral_r_tone_positive_o_tone = (negative_condition_r_tone | (not df['r_tone'])) & positive_condition_o_tone
             count_negative_or_neutral_r_tone_positive_o_tone = count_negative_or_neutral_r_tone_positive_o_tone.sum()
 
             # Print the additional counts
