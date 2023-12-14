@@ -9,8 +9,8 @@ directory_path = 'out'
 output_file = 'f1_scores.txt'
 
 # Specify upper and lower bounds for neutral
-lower_bound = 50
-upper_bound = 50
+lower_bound = 30
+upper_bound = 70
 
 # Open the file in append mode
 with open(output_file, 'a') as f:
@@ -103,4 +103,6 @@ with open(output_file, 'a') as f:
 
             # Print the additional counts
             print(f"Count where 'i_tone' is negative while 'o_tone' is positive: {count_negative_i_tone_positive_o_tone}")
-            print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone
+            print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone}")
+
+            print("\n")
