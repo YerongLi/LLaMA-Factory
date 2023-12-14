@@ -241,8 +241,8 @@ def main():
             csv_all_writer.writerow([pair[key] for key in csv_header])
 
     # Close all CSV files
-    for writer in csv_writers.values():
-        writer.file.close()
+    # for writer in csv_writers.values():
+    #     writer.file.close()
 
     csv_all_file.close()
 if __name__ == "__main__":
