@@ -17,12 +17,14 @@ with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     for filename in os.listdir(directory_path):
         if filename.endswith('.csv'):
-
             file_path = os.path.join(directory_path, filename)
 
             # Read the CSV file into a pandas DataFrame
             df = pd.read_csv(file_path)
-            print(df['i_tone'])
+
+            # Replace 0 values in 'o_tone' with NaN
+            # df['o_tone'].replace(0, pd.NA, inplace=True)
+
             # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are above upper_bound
             count_above_upper_bound = {
                 'i_tone': (df['i_tone'] > upper_bound).sum(),
@@ -65,11 +67,11 @@ with open(output_file, 'a') as f:
             negative_condition_r_tone = df['r_tone'] < lower_bound
 
             # Count occurrences where 'o_tone' is negative or neutral while 'r_tone' is positive
-            count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | (df['o_tone'] == 0)) & positive_condition_r_tone
+            count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | pd.isna(df['o_tone'])) & positive_condition_r_tone
             count_negative_or_neutral_o_tone_positive_r_tone = count_negative_or_neutral_o_tone_positive_r_tone.sum()
 
             # Count occurrences where 'r_tone' is negative or neutral while 'o_tone' is positive
-            count_negative_or_neutral_r_tone_positive_o_tone = (negative_condition_r_tone | (df['r_tone'] == 0)) & positive_condition_o_tone
+            count_negative_or_neutral_r_tone_positive_o_tone = (negative_condition_r_tone | pd.isna(df['r_tone'])) & positive_condition_o_tone
             count_negative_or_neutral_r_tone_positive_o_tone = count_negative_or_neutral_r_tone_positive_o_tone.sum()
 
             # Print the additional counts
