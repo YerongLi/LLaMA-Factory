@@ -4,6 +4,7 @@ import logging
 import os
 import random
 import tqdm
+import csv
 from bert_score import BERTScorer
 
 from nltk.translate.bleu_score import sentence_bleu
@@ -70,9 +71,9 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data) ; for record in tqdm.tqdm(data[:10]):
+    random.shuffle(data) ; for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+    # for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
@@ -94,9 +95,12 @@ def main():
 
         # Create a dictionary with the response and output pair
         response_output_pair = {
+            'instruction': instruction,
             'response': response,
             'output': record["output"],
             'prompt': prompt,
+            'history': history,
+            'summary': summary
         }
 
         # Append the pair to the corresponding record type list in the dictionary
@@ -201,5 +205,44 @@ def main():
         with open(filename, 'w') as f:
             json.dump(pairs, f)
 
+
+    # Define the CSV file header
+    csv_header = ['instruction', 'response', 'output', 'prompt', 'history', 'summary']
+
+    # Specify the directory for CSV files
+    csv_directory = 'csv_files'
+
+    # Create the directory if it doesn't exist
+    os.makedirs(csv_directory, exist_ok=True)
+
+    # Dictionary to store CSV writers for each record type
+    csv_writers = {}
+
+    # Open CSV files for writing based on record type
+    for record_type in ans.keys():
+        csv_filename = os.path.join(csv_directory, f'{record_type}.csv')
+        csv_file = open(csv_filename, 'w', newline='', encoding='utf-8')
+        csv_writers[record_type] = csv.writer(csv_file)
+        csv_writers[record_type].writerow(csv_header)
+
+    # Open a CSV file for writing containing data from all types
+    csv_all_filename = os.path.join(csv_directory, 'all.csv')
+    csv_all_file = open(csv_all_filename, 'w', newline='', encoding='utf-8')
+    csv_all_writer = csv.writer(csv_all_file)
+    csv_all_writer.writerow(csv_header)
+
+    # ... (existing code)
+
+    # Write each record to the respective CSV file and the 'all.csv' file
+    for record_type, pairs in ans.items():
+        for pair in pairs:
+            csv_writers[record_type].writerow([pair[key] for key in csv_header])
+            csv_all_writer.writerow([pair[key] for key in csv_header])
+
+    # Close all CSV files
+    for writer in csv_writers.values():
+        writer.file.close()
+
+    csv_all_file.close()
 if __name__ == "__main__":
     main()
