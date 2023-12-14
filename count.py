@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, confusion_matrix
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
@@ -32,6 +32,13 @@ with open(output_file, 'a') as f:
                 'o_tone': (df['o_tone'] < 30).sum()
             }
 
+            # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are between 30 and 70
+            count_neutral = {
+                'i_tone': ((df['i_tone'] >= 30) & (df['i_tone'] <= 70)).sum(),
+                'r_tone': ((df['r_tone'] >= 30) & (df['r_tone'] <= 70)).sum(),
+                'o_tone': ((df['o_tone'] >= 30) & (df['o_tone'] <= 70)).sum()
+            }
+
             # Print the original counts for each file
             print(f"File: {filename}")
             print(f"Count of 'i_tone' values above 70: {count_above_70['i_tone']}")
@@ -42,17 +49,23 @@ with open(output_file, 'a') as f:
             print(f"Count of 'r_tone' values below 30: {count_below_30['r_tone']}")
             print(f"Count of 'o_tone' values below 30: {count_below_30['o_tone']}")
 
+            print(f"Count of 'i_tone' values between 30 and 70 (neutral): {count_neutral['i_tone']}")
+            print(f"Count of 'r_tone' values between 30 and 70 (neutral): {count_neutral['r_tone']}")
+            print(f"Count of 'o_tone' values between 30 and 70 (neutral): {count_neutral['o_tone']}")
+
             # Define conditions for positive, negative, and neutral
             positive_condition_o_tone = df['o_tone'] > 70
             positive_condition_r_tone = df['r_tone'] > 70
-            negative_or_neutral_condition_o_tone = (df['o_tone'] <= 0)
-            negative_or_neutral_condition_r_tone = (df['r_tone'] <= 0)
+            negative_condition_o_tone = df['o_tone'] < 30
+            negative_condition_r_tone = df['r_tone'] < 30
 
             # Count occurrences where 'o_tone' is negative or neutral while 'r_tone' is positive
-            count_negative_or_neutral_o_tone_positive_r_tone = (negative_or_neutral_condition_o_tone & positive_condition_r_tone).sum()
+            count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | (df['o_tone'] == 0)) & positive_condition_r_tone
+            count_negative_or_neutral_o_tone_positive_r_tone = count_negative_or_neutral_o_tone_positive_r_tone.sum()
 
             # Count occurrences where 'r_tone' is negative or neutral while 'o_tone' is positive
-            count_negative_or_neutral_r_tone_positive_o_tone = (negative_or_neutral_condition_r_tone & positive_condition_o_tone).sum()
+            count_negative_or_neutral_r_tone_positive_o_tone = (negative_condition_r_tone | (df['r_tone'] == 0)) & positive_condition_o_tone
+            count_negative_or_neutral_r_tone_positive_o_tone = count_negative_or_neutral_r_tone_positive_o_tone.sum()
 
             # Print the additional counts
             print(f"Count where 'o_tone' is negative or neutral while 'r_tone' is positive: {count_negative_or_neutral_o_tone_positive_r_tone}")
