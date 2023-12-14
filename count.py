@@ -1,68 +1,75 @@
 import pandas as pd
 import os
-
-# Specify the directory where the CSV files are located
-directory_path = 'out'
-
-# Loop through each CSV file in the directory
-import pandas as pd
-import os
 from sklearn.metrics import f1_score, confusion_matrix
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
 
 # Specify the file to append F1 scores
+output_file = 'f1_scores.txt'
 
 # Open the file in append mode
-# Loop through each CSV file in the directory
-for filename in os.listdir(directory_path):
-    if filename.endswith('.csv'):
-        file_path = os.path.join(directory_path, filename)
+with open(output_file, 'a') as f:
+    # Loop through each CSV file in the directory
+    for filename in os.listdir(directory_path):
+        if filename.endswith('.csv'):
+            file_path = os.path.join(directory_path, filename)
 
-        # Read the CSV file into a pandas DataFrame
-        df = pd.read_csv(file_path)
+            # Read the CSV file into a pandas DataFrame
+            df = pd.read_csv(file_path)
 
-        # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are above 70
-        count_above_70 = {
-            'i_tone': (df['i_tone'] > 70).sum(),
-            'r_tone': (df['r_tone'] > 70).sum(),
-            'o_tone': (df['o_tone'] > 70).sum()
-        }
+            # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are above 70
+            count_above_70 = {
+                'i_tone': (df['i_tone'] > 70).sum(),
+                'r_tone': (df['r_tone'] > 70).sum(),
+                'o_tone': (df['o_tone'] > 70).sum()
+            }
 
-        # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are below 30
-        count_below_30 = {
-            'i_tone': (df['i_tone'] < 30).sum(),
-            'r_tone': (df['r_tone'] < 30).sum(),
-            'o_tone': (df['o_tone'] < 30).sum()
-        }
+            # Count occurrences where 'i_tone', 'r_tone', and 'o_tone' are below 30
+            count_below_30 = {
+                'i_tone': (df['i_tone'] < 30).sum(),
+                'r_tone': (df['r_tone'] < 30).sum(),
+                'o_tone': (df['o_tone'] < 30).sum()
+            }
 
-        # Print the original counts for each file
-        print(f"File: {filename}")
-        print(f"Count of 'i_tone' values above 70: {count_above_70['i_tone']}")
-        print(f"Count of 'r_tone' values above 70: {count_above_70['r_tone']}")
-        print(f"Count of 'o_tone' values above 70: {count_above_70['o_tone']}")
+            # Print the original counts for each file
+            print(f"File: {filename}")
+            print(f"Count of 'i_tone' values above 70: {count_above_70['i_tone']}")
+            print(f"Count of 'r_tone' values above 70: {count_above_70['r_tone']}")
+            print(f"Count of 'o_tone' values above 70: {count_above_70['o_tone']}")
 
-        print(f"Count of 'i_tone' values below 30: {count_below_30['i_tone']}")
-        print(f"Count of 'r_tone' values below 30: {count_below_30['r_tone']}")
-        print(f"Count of 'o_tone' values below 30: {count_below_30['o_tone']}")
-        
-        # Define conditions for positive, negative, and neutral
-        positive_condition = df['o_tone'] > 70
-        negative_condition = df['o_tone'] < 30
+            print(f"Count of 'i_tone' values below 30: {count_below_30['i_tone']}")
+            print(f"Count of 'r_tone' values below 30: {count_below_30['r_tone']}")
+            print(f"Count of 'o_tone' values below 30: {count_below_30['o_tone']}")
 
-        # Assign true labels based on conditions
-        true_labels = [1 if pos else (-1 if neg else 0) for pos, neg in zip(positive_condition, negative_condition)]
+            # Define conditions for positive, negative, and neutral
+            positive_condition = df['o_tone'] > 70
+            negative_condition_i_tone = (df['i_tone'] < 0) & (df['o_tone'] > 0)
+            negative_condition_r_tone = (df['i_tone'] < 0) & (df['r_tone'] > 0)
 
-        # Assign predicted labels based on 'r_tone' predictions
-        predicted_labels = [1 if val > 70 else (-1 if val < 30 else 0) for val in df['r_tone']]
+            # Assign true labels based on conditions
+            true_labels = [1 if pos else (-1 if neg_i else 0) for pos, neg_i in zip(positive_condition, negative_condition_i_tone)]
 
-        # Calculate F1 score for the current file
-        f1 = f1_score(true_labels, predicted_labels, average='weighted')
+            # Assign predicted labels based on 'r_tone' predictions
+            predicted_labels = [1 if val > 70 else (-1 if val < 30 else 0) for val in df['r_tone']]
 
-        # Print the F1 score for the current file
-        print(f"F1 Score for {filename}: {f1}")
+            # Calculate F1 score for the current file
+            f1 = f1_score(true_labels, predicted_labels, average='weighted') * 100
 
-        # Append the results to the output file
+            # Print the F1 score for the current file
+            print(f"F1 Score for {filename}: {f1:.2f}")
 
-        print("\n")
+            # Append the results to the output file
+            f.write(f"File: {filename}, F1 Score: {f1:.2f}\n")
+
+            # Count occurrences where i_tone is negative while o_tone is positive
+            count_negative_i_tone_positive_o_tone = (negative_condition_i_tone).sum()
+
+            # Count occurrences where i_tone is negative while r_tone is positive
+            count_negative_i_tone_positive_r_tone = (negative_condition_r_tone).sum()
+
+            # Print the additional counts
+            print(f"Count where 'i_tone' is negative while 'o_tone' is positive: {count_negative_i_tone_positive_o_tone}")
+            print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone}")
+
+            print("\n")
