@@ -25,5 +25,5 @@ def process_filenames(folder_path):
             print(f"{prefix}_{suffix}: {file_name}")
 
 # Replace 'folder_path' with the actual path to your folder
-folder_path = "."
+folder_path = "out_csv"
 process_filenames(folder_path)
