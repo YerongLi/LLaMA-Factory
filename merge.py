@@ -43,5 +43,5 @@ def process_filenames(folder_path):
         df.to_csv(output_file_path, index=False)
 
 # Replace 'folder_path' with the actual path to your folder
-folder_path = "/path/to/your/folder"
+folder_path = "out_csv"
 process_filenames(folder_path)
