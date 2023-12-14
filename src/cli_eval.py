@@ -101,7 +101,7 @@ def main():
             'output': record["output"],
             'prompt': prompt,
             'history': history,
-            'summary': summary
+            'summary': record["summary"]
         }
 
         # Append the pair to the corresponding record type list in the dictionary
