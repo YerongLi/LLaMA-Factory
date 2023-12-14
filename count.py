@@ -28,5 +28,9 @@ for filename in os.listdir(directory_path):
 
 # Print the results
 print(f"Count of 'i_tone' values greater than 60: {count_greater_than_60['i_tone']}")
-print(f"Count of 'r_tone' values greater than 60: {count_grea
+print(f"Count of 'r_tone' values greater than 60: {count_greater_than_60['r_tone']}")
+print(f"Count of 'o_tone' values greater than 60: {count_greater_than_60['o_tone']}")
 
+print(f"Count of 'i_tone' values smaller than 40: {count_smaller_than_40['i_tone']}")
+print(f"Count of 'r_tone' values smaller than 40: {count_smaller_than_40['r_tone']}")
+print(f"Count of 'o_tone' values smaller than 40: {count_smaller_than_40['o_tone']}")
