@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from sklearn.metrics import f1_score, confusion_matrix
+from sklearn.metrics import f1_score
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
@@ -41,6 +41,22 @@ with open(output_file, 'a') as f:
             print(f"Count of 'i_tone' values below 30: {count_below_30['i_tone']}")
             print(f"Count of 'r_tone' values below 30: {count_below_30['r_tone']}")
             print(f"Count of 'o_tone' values below 30: {count_below_30['o_tone']}")
+
+            # Define conditions for positive, negative, and neutral
+            positive_condition_o_tone = df['o_tone'] > 70
+            positive_condition_r_tone = df['r_tone'] > 70
+            negative_or_neutral_condition_o_tone = (df['o_tone'] <= 0)
+            negative_or_neutral_condition_r_tone = (df['r_tone'] <= 0)
+
+            # Count occurrences where 'o_tone' is negative or neutral while 'r_tone' is positive
+            count_negative_or_neutral_o_tone_positive_r_tone = (negative_or_neutral_condition_o_tone & positive_condition_r_tone).sum()
+
+            # Count occurrences where 'r_tone' is negative or neutral while 'o_tone' is positive
+            count_negative_or_neutral_r_tone_positive_o_tone = (negative_or_neutral_condition_r_tone & positive_condition_o_tone).sum()
+
+            # Print the additional counts
+            print(f"Count where 'o_tone' is negative or neutral while 'r_tone' is positive: {count_negative_or_neutral_o_tone_positive_r_tone}")
+            print(f"Count where 'r_tone' is negative or neutral while 'o_tone' is positive: {count_negative_or_neutral_r_tone_positive_o_tone}")
 
             # Define conditions for positive, negative, and neutral
             positive_condition = df['o_tone'] > 70
