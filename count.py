@@ -9,8 +9,8 @@ directory_path = 'out'
 output_file = 'f1_scores.txt'
 
 # Specify upper and lower bounds for neutral
-lower_bound = 30
-upper_bound = 70
+lower_bound = 50
+upper_bound = 50
 
 # Open the file in append mode
 with open(output_file, 'a') as f:
