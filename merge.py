@@ -1,13 +1,10 @@
 import os
+import pandas as pd
 
 # Function to extract and process file names
 def process_filenames(folder_path):
     # Get all file names in the folder
     all_files = os.listdir(folder_path)
-
-    # Extract and print the set of file names without prefixes
-    file_set = set(name[2:] for name in all_files)
-    print("Set of file names without prefixes:", file_set)
 
     # Group file names based on suffix
     groups = {}
@@ -18,12 +15,33 @@ def process_filenames(folder_path):
             groups[suffix] = {'i': None, 'o': None, 'r': None}
         groups[suffix][prefix] = name
 
-    # Print the groups
+    # Process CSV files within each group
     for suffix, files in groups.items():
-        print(f"Group for suffix '{suffix}':")
+        print(f"\nProcessing group for suffix '{suffix}':")
+
+        # Create a DataFrame to store the data
+        df = pd.DataFrame()
+
         for prefix, file_name in files.items():
-            print(f"{prefix}_{suffix}: {file_name}")
+            if file_name is not None and file_name.endswith('.csv'):
+                file_path = os.path.join(folder_path, file_name)
+                file_df = pd.read_csv(file_path)
+                if prefix == 'i':
+                    # Extract columns and save them in the DataFrame
+                    df[f"instruction"] = file_df['instruction']
+                    df[f"response"] = file_df['response']
+                    df[f"output"] = file_df['output']
+                    df[f"prompt"] = file_df['prompt']
+                    df[f"history"] = file_df['history']
+                    df[f"summary"] = file_df['summary']
+
+                # Save tone with a prefix in the column name
+                df[f"{prefix}_tone"] = file_df['tone']
+
+        # Save the combined DataFrame
+        output_file_path = os.path.join(folder_path, f"group_{suffix}.csv")
+        df.to_csv(output_file_path, index=False)
 
 # Replace 'folder_path' with the actual path to your folder
-folder_path = "out_csv"
+folder_path = "/path/to/your/folder"
 process_filenames(folder_path)
