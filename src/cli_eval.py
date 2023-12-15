@@ -42,7 +42,7 @@ def main():
     # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
 
     # Load data from the file
-    with open("data/police1.json", "r") as file:
+    with open("data/police2.json", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
@@ -71,10 +71,10 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data)
-    # for record in tqdm.tqdm(data[:10]):
+    random.shuffle(data)
+    for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+    # for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
