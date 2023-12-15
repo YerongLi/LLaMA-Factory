@@ -55,3 +55,6 @@ with open(output_file, 'a') as f:
             df['r_tone'].fillna(50, inplace=True)
             length = df['his_len']
             df['current_length'] = df['history'].apply(lambda x: len(eval(x)))
+            df['ratio'] = df['current_length'] / df['his_len']
+            print(df['ratio'])
+
