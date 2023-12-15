@@ -98,18 +98,21 @@ with open(output_file, 'a') as f:
             print(o_tone_ratios)
             print(r_tone_ratios)
 
-            sentiments = [-1, 0, 1]
-            begin_percentages = o_tone_ratios['begin']
-            middle_percentages = o_tone_ratios['middle']
-            end_percentages = o_tone_ratios['end']
+            # Convert the ratios to DataFrames
+            o_tone_df = pd.DataFrame(o_tone_ratios, index=['-1', '0', '1'])
+            r_tone_df = pd.DataFrame(r_tone_ratios, index=['-1', '0', '1'])
 
-            # Plotting
-            plt.bar(sentiments, begin_percentages, label='Begin')
-            plt.bar(sentiments, middle_percentages, bottom=begin_percentages, label='Middle')
-            plt.bar(sentiments, end_percentages, bottom=[sum(x) for x in zip(begin_percentages, middle_percentages)], label='End')
+            # Plotting for o_tone_ratios
+            o_tone_df.plot(
+                kind='barh',
+                stacked=True,
+                title='Percentage of Sentiments for o_tone_ratios'
+            )
 
-            # Adding labels and title
-            plt.xlabel('Sentiment')
-            plt.ylabel('Percentage')
-            plt.title('Percentage of Sentiments for o_tone_ratios')
+            # Plotting for r_tone_ratios
+            r_tone_df.plot(
+                kind='barh',
+                stacked=True,
+                title='Percentage of Sentiments for r_tone_ratios'
+            )
             plt.savefig("ratio.png")
