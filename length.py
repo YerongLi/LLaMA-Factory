@@ -99,13 +99,13 @@ with open(output_file, 'a') as f:
             print(r_tone_ratios)
             names = ['begin','middle', 'end']
             def process(tone_ratios):
-                raw_data = {'greenBars': [[o_tone_ratios[name][0]] for name in names]}
-                raw_data = {'orangeBars': [[o_tone_ratios[name][1]] for name in names]}
-                raw_data = {'blueBars': [[o_tone_ratios[name][2]] for name in names]}
+                raw_data = {'greenBars': [[tone_ratios[name][0]] for name in names]}
+                raw_data = {'orangeBars': [[tone_ratios[name][1]] for name in names]}
+                raw_data = {'blueBars': [[tone_ratios[name][2]] for name in names]}
                 return raw_data
             raw_data = process(o_tone_ratios)
             df = pd.DataFrame(raw_data)
- 
+            print(df)
             # From raw value to percentage
             totals = [i+j+k for i,j,k in zip(df['greenBars'], df['orangeBars'], df['blueBars'])]
             greenBars = [i / j * 100 for i,j in zip(df['greenBars'], totals)]
