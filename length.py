@@ -53,8 +53,7 @@ with open(output_file, 'a') as f:
             df['i_tone_mapped'] = df['i_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
             df['o_tone'].fillna(50, inplace=True)
             df['r_tone'].fillna(50, inplace=True)
-            length = df['his_len']
-            df['current_length'] = df['history'].apply(lambda x: len(eval(x)))
+            df['current_length'] = df['history'].apply(lambda x: 2+len(eval(x)))
             df['ratio'] = df['current_length'] / df['his_len']
             # print(df['ratio'])
             # Filter df for each ratio range
