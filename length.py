@@ -99,9 +99,9 @@ with open(output_file, 'a') as f:
             print(r_tone_ratios)
             names = ['begin','middle', 'end']
             def process(tone_ratios):
-                raw_data = {'greenBars': [[tone_ratios[name][0]] for name in names]}
-                raw_data .update({'orangeBars': [[tone_ratios[name][1]] for name in names]})
-                raw_data .update({'blueBars': [[tone_ratios[name][2]] for name in names]})
+                raw_data = {'greenBars': [tone_ratios[name][0] for name in names]}
+                raw_data .update({'orangeBars': [tone_ratios[name][1] for name in names]})
+                raw_data .update({'blueBars': [tone_ratios[name][2] for name in names]})
                 return raw_data
             raw_data = process(o_tone_ratios)
             df = pd.DataFrame(raw_data)
