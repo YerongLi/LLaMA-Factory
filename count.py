@@ -109,7 +109,7 @@ for true_label in class_labels:
         if count > 0 and true_label != pred_label:
             print(f"Class {true_label} is confused with Class {pred_label}: {count} occurrences.")
 
-# Print classification report
-classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
-print("\nClassification Report:")
-print(classification_rep)
+# # Print classification report
+# classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
+# print("\nClassification Report:")
+# print(classification_rep)
