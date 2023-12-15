@@ -111,7 +111,7 @@ with open(output_file, 'a') as f:
             greenBars = [i / j * 100 for i,j in zip(df['greenBars'], totals)]
             orangeBars = [i / j * 100 for i,j in zip(df['orangeBars'], totals)]
             blueBars = [i / j * 100 for i,j in zip(df['blueBars'], totals)]
-             
+            r = [0,1,2]
             # plot
             barWidth = 0.85
             names = ('A','B','C','D','E')
