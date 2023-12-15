@@ -98,7 +98,7 @@ with open(output_file, 'a') as f:
             print(o_tone_ratios)
             print(r_tone_ratios)
             names = ['begin','middle', 'end']
-            def process(tone_ratios)
+            def process(tone_ratios):
                 raw_data = {'greenBars': [[o_tone_ratios[name][0]] for name in names]}
                 raw_data = {'orangeBars': [[o_tone_ratios[name][1]] for name in names]}
                 raw_data = {'blueBars': [[o_tone_ratios[name][2]] for name in names]}
