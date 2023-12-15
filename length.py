@@ -98,32 +98,47 @@ with open(output_file, 'a') as f:
             print(o_tone_ratios)
             print(r_tone_ratios)
             names = ['begin','middle', 'end']
-            def process(tone_ratios):
-                raw_data = {'greenBars': [tone_ratios[name][0] for name in names]}
-                raw_data .update({'orangeBars': [tone_ratios[name][1] for name in names]})
-                raw_data .update({'blueBars': [tone_ratios[name][2] for name in names]})
-                return raw_data
-            raw_data = process(o_tone_ratios)
-            df = pd.DataFrame(raw_data)
-            print(df)
-            # From raw value to percentage
-            totals = [i+j+k for i,j,k in zip(df['greenBars'], df['orangeBars'], df['blueBars'])]
-            greenBars = [i / j * 100 for i,j in zip(df['greenBars'], totals)]
-            orangeBars = [i / j * 100 for i,j in zip(df['orangeBars'], totals)]
-            blueBars = [i / j * 100 for i,j in zip(df['blueBars'], totals)]
-            r = [0,1,2]
-            # plot
-            barWidth = 0.85
-            names = ('begin','middle','end')
-            # Create green Bars
-            plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth, label="negative")
-            # Create orange Bars
-            plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth, label="neutral")
-            # Create blue Bars
-            plt.bar(r, blueBars, bottom=[i+j for i,j in zip(greenBars, orangeBars)], label="positive", color='#a3acff', edgecolor='white', width=barWidth)
-             
-            # Custom x axis
-            plt.xticks(r, names)
-            plt.xlabel("group")
-            plt.legend()
-            plt.savefig('ratio.png')
+            r = [0, 1, 2]
+            raw_data_o = process(o_tone_ratios)
+
+            df_o = pd.DataFrame(raw_data_o)
+
+            # Process r_tone_ratios
+            raw_data_r = process(r_tone_ratios)
+            df_r = pd.DataFrame(raw_data_r)
+
+            # Function to plot bars
+            def plot_bars(df, title):
+                # Calculate percentages
+                totals = [i + j + k for i, j, k in zip(df['greenBars'], df['orangeBars'], df['blueBars'])]
+                greenBars = [i / j * 100 for i, j in zip(df['greenBars'], totals)]
+                orangeBars = [i / j * 100 for i, j in zip(df['orangeBars'], totals)]
+                blueBars = [i / j * 100 for i, j in zip(df['blueBars'], totals)]
+
+                # Plot bars
+                plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth, label="negative")
+                plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth, label="neutral")
+                plt.bar(r, blueBars, bottom=[i + j for i, j in zip(greenBars, orangeBars)], label="positive", color='#a3acff',
+                        edgecolor='white', width=barWidth)
+
+                # Custom x axis and labels
+                plt.xticks(r, names)
+                plt.xlabel("group")
+                plt.legend()
+                plt.title(title)
+
+            # Create subplots
+            plt.figure(figsize=(12, 5))
+
+            # Plot for o_tone_ratios
+            plt.subplot(1, 2, 1)
+            plot_bars(df_o, 'o_tone_ratios')
+
+            # Plot for r_tone_ratios
+            plt.subplot(1, 2, 2)
+            plot_bars(df_r, 'r_tone_ratios')
+
+            # Save and show the plots
+            plt.tight_layout()
+            plt.savefig('ratio_combined.png')
+            plt.show()
