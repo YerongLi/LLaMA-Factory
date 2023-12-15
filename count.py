@@ -28,7 +28,8 @@ all_predicted_labels = []
 total_o_tone_sum = 0
 total_r_tone_sum = 0
 total_values_count = 0
-
+o_tone_scores = []
+r_tone_scores = []
 
 total_negative_i_tone_positive_o_tone_count = 0
 total_negative_i_tone_positive_r_tone_count = 0
@@ -138,7 +139,8 @@ with open(output_file, 'a') as f:
 
             # Perform paired t-test for the current file
             t_stat_file, p_value_file = ttest_rel(o_tone_scores_file, r_tone_scores_file)
-
+            o_tone_scores.extend(df['o_tone'])
+            r_tone_scores.extend(df['r_tone'])
             # Print results for the current file
             print(f"\nT-test for {filename}:")
             print(f"T-statistic: {t_stat_file:.4f}")
@@ -180,3 +182,10 @@ print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 # classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
 # print("\nClassification Report:")
 # print(classification_rep)
+# Perform paired t-test
+t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
+
+# Print the results
+print(f"T-test across all files:")
+print(f"T-statistic: {t_stat:.4f}")
+print(f"P-value: {p_value:.4f}")
