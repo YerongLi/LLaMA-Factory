@@ -96,6 +96,8 @@ print(f"Overall F1 Score: {overall_f1:.2f}")
 
 # Calculate and print confusion matrix
 conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
+class_labels = ['Neutral', 'Positive', 'Negative']
+
 print("Confusion Matrix:")
 print(conf_matrix)
 classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
