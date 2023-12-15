@@ -24,10 +24,13 @@ all_true_labels = []
 all_predicted_labels = []
 
 # Open the file in append mode
+
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     for filename in os.listdir(directory_path):
         if filename.endswith('.csv'):
+            print(filename)
+            continue
             file_path = os.path.join(directory_path, filename)
 
             # Read the CSV file into a pandas DataFrame
