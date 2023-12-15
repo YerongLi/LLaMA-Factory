@@ -95,34 +95,5 @@ with open(output_file, 'a') as f:
                 o_tone_ratios[labels[i]].extend([n_o, neu_o, pos_o])
                 r_tone_ratios[labels[i]].extend([n_r, neu_r, pos_r])
 
-            # Convert dictionaries to DataFrames
-            # Group DataFrame based on the ratio ranges
-            grouped_df = df.groupby(pd.cut(df['ratio'], bins=[0, 1/3, 2/3, 1], labels=['Begin', 'Middle', 'End']))
-
-            # Function to calculate the percentage of each sentiment (-1, 0, 1) for a given DataFrame
-            def calculate_ratio_for_tone(dataframe, column_name):
-                total_count = len(dataframe)
-                ratios = dataframe[column_name].value_counts(normalize=True).sort_index() * 100
-                return ratios
-
-            # Calculate sentiment percentages for 'o_tone' and 'r_tone' in each ratio range
-            o_tone_percentages = grouped_df.apply(calculate_ratio_for_tone, column_name='o_tone_mapped')
-            r_tone_percentages = grouped_df.apply(calculate_ratio_for_tone, column_name='r_tone_mapped')
-
-            # Plotting
-            fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-
-            # Plot 'o_tone' sentiment percentages
-            o_tone_percentages.plot(kind='bar', ax=axes[0])
-
-            # Plot 'r_tone' sentiment percentages
-            r_tone_percentages.plot(kind='bar', ax=axes[1])
-
-            # Set labels and title
-            axes[1].set_xlabel('Sentiment')
-            axes[1].set_ylabel('Percentage')
-            axes[0].set_ylabel('Percentage')
-            fig.suptitle('Aggregated Bar Plots for o_tone and r_tone')
-
-            # Save the plots to "ratio.png"
-            plt.savefig("ratio.png")
+            print(o_tone_ratios)
+            print(r_tone_ratios)
