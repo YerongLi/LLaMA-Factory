@@ -98,15 +98,18 @@ with open(output_file, 'a') as f:
             print(o_tone_ratios)
             print(r_tone_ratios)
             names = ['begin','middle', 'end']
-            r = [0, 1, 2]
+            def process(tone_ratios):
+                raw_data = {'greenBars': [tone_ratios[name][0] for name in names]}
+                raw_data .update({'orangeBars': [tone_ratios[name][1] for name in names]})
+                raw_data .update({'blueBars': [tone_ratios[name][2] for name in names]})
+                return raw_data
             raw_data_o = process(o_tone_ratios)
-
             df_o = pd.DataFrame(raw_data_o)
 
             # Process r_tone_ratios
             raw_data_r = process(r_tone_ratios)
             df_r = pd.DataFrame(raw_data_r)
-
+            r = [0,1,2]
             # Function to plot bars
             def plot_bars(df, title):
                 # Calculate percentages
@@ -140,5 +143,5 @@ with open(output_file, 'a') as f:
 
             # Save and show the plots
             plt.tight_layout()
-            plt.savefig('ratio_combined.png')
+            plt.savefig('ratio.png')
             plt.show()
