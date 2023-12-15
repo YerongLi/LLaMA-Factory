@@ -58,9 +58,7 @@ with open(output_file, 'a') as f:
             df['ratio'] = df['current_length'] / df['his_len']
             # print(df['ratio'])
             # Filter df for each ratio range
-            df_less_than_third = df[df['ratio'] < 1/3]
-            df_between_third_and_two_thirds = df[(df['ratio'] >= 1/3) & (df['ratio'] < 2/3)]
-            df_greater_than_two_thirds = df[df['ratio'] >= 2/3]
+ 
 
             # Function to calculate ratio of -1, 0, 1 for a specific tone column
             def calculate_ratio_for_tone(df_subset, tone_column):
@@ -74,26 +72,20 @@ with open(output_file, 'a') as f:
                 ratio_positive = positive_count / total_count
 
                 return ratio_negative, ratio_neutral, ratio_positive
+            ratio_ranges = [(0, 1/3), (1/3, 2/3), (2/3, 1)]
 
-            # Calculate ratios for o_tone_mapped in each ratio range
-            ratio_negative_o_less_than_third, ratio_neutral_o_less_than_third, ratio_positive_o_less_than_third = calculate_ratio_for_tone(df_less_than_third, 'o_tone_mapped')
-            ratio_negative_o_between_third_and_two_thirds, ratio_neutral_o_between_third_and_two_thirds, ratio_positive_o_between_third_and_two_thirds = calculate_ratio_for_tone(df_between_third_and_two_thirds, 'o_tone_mapped')
-            ratio_negative_o_greater_than_two_thirds, ratio_neutral_o_greater_than_two_thirds, ratio_positive_o_greater_than_two_thirds = calculate_ratio_for_tone(df_greater_than_two_thirds, 'o_tone_mapped')
-
-            # Calculate ratios for r_tone_mapped in each ratio range
-            ratio_negative_r_less_than_third, ratio_neutral_r_less_than_third, ratio_positive_r_less_than_third = calculate_ratio_for_tone(df_less_than_third, 'r_tone_mapped')
-            ratio_negative_r_between_third_and_two_thirds, ratio_neutral_r_between_third_and_two_thirds, ratio_positive_r_between_third_and_two_thirds = calculate_ratio_for_tone(df_between_third_and_two_thirds, 'r_tone_mapped')
-            ratio_negative_r_greater_than_two_thirds, ratio_neutral_r_greater_than_two_thirds, ratio_positive_r_greater_than_two_thirds = calculate_ratio_for_tone(df_greater_than_two_thirds, 'r_tone_mapped')
-
-            # Print the results
-            print("For ratio < 1/3:")
-            print(f"o_tone_mapped ratios: -1:{ratio_negative_o_less_than_third:.2%}, 0:{ratio_neutral_o_less_than_third:.2%}, 1:{ratio_positive_o_less_than_third:.2%}")
-            print(f"r_tone_mapped ratios: -1:{ratio_negative_r_less_than_third:.2%}, 0:{ratio_neutral_r_less_than_third:.2%}, 1:{ratio_positive_r_less_than_third:.2%}\n")
-
-            print("For 1/3 <= ratio < 2/3:")
-            print(f"o_tone_mapped ratios: -1:{ratio_negative_o_between_third_and_two_thirds:.2%}, 0:{ratio_neutral_o_between_third_and_two_thirds:.2%}, 1:{ratio_positive_o_between_third_and_two_thirds:.2%}")
-            print(f"r_tone_mapped ratios: -1:{ratio_negative_r_between_third_and_two_thirds:.2%}, 0:{ratio_neutral_r_between_third_and_two_thirds:.2%}, 1:{ratio_positive_r_between_third_and_two_thirds:.2%}\n")
-
-            print("For ratio >= 2/3:")
-            print(f"o_tone_mapped ratios: -1:{ratio_negative_o_greater_than_two_thirds:.2%}, 0:{ratio_neutral_o_greater_than_two_thirds:.2%}, 1:{ratio_positive_o_greater_than_two_thirds:.2%}")
-            print(f"r_tone_mapped ratios: -1:{ratio_negative_r_greater_than_two_thirds:.2%}, 0:{ratio_neutral_r_greater_than_two_thirds:.2%}, 1:{ratio_positive_r_greater_than_two_thirds:.2%}")
+            # Iterate over ratio ranges
+            for i, (lower, upper) in enumerate(ratio_ranges):
+                # Filter DataFrame based on the ratio range
+                df_filtered = df[(df['ratio'] >= lower) & (df['ratio'] < upper)]
+                
+                # Calculate ratios for o_tone_mapped
+                n_o, neu_o, pos_o = calculate_ratio_for_tone(df_filtered, 'o_tone_mapped')
+                
+                # Calculate ratios for r_tone_mapped
+                n_r, neu_r, pos_r = calculate_ratio_for_tone(df_filtered, 'r_tone_mapped')
+                
+                # Print the results
+                print(f"For ratio range {i + 1}:")
+                print(f"o_tone_mapped ratios: -1:{n_o:.2%}, 0:{neu_o:.2%}, 1:{pos_o:.2%}")
+                print(f"r_tone_mapped ratios: -1:{n_r:.2%}, 0:{neu_r:.2%}, 1:{pos_r:.2%}\n")
