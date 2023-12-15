@@ -48,6 +48,8 @@ with open(output_file, 'a') as f:
             df['o_tone_mapped'] = df['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
             df['r_tone_mapped'] = df['r_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
             df['i_tone_mapped'] = df['i_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
+            df['o_tone'].fillna(50, inplace=True)
+            df['r_tone'].fillna(50, inplace=True)
             avg_o_tone = df['o_tone'].mean()
             avg_r_tone = df['r_tone'].mean()
             # Define conditions for positive, negative, and neutral
@@ -94,7 +96,7 @@ with open(output_file, 'a') as f:
             # Count occurrences where i_tone is negative while r_tone is positive
             count_negative_i_tone_positive_r_tone = (negative_condition_r_tone).sum()
             print(filename)
-            
+
             print(f"Average 'o_tone': {avg_o_tone:.2f}")
             print(f"Average 'r_tone': {avg_r_tone:.2f}")
             print(f"Count where 'i_tone' is negative while 'o_tone' is positive: {count_negative_i_tone_positive_o_tone}")
