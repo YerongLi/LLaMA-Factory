@@ -95,11 +95,19 @@ overall_f1 = f1_score(all_true_labels, all_predicted_labels, average='weighted')
 print(f"Overall F1 Score: {overall_f1:.2f}")
 
 # Calculate and print confusion matrix
-conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
-class_labels = ['Neutral', 'Positive', 'Negative']
-
+class_labels = [-1, 0, 1]
+conf_matrix_df = pd.DataFrame(conf_matrix, index=class_labels, columns=class_labels)
 print("Confusion Matrix:")
-print(conf_matrix)
+print(conf_matrix_df)
+
+# Identify which class is confused with which
+for true_label in class_labels:
+    for pred_label in class_labels:
+        count = conf_matrix_df.loc[true_label, pred_label]
+        if count > 0 and true_label != pred_label:
+            print(f"Class {true_label} is confused with Class {pred_label}: {count} occurrences.")
+
+# Print classification report
 classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
 print("\nClassification Report:")
 print(classification_rep)
