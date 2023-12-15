@@ -56,7 +56,7 @@ with open(output_file, 'a') as f:
             avg_r_tone = df['r_tone'].mean()
             total_o_tone_sum += df['o_tone'].sum()
             total_r_tone_sum += df['r_tone'].sum()
-            total_values_count += df[['o_tone', 'r_tone']].count().sum()
+            total_values_count += len(df)  # Count the number of rows
             # Define conditions for positive, negative, and neutral
             positive_condition_o_tone = df['o_tone_mapped'] == 1
             positive_condition_r_tone = df['r_tone_mapped'] == 1
