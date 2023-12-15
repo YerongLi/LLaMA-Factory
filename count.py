@@ -134,8 +134,8 @@ with open(output_file, 'a') as f:
             print("\n")
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
 overall_percentage_negative_i_tone_positive_r_tone = (total_negative_i_tone_positive_r_tone_count / total_values_count) * 100
-print(f"Overall Percentage where 'i_tone' is negative while 'o_tone' is positive: {overall_percentage_negative_i_tone_positive_o_tone:.2f}%")
-print(f"Overall Percentage where 'i_tone' is negative while 'r_tone' is positive: {overall_percentage_negative_i_tone_positive_r_tone:.2f}%")
+print(f"Overall Percentage where 'i_tone' is negative while 'o_tone' is positive: {overall_percentage_negative_i_tone_positive_o_tone:.2f}")
+print(f"Overall Percentage where 'i_tone' is negative while 'r_tone' is positive: {overall_percentage_negative_i_tone_positive_r_tone:.2f}")
 # Calculate overall F1 score
 overall_f1 = f1_score(all_true_labels, all_predicted_labels, average='weighted') * 100
 
