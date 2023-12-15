@@ -129,7 +129,7 @@ with open(output_file, 'a') as f:
 
                 # Custom x axis and labels
                 plt.xticks(r, names)
-                plt.xlabel("group")
+                # plt.xlabel("group")
                 plt.legend()
                 plt.title(title)
 
@@ -138,11 +138,11 @@ with open(output_file, 'a') as f:
 
             # Plot for o_tone_ratios
             plt.subplot(1, 2, 1)
-            plot_bars(df_o, 'o_tone_ratios')
+            plot_bars(df_o, 'Human')
 
             # Plot for r_tone_ratios
             plt.subplot(1, 2, 2)
-            plot_bars(df_r, 'r_tone_ratios')
+            plot_bars(df_r, 'Bot')
 
             # Save and show the plots
             plt.tight_layout()
