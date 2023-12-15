@@ -52,6 +52,9 @@ with open(output_file, 'a') as f:
             df['r_tone'].fillna(50, inplace=True)
             avg_o_tone = df['o_tone'].mean()
             avg_r_tone = df['r_tone'].mean()
+            total_o_tone_sum += df['o_tone'].sum()
+            total_r_tone_sum += df['r_tone'].sum()
+            total_values_count += df[['o_tone', 'r_tone']].count().sum()
             # Define conditions for positive, negative, and neutral
             positive_condition_o_tone = df['o_tone_mapped'] == 1
             positive_condition_r_tone = df['r_tone_mapped'] == 1
@@ -117,7 +120,12 @@ class_labels = [-1, 0, 1]
 conf_matrix_df = pd.DataFrame(conf_matrix, index=class_labels, columns=class_labels)
 print("Confusion Matrix:")
 print(conf_matrix_df)
+overall_avg_o_tone = total_o_tone_sum / total_values_count
+overall_avg_r_tone = total_r_tone_sum / total_values_count
 
+# Print overall averages
+print(f"Overall Average 'o_tone': {overall_avg_o_tone:.2f}")
+print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 # Identify which class is confused with which
 for true_label in class_labels:
     for pred_label in class_labels:
