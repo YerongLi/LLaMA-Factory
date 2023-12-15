@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, classification_report
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
@@ -98,4 +98,6 @@ print(f"Overall F1 Score: {overall_f1:.2f}")
 conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
 print("Confusion Matrix:")
 print(conf_matrix)
-
+classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
+print("\nClassification Report:")
+print(classification_rep)
