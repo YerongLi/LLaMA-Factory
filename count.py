@@ -27,6 +27,10 @@ all_predicted_labels = []
 total_o_tone_sum = 0
 total_r_tone_sum = 0
 total_values_count = 0
+
+
+total_negative_i_tone_positive_o_tone_count = 0
+total_negative_i_tone_positive_r_tone_count = 0
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
@@ -62,6 +66,26 @@ with open(output_file, 'a') as f:
             positive_condition_r_tone = df['r_tone_mapped'] == 1
             negative_condition_o_tone = df['o_tone_mapped'] == -1
             negative_condition_r_tone = df['r_tone_mapped'] == -1
+
+            negative_i_tone_positive_o_tone_condition = (df['i_tone_mapped'] == -1) & (df['o_tone_mapped'] == 1)
+
+            # Define conditions for negative 'i_tone' while 'r_tone' is positive
+            negative_i_tone_positive_r_tone_condition = (df['i_tone_mapped'] == -1) & (df['r_tone_mapped'] == 1)
+
+            # Count occurrences for the current file
+            count_negative_i_tone_positive_o_tone = negative_i_tone_positive_o_tone_condition.sum()
+            count_negative_i_tone_positive_r_tone = negative_i_tone_positive_r_tone_condition.sum()
+
+            # Print results for the current file
+            print(f"Percentage where 'i_tone' is negative while 'o_tone' is positive: {(count_negative_i_tone_positive_o_tone / len(df)) * 100:.2f}%")
+            print(f"Percentage where 'i_tone' is negative while 'r_tone' is positive: {(count_negative_i_tone_positive_r_tone / len(df)) * 100:.2f}%")
+            print("\n")
+
+            # Accumulate counts for overall percentages
+            total_negative_i_tone_positive_o_tone_count += count_negative_i_tone_positive_o_tone
+            total_negative_i_tone_positive_r_tone_count += count_negative_i_tone_positive_r_tone
+
+
 
             # Count occurrences where 'o_tone' is negative or neutral while 'r_tone' is positive
             count_negative_or_neutral_o_tone_positive_r_tone = (negative_condition_o_tone | (df['o_tone_mapped'] == 0)) & positive_condition_r_tone
@@ -108,7 +132,10 @@ with open(output_file, 'a') as f:
             print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone}")
 
             print("\n")
-
+overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
+overall_percentage_negative_i_tone_positive_r_tone = (total_negative_i_tone_positive_r_tone_count / total_values_count) * 100
+print(f"Overall Percentage where 'i_tone' is negative while 'o_tone' is positive: {overall_percentage_negative_i_tone_positive_o_tone:.2f}%")
+print(f"Overall Percentage where 'i_tone' is negative while 'r_tone' is positive: {overall_percentage_negative_i_tone_positive_r_tone:.2f}%")
 # Calculate overall F1 score
 overall_f1 = f1_score(all_true_labels, all_predicted_labels, average='weighted') * 100
 
@@ -120,20 +147,20 @@ conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
 
 class_labels = [-1, 0, 1]
 conf_matrix_df = pd.DataFrame(conf_matrix, index=class_labels, columns=class_labels)
-print("Confusion Matrix:")
-print(conf_matrix_df)
+# print("Confusion Matrix:")
+# print(conf_matrix_df)
 overall_avg_o_tone = total_o_tone_sum / total_values_count
 overall_avg_r_tone = total_r_tone_sum / total_values_count
 
 # Print overall averages
 print(f"Overall Average 'o_tone': {overall_avg_o_tone:.2f}")
 print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
-# Identify which class is confused with which
-for true_label in class_labels:
-    for pred_label in class_labels:
-        count = conf_matrix_df.loc[true_label, pred_label]
-        if count > 0 and true_label != pred_label:
-            print(f"Class {true_label} is confused with Class {pred_label}: {count} occurrences.")
+# # Identify which class is confused with which
+# for true_label in class_labels:
+#     for pred_label in class_labels:
+#         count = conf_matrix_df.loc[true_label, pred_label]
+#         if count > 0 and true_label != pred_label:
+#             print(f"Class {true_label} is confused with Class {pred_label}: {count} occurrences.")
 
 # # Print classification report
 # classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
