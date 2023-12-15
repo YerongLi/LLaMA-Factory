@@ -97,3 +97,18 @@ with open(output_file, 'a') as f:
 
             print(o_tone_ratios)
             print(r_tone_ratios)
+
+            sentiments = [-1, 0, 1]
+            begin_percentages = o_tone_ratios['begin']
+            middle_percentages = o_tone_ratios['middle']
+            end_percentages = o_tone_ratios['end']
+
+            # Plotting
+            plt.bar(sentiments, begin_percentages, label='Begin')
+            plt.bar(sentiments, middle_percentages, bottom=begin_percentages, label='Middle')
+            plt.bar(sentiments, end_percentages, bottom=[sum(x) for x in zip(begin_percentages, middle_percentages)], label='End')
+
+            # Adding labels and title
+            plt.xlabel('Sentiment')
+            plt.ylabel('Percentage')
+            plt.title('Percentage of Sentiments for o_tone_ratios')
