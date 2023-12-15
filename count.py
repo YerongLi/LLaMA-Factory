@@ -38,8 +38,8 @@ with open(output_file, 'a') as f:
     for filename in all_files:
     # for filename in os.listdir(directory_path):
         if filename.endswith('.csv'):
-            print(filename)
-            continue
+            # print(filename)
+            # continue
             file_path = os.path.join(directory_path, filename)
 
             # Read the CSV file into a pandas DataFrame
