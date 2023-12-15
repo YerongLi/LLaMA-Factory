@@ -1,5 +1,18 @@
-import numpy as np
+import pandas as pd
 import os
+from sklearn.metrics import f1_score
+
+# Specify the directory where the CSV files are located
+directory_path = 'out'
+
+# Specify the file to append F1 scores
+output_file = 'f1_scores.txt'
+
+# Specify upper and lower bounds for neutral
+lower_bound = 30
+upper_bound = 70
+
+import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
 
 # Specify upper and lower bounds for neutral
@@ -9,7 +22,7 @@ upper_bound = 70
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
 all_predicted_labels = []
-output_file = 'out.txt'
+
 # Open the file in append mode
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
@@ -85,3 +98,4 @@ print(f"Overall F1 Score: {overall_f1:.2f}")
 conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
 print("Confusion Matrix:")
 print(conf_matrix)
+
