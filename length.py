@@ -2,6 +2,7 @@ import pandas as pd
 import os
 from sklearn.metrics import f1_score, classification_report
 from scipy.stats import ttest_rel
+import matplotlib.pyplot as plt
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
