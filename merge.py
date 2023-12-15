@@ -37,7 +37,7 @@ def process_filenames(folder_path):
                     df[f"his_len"] = file_df['his_len']
 
                 # Save tone with a prefix in the column name
-                df[f"{prefix}_tone"] = file_df['tone']
+                df[f"{prefix}_tone"] = file_df['Tone']
 
         # Save the combined DataFrame
         output_file_path = os.path.join(folder_path, f"group_{suffix}.csv")
