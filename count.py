@@ -8,7 +8,7 @@ upper_bound = 70
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
 all_predicted_labels = []
-
+output_file = 'out.txt'
 # Open the file in append mode
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
