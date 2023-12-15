@@ -77,8 +77,8 @@ with open(output_file, 'a') as f:
             count_negative_i_tone_positive_r_tone = negative_i_tone_positive_r_tone_condition.sum()
 
             # Print results for the current file
-            print(f"Percentage where 'i_tone' is negative while 'o_tone' is positive: {(count_negative_i_tone_positive_o_tone / len(df)) * 100:.2f}%")
-            print(f"Percentage where 'i_tone' is negative while 'r_tone' is positive: {(count_negative_i_tone_positive_r_tone / len(df)) * 100:.2f}%")
+            print(f"Percentage where 'i_tone' is negative while 'o_tone' is positive: {(count_negative_i_tone_positive_o_tone / len(df)) * 100:.2f}")
+            print(f"Percentage where 'i_tone' is negative while 'r_tone' is positive: {(count_negative_i_tone_positive_r_tone / len(df)) * 100:.2f}")
             print("\n")
 
             # Accumulate counts for overall percentages
