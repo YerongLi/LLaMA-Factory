@@ -27,7 +27,16 @@ all_predicted_labels = []
 
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
-    for filename in os.listdir(directory_path):
+    all_files = [
+    'group_LIWC-22 Results - SuspiciousActivity - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - DrugsAlcohol - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - MentalHealth - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - EmergencyMessage - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - HarassmentAbuse - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - TheftLostItem - LIWC Analysis.csv.csv',
+]
+    for filename in all_files:
+    # for filename in os.listdir(directory_path):
         if filename.endswith('.csv'):
             print(filename)
             continue
