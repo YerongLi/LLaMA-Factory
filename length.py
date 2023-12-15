@@ -10,8 +10,8 @@ directory_path = 'out'
 output_file = 'f1_scores.txt'
 
 # Specify upper and lower bounds for neutral
-lower_bound = 40
-upper_bound = 60
+lower_bound = 49
+upper_bound = 51
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
