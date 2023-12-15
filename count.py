@@ -24,7 +24,9 @@ all_true_labels = []
 all_predicted_labels = []
 
 # Open the file in append mode
-
+total_o_tone_sum = 0
+total_r_tone_sum = 0
+total_values_count = 0
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
