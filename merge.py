@@ -40,9 +40,9 @@ def process_filenames(folder_path):
                 df[f"{prefix}_tone"] = file_df['Tone']
 
         # Save the combined DataFrame
-        output_file_path = os.path.join(folder_path, f"group_{suffix}.csv")
+        output_file_path = os.path.join('out', f"group_{suffix}.csv")
         df.to_csv(output_file_path, index=False)
 
 # Replace 'folder_path' with the actual path to your folder
-folder_path = "out"
+folder_path = "out_csv"
 process_filenames(folder_path)
