@@ -116,11 +116,11 @@ with open(output_file, 'a') as f:
             barWidth = 0.85
             names = ('begin','middle','end')
             # Create green Bars
-            plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth)
+            plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth, label="negative")
             # Create orange Bars
-            plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth)
+            plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth, label="neutral")
             # Create blue Bars
-            plt.bar(r, blueBars, bottom=[i+j for i,j in zip(greenBars, orangeBars)], color='#a3acff', edgecolor='white', width=barWidth)
+            plt.bar(r, blueBars, bottom=[i+j for i,j in zip(greenBars, orangeBars)], label="positive", color='#a3acff', edgecolor='white', width=barWidth)
              
             # Custom x axis
             plt.xticks(r, names)
