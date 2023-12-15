@@ -10,15 +10,12 @@ directory_path = 'out'
 output_file = 'f1_scores.txt'
 
 # Specify upper and lower bounds for neutral
-lower_bound = 30
-upper_bound = 70
+lower_bound = 40
+upper_bound = 60
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
 
-# Specify upper and lower bounds for neutral
-lower_bound = 30
-upper_bound = 70
 
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
