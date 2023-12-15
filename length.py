@@ -71,7 +71,13 @@ with open(output_file, 'a') as f:
                 ratio_positive = positive_count / total_count
 
                 return ratio_negative, ratio_neutral, ratio_positive
+            # Define ratio ranges and corresponding labels
             ratio_ranges = [(0, 1/3), (1/3, 2/3), (2/3, 1)]
+            labels = ["begin", "middle", "end"]
+
+            # Initialize dictionaries to store ratios for each range
+            o_tone_ratios = {label: [] for label in labels}
+            r_tone_ratios = {label: [] for label in labels}
 
             # Iterate over ratio ranges
             for i, (lower, upper) in enumerate(ratio_ranges):
@@ -84,7 +90,24 @@ with open(output_file, 'a') as f:
                 # Calculate ratios for r_tone_mapped
                 n_r, neu_r, pos_r = calculate_ratio_for_tone(df_filtered, 'r_tone_mapped')
                 
-                # Print the results
-                print(f"For ratio range {i + 1}:")
-                print(f"o_tone_mapped ratios: -1:{n_o:.2%}, 0:{neu_o:.2%}, 1:{pos_o:.2%}")
-                print(f"r_tone_mapped ratios: -1:{n_r:.2%}, 0:{neu_r:.2%}, 1:{pos_r:.2%}\n")
+                # Append ratios to dictionaries
+                o_tone_ratios[labels[i]].extend([n_o, neu_o, pos_o])
+                r_tone_ratios[labels[i]].extend([n_r, neu_r, pos_r])
+
+            # Convert dictionaries to DataFrames
+            o_tone_df = pd.DataFrame(o_tone_ratios, index=["-1", "0", "1"])
+            r_tone_df = pd.DataFrame(r_tone_ratios, index=["-1", "0", "1"])
+
+            # Plot aggregated bar plots
+            fig, axes = plt.subplots(2, 1, figsize=(10, 8))
+
+            o_tone_df.plot(kind='bar', ax=axes[0], rot=0, colormap="viridis", edgecolor='black')
+            axes[0].set_title("o_tone_mapped Ratios")
+            axes[0].set_ylabel("Ratio")
+
+            r_tone_df.plot(kind='bar', ax=axes[1], rot=0, colormap="viridis", edgecolor='black')
+            axes[1].set_title("r_tone_mapped Ratios")
+            axes[1].set_ylabel("Ratio")
+
+            plt.tight_layout()
+            plt.savefig("ratio.png")
