@@ -114,7 +114,7 @@ with open(output_file, 'a') as f:
             r = [0,1,2]
             # plot
             barWidth = 0.85
-            names = ('A','B','C','D','E')
+            names = ('begin','middle','end')
             # Create green Bars
             plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth)
             # Create orange Bars
