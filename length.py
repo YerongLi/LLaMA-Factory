@@ -95,42 +95,34 @@ with open(output_file, 'a') as f:
                 o_tone_ratios[labels[i]].extend([n_o, neu_o, pos_o])
                 r_tone_ratios[labels[i]].extend([n_r, neu_r, pos_r])
 
-                def calculate_percentage(dataframe, column_name):
-                    total_count = len(dataframe)
-                    percentages = dataframe[column_name].value_counts(normalize=True).sort_index() * 100
-                    return percentages
+            # Convert dictionaries to DataFrames
+            # Group DataFrame based on the ratio ranges
+            grouped_df = df.groupby(pd.cut(df['ratio'], bins=[0, 1/3, 2/3, 1], labels=['Begin', 'Middle', 'End']))
 
-                # Calculate sentiment percentages for 'o_tone' and 'r_tone' in each ratio range
-                begin_o_tone_percentages = calculate_percentage(df_begin, 'o_tone_mapped')
-                middle_o_tone_percentages = calculate_percentage(df_middle, 'o_tone_mapped')
-                end_o_tone_percentages = calculate_percentage(df_end, 'o_tone_mapped')
+            # Function to calculate the percentage of each sentiment (-1, 0, 1) for a given DataFrame
+            def calculate_ratio_for_tone(dataframe, column_name):
+                total_count = len(dataframe)
+                ratios = dataframe[column_name].value_counts(normalize=True).sort_index() * 100
+                return ratios
 
-                begin_r_tone_percentages = calculate_percentage(df_begin, 'r_tone_mapped')
-                middle_r_tone_percentages = calculate_percentage(df_middle, 'r_tone_mapped')
-                end_r_tone_percentages = calculate_percentage(df_end, 'r_tone_mapped')
+            # Calculate sentiment percentages for 'o_tone' and 'r_tone' in each ratio range
+            o_tone_percentages = grouped_df.apply(calculate_ratio_for_tone, column_name='o_tone_mapped')
+            r_tone_percentages = grouped_df.apply(calculate_ratio_for_tone, column_name='r_tone_mapped')
 
-                # Plotting
-                fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+            # Plotting
+            fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
 
-                # Plot 'o_tone' sentiment percentages
-                begin_o_tone_percentages.plot(kind='bar', ax=axes[0], position=0, width=0.25, label='Begin')
-                middle_o_tone_percentages.plot(kind='bar', ax=axes[0], position=1, width=0.25, label='Middle')
-                end_o_tone_percentages.plot(kind='bar', ax=axes[0], position=2, width=0.25, label='End')
+            # Plot 'o_tone' sentiment percentages
+            o_tone_percentages.plot(kind='bar', ax=axes[0])
 
-                # Plot 'r_tone' sentiment percentages
-                begin_r_tone_percentages.plot(kind='bar', ax=axes[1], position=0, width=0.25, label='Begin')
-                middle_r_tone_percentages.plot(kind='bar', ax=axes[1], position=1, width=0.25, label='Middle')
-                end_r_tone_percentages.plot(kind='bar', ax=axes[1], position=2, width=0.25, label='End')
+            # Plot 'r_tone' sentiment percentages
+            r_tone_percentages.plot(kind='bar', ax=axes[1])
 
-                # Set labels and title
-                axes[1].set_xlabel('Sentiment')
-                axes[1].set_ylabel('Percentage')
-                axes[0].set_ylabel('Percentage')
-                fig.suptitle('Aggregated Bar Plots for o_tone and r_tone')
+            # Set labels and title
+            axes[1].set_xlabel('Sentiment')
+            axes[1].set_ylabel('Percentage')
+            axes[0].set_ylabel('Percentage')
+            fig.suptitle('Aggregated Bar Plots for o_tone and r_tone')
 
-                # Show legend
-                axes[0].legend(title='Ratio Range')
-                axes[1].legend(title='Ratio Range')
-
-                # Save the plots to "ratio.png"
-                plt.savefig("ratio.png")
+            # Save the plots to "ratio.png"
+            plt.savefig("ratio.png")
