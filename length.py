@@ -98,21 +98,31 @@ with open(output_file, 'a') as f:
             print(o_tone_ratios)
             print(r_tone_ratios)
 
-            # Convert the ratios to DataFrames
-            o_tone_df = pd.DataFrame(o_tone_ratios, index=['-1', '0', '1'])
-            r_tone_df = pd.DataFrame(r_tone_ratios, index=['-1', '0', '1'])
+            # Plotting
+            barWidth = 0.25
+            r = np.arange(len(o_tone_ratios['begin']))
 
-            # Plotting for o_tone_ratios
-            o_tone_df.plot(
-                kind='barh',
-                stacked=True,
-                title='Percentage of Sentiments for o_tone_ratios'
-            )
+            # Create subplots for o_tone and r_tone
+            fig, ax = plt.subplots()
 
-            # Plotting for r_tone_ratios
-            r_tone_df.plot(
-                kind='barh',
-                stacked=True,
-                title='Percentage of Sentiments for r_tone_ratios'
-            )
+            # Loop through the groups (begin, middle, end)
+            for i, group in enumerate(['begin', 'middle', 'end']):
+                # Calculate positions for bars
+                positions_o = r + i * barWidth
+                positions_r = r + barWidth + i * barWidth
+
+                # Plot bars for o_tone
+                ax.bar(positions_o, o_tone_ratios[group], width=barWidth, label=f'o_tone {group}')
+
+                # Plot bars for r_tone
+                ax.bar(positions_r, r_tone_ratios[group], width=barWidth, label=f'r_tone {group}')
+
+            # Adding labels and title
+            ax.set_xlabel('Sentiment')
+            ax.set_ylabel('Percentage')
+            ax.set_title('Percentage of Sentiments for o_tone and r_tone Ratios')
+            ax.set_xticks(r + barWidth + barWidth / 2)
+            ax.set_xticklabels(['-1', '0', '1'])
+            ax.legend(title='Tone', bbox_to_anchor=(1.05, 1), loc='upper left')
+
             plt.savefig("ratio.png")
