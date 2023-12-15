@@ -130,6 +130,7 @@ with open(output_file, 'a') as f:
             print(f"Average 'r_tone': {avg_r_tone:.2f}")
             print(f"Count where 'i_tone' is negative while 'o_tone' is positive: {count_negative_i_tone_positive_o_tone}")
             print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone}")
+            print('======================= ========================= =========================== ========================')
 
             print("\n")
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
@@ -155,7 +156,6 @@ overall_avg_r_tone = total_r_tone_sum / total_values_count
 # Print overall averages
 print(f"Overall Average 'o_tone': {overall_avg_o_tone:.2f}")
 print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
-print('======================= ========================= =========================== ========================')
 # # Identify which class is confused with which
 # for true_label in class_labels:
 #     for pred_label in class_labels:
