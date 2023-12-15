@@ -102,6 +102,7 @@ def main():
             'prompt': prompt,
             'history': history,
             'summary': record["summary"]
+            'his_len': record["his_len"]
         }
 
         # Append the pair to the corresponding record type list in the dictionary
