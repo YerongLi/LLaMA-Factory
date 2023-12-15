@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 from sklearn.metrics import f1_score, classification_report
+from scipy.stats import ttest_rel
 
 # Specify the directory where the CSV files are located
 directory_path = 'out'
@@ -130,6 +131,18 @@ with open(output_file, 'a') as f:
             print(f"Average 'r_tone': {avg_r_tone:.2f}")
             print(f"Count where 'i_tone' is negative while 'o_tone' is positive: {count_negative_i_tone_positive_o_tone}")
             print(f"Count where 'i_tone' is negative while 'r_tone' is positive: {count_negative_i_tone_positive_r_tone}")
+
+
+            o_tone_scores_file = df['o_tone']
+            r_tone_scores_file = df['r_tone']
+
+            # Perform paired t-test for the current file
+            t_stat_file, p_value_file = ttest_rel(o_tone_scores_file, r_tone_scores_file)
+
+            # Print results for the current file
+            print(f"\nT-test for {filename}:")
+            print(f"T-statistic: {t_stat_file:.4f}")
+            print(f"P-value: {p_value_file:.4f}")
             print('======================= ========================= =========================== ========================')
 
             print("\n")
