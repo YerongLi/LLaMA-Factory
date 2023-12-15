@@ -112,3 +112,4 @@ with open(output_file, 'a') as f:
             plt.xlabel('Sentiment')
             plt.ylabel('Percentage')
             plt.title('Percentage of Sentiments for o_tone_ratios')
+            plt.savefig("ratio.png")
