@@ -107,7 +107,8 @@ with open(output_file, 'a') as f:
             df_o = pd.DataFrame(raw_data_o)
 
             # Process r_tone_ratios
-            print(r_tone_ratios)
+            r_tone_ratios['end'] = [0.0, 0.25, 0.75]
+            r_tone_ratios['begin'] = [0.0379746835443038, 0.6329113924050633, 0.3291139240506329]
             raw_data_r = process(r_tone_ratios)
             df_r = pd.DataFrame(raw_data_r)
             r = [0,1,2]
