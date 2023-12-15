@@ -125,4 +125,5 @@ with open(output_file, 'a') as f:
             # Custom x axis
             plt.xticks(r, names)
             plt.xlabel("group")
+            plt.legend()
             plt.savefig('ratio.png')
