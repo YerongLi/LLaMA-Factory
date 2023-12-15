@@ -112,6 +112,7 @@ with open(output_file, 'a') as f:
             r = [0,1,2]
             # Function to plot bars
             def plot_bars(df, title):
+                barWidth = 0.85
                 # Calculate percentages
                 totals = [i + j + k for i, j, k in zip(df['greenBars'], df['orangeBars'], df['blueBars'])]
                 greenBars = [i / j * 100 for i, j in zip(df['greenBars'], totals)]
