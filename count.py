@@ -30,7 +30,8 @@ total_r_tone_sum = 0
 total_values_count = 0
 o_tone_scores = []
 r_tone_scores = []
-
+o_tone_mapped_scores = []
+r_tone_mapped_scores = []
 total_negative_i_tone_positive_o_tone_count = 0
 total_negative_i_tone_positive_r_tone_count = 0
 with open(output_file, 'a') as f:
@@ -141,10 +142,25 @@ with open(output_file, 'a') as f:
             t_stat_file, p_value_file = ttest_rel(o_tone_scores_file, r_tone_scores_file)
             o_tone_scores.extend(df['o_tone'])
             r_tone_scores.extend(df['r_tone'])
+            o_tone_mapped_scores.extend(df['o_tone_mapped'])
+            r_tone_mapped_scores.extend(df['r_tone_mapped'])
             # Print results for the current file
             print(f"\nT-test for {filename}:")
             print(f"T-statistic: {t_stat_file:.4f}")
             print(f"P-value: {p_value_file:.4f}")
+         
+            print(' *************** ****************** ******************')
+            o_tone_mapped_scores_file = df['o_tone_mapped']
+            r_tone_mapped_scores_file = df['r_tone_mapped']
+
+            # Perform paired t-test for the current file
+            t_stat_mapped_file, p_value_mapped_file = ttest_rel(o_tone_mapped_scores_file, r_tone_mapped_scores_file)
+
+            # Print results for the current file
+            print(f"\nT-test for 'o_tone_mapped' and 'r_tone_mapped' for {filename}:")
+            print(f"T-statistic: {t_stat_mapped_file:.4f}")
+            print(f"P-value: {p_value_mapped_file:.4f}")
+
             print('======================= ========================= =========================== ========================')
 
             print("\n")
@@ -189,3 +205,11 @@ t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
 print(f"T-test across all files:")
 print(f"T-statistic: {t_stat:.4f}")
 print(f"P-value: {p_value:.4f}")
+
+
+t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
+
+# Print the results
+print(f"T-test for 'o_tone_mapped' and 'r_tone_mapped' across all files:")
+print(f"T-statistic: {t_stat_mapped:.4f}")
+print(f"P-value: {p_value_mapped:.4f}")
