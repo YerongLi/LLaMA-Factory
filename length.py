@@ -54,4 +54,4 @@ with open(output_file, 'a') as f:
             df['o_tone'].fillna(50, inplace=True)
             df['r_tone'].fillna(50, inplace=True)
             length = df['his_len']
-            print(length)
+            df['current_length'] = df['history'].apply(lambda x: len(eval(x)))
