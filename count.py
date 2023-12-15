@@ -95,6 +95,8 @@ overall_f1 = f1_score(all_true_labels, all_predicted_labels, average='weighted')
 print(f"Overall F1 Score: {overall_f1:.2f}")
 
 # Calculate and print confusion matrix
+conf_matrix = confusion_matrix(all_true_labels, all_predicted_labels)
+
 class_labels = [-1, 0, 1]
 conf_matrix_df = pd.DataFrame(conf_matrix, index=class_labels, columns=class_labels)
 print("Confusion Matrix:")
