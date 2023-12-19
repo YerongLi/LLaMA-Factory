@@ -90,7 +90,7 @@ def main():
             system, history = chat_model.template._format(query=instruction, resp='', history=history, system=system)
             logging.info(system)
             logging.info(history)
-
+            print(history)
             record_type = record.get('type', 'unknown')
 
             response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
