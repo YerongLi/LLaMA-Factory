@@ -74,7 +74,7 @@ def main():
 
     # random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
-    type_set = {}
+    type_set = set()
     for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         # logging.info('Summary')
