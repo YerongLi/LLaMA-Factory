@@ -75,7 +75,13 @@ def main():
     # random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+or batch_start in tqdm.tqdm(range(0, len(data), BATCH_SIZE)):
+    batch_end = min(batch_start + BATCH_SIZE, len(data))
+    batch_data = data[batch_start:batch_end]
+
+    batch_prompt_ids = []
+    
+    for record in batch_data:
         instruction = record["instruction"]
         logging.info('Summary')
         logging.info(record["summary"])
@@ -87,15 +93,13 @@ def main():
 
         output = record["output"]
 
-
         prompt_ids, _ = chat_model.template.encode_oneturn(
             tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
         )
-        prompt = chat_model.tokenizer.decode(
-            prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        )
-        logging.info('PROMPT')
-        logging.info(prompt)
+
+        batch_prompt_ids.append(prompt_ids)
+
+        print(batch_prompt_ids)
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'instruction': instruction,
