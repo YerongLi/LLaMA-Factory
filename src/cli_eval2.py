@@ -75,31 +75,31 @@ def main():
     # random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
 
-for batch_start in tqdm.tqdm(range(0, len(data), BATCH_SIZE)):
-    batch_end = min(batch_start + BATCH_SIZE, len(data))
-    batch_data = data[batch_start:batch_end]
+    for batch_start in tqdm.tqdm(range(0, len(data), BATCH_SIZE)):
+        batch_end = min(batch_start + BATCH_SIZE, len(data))
+        batch_data = data[batch_start:batch_end]
 
-    batch_prompt_ids = []
-    
-    for record in batch_data:
-        instruction = record["instruction"]
-        logging.info('Summary')
-        logging.info(record["summary"])
-        logging.info(record["history"])
-        history = record["history"]
-        record_type = record.get('type', 'unknown')
+        batch_prompt_ids = []
+        
+        for record in batch_data:
+            instruction = record["instruction"]
+            logging.info('Summary')
+            logging.info(record["summary"])
+            logging.info(record["history"])
+            history = record["history"]
+            record_type = record.get('type', 'unknown')
 
-        response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
+            response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
 
-        output = record["output"]
+            output = record["output"]
 
-        prompt_ids, _ = chat_model.template.encode_oneturn(
-            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
-        )
+            prompt_ids, _ = chat_model.template.encode_oneturn(
+                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
+            )
 
-        batch_prompt_ids.append(prompt_ids)
-
+            batch_prompt_ids.append(prompt_ids)
         print(batch_prompt_ids)
+
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'instruction': instruction,
