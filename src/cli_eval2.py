@@ -98,7 +98,7 @@ def main():
             )
 
             batch_prompt_ids.append(prompt_ids)
-        output_sequences = model.generate(**batch_prompt_ids, max_new_tokens=20, do_sample=True, top_p=0.9)
+        output_sequences = chat_model.model.generate(**batch_prompt_ids, max_new_tokens=20, do_sample=True, top_p=0.9)
         logging.info(output_sequences)
         # Create a dictionary with the response and output pair
         response_output_pair = {
