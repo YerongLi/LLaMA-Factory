@@ -75,7 +75,7 @@ def main():
     # random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
 
-or batch_start in tqdm.tqdm(range(0, len(data), BATCH_SIZE)):
+for batch_start in tqdm.tqdm(range(0, len(data), BATCH_SIZE)):
     batch_end = min(batch_start + BATCH_SIZE, len(data))
     batch_data = data[batch_start:batch_end]
 
