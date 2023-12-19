@@ -1,0 +1,20 @@
+deepspeed --num_gpus 3 --master_port=9901 src/train_bash.py \
+    --deepspeed ds_config.json \
+    --stage sft \
+    --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-hf \
+    --do_train \
+    --dataset police \
+    --template dispatcher \
+    --finetuning_type lora \
+    --lora_target q_proj,v_proj \
+    --output_dir police2 \
+    --overwrite_cache \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 1 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 50 \
+    --save_total_limit 2 \
+    --learning_rate 5e-5 \
+    --num_train_epochs 1000.0 \
+    --fp16
