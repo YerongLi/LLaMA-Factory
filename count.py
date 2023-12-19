@@ -141,13 +141,13 @@ with open(output_file, 'a') as f:
             r_tone_scores.extend(df['r_tone'])
             o_tone_mapped_scores.extend(df['o_tone_mapped'])
             r_tone_mapped_scores.extend(df['r_tone_mapped'])
-            error = np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2))
+            error = np.sqrt(np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2)))
 
             # Print results for the current file
             print(f"\nT-test for {filename}:")
-            print(f"T-statistic: {t_stat_file:.4f}")
-            print(f"P-value: {p_value_file:.4f}")
-            print(f"Error : {error}")
+            print(f"T-statistic: {t_stat_file:.2f}")
+            print(f"P-value: {p_value_file:.2f}")
+            print(f"Error : {error:.2f}")
             print(' *************** ****************** ******************')
             o_tone_mapped_scores_file = df['o_tone_mapped']
             r_tone_mapped_scores_file = df['r_tone_mapped']
@@ -157,8 +157,8 @@ with open(output_file, 'a') as f:
 
             # Print results for the current file
             print(f"\nT-test for 'o_tone_mapped' and 'r_tone_mapped' for {filename}:")
-            print(f"T-statistic: {t_stat_mapped_file:.4f}")
-            print(f"P-value: {p_value_mapped_file:.4f}")
+            print(f"T-statistic: {t_stat_mapped_file:.2f}")
+            print(f"P-value: {p_value_mapped_file:.2f}")
 
             print('======================= ========================= =========================== ========================')
 
@@ -199,18 +199,18 @@ print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 # print(classification_rep)
 # Perform paired t-test
 t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
-error = np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2))
+error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2)))
 
 # Print the results
 print(f"T-test across all files:")
-print(f"T-statistic: {t_stat:.4f}")
-print(f"P-value: {p_value:.4f}")
+print(f"T-statistic: {t_stat:.2f}")
+print(f"P-value: {p_value:.2f}")
 
-print(f"Error : {error}")
+print(f" : {error:.2f}")
 
 t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
 
 # Print the results
 print(f"T-test for 'o_tone_mapped' and 'r_tone_mapped' across all files:")
-print(f"T-statistic: {t_stat_mapped:.4f}")
-print(f"P-value: {p_value_mapped:.4f}")
+print(f"T-statistic: {t_stat_mapped:.2f}")
+print(f"P-value: {p_value_mapped:.2f}")
