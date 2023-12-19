@@ -211,7 +211,7 @@ def main():
 
 
     # Define the CSV file header
-    csv_header = ['instruction', 'response', 'output', 'prompt', 'history', 'summary','his_len']
+    csv_header = ['instruction', 'response', 'output', 'prompt', 'history', 'summary','his_len', 'type']
 
     # Specify the directory for CSV files
     csv_directory = 'csv_files'
