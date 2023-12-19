@@ -77,16 +77,16 @@ def main():
 
     for record in tqdm.tqdm(data):
         instruction = record["instruction"]
-        logging.info('Summary')
-        logging.info(record["summary"])
+        # logging.info('Summary')
+        # logging.info(record["summary"])
         logging.info(record["history"])
         history = record["history"]
         record_type = record.get('type', 'unknown')
+        summary = record["summary"] if 'summary' in record else ''
 
-        response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
+        response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
 
         output = record["output"]
-
 
         prompt_ids, _ = chat_model.template.encode_oneturn(
             tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
@@ -103,7 +103,7 @@ def main():
             'output': record["output"],
             'prompt': prompt,
             'history': history,
-            'summary': record["summary"],
+            'summary': summary,
             'his_len': record["his_len"],
         }
 
