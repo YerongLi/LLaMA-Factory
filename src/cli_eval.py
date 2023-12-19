@@ -72,10 +72,10 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data)
-    # for record in tqdm.tqdm(data[:10]):
+    random.shuffle(data)
+    for record in tqdm.tqdm(data[:10]):
 
-    for record in tqdm.tqdm(data):
+    # for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         # logging.info('Summary')
         # logging.info(record["summary"])
@@ -106,7 +106,7 @@ def main():
             'summary': summary,
             'his_len': record["his_len"],
         }
-
+        print(record_type)
         # Append the pair to the corresponding record type list in the dictionary
         if record_type not in ans:
             ans[record_type] = []
