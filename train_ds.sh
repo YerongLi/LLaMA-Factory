@@ -7,7 +7,7 @@ deepspeed --num_gpus 3 --master_port=9901 src/train_bash.py \
     --template dispatcher \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
-    --output_dir police2 \
+    --output_dir policeds \
     --overwrite_cache \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 1 \
@@ -17,4 +17,5 @@ deepspeed --num_gpus 3 --master_port=9901 src/train_bash.py \
     --save_total_limit 2 \
     --learning_rate 5e-5 \
     --num_train_epochs 1000.0 \
+    --overwrite_output_dir \
     --fp16
