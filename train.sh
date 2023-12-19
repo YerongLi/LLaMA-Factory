@@ -10,8 +10,8 @@ python src/train_bash.py \
     --lora_target q_proj,v_proj \
     --output_dir police2 \
     --overwrite_cache \
-    --per_device_train_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 1 \
     --lr_scheduler_type cosine \
     --logging_steps 10 \
     --save_steps 50 \
