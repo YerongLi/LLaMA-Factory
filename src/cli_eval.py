@@ -84,8 +84,9 @@ def main():
         record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
         summary = record["summary"] if 'summary' in record else ''
 
-        response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
         if record_type in {'unknown', 'DrugsAlcohol', 'HarassmentAbuse', 'MentalHealth', 'TheftLostItem', 'SuspiciousActivity', 'EmergencyMessage'}: continue
+        # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
+
         print(record)
         logging.info(record)
         exit(1)
