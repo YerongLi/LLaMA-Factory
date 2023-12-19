@@ -74,7 +74,7 @@ def main():
 
     # random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
-
+    type_set = {}
     for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         # logging.info('Summary')
@@ -94,8 +94,8 @@ def main():
         prompt = chat_model.tokenizer.decode(
             prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-        logging.info('PROMPT')
-        logging.info(prompt)
+        # logging.info('PROMPT')
+        # logging.info(prompt)
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'instruction': instruction,
@@ -108,6 +108,8 @@ def main():
             'type': record_type,
         }
         # print(record_type)
+        type_set.add(record_type)
+        print(type_set)
         # Append the pair to the corresponding record type list in the dictionary
         if record_type not in ans:
             ans[record_type] = []
