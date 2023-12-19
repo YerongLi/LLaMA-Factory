@@ -199,12 +199,14 @@ print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 # print(classification_rep)
 # Perform paired t-test
 t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
+error = np.sqrt(np.mean((o_tone_scores - r_tone_scores)**2))
 
 # Print the results
 print(f"T-test across all files:")
 print(f"T-statistic: {t_stat:.4f}")
 print(f"P-value: {p_value:.4f}")
 
+print(f"Error : {error}")
 
 t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
 
