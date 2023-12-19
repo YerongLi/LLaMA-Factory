@@ -85,7 +85,7 @@ def main():
 
             history = record["history"]
             summary = record["summary"] if 'summary' in record else ''
-            system = hat_model.template.system+f'\n{summary}'
+            system = chat_model.template.system+f'\n{summary}'
             system, history = self._format(query, '', history, system)
             logging.info(system)
             logging.info(history)
