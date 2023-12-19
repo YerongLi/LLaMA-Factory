@@ -93,7 +93,8 @@ def main():
         prompt = chat_model.tokenizer.decode(
             prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-
+        logging.info('PROMPT')
+        logging.info(prompt)
         # Create a dictionary with the response and output pair
         response_output_pair = {
             'instruction': instruction,
