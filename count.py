@@ -147,7 +147,7 @@ with open(output_file, 'a') as f:
             print(f"\nT-test for {filename}:")
             print(f"T-statistic: {t_stat_file:.4f}")
             print(f"P-value: {p_value_file:.4f}")
-            print(f"Error : " error)
+            print(f"Error : {error}")
             print(' *************** ****************** ******************')
             o_tone_mapped_scores_file = df['o_tone_mapped']
             r_tone_mapped_scores_file = df['r_tone_mapped']
