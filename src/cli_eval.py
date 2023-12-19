@@ -105,8 +105,9 @@ def main():
             'history': history,
             'summary': summary,
             'his_len': record["his_len"],
+            'type': record_type,
         }
-        print(record_type)
+        # print(record_type)
         # Append the pair to the corresponding record type list in the dictionary
         if record_type not in ans:
             ans[record_type] = []
