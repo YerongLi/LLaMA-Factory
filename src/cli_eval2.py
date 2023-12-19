@@ -84,6 +84,7 @@ def main():
         for record in batch_data:
 
             history = record["history"]
+            instruction = record["instruction"]
             summary = record["summary"] if 'summary' in record else ''
             system = chat_model.template.system+f'\n{summary}'
             system, history = chat_model.template._format(query=instruction, resp='', history=history, system=system)
