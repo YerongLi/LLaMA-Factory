@@ -72,7 +72,7 @@ def main():
 
     ans = {}
 
-    # random.shuffle(data)
+    random.shuffle(data)
     # for record in tqdm.tqdm(data[:10]):
     type_set = set()
     for record in tqdm.tqdm(data):
