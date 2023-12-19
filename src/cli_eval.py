@@ -81,7 +81,7 @@ def main():
         # logging.info(record["summary"])
         logging.info(record["history"])
         history = record["history"]
-        record_type = record.get('type', 'unknown')
+        record_type = record.get('type', 'unknown').replace(' |/', '')
         summary = record["summary"] if 'summary' in record else ''
 
         response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
