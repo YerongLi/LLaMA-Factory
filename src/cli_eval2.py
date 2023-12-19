@@ -14,7 +14,7 @@ from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
 
-LOGFILE='./evaloutput.log'
+LOGFILE='./2evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -80,13 +80,16 @@ def main():
         batch_data = data[batch_start:batch_end]
 
         batch_prompt_ids = []
-        
+        prompts = []
         for record in batch_data:
-            instruction = record["instruction"]
-            logging.info('Summary')
-            logging.info(record["summary"])
-            logging.info(record["history"])
+
             history = record["history"]
+            summary = record["summary"] if 'summary' in record else ''
+            system = hat_model.template.system+f'\n{summary}'
+            system, history = self._format(query, '', history, system)
+            logging.info(system)
+            logging.info(history)
+
             record_type = record.get('type', 'unknown')
 
             response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
