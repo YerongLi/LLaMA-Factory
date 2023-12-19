@@ -85,7 +85,10 @@ def main():
         summary = record["summary"] if 'summary' in record else ''
 
         response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
-
+        if 'record_type' == '2022451':
+            print(record)
+            logging.info(record)
+            exit(1)
         output = record["output"]
 
         prompt_ids, _ = chat_model.template.encode_oneturn(
