@@ -72,10 +72,10 @@ def main():
 
     ans = {}
 
-    random.shuffle(data)
-    for record in tqdm.tqdm(data[:10]):
+    # random.shuffle(data)
+    # for record in tqdm.tqdm(data[:10]):
 
-    # for record in tqdm.tqdm(data):
+    for record in tqdm.tqdm(data):
         instruction = record["instruction"]
         # logging.info('Summary')
         # logging.info(record["summary"])
