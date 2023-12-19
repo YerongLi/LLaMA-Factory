@@ -141,11 +141,13 @@ with open(output_file, 'a') as f:
             r_tone_scores.extend(df['r_tone'])
             o_tone_mapped_scores.extend(df['o_tone_mapped'])
             r_tone_mapped_scores.extend(df['r_tone_mapped'])
+            error = np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2))
+
             # Print results for the current file
             print(f"\nT-test for {filename}:")
             print(f"T-statistic: {t_stat_file:.4f}")
             print(f"P-value: {p_value_file:.4f}")
-         
+            print(f"Error : " error)
             print(' *************** ****************** ******************')
             o_tone_mapped_scores_file = df['o_tone_mapped']
             r_tone_mapped_scores_file = df['r_tone_mapped']
