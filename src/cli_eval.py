@@ -79,7 +79,7 @@ def main():
         instruction = record["instruction"]
         # logging.info('Summary')
         # logging.info(record["summary"])
-        logging.info(record["history"])
+        # logging.info(record["history"])
         history = record["history"]
         record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
         summary = record["summary"] if 'summary' in record else ''
