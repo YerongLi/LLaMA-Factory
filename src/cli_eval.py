@@ -89,7 +89,7 @@ def main():
 
         print(record)
         logging.info(record)
-        exit(1)
+        continue
         output = record["output"]
 
         prompt_ids, _ = chat_model.template.encode_oneturn(
