@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
+from transformers import AutoTokenizer, AutoModelForCausalLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
 from sacrebleu import corpus_bleu
 from rouge import Rouge
 import nltk
@@ -12,8 +12,8 @@ dataset = load_dataset("wmt16", "de-en")
 
 # Define your model and tokenizer
 model_name = "/scratch/yerong/.cache/pyllama/phi-2"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_name)
 
 # Define metrics
 bleu_metric = corpus_bleu
