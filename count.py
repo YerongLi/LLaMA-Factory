@@ -206,7 +206,7 @@ print(f"T-test across all files:")
 print(f"T-statistic: {t_stat:.2f}")
 print(f"P-value: {p_value:.2f}")
 
-print(f" : {error:.2f}")
+print(f"Error : {error:.2f}")
 
 t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
 
