@@ -12,8 +12,8 @@ dataset = load_dataset("wmt16", "de-en")
 
 # Define your model and tokenizer
 model_name = "/scratch/yerong/.cache/pyllama/phi-2"
-tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
 
 # Define metrics
 bleu_metric = corpus_bleu
