@@ -161,7 +161,8 @@ def main():
         # print(tokenized_prompts.shape)
         try:
 
-            generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+            # generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+            generated_outputs = chat_model.model.generate(**tokenized_prompts, num_beams>1, do_sample=False,)
             
 
             outputs = chat_model.tokenizer.batch_decode(
