@@ -91,7 +91,7 @@ def main():
     inputs = tokenizer(sentences, return_tensors="pt", padding=True).to('cuda:0')
 
     print(inputs['input_ids'].shape)
-    print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
+    print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
     # chat_model = ChatModel()
     # chat_model.tokenizer.pad_token = "[PAD]"
