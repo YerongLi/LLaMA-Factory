@@ -81,9 +81,6 @@ def main():
 
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
 
-    # Define PAD Token = EOS Token
-    tokenizer.pad_token = tokenizer.eos_token
-    model.config.pad_token_id = model.config.eos_token_id
 
     # use different length sentences to test batching
     sentences = [
