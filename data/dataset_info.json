@@ -282,6 +282,11 @@
   },
   "police": {
     "file_name": "police.json",
-    "file_sha1": "607f94a7f581341e59685aef32f531095232cf23"
+    "columns": {
+      "prompt": "instruction",
+      "query": "",
+      "response": "output",
+      "history": "history"
+    }
   }
 }
