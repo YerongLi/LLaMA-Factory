@@ -164,7 +164,7 @@ def main():
         # print(tokenized_prompts.shape)
         try:
 
-            generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
+            generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
             # generated_outputs = chat_model.model.generate(**tokenized_prompts, do_sample=True, top_p=0.9)
           #             "do_sample": true,                                                                                                                                   
           # "eos_token_id": [                                                                                                                                    
