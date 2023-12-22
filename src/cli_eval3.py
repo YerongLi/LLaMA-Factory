@@ -141,7 +141,7 @@ def main():
         # try:
             # print(tokenized_prompts)
 
-        prompts = chat_model.tokenizer.decode(
+        prompts = chat_model.tokenizer.batch_decode(
             tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
         print(prompts)
