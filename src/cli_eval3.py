@@ -92,6 +92,7 @@ def main():
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
+            print(record)
             instruction = record["instruction"]
             # logging.info('Summary')
             # logging.info(record["summary"])
@@ -128,6 +129,7 @@ def main():
             )
 
         prompt_batches.append(prompt_batch)
+        break
     print(prompt_batches[:2])
                 # ... (rest of the code)
 
