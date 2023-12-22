@@ -281,7 +281,7 @@
     }
   },
   "police": {
-    "file_name": "oaast_sft.json",
+    "file_name": "police.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
