@@ -23,23 +23,18 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 48
+BATCH_SIZE = 4
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
     filename=LOGFILE,
     datefmt='%m-%d %H:%M:%S')
 logging.info(f'Logger start: {os.uname()[1]}')
-try:
-    import platform
-    if platform.system() != "Windows":
-        import readline
-except ImportError:
-    print("Install `readline` for a better experience.")
+
 model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
-tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
-tokenizer.pad_token = "[PAD]"
-tokenizer.padding_side = "left"
+# tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
+# tokenizer.pad_token = "[PAD]"
+# tokenizer.padding_side = "left"
 
 def main():
     chat_model = ChatModel()
@@ -108,7 +103,7 @@ def main():
 
     # Initialize other variables...
     random.shuffle(data)
-    # data = data[:60]
+    data = data[:60]
     # Group data into batches
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
