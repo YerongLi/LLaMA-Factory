@@ -37,9 +37,9 @@ try:
 except ImportError:
     print("Install `readline` for a better experience.")
 model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
-tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
-tokenizer.pad_token = "[PAD]"
-tokenizer.padding_side = "left"
+# tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
+# tokenizer.pad_token = "[PAD]"
+# tokenizer.padding_side = "left"
 
 def main():
     chat_model = ChatModel()
