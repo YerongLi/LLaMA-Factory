@@ -23,7 +23,7 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 4
+BATCH_SIZE = 32
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -164,8 +164,6 @@ def main():
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
         # print(tokenized_prompts.shape)
         try:
-
-
 
             generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
             
