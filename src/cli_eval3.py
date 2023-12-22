@@ -164,7 +164,8 @@ def main():
 
     max_length = 1000
     dataset = preprocess_dataset(tokenizer, max_length, dataset)
-
+    for datapoint in dataset:
+        print(datapoint)
 if __name__ == "__main__":
     main()
 
