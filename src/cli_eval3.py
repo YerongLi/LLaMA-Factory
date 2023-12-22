@@ -94,6 +94,8 @@ def main():
         for record in batch:
             print(record)
             instruction = record["instruction"]
+            if not isinstance(instruction, str): continue
+
             # logging.info('Summary')
             # logging.info(record["summary"])
             # logging.info(record["history"])
