@@ -82,11 +82,11 @@ def main():
         data = [json.loads(line) for line in file]
 
     # Initialize other variables...
-
-    # Group data into batches
-    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
     random.shuffle(data)
     data = data[:60]
+    # Group data into batches
+    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
+
     # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
