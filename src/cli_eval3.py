@@ -108,7 +108,7 @@ def main():
 
     # Initialize other variables...
     random.shuffle(data)
-    data = data[:60]
+    # data = data[:60]
     # Group data into batches
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
