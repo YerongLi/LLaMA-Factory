@@ -1,69 +1,96 @@
-from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModelForCausalLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
-from sacrebleu import corpus_bleu
-from rouge import Rouge
+import json
 import nltk
+import logging
+import os
+import random
+import tqdm
+import csv
+from bert_score import BERTScorer
 
-# Download the Punkt tokenizer
-nltk.download("punkt")
+from nltk.translate.bleu_score import sentence_bleu
+from nltk.lm import MLE
+from nltk.util import ngrams
+from llmtuner import ChatModel
+from llmtuner.extras.misc import torch_gc
+from rouge import Rouge
 
-# Load the WMT16 dataset for English-German translation
-dataset = load_dataset("wmt16", "de-en")
+LOGFILE='./evaloutput.log'
+if os.path.exists(LOGFILE):
+    # Remove the file
+    os.remove(LOGFILE)
+    print(f"The file {LOGFILE} has been removed.")
+else:
+    print(f"The file {LOGFILE} does not exist.")
+rouge = Rouge()
+BATCH_SIZE = 2
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
+    level=logging.INFO,
+    filename=LOGFILE,
+    datefmt='%m-%d %H:%M:%S')
+logging.info(f'Logger start: {os.uname()[1]}')
+try:
+    import platform
+    if platform.system() != "Windows":
+        import readline
+except ImportError:
+    print("Install `readline` for a better experience.")
 
-# Define your model and tokenizer
-model_name = "/scratch/yerong/.cache/pyllama/phi-2"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
 
-# Define metrics
-bleu_metric = corpus_bleu
-rouge_metric = Rouge()
+def main():
+    chat_model = ChatModel()
+    # history = []
+    # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
 
-# Define evaluation function
-def evaluate_predictions(eval_predictions, metric_bleu, metric_rouge, tokenizer):
-    # Convert predictions to text
-    decoded_preds = tokenizer.batch_decode(eval_predictions, skip_special_tokens=True)
+    # Load data from the file
+    with open("data/police1.json", "r") as file:
+        data = [json.loads(line) for line in file]
+    # Initialize BLEURT
+    # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
-    # Load reference data
-    references = dataset["validation"]["translation"]
+    # Initialize lists to store scores
+    # import tqdm
+    # import nltk
+    # from nltk.translate.bleu_score import sentence_bleu
+    # from rouge_score import rouge
+    # import logging
 
-    # Calculate BLEU score
-    bleu_score = metric_bleu(decoded_preds, [references]).score
+    # Initialize lists to store scores
+    bleu_scores = []
+    dist1_scores = []
+    dist2_scores = []
+    perplexity_scores = []
+    rouge_scores = []
+    rouge_2_scores = []
+    bert_scores = []
+    scorer = BERTScorer(model_type='bert-base-uncased')
 
-    # Calculate ROUGE score
-    rouge_scores = metric_rouge.get_scores(decoded_preds, references, avg=True)
+    # Type-wise scores
+    type_scores = {}
+    # Iterate through each record in the 'data' list
+    # for record in tqdm.tqdm(data[:10]):
 
-    return {"bleu": bleu_score, "rouge": rouge_scores}
+    ans = {}
 
-# Define training arguments
-training_args = Seq2SeqTrainingArguments(
-    output_dir="./output",
-    per_device_eval_batch_size=8,
-    eval_steps=500,  # Adjust based on your needs
-    # Add other training arguments as needed
-)
 
-# Create a dummy trainer for evaluation only
-trainer = Seq2SeqTrainer(
-    model=model,
-    args=training_args,
-    train_dataset=None,  # No need to pass training dataset for evaluation only
-    eval_dataset=dataset["validation"],
-    tokenizer=tokenizer,
-    compute_metrics=lambda p: evaluate_predictions(p.predictions, bleu_metric, rouge_metric, tokenizer),
-)
+    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
-# Perform evaluation only
-evaluation_metrics = trainer.evaluate()
+    # Iterate through each batch of data
+    for batch in tqdm.tqdm(data_batches):
+        # Iterate through each record in the batch
+        prompt_ids_batch = []
+        for record in batch:
+            # ... (rest of the code)
 
-# Access the evaluation metrics
-bleu_score = evaluation_metrics["bleu"]
-rouge_scores = evaluation_metrics["rouge"]
+            prompt_ids, _ = chat_model.template.encode_oneturn(
+                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            )
+            print(prompt_ids)
+            prompt_ids_batch.append()
+        break
+if __name__ == "__main__":
+    main()
 
-print(f"BLEU Score: {bleu_score}")
-print(f"ROUGE Scores: {rouge_scores}")
 
-# Save scores to a file if needed
-with open("evaluation_scores.txt", "w") as file:
-    file.write(f"BLEU Score: {bleu_score}\n")
-    file.write(f"ROUGE Scores: {rouge_scores}\n")
+if __name__ == "__main__":
+    main()
