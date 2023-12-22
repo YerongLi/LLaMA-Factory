@@ -190,7 +190,7 @@ def main():
         
 
         outputs = chat_model.tokenizer.batch_decode(
-            generated_outputs[:, prompt_length:], skip_special_tokens=True, clean_up_tokenization_spaces=True
+            generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
         print(outputs)
         break
