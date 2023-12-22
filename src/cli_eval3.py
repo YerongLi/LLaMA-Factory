@@ -37,9 +37,12 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 # tokenizer.padding_side = "left"
 
 def main():
-    chat_model = ChatModel()
+    import json
+
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
+    chat_model = ChatModel()
+
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
