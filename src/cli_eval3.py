@@ -13,7 +13,7 @@ from nltk.util import ngrams
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
-
+from transformers import AutoTokenizer
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
