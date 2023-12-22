@@ -166,7 +166,7 @@ def main():
         # print(tokenized_prompts.shape)
         # try:
         # print(tokenized_prompts.keys())
-        # print(tokenized_prompts['input_ids'].shape)
+        print(tokenized_prompts['input_ids'].shape)
         # sentences = [
         #     "Hello, my dog is a little",
         #     "Today, I",
@@ -192,7 +192,7 @@ def main():
         outputs = chat_model.tokenizer.batch_decode(
             generated_outputs, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-        print(outputs)
+        # print(outputs)
         break
         # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
         #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
