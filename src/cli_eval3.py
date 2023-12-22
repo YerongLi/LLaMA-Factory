@@ -45,6 +45,7 @@ class ChatDataset(Dataset):
     def __init__(self, data, tokenizer, template):
         self.data = data
         self.tokenizer = tokenizer
+        self.template = template
 
     def __len__(self):
         return len(self.data)
@@ -58,7 +59,7 @@ class ChatDataset(Dataset):
         output = record["output"]
 
         # Encode the prompt using the provided encoding function
-        input_ids, _ = template.encode_oneturn(
+        input_ids, _ = self.template.encode_oneturn(
             tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
         )
 
