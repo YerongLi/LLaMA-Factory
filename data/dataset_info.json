@@ -281,12 +281,13 @@
     }
   },
   "police": {
-    "file_name": "police.json",
+    "file_name": "oaast_rm_zh.json",
     "columns": {
       "prompt": "instruction",
-      "query": "",
+      "query": "input",
       "response": "output",
       "history": "history"
-    }
+    },
+    "ranking": true
   }
 }
