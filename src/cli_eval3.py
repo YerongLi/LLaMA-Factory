@@ -88,7 +88,7 @@ def main():
     # Iterate through each batch of data
     prompt_batches = []
 
-    for batch in tqdm.tqdm(data_batches):
+    for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
