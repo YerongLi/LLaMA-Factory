@@ -22,7 +22,7 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 8
+BATCH_SIZE = 32
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
