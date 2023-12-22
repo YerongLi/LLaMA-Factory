@@ -92,40 +92,41 @@ def main():
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
-            print(record)
-            instruction = record["instruction"]
-            if not isinstance(instruction, str): continue
+            try: 
+                instruction = record["instruction"]
 
-            # logging.info('Summary')
-            # logging.info(record["summary"])
-            # logging.info(record["history"])
-            history = record["history"]
-            record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
-            summary = record["summary"] if 'summary' in record else ''
+                # logging.info('Summary')
+                # logging.info(record["summary"])
+                # logging.info(record["history"])
+                history = record["history"]
+                record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+                summary = record["summary"] if 'summary' in record else ''
 
-            # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
-        
-            output = record["output"]
+                # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
+            
+                output = record["output"]
 
-            prompt_ids, _ = chat_model.template.encode_oneturn(
-                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
-            )
-            prompt = chat_model.tokenizer.decode(
-                prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-            )
-            prompt_batch.append(
-                        {
-                    'instruction': instruction,
-                    'output': record["output"],
-                    'prompt': prompt,
-                    'history': history,
-                    'summary': summary,
-                    'his_len': record["his_len"],
-                    'type': record_type,
-                }
-            )
+                prompt_ids, _ = chat_model.template.encode_oneturn(
+                    tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+                )
+                prompt = chat_model.tokenizer.decode(
+                    prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                )
+                prompt_batch.append(
+                            {
+                        'instruction': instruction,
+                        'output': record["output"],
+                        'prompt': prompt,
+                        'history': history,
+                        'summary': summary,
+                        'his_len': record["his_len"],
+                        'type': record_type,
+                    }
+                )
+            except:
+                continue
 
-        prompt_batches.append(prompt_batch)
+        if prompt_batch: prompt_batches.append(prompt_batch)
     
     tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
     print(tokenized_prompt_batches[:2])
