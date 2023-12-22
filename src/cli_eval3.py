@@ -88,7 +88,7 @@ def main():
     ]
 
 
-    inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+    inputs = tokenizer(sentences, return_tensors="pt", padding=True).to('cuda:0')
 
     print(inputs['input_ids'].shape)
     print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
