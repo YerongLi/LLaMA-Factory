@@ -38,7 +38,7 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     import json
-
+    import traceback
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
@@ -169,10 +169,10 @@ def main():
 
         except KeyboardInterrupt:
             break
-        except:
-            failed_count+= 1
-            continue
-
+        except Exception as e:
+            failed_count += 1
+            print(f"Error: {e}")
+            traceback.print_exc()  # Print the full traceback
     # Assuming you have an output file path like 'results.jsonl'
     output_file_path = 'results.jsonl'
     print('Saving Results')
