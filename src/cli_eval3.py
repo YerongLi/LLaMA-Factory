@@ -4,7 +4,10 @@ import logging
 import os
 import random
 from tqdm import tqdm
+import argparse
 import csv
+import traceback
+
 from bert_score import BERTScorer
 
 from nltk.translate.bleu_score import sentence_bleu
@@ -23,7 +26,6 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 4
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -38,7 +40,11 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     import json
-    import traceback
+    parser = argparse.ArgumentParser(description="Your program description")
+    parser.add_argument('--bs', type=int, default=64, help='Batch size (default: 64)')
+    args = parser.parse_args()
+    BATCH_SIZE = args.bs
+
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
