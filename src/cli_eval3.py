@@ -141,10 +141,23 @@ def main():
         # try:
         print(tokenized_prompts.keys())
         print(tokenized_prompts['input_ids'].shape)
+        sentences = [
+            "Hello, my dog is a little",
+            "Today, I",
+            "I love",
+            "Repeat after me: I love you.",
+            "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
+            "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
+        ]
 
-        prompts = chat_model.tokenizer.batch_decode(
-            tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        )
+        print(chat_model.tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
+
+        # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+
+        # prompts = chat_model.tokenizer.batch_decode(
+            # tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
+        # )
+        break
         # print(prompts)
         # generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
         # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
