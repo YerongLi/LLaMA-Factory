@@ -4,6 +4,7 @@ import logging
 import os
 import random
 import tqdm
+import torch
 import csv
 from bert_score import BERTScorer
 from torch.utils.data import Dataset
