@@ -60,7 +60,7 @@ class ChatDataset(Dataset):
 
         # Encode the prompt using the provided encoding function
         input_ids, _ = self.template.encode_oneturn(
-            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            tokenizer=self..tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
         )
 
         # Convert to PyTorch tensors
