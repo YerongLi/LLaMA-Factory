@@ -100,7 +100,6 @@ def main():
 
     # print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
 
-    chat_model = ChatModel()
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
     # Load data from the file
