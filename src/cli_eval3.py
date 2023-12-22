@@ -134,14 +134,10 @@ def main():
 
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
+        print(tokenized_prompts)
         generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
 
-        # Decode and print the generated outputs
-        for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-            decoded_output = chat_model.tokenizer.decode(generated_output, skip_special_tokens=True)
-            print(f"Input: {chat_model.tokenizer.decode(prompt, skip_special_tokens=True)}")
-            print(f"Generated Output: {decoded_output}")
-            print("=" * 50)
+
 
 if __name__ == "__main__":
     main()
