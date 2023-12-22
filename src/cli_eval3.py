@@ -161,7 +161,7 @@ def main():
         return dataset
 
     max_length = 1000
-    dataset = preprocess_dataset(tokenizer, max_length, seed, dataset)
+    dataset = preprocess_dataset(tokenizer, max_length, dataset)
 
 if __name__ == "__main__":
     main()
