@@ -85,11 +85,12 @@ def main():
 
     # Group data into batches
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
-
+    random.shuffle(data)
+    data = data[:60]
+    # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
-    random.shuffle(data)
-    # for record in tqdm.tqdm(data[:10]):
+
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
