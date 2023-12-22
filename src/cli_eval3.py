@@ -14,6 +14,7 @@ from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
