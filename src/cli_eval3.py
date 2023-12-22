@@ -109,7 +109,7 @@ def main():
 
     # Initialize other variables...
     random.shuffle(data)
-    data = data[:60]
+    # data = data[:60]
     # Group data into batches
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
@@ -185,7 +185,7 @@ def main():
         except:
             failed_count+= 1
             continue
-        print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
+    print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
 
 if __name__ == "__main__":
     main()
