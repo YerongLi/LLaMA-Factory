@@ -42,7 +42,7 @@ except ImportError:
 
 
 class ChatDataset(Dataset):
-    def __init__(self, data, tokenizer):
+    def __init__(self, data, tokenizer, template):
         self.data = data
         self.tokenizer = tokenizer
 
@@ -58,8 +58,8 @@ class ChatDataset(Dataset):
         output = record["output"]
 
         # Encode the prompt using the provided encoding function
-        input_ids, _ = self.encode_prompt(
-            query=instruction, resp="", history=history, system=f'\n{summary}'
+        input_ids, _ = template.encode_oneturn(
+            tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
         )
 
         # Convert to PyTorch tensors
@@ -118,7 +118,7 @@ def main():
     ans = {}
 
 
-    chat_dataset = ChatDataset(data, tokenizer=chat_model.tokenizer)
+    chat_dataset = ChatDataset(data, tokenizer=chat_model.tokenizer, template=chat_model.template)
     # Define batch size
     batch_size = 4
 
