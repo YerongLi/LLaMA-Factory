@@ -77,7 +77,7 @@ def main():
     ans = {}
 
 
-def main():
+
 
     # model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
 
@@ -167,20 +167,20 @@ def main():
         # try:
         # print(tokenized_prompts.keys())
         # print(tokenized_prompts['input_ids'].shape)
-        sentences = [
-            "Hello, my dog is a little",
-            "Today, I",
-            "I love",
-            "Repeat after me: I love you.",
-            "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
-            "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
-        ]
-        inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
+        # sentences = [
+        #     "Hello, my dog is a little",
+        #     "Today, I",
+        #     "I love",
+        #     "Repeat after me: I love you.",
+        #     "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
+        #     "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
+        # ]
+        # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
 
 
-        print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
+        # print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
-        # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+        # # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
         # prompts = chat_model.tokenizer.batch_decode(
             # tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
@@ -190,7 +190,7 @@ def main():
         
 
         outputs = chat_model.tokenizer.batch_decode(
-            tokenized_prompts**, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
         print(outputs)
         break
