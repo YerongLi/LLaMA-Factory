@@ -80,7 +80,13 @@ def main():
         # Iterate through each record in the batch
         prompt_ids_batch = []
         for record in batch:
-            # ... (rest of the code)
+            instruction = record["instruction"]
+            # logging.info('Summary')
+            # logging.info(record["summary"])
+            # logging.info(record["history"])
+            history = record["history"]
+            record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+            summary = record["summary"] if 'summary' in record else ''
 
             prompt_ids, _ = chat_model.template.encode_oneturn(
                 tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
