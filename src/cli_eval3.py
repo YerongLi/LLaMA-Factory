@@ -41,7 +41,10 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     import json
+    text_with_newline = "\n"
+    tokens = tokenizer.encode(text_with_newline)
 
+    logging.info(tokens)
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
