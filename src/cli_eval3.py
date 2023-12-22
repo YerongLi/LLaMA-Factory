@@ -134,7 +134,7 @@ def main():
 
 
     # SOURCE https://github.com/databrickslabs/dolly/blob/master/training/trainer.py
-    def preprocess_dataset(tokenizer: AutoTokenizer, max_length: int, seed, dataset: str):
+    def preprocess_dataset(tokenizer: AutoTokenizer, max_length: int, dataset: str, seed = 101):
         """Format & tokenize it so it is ready for training
         :param tokenizer (AutoTokenizer): Model Tokenizer
         :param max_length (int): Maximum number of tokens to emit from tokenizer
