@@ -19,6 +19,7 @@ from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
+BATCH_SIZE=32
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -44,8 +45,7 @@ def main():
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
-    print(chat_model.generating_args)
-    print(chat_model.generating_args.per_device_eval_batch_size)
+
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
