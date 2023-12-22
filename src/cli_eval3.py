@@ -177,7 +177,7 @@ def main():
 
     # Assuming you have an output file path like 'results.jsonl'
     output_file_path = 'results.jsonl'
-
+    print('Saving Results')
     # Iterate through prompt_batches and write each batch as a line in the JSONL file
     with open(output_file_path, 'w') as jsonl_file:
         for batch in prompt_batches:
