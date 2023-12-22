@@ -77,7 +77,10 @@ def main():
 
 
 def main():
+
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
     tokenizer.pad_token = "[PAD]"
+
     sentences = [
         "Hello, my dog is a little",
         "Today, I",
@@ -87,11 +90,16 @@ def main():
         "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
     ]
 
+    # Tokenize each sentence individually
+    tokenized_sentences = tokenizer(sentences, return_tensors="pt", padding=True).to('cuda:0')
 
-    inputs = tokenizer(sentences, return_tensors="pt", padding=True).to('cuda:0')
+    # Decode each tokenized sentence
+    decoded_sentences = [tokenizer.decode(ids, skip_special_tokens=True) for ids in tokenized_sentences['input_ids']]
 
-    print(inputs['input_ids'].shape)
-    print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
+    # Use batch_decode on the decoded sentences
+    batch_decoded_sentences = tokenizer.batch_decode(decoded_sentences, skip_special_tokens=True)
+
+    print(batch_decoded_sentences)
 
     # chat_model = ChatModel()
     # chat_model.tokenizer.pad_token = "[PAD]"
