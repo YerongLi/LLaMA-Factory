@@ -4,7 +4,7 @@ python src/train_bash.py \
     --stage sft \
     --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-hf \
     --do_train \
-    --dataset alpaca_en \
+    --dataset police \
     --template dispatcher \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
