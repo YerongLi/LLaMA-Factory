@@ -149,8 +149,10 @@ def main():
             "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
             "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
         ]
+        inputs = chat_model.tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
-        print(chat_model.tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
+
+        print(chat_model.tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
         # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
