@@ -77,7 +77,8 @@ class ChatDataset(Dataset):
 
 
 def main():
-
+    chat_model = ChatModel()
+    tokenizer = chat_model.tokenizer
     dataset = load_dataset("databricks/databricks-dolly-15k", split="train")
 
 
