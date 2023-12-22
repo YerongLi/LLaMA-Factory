@@ -19,7 +19,7 @@ from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=64
+BATCH_SIZE=48
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
