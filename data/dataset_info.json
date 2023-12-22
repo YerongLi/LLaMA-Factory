@@ -282,7 +282,6 @@
   },
   "police": {
     "file_name": "oaast_sft.json",
-    "file_sha1": "7baf5d43e67a91f9bbdf4e400dbe033b87e9757e",
     "columns": {
       "prompt": "instruction",
       "query": "input",
