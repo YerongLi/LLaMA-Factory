@@ -139,7 +139,12 @@ def main():
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
         # print(tokenized_prompts)
         try:
-            print(tokenized_prompts)
+            # print(tokenized_prompts)
+
+            prompts = chat_model.tokenizer.decode(
+                tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            )
+            print(prompts)
             generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
             for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
                 decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
