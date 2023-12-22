@@ -88,7 +88,8 @@ def main():
 
     # Iterate through each batch of data
     prompt_batches = []
-
+    random.shuffle(data)
+    # for record in tqdm.tqdm(data[:10]):
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
