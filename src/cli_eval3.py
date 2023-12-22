@@ -155,7 +155,7 @@ def main():
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
     # Generate outputs batch by batch
-    for batch_index, (tokenized_prompts, _) in tqdm(enumerate(zip(prompt_batches, tokenized_prompt_batches))):
+    for batch_index, tokenized_prompts in tqdm(enumerate(tokenized_prompt_batches)):
         try:
             generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
 
@@ -177,7 +177,7 @@ def main():
     print(f'Failed Ratio {failed_count / len(tokenized_prompt_batches)}')
 
 
-    output_file_path = 'results.jsonl'
+    output_file_path = '../results.jsonl'
 
     # Iterate through prompt_batches and write each batch as a line in the JSONL file
     with open(output_file_path, 'w') as jsonl_file:
