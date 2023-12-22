@@ -151,34 +151,39 @@ def main():
 
         if prompt_batch: prompt_batches.append(prompt_batch)
     
-    # tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
-    # print(tokenized_prompt_batches[:2])
+
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
     # Generate outputs batch by batch
-    for tokenized_prompts in tqdm(tokenized_prompt_batches):
-        # print(tokenized_prompts.shape)
+    for batch_index, (tokenized_prompts, _) in tqdm(enumerate(zip(prompt_batches, tokenized_prompt_batches))):
         try:
-
             generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-            
 
             outputs = chat_model.tokenizer.batch_decode(
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
-        # print(outputs)
-        # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-        #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
-        #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
-        #     print(f"Generated Output: {decoded_output}")
-        #     print("=" * 50)
+
+            # Assign "output" to each batch in tokenized_prompt_batches using batch_index
+            for i, output in enumerate(outputs):
+                tokenized_prompt_batches[batch_index][i]["output"] = output
+
         except KeyboardInterrupt:
             break
-        except:
-            failed_count+= 1
+        except Exception as e:
+            failed_count += 1
+            print(f"Error: {e}")
             continue
-    print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
 
+    print(f'Failed Ratio {failed_count / len(tokenized_prompt_batches)}')
+
+
+    output_file_path = 'results.jsonl'
+
+    # Iterate through prompt_batches and write each batch as a line in the JSONL file
+    with open(output_file_path, 'w') as jsonl_file:
+        for batch in prompt_batches:
+            json_line = json.dumps(batch)
+            jsonl_file.write(json_line + '\n')
 if __name__ == "__main__":
     main()
 
