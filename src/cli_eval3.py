@@ -116,7 +116,6 @@ def main():
             prompt_batch.append(
                         {
                     'instruction': instruction,
-                    'response': response,
                     'output': record["output"],
                     'prompt': prompt,
                     'history': history,
