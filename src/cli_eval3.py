@@ -40,15 +40,11 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     import json
-    parser = argparse.ArgumentParser(description="Your program description")
-    parser.add_argument('--bs', type=int, default=64, help='Batch size (default: 64)')
-    args = parser.parse_args()
-    BATCH_SIZE = args.bs
 
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
-
+    print(chat_model.finetuning_args.per_device_eval_batch_size)
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
