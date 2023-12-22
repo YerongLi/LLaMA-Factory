@@ -137,7 +137,7 @@ def main():
 
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
-        # print(tokenized_prompts)
+        print(tokenized_prompts)
         # try:
             # print(tokenized_prompts)
 
