@@ -116,7 +116,7 @@ def main():
     # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
-
+    failed_count = 0
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
@@ -164,45 +164,28 @@ def main():
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
         # print(tokenized_prompts.shape)
-        # try:
-        # print(tokenized_prompts.keys())
-        print(tokenized_prompts['input_ids'].shape)
-        # sentences = [
-        #     "Hello, my dog is a little",
-        #     "Today, I",
-        #     "I love",
-        #     "Repeat after me: I love you.",
-        #     "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
-        #     "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
-        # ]
-        # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
+        try:
 
 
-        # print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
-        # # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+            generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+            
 
-        # prompts = chat_model.tokenizer.batch_decode(
-            # tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        # )
-        # print(prompts)
-        generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-        
-
-        outputs = chat_model.tokenizer.batch_decode(
-            generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
-        )
+            outputs = chat_model.tokenizer.batch_decode(
+                generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
+            )
         # print(outputs)
         # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
         #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
         #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
         #     print(f"Generated Output: {decoded_output}")
         #     print("=" * 50)
-        # except KeyboardInterrupt:
-            # break
-        # except:
-            # continue
-
+        except KeyboardInterrupt:
+            break
+        except:
+            failed_count+= 1
+            continue
+        print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
 
 if __name__ == "__main__":
     main()
