@@ -3,4 +3,5 @@ python src/cli_eval3.py \
     --template dispatcher \
     --finetuning_type lora \
     --quantization_bit 4 \
-    --checkpoint_dir police4/best
+    --checkpoint_dir police4/best \
+    --per_device_eval_batch_size 4 
