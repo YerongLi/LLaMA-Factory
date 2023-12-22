@@ -77,103 +77,119 @@ def main():
 
 
 def main():
-    chat_model = ChatModel()
-    chat_model.tokenizer.pad_token = "[PAD]"
-    chat_model.tokenizer.padding_side = "left"
-    # Load data from the file
-    with open("data/police1.json", "r") as file:
-        data = [json.loads(line) for line in file]
+    tokenizer.pad_token = "[PAD]"
+    sentences = [
+        "Hello, my dog is a little",
+        "Today, I",
+        "I love",
+        "Repeat after me: I love you.",
+        "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
+        "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
+    ]
 
-    # Initialize other variables...
-    random.shuffle(data)
-    data = data[:60]
-    # Group data into batches
-    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
-    # for record in tqdm.tqdm(data[:60]):
-    # Iterate through each batch of data
-    prompt_batches = []
+    inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
-    for batch in tqdm(data_batches):
-        # Iterate through each record in the batch
-        prompt_batch = []
-        for record in batch:
-            try: 
-                instruction = record["instruction"]
+    print(inputs['input_ids'].shape)
+    print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
 
-                # logging.info('Summary')
-                # logging.info(record["summary"])
-                # logging.info(record["history"])
-                history = record["history"]
-                record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
-                summary = record["summary"] if 'summary' in record else ''
+    # chat_model = ChatModel()
+    # chat_model.tokenizer.pad_token = "[PAD]"
+    # chat_model.tokenizer.padding_side = "left"
+    # # Load data from the file
+    # with open("data/police1.json", "r") as file:
+    #     data = [json.loads(line) for line in file]
 
-                # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
+    # # Initialize other variables...
+    # random.shuffle(data)
+    # data = data[:60]
+    # # Group data into batches
+    # data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
+
+    # # for record in tqdm.tqdm(data[:60]):
+    # # Iterate through each batch of data
+    # prompt_batches = []
+
+    # for batch in tqdm(data_batches):
+    #     # Iterate through each record in the batch
+    #     prompt_batch = []
+    #     for record in batch:
+    #         try: 
+    #             instruction = record["instruction"]
+
+    #             # logging.info('Summary')
+    #             # logging.info(record["summary"])
+    #             # logging.info(record["history"])
+    #             history = record["history"]
+    #             record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+    #             summary = record["summary"] if 'summary' in record else ''
+
+    #             # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
             
-                output = record["output"]
+    #             output = record["output"]
 
-                prompt_ids, _ = chat_model.template.encode_oneturn(
-                    tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
-                )
-                prompt = chat_model.tokenizer.decode(
-                    prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-                )
-                prompt_batch.append(
-                            {
-                        'instruction': instruction,
-                        'output': record["output"],
-                        'prompt': prompt,
-                        'history': history,
-                        'summary': summary,
-                        'his_len': record["his_len"],
-                        'type': record_type,
-                    }
-                )
-            except:
-                continue
+    #             prompt_ids, _ = chat_model.template.encode_oneturn(
+    #                 tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+    #             )
+    #             prompt = chat_model.tokenizer.decode(
+    #                 prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+    #             )
+    #             prompt_batch.append(
+    #                         {
+    #                     'instruction': instruction,
+    #                     'output': record["output"],
+    #                     'prompt': prompt,
+    #                     'history': history,
+    #                     'summary': summary,
+    #                     'his_len': record["his_len"],
+    #                     'type': record_type,
+    #                 }
+    #             )
+    #         except:
+    #             continue
 
-        if prompt_batch: prompt_batches.append(prompt_batch)
+    #     if prompt_batch: prompt_batches.append(prompt_batch)
     
-    # tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
-    # print(tokenized_prompt_batches[:2])
-    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
+    # # tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
+    # # print(tokenized_prompt_batches[:2])
+    # tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
-    # Generate outputs batch by batch
-    for tokenized_prompts in tqdm(tokenized_prompt_batches):
-        # print(tokenized_prompts.shape)
-        # try:
-        # print(tokenized_prompts.keys())
-        # print(tokenized_prompts['input_ids'].shape)
-        sentences = [
-            "Hello, my dog is a little",
-            "Today, I",
-            "I love",
-            "Repeat after me: I love you.",
-            "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
-            "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
-        ]
-        inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
+    # # Generate outputs batch by batch
+    # for tokenized_prompts in tqdm(tokenized_prompt_batches):
+    #     # print(tokenized_prompts.shape)
+    #     # try:
+    #     # print(tokenized_prompts.keys())
+    #     # print(tokenized_prompts['input_ids'].shape)
+    #     sentences = [
+    #         "Hello, my dog is a little",
+    #         "Today, I",
+    #         "I love",
+    #         "Repeat after me: I love you.",
+    #         "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
+    #         "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
+    #     ]
+    #     inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
 
 
-        print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
+    #     print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
-        # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+    #     # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
-        # prompts = chat_model.tokenizer.batch_decode(
-            # tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        # )
-        break
-        # print(prompts)
-        # generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-        # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-        #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
-        #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
-        #     print(f"Generated Output: {decoded_output}")
-        #     print("=" * 50)
-        # except KeyboardInterrupt:
-            # break
-        # except:
-            # continue
+    #     # prompts = chat_model.tokenizer.batch_decode(
+    #         # tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
+    #     # )
+    #     break
+    #     # print(prompts)
+    #     # generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+    #     # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
+    #     #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
+    #     #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
+    #     #     print(f"Generated Output: {decoded_output}")
+    #     #     print("=" * 50)
+    #     # except KeyboardInterrupt:
+    #         # break
+    #     # except:
+    #         # continue
 
 
 if __name__ == "__main__":
