@@ -6,6 +6,8 @@ import random
 import tqdm
 import csv
 from bert_score import BERTScorer
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
@@ -35,6 +37,49 @@ try:
         import readline
 except ImportError:
     print("Install `readline` for a better experience.")
+
+
+
+
+class ChatDataset(Dataset):
+    def __init__(self, data, tokenizer):
+        self.data = data
+        self.tokenizer = tokenizer
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        record = self.data[idx]
+        instruction = record["instruction"]
+        history = record["history"]
+        record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+        summary = record["summary"] if 'summary' in record else ''
+        output = record["output"]
+
+        # Encode the prompt using the provided encoding function
+        input_ids, _ = self.encode_prompt(
+            query=instruction, resp="", history=history, system=f'\n{summary}'
+        )
+
+        # Convert to PyTorch tensors
+        input_ids = torch.tensor(input_ids)
+        output_ids = self.tokenizer.encode(output, add_special_tokens=True)
+
+        return {
+            'input_ids': input_ids,
+            'output_ids': torch.tensor(output_ids),
+        }
+
+    def encode_prompt(self, query, resp, history, system):
+        # You can customize this method based on your specific encoding requirements
+        return self.tokenizer.encode(
+            query + resp + history + system,
+            add_special_tokens=True,
+            truncation=True,
+            max_length=512,  # Adjust max length as needed
+            padding='max_length',
+        )
 
 
 def main():
@@ -73,27 +118,19 @@ def main():
     ans = {}
 
 
-    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
+    chat_dataset = ChatDataset(data, tokenizer=chat_model.tokenizer)
+    # Define batch size
+    batch_size = 4
 
-    # Iterate through each batch of data
-    for batch in tqdm.tqdm(data_batches):
-        # Iterate through each record in the batch
-        prompt_ids_batch = []
-        for record in batch:
-            instruction = record["instruction"]
-            # logging.info('Summary')
-            # logging.info(record["summary"])
-            # logging.info(record["history"])
-            history = record["history"]
-            record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
-            summary = record["summary"] if 'summary' in record else ''
+    # Create DataLoader
+    chat_dataloader = DataLoader(chat_dataset, batch_size=batch_size, shuffle=True)
 
-            prompt_ids, _ = chat_model.template.encode_oneturn(
-                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
-            )
-            print(prompt_ids)
-            prompt_ids_batch.append(prompt_ids)
-        break
+    # Iterate through batches
+    for batch in chat_dataloader:
+        input_ids = batch['input_ids']
+        output_ids = batch['output_ids']
+        print(input_ids)
+        print(chat_model.tokenizer)
 if __name__ == "__main__":
     main()
 
