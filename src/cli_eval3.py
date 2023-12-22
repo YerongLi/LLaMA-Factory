@@ -60,7 +60,7 @@ class ChatDataset(Dataset):
 
         # Encode the prompt using the provided encoding function
         input_ids, _ = self.template.encode_oneturn(
-            tokenizer=self.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            tokenizer=self.tokenizer, query=instruction, resp="", history=history, system=self.template.system+f'\n{summary}'
         )
 
         # Convert to PyTorch tensors
@@ -72,15 +72,6 @@ class ChatDataset(Dataset):
             'output_ids': torch.tensor(output_ids),
         }
 
-    def encode_prompt(self, query, resp, history, system):
-        # You can customize this method based on your specific encoding requirements
-        return self.tokenizer.encode(
-            query + resp + history + system,
-            add_special_tokens=True,
-            truncation=True,
-            max_length=512,  # Adjust max length as needed
-            padding='max_length',
-        )
 
 
 def main():
