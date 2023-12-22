@@ -165,14 +165,13 @@ def main():
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
             for i, output in enumerate(outputs):
-                tokenized_prompt_batches[batch_index][i]["output"] = output
+                tokenized_prompt_batches[batch_index][i]["response"] = output
 
         except KeyboardInterrupt:
             break
         except:
             failed_count+= 1
             continue
-    import json
 
     # Assuming you have an output file path like 'results.jsonl'
     output_file_path = 'results.jsonl'
