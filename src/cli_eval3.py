@@ -38,10 +38,6 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     chat_model = ChatModel()
-    # history = []
-    # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
-
-    # Load data from the file
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
