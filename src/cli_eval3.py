@@ -4,12 +4,8 @@ import logging
 import os
 import random
 import tqdm
-import torch
 import csv
 from bert_score import BERTScorer
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
-from datasets import load_dataset
 
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
@@ -17,8 +13,6 @@ from nltk.util import ngrams
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
-from transformers import AutoTokenizer
-from functools import partial
 
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
@@ -43,132 +37,100 @@ except ImportError:
     print("Install `readline` for a better experience.")
 
 
+def main():
+    chat_model = ChatModel()
+    # history = []
+    # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
 
+    # Load data from the file
+    with open("data/police1.json", "r") as file:
+        data = [json.loads(line) for line in file]
+    # Initialize BLEURT
+    # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
-class ChatDataset(Dataset):
-    def __init__(self, data, tokenizer, template):
-        self.data = data
-        self.tokenizer = tokenizer
-        self.template = template
+    # Initialize lists to store scores
+    # import tqdm
+    # import nltk
+    # from nltk.translate.bleu_score import sentence_bleu
+    # from rouge_score import rouge
+    # import logging
 
-    def __len__(self):
-        return len(self.data)
+    # Initialize lists to store scores
+    bleu_scores = []
+    dist1_scores = []
+    dist2_scores = []
+    perplexity_scores = []
+    rouge_scores = []
+    rouge_2_scores = []
+    bert_scores = []
+    scorer = BERTScorer(model_type='bert-base-uncased')
 
-    def __getitem__(self, idx):
-        record = self.data[idx]
-        instruction = record["instruction"]
-        history = record["history"]
-        record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
-        summary = record["summary"] if 'summary' in record else ''
-        output = record["output"]
+    # Type-wise scores
+    type_scores = {}
+    # Iterate through each record in the 'data' list
+    # for record in tqdm.tqdm(data[:10]):
 
-        # Encode the prompt using the provided encoding function
-        input_ids, _ = self.template.encode_oneturn(
-            tokenizer=self.tokenizer, query=instruction, resp="", history=history, system=self.template.system+f'\n{summary}'
-        )
-
-        # Convert to PyTorch tensors
-        input_ids = torch.tensor(input_ids)
-        output_ids = self.tokenizer.encode(output, add_special_tokens=True)
-
-        return {
-            'input_ids': input_ids,
-            'output_ids': torch.tensor(output_ids),
-        }
-
+    ans = {}
 
 
 def main():
     chat_model = ChatModel()
-    tokenizer = chat_model.tokenizer
-    dataset = load_dataset("databricks/databricks-dolly-15k", split="train")
 
+    # Load data from the file
+    with open("data/police1.json", "r") as file:
+        data = [json.loads(line) for line in file]
 
-    def create_prompt_formats(sample):
-        """
-        Format various fields of the sample ('instruction', 'context', 'response')
-        Then concatenate them using two newline characters 
-        :param sample: Sample dictionnary
-        """
+    # Initialize other variables...
 
-        INTRO_BLURB = "Below is an instruction that describes a task. Write a response that appropriately completes the request."
-        INSTRUCTION_KEY = "### Instruction:"
-        INPUT_KEY = "Input:"
-        RESPONSE_KEY = "### Response:"
-        END_KEY = "### End"
-        
-        blurb = f"{INTRO_BLURB}"
-        instruction = f"{INSTRUCTION_KEY}\n{sample['instruction']}"
-        input_context = f"{INPUT_KEY}\n{sample['context']}" if sample["context"] else None
-        response = f"{RESPONSE_KEY}\n{sample['response']}"
-        end = f"{END_KEY}"
-        
-        parts = [part for part in [blurb, instruction, input_context, response, end] if part]
+    # Group data into batches
+    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
-        formatted_prompt = "\n\n".join(parts)
-        
-        sample["text"] = formatted_prompt
+    # Iterate through each batch of data
+    prompt_batches = []
 
-        return sample
-    def get_max_length(model):
-        conf = model.config
-        max_length = None
-        for length_setting in ["n_positions", "max_position_embeddings", "seq_length"]:
-            max_length = getattr(model.config, length_setting, None)
-            if max_length:
-                print(f"Found max lenth: {max_length}")
-                break
-        if not max_length:
-            max_length = 1024
-            print(f"Using default max length: {max_length}")
-        return max_length
+    for batch in tqdm.tqdm(data_batches):
+        # Iterate through each record in the batch
+        prompt_batch = []
+        for record in batch:
+            instruction = record["instruction"]
+            # logging.info('Summary')
+            # logging.info(record["summary"])
+            # logging.info(record["history"])
+            history = record["history"]
+            record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+            summary = record["summary"] if 'summary' in record else ''
 
+            if record_type in {'DrugsAlcohol', 'HarassmentAbuse', 'MentalHealth', 'TheftLostItem', 'SuspiciousActivity', 'EmergencyMessage'}: continue
+            # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
+            print(record_type)
+            print(record)
+            logging.info(record)
+            continue
+            output = record["output"]
 
-    def preprocess_batch(batch, tokenizer, max_length):
-        """
-        Tokenizing a batch
-        """
-        return tokenizer(
-            batch["text"],
-            max_length=max_length,
-            truncation=True,
-        )
+            prompt_ids, _ = chat_model.template.encode_oneturn(
+                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            )
+            prompt = chat_model.tokenizer.decode(
+                prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            )
+            prompt_batch.append(
+                        {
+                    'instruction': instruction,
+                    'response': response,
+                    'output': record["output"],
+                    'prompt': prompt,
+                    'history': history,
+                    'summary': summary,
+                    'his_len': record["his_len"],
+                    'type': record_type,
+                }
+            )
 
-
-    # SOURCE https://github.com/databrickslabs/dolly/blob/master/training/trainer.py
-    def preprocess_dataset(tokenizer: AutoTokenizer, max_length: int, dataset: str, seed = 101):
-        """Format & tokenize it so it is ready for training
-        :param tokenizer (AutoTokenizer): Model Tokenizer
-        :param max_length (int): Maximum number of tokens to emit from tokenizer
-        """
-        
-        # Add prompt to each sample
-        print("Preprocessing dataset...")
-        dataset = dataset.map(create_prompt_formats)#, batched=True)
-        
-        # Apply preprocessing to each batch of the dataset & and remove 'instruction', 'context', 'response', 'category' fields
-        _preprocessing_function = partial(preprocess_batch, max_length=max_length, tokenizer=tokenizer)
-        dataset = dataset.map(
-            _preprocessing_function,
-            batched=True,
-            remove_columns=["instruction", "context", "response", "text", "category"],
-        )
-
-        # Filter out samples that have input_ids exceeding max_length
-        dataset = dataset.filter(lambda sample: len(sample["input_ids"]) < max_length)
-        
-        # Shuffle dataset
-        dataset = dataset.shuffle(seed=seed)
-
-        return dataset
-
-    max_length = 1000
-    dataset = preprocess_dataset(tokenizer, max_length, dataset)
-    for datapoint in dataset:
-        print(datapoint)
-if __name__ == "__main__":
-    main()
-
+        prompt_batches.append(prompt_batch)
+    print(prompt_batches[:2])
+                # ... (rest of the code)
 
 if __name__ == "__main__":
     main()
+
