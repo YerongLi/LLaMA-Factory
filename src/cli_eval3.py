@@ -105,7 +105,6 @@ def main():
             print(record_type)
             print(record)
             logging.info(record)
-            continue
             output = record["output"]
 
             prompt_ids, _ = chat_model.template.encode_oneturn(
