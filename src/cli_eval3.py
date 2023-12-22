@@ -96,9 +96,9 @@ def main():
     inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
     print(inputs['input_ids'].shape)
 
-    output_sequences = model.generate(**inputs, max_new_tokens=20, do_sample=True, top_p=0.9)
+    # output_sequences = model.generate(**inputs, max_new_tokens=20, do_sample=True, top_p=0.9)
 
-    print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
+    print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
     # chat_model = ChatModel()
     # chat_model.tokenizer.pad_token = "[PAD]"
