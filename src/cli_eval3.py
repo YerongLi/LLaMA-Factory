@@ -135,9 +135,11 @@ def main():
 
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
-        print(tokenized_prompts)
-        generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-
+        # print(tokenized_prompts)
+        try:
+            generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+        except:
+            continue
 
 
 if __name__ == "__main__":
