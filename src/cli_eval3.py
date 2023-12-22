@@ -155,7 +155,7 @@ def main():
         inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
 
 
-        print(chat_model.tokenizer.batch_decode(inputs, skip_special_tokens=True))
+        print(tokenizer.batch_decode(inputs, skip_special_tokens=True))
 
         # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
 
