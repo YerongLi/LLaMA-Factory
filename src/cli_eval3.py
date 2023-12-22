@@ -19,7 +19,7 @@ from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=16
+BATCH_SIZE=64
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -108,8 +108,6 @@ def main():
 
     # Initialize other variables...
     random.shuffle(data)
-    # data = data[:60]
-    # Group data into batches
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
     # for record in tqdm.tqdm(data[:60]):
