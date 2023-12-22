@@ -102,9 +102,7 @@ def main():
             summary = record["summary"] if 'summary' in record else ''
 
             # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
-            print(record_type)
-            print(record)
-            logging.info(record)
+        
             output = record["output"]
 
             prompt_ids, _ = chat_model.template.encode_oneturn(
@@ -126,18 +124,19 @@ def main():
             )
 
         prompt_batches.append(prompt_batch)
-        tokenized_prompt_batches = [chat_model.tokenizer(batch, return_tensors="pt", padding=True, truncation=True) for batch in prompt_batches]
+    
+    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(model.device)for batch in prompt_batches]
 
-        # Generate outputs batch by batch
-        for tokenized_prompts in tqdm(tokenized_prompt_batches):
-            generated_outputs = chat_model.model.generate(**tokenized_prompts, num_return_sequences=len(tokenized_prompts["input_ids"]))
+    # Generate outputs batch by batch
+    for tokenized_prompts in tqdm(tokenized_prompt_batches):
+        generated_outputs = chat_model.model.generate(**tokenized_prompts, num_return_sequences=len(tokenized_prompts["input_ids"]))
 
-            # Decode and print the generated outputs
-            for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-                decoded_output = chat_model.tokenizer.decode(generated_output, skip_special_tokens=True)
-                print(f"Input: {chat_model.tokenizer.decode(prompt, skip_special_tokens=True)}")
-                print(f"Generated Output: {decoded_output}")
-                print("=" * 50)
+        # Decode and print the generated outputs
+        for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
+            decoded_output = chat_model.tokenizer.decode(generated_output, skip_special_tokens=True)
+            print(f"Input: {chat_model.tokenizer.decode(prompt, skip_special_tokens=True)}")
+            print(f"Generated Output: {decoded_output}")
+            print("=" * 50)
 
 if __name__ == "__main__":
     main()
