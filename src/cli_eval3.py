@@ -128,10 +128,9 @@ def main():
 
         if prompt_batch: prompt_batches.append(prompt_batch)
     
-    tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
-    print(tokenized_prompt_batches[:2])
-    exit()
-    # tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(model.device)for batch in prompt_batches]
+    # tokenized_prompt_batches = [[item['prompt'] for item in batch] for batch in prompt_batches]
+    # print(tokenized_prompt_batches[:2])
+    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(model.device)for batch in prompt_batches]
 
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
