@@ -192,8 +192,7 @@ def main():
         outputs = chat_model.tokenizer.batch_decode(
             generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-        print(outputs)
-        break
+        # print(outputs)
         # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
         #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
         #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
