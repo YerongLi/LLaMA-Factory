@@ -92,7 +92,7 @@ def main():
                 tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
             )
             print(prompt_ids)
-            prompt_ids_batch.append()
+            prompt_ids_batch.append(prompt_ids)
         break
 if __name__ == "__main__":
     main()
