@@ -3,7 +3,7 @@ import nltk
 import logging
 import os
 import random
-import tqdm
+from tqdm import tqdm
 import csv
 from bert_score import BERTScorer
 
@@ -126,16 +126,16 @@ def main():
             )
 
         prompt_batches.append(prompt_batch)
-        tokenized_prompt_batches = [tokenizer(batch, return_tensors="pt", padding=True, truncation=True) for batch in prompt_batches]
+        tokenized_prompt_batches = [chat_model.tokenizer(batch, return_tensors="pt", padding=True, truncation=True) for batch in prompt_batches]
 
         # Generate outputs batch by batch
-        for tokenized_prompts in tokenized_prompt_batches:
+        for tokenized_prompts in tqdm(tokenized_prompt_batches):
             generated_outputs = chat_model.model.generate(**tokenized_prompts, num_return_sequences=len(tokenized_prompts["input_ids"]))
 
             # Decode and print the generated outputs
             for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-                decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
-                print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
+                decoded_output = chat_model.tokenizer.decode(generated_output, skip_special_tokens=True)
+                print(f"Input: {chat_model.tokenizer.decode(prompt, skip_special_tokens=True)}")
                 print(f"Generated Output: {decoded_output}")
                 print("=" * 50)
 
