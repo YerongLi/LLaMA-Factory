@@ -78,9 +78,14 @@ def main():
 
 def main():
 
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-    tokenizer.pad_token = "[PAD]"
+    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
+    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
 
+    # Define PAD Token = EOS Token
+    tokenizer.pad_token = tokenizer.eos_token
+    model.config.pad_token_id = model.config.eos_token_id
+
+    # use different length sentences to test batching
     sentences = [
         "Hello, my dog is a little",
         "Today, I",
@@ -90,16 +95,13 @@ def main():
         "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
     ]
 
-    # Tokenize each sentence individually
-    tokenized_sentences = tokenizer(sentences, return_tensors="pt", padding=True).to('cuda:0')
 
-    # Decode each tokenized sentence
-    decoded_sentences = [tokenizer.decode(ids, skip_special_tokens=True) for ids in tokenized_sentences['input_ids']]
+    inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+    print(inputs['input_ids'].shape)
 
-    # Use batch_decode on the decoded sentences
-    batch_decoded_sentences = tokenizer.batch_decode(decoded_sentences, skip_special_tokens=True)
+    output_sequences = model.generate(**inputs, max_new_tokens=20, do_sample=True, top_p=0.9)
 
-    print(batch_decoded_sentences)
+    print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
 
     # chat_model = ChatModel()
     # chat_model.tokenizer.pad_token = "[PAD]"
