@@ -39,7 +39,7 @@ except ImportError:
 model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
 tokenizer.pad_token = "[PAD]"
-# tokenizer.padding_side = "left"
+tokenizer.padding_side = "left"
 
 def main():
     chat_model = ChatModel()
@@ -79,7 +79,6 @@ def main():
 
 def main():
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
 
     # Define PAD Token = EOS Token
