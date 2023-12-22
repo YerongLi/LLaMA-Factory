@@ -35,6 +35,8 @@ try:
         import readline
 except ImportError:
     print("Install `readline` for a better experience.")
+model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
+tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
 
 
 def main():
@@ -139,8 +141,8 @@ def main():
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
         # print(tokenized_prompts.shape)
         # try:
-        print(tokenized_prompts.keys())
-        print(tokenized_prompts['input_ids'].shape)
+        # print(tokenized_prompts.keys())
+        # print(tokenized_prompts['input_ids'].shape)
         sentences = [
             "Hello, my dog is a little",
             "Today, I",
@@ -149,7 +151,7 @@ def main():
             "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
             "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
         ]
-        inputs = chat_model.tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
+        inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(chat_model.model.device)
 
 
         print(chat_model.tokenizer.batch_decode(inputs, skip_special_tokens=True))
