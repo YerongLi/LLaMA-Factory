@@ -165,7 +165,7 @@ def main():
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
             for i, output in enumerate(outputs):
-                tokenized_prompt_batches[batch_index][i]["response"] = output
+                prompt_batches[batch_index][i]["response"] = output
 
         except KeyboardInterrupt:
             break
