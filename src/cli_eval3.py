@@ -22,7 +22,7 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 2
+BATCH_SIZE = 8
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -138,7 +138,7 @@ def main():
         # print(tokenized_prompts)
         try:
             generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-        except:
+        except Key:
             continue
 
 
