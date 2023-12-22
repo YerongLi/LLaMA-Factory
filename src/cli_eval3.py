@@ -137,20 +137,20 @@ def main():
 
     # Generate outputs batch by batch
     for tokenized_prompts in tqdm(tokenized_prompt_batches):
-        print(tokenized_prompts)
+        print(tokenized_prompts.shape)
         # try:
             # print(tokenized_prompts)
 
         prompts = chat_model.tokenizer.batch_decode(
             tokenized_prompts, skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
-        print(prompts)
-        generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
-        for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
-            decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
-            print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
-            print(f"Generated Output: {decoded_output}")
-            print("=" * 50)
+        # print(prompts)
+        # generated_outputs = chat_model.model.generate(**tokenized_prompts, max_new_tokens=20, do_sample=True, top_p=0.9)
+        # for prompt, generated_output in zip(tokenized_prompts["input_ids"], generated_outputs):
+        #     decoded_output = tokenizer.decode(generated_output, skip_special_tokens=True)
+        #     print(f"Input: {tokenizer.decode(prompt, skip_special_tokens=True)}")
+        #     print(f"Generated Output: {decoded_output}")
+        #     print("=" * 50)
         # except KeyboardInterrupt:
             # break
         # except:
