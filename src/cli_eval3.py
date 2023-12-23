@@ -108,6 +108,7 @@ def main():
 
     # Initialize other variables...
     random.shuffle(data)
+    data = data[:60]
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
     # for record in tqdm.tqdm(data[:60]):
@@ -191,8 +192,9 @@ def main():
     # Iterate through prompt_batches and write each batch as a line in the JSONL file
     with open(output_file_path, 'w') as jsonl_file:
         for batch in prompt_batches:
-            json_line = json.dumps(batch)
-            jsonl_file.write(json_line + '\n')
+            for entry in batch:
+                json_line = json.dumps(entry)
+                jsonl_file.write(json_line + '\n')
     print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
 
 if __name__ == "__main__":
