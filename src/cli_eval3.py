@@ -107,8 +107,8 @@ def main():
         data = [json.loads(line) for line in file]
 
     # Initialize other variables...
-    random.shuffle(data)
-    data = data[:60]
+    # random.shuffle(data)
+    # data = data[:60]
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
     # for record in tqdm.tqdm(data[:60]):
@@ -119,7 +119,7 @@ def main():
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
-            # try: 
+            try: 
                 instruction = record["instruction"]
 
                 # logging.info('Summary')
@@ -141,16 +141,16 @@ def main():
                 )
                 prompt_batch.append(
                             {
-                        'instruction': instruction,
-                        'output': record["output"],
                         'prompt': prompt,
                         'history': history,
                         'summary': summary,
                         'his_len': record["his_len"],
                         'type': record_type,
+                        'instruction': instruction,
+                        'output': record["output"],
                     }
                 )
-            # except:
+            except:
                 continue
 
         if prompt_batch: prompt_batches.append(prompt_batch)
