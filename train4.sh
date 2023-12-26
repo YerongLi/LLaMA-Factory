@@ -15,7 +15,7 @@ python src/train_bash.py \
     --gradient_accumulation_steps 2 \
     --lr_scheduler_type cosine \
     --logging_steps 10 \
-    --save_steps 50 \
-    --save_total_limit 2 \
+    --save_steps 10 \
+    --save_total_limit 5 \
     --learning_rate 5e-5 \
     --num_train_epochs 1000.0
