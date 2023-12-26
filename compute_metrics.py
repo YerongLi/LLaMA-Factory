@@ -223,6 +223,9 @@ def main():
     csv_writers = {}
 
     # Open CSV files for writing based on record type
+    anskeys= {
+    s
+    }
     for record_type in ans.keys():
         csv_filename = os.path.join(csv_directory, f'{record_type}.csv')
         csv_file = open(csv_filename, 'w', newline='', encoding='utf-8')
