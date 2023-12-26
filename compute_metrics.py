@@ -96,7 +96,6 @@ def main():
         #     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
         # )
         prompt = record['prompt']
-        continue
 
         response_output_pair = {
             'instruction': instruction,
@@ -110,7 +109,6 @@ def main():
         }
         # print(record_type)
         type_set.add(record_type)
-        print(type_set)
         # Append the pair to the corresponding record type list in the dictionary
         if record_type not in ans:
             ans[record_type] = []
