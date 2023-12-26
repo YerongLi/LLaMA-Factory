@@ -119,7 +119,7 @@ def main():
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
-            try: 
+            # try: 
                 instruction = record["instruction"]
 
                 # logging.info('Summary')
@@ -150,7 +150,7 @@ def main():
                         'type': record_type,
                     }
                 )
-            except:
+            # except:
                 continue
 
         if prompt_batch: prompt_batches.append(prompt_batch)
