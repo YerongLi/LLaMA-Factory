@@ -223,10 +223,10 @@ def main():
     csv_writers = {}
 
     # Open CSV files for writing based on record type
-    # anskeys= {}
-    anskeys=  ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
-    'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
-    for record_type in anskeys:
+    # # anskeys= {}
+    # anskeys=  ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
+    # 'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
+    for record_type in ans.keys():
         csv_filename = os.path.join(csv_directory, f'{record_type}.csv')
         csv_file = open(csv_filename, 'w', newline='', encoding='utf-8')
         csv_writers[record_type] = csv.writer(csv_file)
