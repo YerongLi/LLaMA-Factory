@@ -145,7 +145,7 @@ with open(output_file, 'a') as f:
                 r_tone_scores.extend(df['r_tone'])
                 o_tone_mapped_scores.extend(df['o_tone_mapped'])
                 r_tone_mapped_scores.extend(df['r_tone_mapped'])
-                error = np.sqrt(np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2)))
+                error = np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2))/4
 
                 # Print results for the current file
                 print(f"\nT-test for {filename}:")
