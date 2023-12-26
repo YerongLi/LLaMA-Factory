@@ -49,11 +49,11 @@ with open(output_file, 'a') as f:
             'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
             # print(event_types)
             for event_type in event_types + [None]:
-                print(f" <<<<< {event_type}")
                 if event_type is not None:
                     df = whole_df[whole_df['type'] == event_type]
                 else:
                     df = whole_df
+                print(f" <<<<< {event_type} {df.shape[0]}")
 
                 # Map 'o_tone', 'r_tone', and 'i_tone' values to 0, 1, -1 based on conditions
                 df['o_tone_mapped'] = df['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
