@@ -41,7 +41,7 @@ def main():
     # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
 
     # Load data from the file
-    with open("results.json", "r") as file:
+    with open("results.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
