@@ -84,7 +84,7 @@ def main():
         response = record["response"]
 
         # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
-        logging.info(record)
+        # logging.info(record)
         output = record["output"]
 
         # prompt_ids, _ = chat_model.template.encode_oneturn(
