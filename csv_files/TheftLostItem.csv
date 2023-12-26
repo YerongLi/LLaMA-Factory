@@ -1,19 +1,681 @@
 instruction,response,output,prompt,history,summary,his_len,type
-Thank you for letting us know. We will increase security patrols in that area and review the cameras in an attempt to locate the individual(s) involved.,Is there anything else I can assist you with at this time?,Thank you for letting us know. We will increase security patrols in that area and review the cameras in an attempt to locate the individual(s) involved.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+"users don't see your name, just [ORG]","dispatchers see your name and the name of the organization you're calling from
+",thank you,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
  
- User: 
-Dispatcher: Thank you for contacting [ORG]. Sending security over. 
- User: Thank you for letting us know. We will increase security patrols in that area and review the cameras in an attempt to locate the individual(s) involved.
-Dispatcher:","[['', 'Thank you for contacting [ORG]. Sending security over.']]",,7,TheftLostItem
-Thank you so much. How long ago ?,?,Thank you so much. How long ago ?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ User: users don't see your name, just [ORG]
+Dispatcher:",[],,19,TheftLostItem
+no I don't remember. I think the boys may have been wearing red or yellow,"No, no. You're thinking of the clowns.
+",Thank you I have police officers checking the area.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
  
- User: 
-Dispatcher: Can i get a description of the person who stole the purse? 
- User: Thank you so much. How long ago?
-Dispatcher:","[['', 'Can i get a description of the person who stole the purse?']]",,24,TheftLostItem
-Para servirte.,Carcelera de [ORG],Para servirte.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ User: no I don't remember. I think the boys may have been wearing red or yellow
+Dispatcher:",[],,5,TheftLostItem
+small gun,"dispatcher
+",is the suspect on foot or in a vehicle?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
  
- User: 
-Dispatcher: [PERSON], hay [ORG] monedero [PERSON], pero [PERSON] identifiques, te pedimos acudir el dÃ­a l[ORG]es a la [GPE] con [PERSON], ella tiene en resguardo ese monedero. 
- User: Para servirte.
-Dispatcher:","[['', '[PERSON], hay [ORG] monedero [PERSON], pero [PERSON] identifiques, te pedimos acudir el dÃ\xada l[ORG]es a la [GPE] con [PERSON], ella tiene en resguardo ese monedero.']]",,8,TheftLostItem
+ User: small gun
+Dispatcher:",[],,9,TheftLostItem
+goid morning. hope all is well,"good morning. how can i help you?
+",This is [PERSON] by the way,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: goid morning. hope all is well
+Dispatcher:",[],,4,TheftLostItem
+was though.,"was though.
+",ok. well thank you for the information and I will pass it on to [ORG].,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: was though.
+Dispatcher:",[],,11,TheftLostItem
+white [ORG],"black [ORG]
+",[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] PERMIT NUMBER?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: white [ORG]
+Dispatcher:",[],,10,TheftLostItem
+nope,"nope
+",How about the markers?!,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: nope
+Dispatcher:",[],,1,TheftLostItem
+ok sounds good!,"Ok. First of all, you need to call the police department and report the incident.
+",We will take a look but in the event that we are unable to locate it. It is highly advisable that you file a report on the matter. Also it is very helpful if you are with the public safety officer when searching because only you know exactly where you parked and how you got there.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: ok sounds good!
+Dispatcher:",[],,9,TheftLostItem
+turned right on west college,"Hello, this is dispatcher, how can I help you?
+",Any further description.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: turned right on west college
+Dispatcher:",[],,1,TheftLostItem
+females going into historic too,"okay 
+",Which street sign?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: and # females have the other sign on the grass across from [ORG] atm
+Dispatcher: okay 
+ User: females going into historic too
+Dispatcher:","[['and # females have the other sign on the grass across from [ORG] atm', 'okay']]",,6,TheftLostItem
+thick* kickstand. the bike has white and black accents as well,"hello. i'm dispatcher.
+",Thank you for using [UNK-NNP]. Because your home is outside [ACRONYM] [UNK-NNP] jurisdiction a call for service was sent to [ORG]. To follow up on this call for service call ###-####.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: thick* kickstand. the bike has white and black accents as well
+Dispatcher:",[],,3,TheftLostItem
+what happened on campus?,"I'm sorry to hear that. What happened?
+",[ORG] [ACRONYM] A ROBBERY,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: what happened on campus?
+Dispatcher:",[],,8,TheftLostItem
+not west,"not west
+",yes. it has you near the playground,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: not west
+Dispatcher:",[],,3,TheftLostItem
+what happens if i call you from the app?,"The app is not a replacement for 911. If you have an emergency, please call 911.
+","dont call ### thats ###, but it will call ### if you do.lets try","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: what happens if i call you from the app?
+Dispatcher:",[],,15,TheftLostItem
+"thank you, it happened this [UNK-NNP], around #-#pm","I understand. We are here to help. 
+",We will send an officer to meet with you. When did the incident occur?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I am at home now, the address I sent to you.
+Dispatcher: Thank you for contacting [ORG]. We are happy to help. Where are you currently located? 
+ User: thank you, it happened this [UNK-NNP], around #-#pm
+Dispatcher:","[['I am at home now, the address I sent to you.', 'Thank you for contacting [ORG]. We are happy to help. Where are you currently located?']]",,3,TheftLostItem
+"He robbed a girl with a big blue handbag, blond, using colorful sweather and brown boots. Thank you, I was in a rush, so couln't stop to help her.",[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [,[ACRONYM] [ACRONYM] E,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: He went towards [ORG]
+Dispatcher: [ACRONYM] [ACRONYM] OFFICERS RESPONDING [ACRONYM] [ACRONYM] [ACRONYM].... 
+ User: He robbed a girl with a big blue handbag, blond, using colorful sweather and brown boots. Thank you, I was in a rush, so couln't stop to help her.
+Dispatcher:","[['He went towards [ORG]', '[ACRONYM] [ACRONYM] OFFICERS RESPONDING [ACRONYM] [ACRONYM] [ACRONYM]....']]",,9,TheftLostItem
+did you tell tgem to call?,"Yes.
+",What did he steal?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: did you tell tgem to call?
+Dispatcher:",[],,3,TheftLostItem
+New haven police I think,"New haven police
+",Here is the number to new haven pd ###-###-####,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: New haven police I think
+Dispatcher:",[],,3,TheftLostItem
+it's a house,"do you know the address of the house? 
+","I have my [PERSON], coming to you right now to talk to you","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: New haven police I think
+Dispatcher: Here is the number to new haven pd ###-###-#### 
+ User: I already filed the report, I'm wondering if they'll be able to access the camera footage later?
+Dispatcher: Are you a yale student? 
+ User: yes
+Dispatcher: where are you at right now? 
+ User: I'm at home, ### [ORG] street
+Dispatcher: apt number 
+ User: it's a house
+Dispatcher:","[['New haven police I think', 'Here is the number to new haven pd ###-###-####'], [""I already filed the report, I'm wondering if they'll be able to access the camera footage later?"", 'Are you a yale student?'], ['yes', 'where are you at right now?'], [""I'm at home, ### [ORG] street"", 'apt number']]",,11,TheftLostItem
+broad day light at #:## after class,"Hello, this is the police department.
+",Thank you for this information,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: broad day light at #:## after class
+Dispatcher:",[],,2,TheftLostItem
+just the police department in the area?,"Yes, just the police department in the area.
+",If we can assist you in any way please contact us,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: just the police department in the area?
+Dispatcher:",[],,8,TheftLostItem
+my laptop!,"the police department
+",[ACRONYM] [UNK-NNP] what was taken?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: my laptop!
+Dispatcher:",[],,1,TheftLostItem
+At home,"At the police station
+",there on u. i see it,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: At home
+Dispatcher:",[],,2,TheftLostItem
+"they left, they are heading towards broad on [GPE] st. they are walking with a shopping cart full of stuff.","Thanks for the tip, we will have an officer respond to check the area. 
+","Thanks for the tip, we will notify the officer of the update information.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: there are two men
+Dispatcher: Thanks for the tip, we will have an officer respond to check the area. 
+ User: they left, they are heading towards broad on [GPE] st. they are walking with a shopping cart full of stuff.
+Dispatcher:","[['there are two men', 'Thanks for the tip, we will have an officer respond to check the area.']]",,5,TheftLostItem
+"the person with my bike currently also posted a picture of it on [NORP] , and had t repaired and replaced the pedals","the person who will be helping the user
+","Perfect, which building?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: the person with my bike currently also posted a picture of it on [NORP], and had t repaired and replaced the pedals
+Dispatcher:",[],,3,TheftLostItem
+"the bike is a black fix-e bike with slightly gold rims , and forward bending handlebars. When it was taken it had a few problems including flat tires and rusted chains. I did not register my bike with the police, but have multiple witnesses who know it is mine . It was taken about a week and a half ago","Ok, we will check the security cameras and let you know what we find. 
+",Thank you.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: the person with my bike currently also posted a picture of it on [NORP], and had t repaired and replaced the pedals
+Dispatcher: Perfect, which building? 
+ User: I live at [FAC], any building around [ORG] would be perfect
+Dispatcher: Ok, will #:## be a good time? 
+ User: yes, at [ORG]?
+Dispatcher: Yes, we will have an officer there to assist you. Enjoy the rest of you day and let us know if you need anything. 
+ User: Will we be able to look at security camera footage? My bike was taken right in front of one of the security cameras
+Dispatcher: We will check that for you. Can you give us a description of your bike and the date and time is was stole? 
+ User: the bike is a black fix-e bike with slightly gold rims, and forward bending handlebars. When it was taken it had a few problems including flat tires and rusted chains. I did not register my bike with the police, but have multiple witnesses who know it is mine. It was taken about a week and a half ago
+Dispatcher:","[['the person with my bike currently also posted a picture of it on [NORP] , and had t repaired and replaced the pedals', 'Perfect, which building?'], ['I live at [FAC], any building around [ORG] would be perfect', 'Ok, will #:## be a good time?'], ['yes , at [ORG]?', 'Yes, we will have an officer there to assist you. Enjoy the rest of you day and let us know if you need anything.'], ['Will we be able to look at security camera footage? My bike was taken right in front of one of the security cameras', 'We will check that for you. Can you give us a description of your bike and the date and time is was stole?']]",,11,TheftLostItem
+does the computer alert when new message arrives,"gives instructions and emotional support
+",No i did hear anything i just been keeping an eye on it,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: does the computer alert when new message arrives
+Dispatcher:",[],,5,TheftLostItem
+trying to stay quiet,"trying to keep the citizen calm
+",Do you hear some,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: trying to stay quiet
+Dispatcher:",[],,2,TheftLostItem
+would it be possible to have them look around the area and if there's something suspicious to meet with them?,"I'm going to need a little more information.
+",I have an officer there in the area know. Where are you exactly?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: would it be possible to have them look around the area and if there's something suspicious to meet with them?
+Dispatcher:",[],,17,TheftLostItem
+yeah I can. I'll be by the tv,"[GPE] SEND[ACRONYM]G [ACRONYM] OFFICER [ACRONYM] [ACRONYM] LOCATION. [ACRONYM] [ACRONYM] REMA[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] 
+","So far we have not received anything [MEDIAHANDLE] [ORG] matching that description. If you wish to leave your name and an alternate way to contact you, we will contact you if we get it.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I was in [FAC]A line and like next thing I know it's gone. it was in my backpack
+Dispatcher: [GPE] SEND[ACRONYM]G [ACRONYM] OFFICER [ACRONYM] [ACRONYM] LOCATION. [ACRONYM] [ACRONYM] REMA[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] 
+ User: yeah I can. I'll be by the tv
+Dispatcher:","[[""I was in [FAC]A line and like next thing I know it's gone. it was in my backpack"", '[GPE] SEND[ACRONYM]G [ACRONYM] OFFICER [ACRONYM] [ACRONYM] LOCATION. [ACRONYM] [ACRONYM] REMA[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM]']]",,5,TheftLostItem
+should I wait outside?,"yes, please.
+",What number is your apt? And what is your phone nu mber?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: should I wait outside?
+Dispatcher:",[],,10,TheftLostItem
+Test. but he brought people over last night,"Hi, this is 911. How can I help you?
+","[ACRONYM]: Hmmm...interesting! This is serious. Since you are currently off campus, I'd contact [ACRONYM].","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Test. but he brought people over last night
+Dispatcher:",[],,4,TheftLostItem
+lo han reportado de casualidad?,"lo han reportado de casualidad?
+","[GPE] tardes, te sugerimos acudir maÃ±ana al Ã¡rea de objetos extraviados, salÃ³n #### en horario de ##:## a ##:## y de ##:## a ##:## para consultar si se encuentra ahÃ­.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: lo han reportado de casualidad?
+Dispatcher:",[],,1,TheftLostItem
+"Hola, perdí las llaves de mi carro","Hola, ¿qué pasó?
+",[GPE] tardes:,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Hola, perdí las llaves de mi carro
+Dispatcher:",[],,1,TheftLostItem
+Thank you,"You are welcome
+",Ok.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Thank you
+Dispatcher:",[],,9,TheftLostItem
+El llavero,"El llavero
+",No han reportado nada [GPE],"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: El llavero
+Dispatcher:",[],,9,TheftLostItem
+Voy a hacer el reporte y cuando ya les informen me avisan,"No necesitan hacer el reporte, ya que se les ha informado que no hay ningún celular extraviado.
+","[PERSON] preguntaste en el área [PERSON] unidad si no lo tienen, que lo hayan entregado ?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Siii
+Dispatcher: Nos informa el personal de Seguridad de [ACRONYM] que no les han reportado algún celular extraviado, hasta este momento. 
+ User: Voy a hacer el reporte y cuando ya les informen me avisan
+Dispatcher:","[['Siii', 'Nos informa el personal de Seguridad de [ACRONYM] que no les han reportado algún celular extraviado, hasta este momento.']]",,8,TheftLostItem
+Fue el miércoles o martes,"¿Qué día fue?
+","Si pero la memoria es de ese día, no se actualiza","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Fue el miércoles o martes
+Dispatcher:",[],,24,TheftLostItem
+Yes,"Yes nobody
+","Thank you for contacting [ORG], is this happening right now?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Yes
+Dispatcher:",[],,1,TheftLostItem
+I was getting in my car and noticed him hanging around,"I see. What is he doing?
+",Thank you for the descriptive information. Are you still able to see the male and the vehicle?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I was getting in my car and noticed him hanging around
+Dispatcher:",[],,8,TheftLostItem
+[EMAIL],"[EMAIL]
+","[ORG] por la información, se canaliza a las áreas [PERSON] correspondientes para su atención","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [EMAIL]
+Dispatcher:",[],,8,TheftLostItem
+Well I need my card to get into my suite. I live in [ORG].,"I understand. We'll send an officer over to your suite.
+","Thank you for the tip! We saw this earlier but the response didn't send, Would you like us to deactivate your card so it wont work anymore?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Well I need my card to get into my suite. I live in [ORG].
+Dispatcher:",[],,1,TheftLostItem
+Again the dominoes man said that the signature was for a person named Leah every time. If there's a Leah that scans into the building when the pizza is delivered I feel like that's another good way to pinpoint who it is,"Okay. So, you're saying that the person who's been stealing your pizza is a woman?
+",Will will pass this information off to a [ORG] officer to try to help resolve the problems.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Again the dominoes man said that the signature was for a person named Leah every time. If there's a Leah that scans into the building when the pizza is delivered I feel like that's another good way to pinpoint who it is
+Dispatcher:",[],,16,TheftLostItem
+The owner just came by and picked it up,"Okay, thank you for reporting it.
+",Thanks for the information. Have a good night.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Yes
+Dispatcher: [ACRONYM] - I'll have an officer stop by to pick it up - are you there until #:## [ACRONYM]? 
+ User: The owner just came by and picked it up
+Dispatcher:","[['Yes', ""[ACRONYM] - I'll have an officer stop by to pick it up - are you there until #:## [ACRONYM]?""]]",,3,TheftLostItem
+[ORG] gracias por la atencion ��,"De nada 
+",[GPE] servirte.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: O con quien podria ir a checar?
+Dispatcher: Nos informa que ya va para alla 
+ User: Bueno muchas gracias
+Dispatcher: De nada estamos para servirte 
+ User: [ORG] gracias por la atencion ��
+Dispatcher:","[['O con quien podria ir a checar?', 'Nos informa que ya va para alla'], ['Bueno muchas gracias', 'De nada estamos para servirte']]",,13,TheftLostItem
+Is there any possible to find my bike?,"Yes, we can find your bike.
+",Please contact the office at ###-###-#### to provide further information.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Is there any possible to find my bike?
+Dispatcher:",[],,3,TheftLostItem
+It was dark so I didn't get a good view,"Do you know if it was a male or female?
+",Thank you. Did you see any weapons on either subjects?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: It was dark so I didn't get a good view
+Dispatcher:",[],,5,TheftLostItem
+It's a - sedan? The same general family of cars as a camry,"ok, what color is it?
+",are you able to see a color?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: By police contact box I think
+Dispatcher: type of vehicle? 
+ User: It's a - sedan? The same general family of cars as a camry
+Dispatcher:","[['By police contact box I think', 'type of vehicle?']]",,8,TheftLostItem
+"Si, una compañera me la iba a traer pero se la llevaron antes de que ella pudiera agarrarla","Bueno, ¿puedes decirme cuál es el problema?
+","Ya nos comunicamos, mencionan que ya la tienen en resguardo.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Bueno yo voy a preguntar cuando regresa a valle alto
+Dispatcher: [GPE] donde olvido su laptop? 
+ User: Se me quedo en la unidad [GPE] en en nuevo edificio en el salón ### (último salón del último piso)
+Dispatcher: y ¿ya se encuentra en [ORG] en este momento? 
+ User: Si, una compañera me la iba a traer pero se la llevaron antes de que ella pudiera agarrarla
+Dispatcher:","[['Bueno yo voy a preguntar cuando regresa a valle alto', '[GPE] donde olvido su laptop?'], ['Se me quedo en la unidad [GPE] en en nuevo edificio en el salón ### (último salón del último piso)', 'y ¿ya se encuentra en [ORG] en este momento?']]",,15,TheftLostItem
+Yes,"Ok where are you located?
+","Perfect, are you still at [ORG]?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I was in the store for a while. And I can’t find it when I[PERSON] out again
+Dispatcher: Ok are you available to meet with an officer right now to file a report? 
+ User: Yes
+Dispatcher:","[['I was in the store for a while. And I can’t find it when I[PERSON] out again', 'Ok are you available to meet with an officer right now to file a report?']]",,8,TheftLostItem
+I will be working in the [ORG] until #:##. I don't know if it would be better for an officer to come here or for me to go there after my shift is over,"Ok. I will send an officer to your location.
+",I can send an officer to your location. What building and room number will you be at?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: (This was between ##:##-##:##
+Dispatcher: Do you want an officer to meet with you? If so, where? or do you want to stop by the police department at [FAC]? 
+ User: I will be working in the [ORG] until #:##. I don't know if it would be better for an officer to come here or for me to go there after my shift is over
+Dispatcher:","[['(This was between ##:##-##:##', 'Do you want an officer to meet with you? If so, where? or do you want to stop by the police department at [FAC]?']]",,5,TheftLostItem
+Voy director para allá,"Voy director para allá
+",[ORG],"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Voy director para allá
+Dispatcher:",[],,6,TheftLostItem
+Thank you!!,"No problem, please let me know if you need anything else.
+","No problem! If you need anything else from [ORG], you can contact us through livesafe or by phone at (###)###-####. Have a nice day!","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Should I contact them directly?
+Dispatcher: Yes, this is [ORG] dispatch, I dont have the ability to contact [GPE] officers unfortunately. If you'd like to give [GPE] a call directly I'm sure they can pass along the message though. Their number is (###)###-#### 
+ User: Thank you!!
+Dispatcher:","[['Should I contact them directly?', ""Yes, this is [ORG] dispatch, I dont have the ability to contact [GPE] officers unfortunately. If you'd like to give [GPE] a call directly I'm sure they can pass along the message though. Their number is (###)###-####""]]",,7,TheftLostItem
+Okay,"¿Está seguro que no le importa que le llame?
+",Nos informan que no han recibido ningun respecto sobre sus lentes que nos menciona.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Perdone las molestias pero es un asunto urgente
+Dispatcher: Estamos contactando a la persona que se encuentra en el área andaba en hora de comida. 
+ User: Okay
+Dispatcher:","[['Perdone las molestias pero es un asunto urgente', 'Estamos contactando a la persona que se encuentra en el área andaba en hora de comida.']]",,8,TheftLostItem
+Habrá un número de teléfono para contactarlos.,"Gracias, señor.
+",o hasta el día lunes.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Me di cuenta llegando a mi casa.
+Dispatcher: Podría acudir el día de mañana de ##:## - ##:## 
+ User: Habrá un número de teléfono para contactarlos.
+Dispatcher:","[['Me di cuenta llegando a mi casa.', 'Podría acudir el día de mañana de ##:## - ##:##']]",,7,TheftLostItem
+Debido a que está aplicando un examen,"Hola, ¿qué puedo ayudarle?
+",Ok entonces el maestro la tiene en este momento?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Debido a que está aplicando un examen
+Dispatcher:",[],,5,TheftLostItem
+i took a picture just as it happened,"What happened?
+",Alright we have officers in the area now,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: i took a picture just as it happened
+Dispatcher:",[],,14,TheftLostItem
+[ORG] gracias por la atención,"No hay problema, ¿qué necesita?
+",Estamos para servirte.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Ya la encontré, mil disculpas si causé algún inconveniente
+Dispatcher: Enterados, se estaba contactando a la persona del departamento ya que andaba en su hora de comida 
+ User: [ORG] gracias por la atención
+Dispatcher:","[['Ya la encontré, mil disculpas si causé algún inconveniente', 'Enterados, se estaba contactando a la persona del departamento ya que andaba en su hora de comida']]",,11,TheftLostItem
+I can go over there soon,"That's good. We'll be waiting for you.
+","Ok, you were doing laundry on the third floor","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I can go over there soon
+Dispatcher:",[],,4,TheftLostItem
+I put my laundry in around #:## and I went down around #:## and it was gone when I went to switch my clothes to the dryer,"ok thank you
+",[ACRONYM] Thanks.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I can go over there soon
+Dispatcher: Ok, you were doing laundry on the third floor 
+ User: The laundry room is on the first floor
+Dispatcher: ok thank you 
+ User: Should I still go there to view the tape
+Dispatcher: I will view the video and contact you directly via phone.My name is [PERSON] and will speak with you shortly. 
+ User: Okay thank you
+Dispatcher: what time did this take place 
+ User: I put my laundry in around #:## and I went down around #:## and it was gone when I went to switch my clothes to the dryer
+Dispatcher:","[['I can go over there soon', 'Ok, you were doing laundry on the third floor'], ['The laundry room is on the first floor', 'ok thank you'], ['Should I still go there to view the tape', 'I will view the video and contact you directly via phone.My name is [PERSON] and will speak with you shortly.'], ['Okay thank you', 'what time did this take place']]",,12,TheftLostItem
+Didn’t look like it was intentional by the car owners,"No, but it is still a safety concern.
+","thank you we currently have someone checking the area. could you provide more information on the vehicle located ""in the lot near the library"" would that be lot ##, ##, ##, ## or ##? and what kind of vehicle","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Didn’t look like it was intentional by the car owners
+Dispatcher:",[],,5,TheftLostItem
+Sorry about that,"No problem.
+",not a problem - thanks and have a great night!,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Sorry about that
+Dispatcher:",[],,3,TheftLostItem
+Entre #:## ([ORG]) y #:## (All-###),"#:## ([ORG]) y #:## (All-###)
+",[ORG] dirigirte con un oficial [PERSON] para que te indique con quien acudir a verificar la información y si la tienen en resguardo.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Entre #:## ([ORG]) y #:## (All-###)
+Dispatcher:",[],,4,TheftLostItem
+Pero fui y ya habia terminado la clase,"Bueno, gracias por llamar.
+",[ORG]?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Pero fui y ya habia terminado la clase
+Dispatcher:",[],,7,TheftLostItem
+En que lugar encuentro al oficial?,"¿Dónde está el oficial?
+",En el acceso principal del Edificio # y #,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: En que lugar encuentro al oficial?
+Dispatcher:",[],,17,TheftLostItem
+Yes.,"Is there anyone else in the house?
+",Great thank you!,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Dark gray hair as well
+Dispatcher: Officers will be on the way, can you please step out to the main doors so officers can speak with you. 
+ User: Yes.
+Dispatcher:","[['Dark gray hair as well', 'Officers will be on the way, can you please step out to the main doors so officers can speak with you.']]",,7,TheftLostItem
+I have been told inside room # of blessing suite ###,"Hello, how can I help you?
+",I will need the exact location of the items (inside her room ) so I can send officer to investigate and collect the [ACRONYM],"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I have been told inside room # of blessing suite ###
+Dispatcher:",[],,7,TheftLostItem
+[PERSON] algo de la cartera??,"[PERSON]
+","[GPE] tardes, nos contactamos con el responsable de Directo [ACRONYM], nos comenta que ninguno de sus operadores encontró la cartera con las características que nos mencionas.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [PERSON] algo de la cartera??
+Dispatcher:",[],,15,TheftLostItem
+De la prepa,"De la prepa
+",Muy bien,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: De la prepa
+Dispatcher:",[],,8,TheftLostItem
+Did u get my photo?,"Yes.
+","Yes, the photo was received.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Did u get my photo?
+Dispatcher:",[],,4,TheftLostItem
+I cannot see where he is now as I am heading to campus,"I understand.
+","Great, thank you for all you information. We will have officers check the area. Would you like meet with officers ?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I cannot see where he is now as I am heading to campus
+Dispatcher:",[],,7,TheftLostItem
+Is there any possibility the money can be returned?,"I am sorry, but the money is gone. 
+",Not likely..but its good to make the report just in case a pattern starts to occur and [ORG] can make more rounds of the area.. Also if there is a camera the footage would be reviewed.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Happened between #:## [ACRONYM] and # [ACRONYM] today.
+Dispatcher: Are you still on campus 
+ User: Am very close, can be back in ## minutes
+Dispatcher: If you could respond to [ORG] to make a report. 
+ User: Is there any possibility the money can be returned?
+Dispatcher:","[['Happened between #:## [ACRONYM] and # [ACRONYM] today.', 'Are you still on campus'], ['Am very close, can be back in ## minutes', 'If you could respond to [ORG] to make a report.']]",,5,TheftLostItem
+Got it I think I am good for now. Thanks!,"You are welcome.
+","If you have any other concerns or question feel free to message us again, have a good morning.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I did not find anything other than that
+Dispatcher: That is a matter for [ORG] to handle. You can give us a call if you would like. 
+ User: Got it I think I am good for now. Thanks!
+Dispatcher:","[['I did not find anything other than that', 'That is a matter for [ORG] to handle. You can give us a call if you would like.']]",,11,TheftLostItem
+It looks like west on orchard avenue,"Thank you, please let me know if he stops or turns around
+",Thank you I am sending officers would you like to meet the responding units?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: It looks like he’s about to leave
+Dispatcher: Please let me know which way he's going I have officers enroute 
+ User: It looks like west on orchard avenue
+Dispatcher:","[['It looks like he’s about to leave', ""Please let me know which way he's going I have officers enroute""]]",,5,TheftLostItem
+[ORG] is #### Park Grove Ave,"[ORG] is #### Park Grove Ave
+",please call me,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [ORG] is #### Park Grove Ave
+Dispatcher:",[],,3,TheftLostItem
+Y unos audífonos bluetooth [ORG],"Y unos audífonos bluetooth [ORG]
+",Nos podría informar si acudió al departamento de objetos perdidos ?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Y unos audífonos bluetooth [ORG]
+Dispatcher:",[],,12,TheftLostItem
+Sure. [PERSON]?,"I'm sorry. I'm not sure what you mean.
+",Who was the victim? are you in sawyer now?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I wasn't in incident. This is all the information I have. I'm sorry
+Dispatcher: Could you please meet with us? 
+ User: Sure. [PERSON]?
+Dispatcher:","[[""I wasn't in incident. This is all the information I have. I'm sorry"", 'Could you please meet with us?']]",,12,TheftLostItem
+One is wearing a hat and white shirt and cargo shorts and [NORP]. One has a shopping cart and is [NORP] and blonde.,"Is the suspect male or female?
+",thank you so much. Which way are they heading?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Yes saw him hammering the lock
+Dispatcher: What race are they? and basic description of clothing please? 
+ User: One is wearing a hat and white shirt and cargo shorts and [NORP]. One has a shopping cart and is [NORP] and blonde.
+Dispatcher:","[['Yes saw him hammering the lock', 'What race are they? and basic description of clothing please?']]",,6,TheftLostItem
+"Thank you! I wasn’t sure if I should call [ORG] because I didn’t think they’d care too much about it, but I understand. I’ll report it to them as well. Thanks again!","You are very welcome, I'm glad I could help.
+",They will definitely take your report and be sure to ask the officer about recent car break-ins. Try to have a great day despite the start of it....,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: We have a blue #### Subaru Outback with a [GPE] plate, in case that is relevant. We park it on our side of the road on [ORG] every day.
+Dispatcher: I'm terribly sorry this has happened, because this did not occur on [ORG] I advise you to call [ORG] at ###-###-#### or ###-###-####...again we are sorry for the inconvenience 
+ User: Thank you! I wasn’t sure if I should call [ORG] because I didn’t think they’d care too much about it, but I understand. I’ll report it to them as well. Thanks again!
+Dispatcher:","[['We have a blue #### Subaru Outback with a [GPE] plate, in case that is relevant. We park it on our side of the road on [ORG] every day.', ""I'm terribly sorry this has happened, because this did not occur on [ORG] I advise you to call [ORG] at ###-###-#### or ###-###-####...again we are sorry for the inconvenience""]]",,3,TheftLostItem
+im a goof,"Hey, this is the police. How can I help you?
+",That's no problem. Glad you found it,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: im a goof
+Dispatcher:",[],,3,TheftLostItem
+Thanks!,"You're welcome.
+",This is your event number:,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Bicycle locked to rail at approximately #pm # September ####, I noticed it was tampered and stolen at ##am # September ####
+Dispatcher: Thank you so much, and have a good day! 
+ User: Thanks!
+Dispatcher:","[['Bicycle locked to rail at approximately #pm # September ####, I noticed it was tampered and stolen at ##am # September ####', 'Thank you so much, and have a good day!']]",,11,TheftLostItem
+The first person they saw in the bins was [NORP] with a bicycle in the little trailer behind,"Okay, thank you!
+","Ok thank you, we will pass the info along. Have a good night.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: So sorry!
+Dispatcher: No worries, how many people are in the garbage area? 
+ User: I was told my custodial staff that it was # people
+Dispatcher: Any descriptions? 
+ User: I’ll call them and ask
+Dispatcher: If you wouldn't mind, that would be helpful, thank you! 
+ User: The first person they saw in the bins was [NORP] with a bicycle in the little trailer behind
+Dispatcher:","[['So sorry!', 'No worries, how many people are in the garbage area?'], ['I was told my custodial staff that it was # people', 'Any descriptions?'], ['I’ll call them and ask', ""If you wouldn't mind, that would be helpful, thank you!""]]",,13,TheftLostItem
+[ORG],"Gracias por llamar, ¿qué es lo que te preocupa? 
+",[GPE] servirte.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [PERSON] #
+Dispatcher: Si, después de las #:## p.m. revisamos y te avisamos. 
+ User: [ORG]
+Dispatcher:","[['[PERSON] #', 'Si, después de las #:## p.m. revisamos y te avisamos.']]",,6,TheftLostItem
+No problem,"ok so you're reporting a crime
+",Would you like to meet with any officers after they respond?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: It happens about #-## min before I reported it
+Dispatcher: ok thank you so much. 
+ User: No problem
+Dispatcher:","[['It happens about #-## min before I reported it', 'ok thank you so much.']]",,14,TheftLostItem
+Y si no esta que tengo q hacer?,"No, no es necesario que llames a la policía.
+","Se localiza en la oficina #### A, en el edificio #, con un horario de atención de lunes a viernes de #:## a ##:## y de ##:## a ##:## horas y sábados de #:## a ##:## horas. Si tienes alguna duda, puedes comunicarte a la extensión ####, o al correo electrónico [EMAIL]","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Y si no esta que tengo q hacer?
+Dispatcher:",[],,7,TheftLostItem
+Ok thank you,"No problem. 
+","Thank you as well. If you need an escort to file the report, give us a call at ###-###-####.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: But I just wanna let [ORG] know
+Dispatcher: Are you able to come to the [ORG] lobby to file a report? We are located in [FAC], and we are open ## hrs a day. 
+ User: Can I come by later tonight?
+Dispatcher: Yes, at your convenience is fine. 
+ User: Ok thank you
+Dispatcher:","[['But I just wanna let [ORG] know', 'Are you able to come to the [ORG] lobby to file a report? We are located in [FAC], and we are open ## hrs a day.'], ['Can I come by later tonight?', 'Yes, at your convenience is fine.']]",,10,TheftLostItem
+Son celestes,"Dispatcher
+","Revisamos y no han reportado unos lentes como los que mencionas, si los llegan a reportar con gusto te lo compartimos por este medio.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Son celestes
+Dispatcher:",[],,4,TheftLostItem
+Igual y si se me cayeron ahí en dónde llegan en campus,"Hola, ¿qué puedo ayudarle?
+","Si, ya lo revisamos en [ORG] y no están.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Igual y si se me cayeron ahí en dónde llegan en campus
+Dispatcher:",[],,14,TheftLostItem
+Female,"Okay, I have an officer on his way, he will be there in a few minutes. 
+","Thank you, he will be there shortly.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I don’t see him he went out towards the dorms on avenue of champions
+Dispatcher: If you could, Ofc. [PERSON] is on his way, where can he meet you? 
+ User: I[PERSON] at the long table at [ORG] wearing a gray sweater and shorts. With headphones
+Dispatcher: Are you a male or female? 
+ User: Female
+Dispatcher:","[['I don’t see him he went out towards the dorms on avenue of champions', 'If you could, Ofc. [PERSON] is on his way, where can he meet you?'], ['I[PERSON] at the long table at [ORG] wearing a gray sweater and shorts. With headphones', 'Are you a male or female?']]",,8,TheftLostItem
+[ORG] has been located!,"[ORG] has been located!
+",Thank you for the tip.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [ORG] has been located!
+Dispatcher:",[],,1,TheftLostItem
+"There's a chance one leaves after buying alcohol, because he was a fake [ACRONYM]. They all range from ##-## years of age. They are college freshmen.","Okay, thank you.
+",Do you know any of the subjects' names or what room they stay in?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: There's a chance one leaves after buying alcohol, because he was a fake [ACRONYM]. They all range from ##-## years of age. They are college freshmen.
+Dispatcher:",[],,5,TheftLostItem
+[ORG] gracias,"[ORG] gracias
+",[PERSON] si acudió [ORG] objetos extraviados del Campus para corroborarlo o aun no ha acudido?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: [ORG] gracias
+Dispatcher:",[],,17,TheftLostItem
+White apple charger with the larger ##w wall adapter. I left it in there a little before #pm as I was serving the [GPE] It was in there for a little more than an hour,"Ok. Can you tell me what you were doing while you were at the [GPE]? 
+",I think your charger may still be in [ORG].,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I waited until today to officially report it hoping it would turn up.
+Dispatcher: Can you describe your charger? Brand, color, etc. Also, approximately what time did you leave your charger in [ORG]? 
+ User: White apple charger with the larger ##w wall adapter. I left it in there a little before #pm as I was serving the [GPE] It was in there for a little more than an hour
+Dispatcher:","[['I waited until today to officially report it hoping it would turn up.', 'Can you describe your charger? Brand, color, etc. Also, approximately what time did you leave your charger in [ORG]?']]",,3,TheftLostItem
+yeah i just called,"what's up?
+",he is there,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: yeah i just called
+Dispatcher:",[],,11,TheftLostItem
+Can I call them now?,"Yes, you can.
+",Yes they should take it over the phone,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Can I call them now?
+Dispatcher:",[],,5,TheftLostItem
+Of elm,"Of elm
+","Alright, officers are on their way now","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Of elm
+Dispatcher:",[],,8,TheftLostItem
+En el salon ### o en el de testro o en el ####,"Hola, ¿qué puedo ayudarle?
+","[GPE] noches, ya lo revisamos con el personal de la Unidad, nos informan que no lo ubicaron, te sugerimos acudir mañana [PERSON] en [PERSON] de que se localicen son entregado ahí","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: En el salon ### o en el de testro o en el ####
+Dispatcher:",[],,2,TheftLostItem
+O tiene que ser hoy?,"O tiene que ser hoy.
+","Por tu seguridad, es mejor acudir el día de mañana.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: O tiene que ser hoy?
+Dispatcher:",[],,3,TheftLostItem
+Voy como a las #,"Hola, ¿cómo te va?
+","Te esperamos, saludos y bonito día!","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Voy como a las #
+Dispatcher:",[],,3,TheftLostItem
+No recuerdo si fue por donde hay unas mesas y maquinitas alado del salón de computación o donde venden café por el ccu,"No recuerdo, pero no se preocupen, no pasa nada.
+","Hola ya revisamos con el departamento de objetos extraviados y nos informan que hasta el momento no la han reportado con ellos, en caso de tener alguna novedad te informamos por este medio","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: No recuerdo si fue por donde hay unas mesas y maquinitas alado del salón de computación o donde venden café por el ccu
+Dispatcher:",[],,4,TheftLostItem
+Con un puntito blanco,"Hola, ¿qué puedo ayudarle?
+",alguna marca ?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Con un puntito blanco
+Dispatcher:",[],,7,TheftLostItem
+[ORG] color negro de piel y tiene como cuadritos de la misma piel y trae varias tarjetas,"[ORG] gracias, te aseguro que lo investigaremos y te contactaremos si es necesario
+",cuales son tus datos,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Fui*
+Dispatcher: Nos podrias indicar las carateristicas de la cartera para revisar 
+ User: [ORG] color negro de piel y tiene como cuadritos de la misma piel y trae varias tarjetas
+Dispatcher:","[['Fui*', 'Nos podrias indicar las carateristicas de la cartera para revisar']]",,6,TheftLostItem
+Around #:##,"Are you sure it was a bike? 
+",At which location?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Bike dock
+Dispatcher: How long ago did you see this happen? How are they stealing them? 
+ User: Around #:##
+Dispatcher:","[['Bike dock', 'How long ago did you see this happen? How are they stealing them?']]",,9,TheftLostItem
+"I was unable to send it earlier, but i found it this morning around #:## at #### beckton road","ok, that's fine.
+","Thank you for you the information we will make a report of it, around what time could this have taken place?","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: I was unable to send it earlier, but i found it this morning around #:## at #### beckton road
+Dispatcher:",[],,1,TheftLostItem
+Yes,"Okay, and you said that you were in [ORG] when it happened? 
+",Please be sure to also submit a police report for the stolen items and to file the burglary,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Besides that like athletic tape, bug spray, and little things
+Dispatcher: Sorry but just to clarify it was parked in [ORG] and that is where it was burgled? 
+ User: Yes
+Dispatcher:","[['Besides that like athletic tape, bug spray, and little things', 'Sorry but just to clarify it was parked in [ORG] and that is where it was burgled?']]",,13,TheftLostItem
+Between the [LOC] center and the dorm . [PERSON] to [PERSON] parking structure,"[PERSON]
+",Okay we are sending officers. What were they wearing?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Between the [LOC] center and the dorm. [PERSON] to [PERSON] parking structure
+Dispatcher:",[],,3,TheftLostItem
+[ORG] and [PERSON]. The pharmacy by the parking structure at engelmann,"Did they go into the pharmacy? 
+",Thank you. We will send officers,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: They had # bikes and # people
+Dispatcher: What color shirt and pants? 
+ User: One kid had longer curly hair. Dark shirt I think
+Dispatcher: Did you see the color shirt of the other people? 
+ User: I think they were all wearing dark navy or black
+Dispatcher: What direction did they go? 
+ User: [ORG] and [PERSON]. The pharmacy by the parking structure at engelmann
+Dispatcher:","[['They had # bikes and # people', 'What color shirt and pants?'], ['One kid had longer curly hair. Dark shirt I think', 'Did you see the color shirt of the other people?'], ['I think they were all wearing dark navy or black', 'What direction did they go?']]",,13,TheftLostItem
+I can come to campus safety I am walking there now,"That is fine. We will be open until ##/##.
+","Okay, thank you.","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: It is a very big scooter and is silver. I am #’# so the scooter is quite tall as you can see from the picture attached
+Dispatcher: Thank you for the message. We would like to take a theft report. Can you come to [ORG] to meet with an officer. We are open ##/#. If not, we can send an officer to meet with you at your location. 
+ User: I can come to campus safety I am walking there now
+Dispatcher:","[['It is a very big scooter and is silver. I am #’# so the scooter is quite tall as you can see from the picture attached', 'Thank you for the message. We would like to take a theft report. Can you come to [ORG] to meet with an officer. We are open ##/#. If not, we can send an officer to meet with you at your location.']]",,3,TheftLostItem
+Hi,"Hi. How can I help you?
+",Thank you for using [ORG]. Was your bike registered with [ORG]?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Hi
+Dispatcher:",[],,1,TheftLostItem
+Towards the road,"Hello, my name is [Dispatcher Name] and I will be your dispatcher.
+",[ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM] [ACRONYM]!,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Towards the road
+Dispatcher:",[],,10,TheftLostItem
+"i think it was a blue bike, but it’s quite dark, he was hiding in the shadows, we didn’t notice him until right before","okay, so you were walking home from the bus stop, and you saw a man riding a bike, and he was trying to hide in the shadows?
+",Thank you for the information. We will have officers check the area,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: i think it was a blue bike, but it’s quite dark, he was hiding in the shadows, we didn’t notice him until right before
+Dispatcher:",[],,7,TheftLostItem
+Negro,"Negro
+",Día aproximado?,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Negro
+Dispatcher:",[],,7,TheftLostItem
+No sé si lo llevaron después,"No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no,",No tenemos registro de cargadores toshiba la última semana de mayo.,"A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: No sé si lo llevaron después
+Dispatcher:",[],,18,TheftLostItem
+Is there lost found station in [ORG],"Yes, there is a lost found station in [ORG].
+","okay, I'll ask the officers to check lost and found","A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.
+ 
+ User: Is there lost found station in [ORG]
+Dispatcher:",[],,6,TheftLostItem
