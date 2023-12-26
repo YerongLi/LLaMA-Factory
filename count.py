@@ -34,12 +34,7 @@ total_negative_i_tone_positive_r_tone_count = 0
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
-    'group_LIWC-22 Results - SuspiciousActivity - LIWC Analysis.csv.csv',
-    'group_LIWC-22 Results - DrugsAlcohol - LIWC Analysis.csv.csv',
-    'group_LIWC-22 Results - EmergencyMessage - LIWC Analysis.csv.csv',
-    'group_LIWC-22 Results - HarassmentAbuse - LIWC Analysis.csv.csv',
-    'group_LIWC-22 Results - MentalHealth - LIWC Analysis.csv.csv',
-    'group_LIWC-22 Results - TheftLostItem - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - all - LIWC Analysis.csv.csv',
 ]
     for filename in all_files:
     # for filename in os.listdir(directory_path):
@@ -49,7 +44,7 @@ with open(output_file, 'a') as f:
 
             # Read the CSV file into a pandas DataFrame
             df = pd.read_csv(file_path)
-
+            print(df['type'].unique())
             # Map 'o_tone', 'r_tone', and 'i_tone' values to 0, 1, -1 based on conditions
             df['o_tone_mapped'] = df['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
             df['r_tone_mapped'] = df['r_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
