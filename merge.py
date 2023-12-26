@@ -37,6 +37,7 @@ def process_filenames(folder_path):
                     df[f"prompt"] = file_df['prompt']
                     df[f"history"] = file_df['history']
                     df[f"summary"] = file_df['summary']
+                    df[f"type"] = file_df['type']
                     try:
                         df[f"his_len"] = file_df['his_len']
                     except:
