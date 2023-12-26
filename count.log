@@ -1,4 +1,4 @@
- <<<<< SuspiciousActivity
+ <<<<< SuspiciousActivity 435
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 4.60
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 2.53
 
@@ -22,7 +22,7 @@ P-value: 0.00
 ======================= ========================= =========================== ========================
 
 
- <<<<< DrugsAlcohol
+ <<<<< DrugsAlcohol 263
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 3.04
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 2.28
 
@@ -46,7 +46,7 @@ P-value: 0.00
 ======================= ========================= =========================== ========================
 
 
- <<<<< EmergencyMessage
+ <<<<< EmergencyMessage 340
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 4.12
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 2.35
 
@@ -70,7 +70,7 @@ P-value: 0.09
 ======================= ========================= =========================== ========================
 
 
- <<<<< FacilitiesMaintenance
+ <<<<< FacilitiesMaintenance 107
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 1.87
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 1.87
 
@@ -94,7 +94,7 @@ P-value: 0.36
 ======================= ========================= =========================== ========================
 
 
- <<<<< HarassmentAbuse
+ <<<<< HarassmentAbuse 200
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 6.50
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 3.00
 
@@ -118,7 +118,7 @@ P-value: 0.02
 ======================= ========================= =========================== ========================
 
 
- <<<<< MentalHealth
+ <<<<< MentalHealth 66
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 3.03
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 7.58
 
@@ -142,7 +142,7 @@ P-value: 0.01
 ======================= ========================= =========================== ========================
 
 
- <<<<< TheftLostItem
+ <<<<< TheftLostItem 114
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 2.63
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 0.88
 
@@ -166,7 +166,7 @@ P-value: 0.29
 ======================= ========================= =========================== ========================
 
 
- <<<<< SafeRide&SafeWalk
+ <<<<< SafeRide&SafeWalk 2486
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 0.36
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 0.52
 
@@ -190,7 +190,7 @@ P-value: 0.02
 ======================= ========================= =========================== ========================
 
 
- <<<<< None
+ <<<<< None 4544
 Percentage where 'i_tone' is negative while 'o_tone' is positive: 2.27
 Percentage where 'i_tone' is negative while 'r_tone' is positive: 1.56
 
