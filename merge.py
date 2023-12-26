@@ -6,7 +6,9 @@ def process_filenames(folder_path):
     # Get all file names in the folder
     all_files = os.listdir(folder_path)
     print(all_files)
-    all_files = ['all - LIWC Analysis.csv']
+    all_files = ['i-LIWC-22 Results - all - LIWC Analysis.csv',
+    'o-LIWC-22 Results - all - LIWC Analysis.csv',
+    'r-LIWC-22 Results - all - LIWC Analysis.csv',]
     # Group file names based on suffix
     groups = {}
     for name in all_files:
