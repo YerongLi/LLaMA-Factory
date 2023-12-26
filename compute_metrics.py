@@ -10,8 +10,6 @@ from bert_score import BERTScorer
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
 from nltk.util import ngrams
-from llmtuner import ChatModel
-from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
 
 LOGFILE='./evaloutput.log'
