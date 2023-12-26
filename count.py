@@ -49,6 +49,7 @@ with open(output_file, 'a') as f:
             'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
             # print(event_types)
             for event_type in event_types + [None]:
+                print(f" <<<<< {event_type}")
                 if event_type is not None:
                     df = whole_df[whole_df['type'] == event_type]
                 else:
