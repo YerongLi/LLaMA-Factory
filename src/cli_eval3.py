@@ -19,7 +19,7 @@ from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=4
+BATCH_SIZE=8
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -60,19 +60,11 @@ def main():
     # import logging
 
     # Initialize lists to store scores
-    bleu_scores = []
-    dist1_scores = []
-    dist2_scores = []
-    perplexity_scores = []
-    rouge_scores = []
-    rouge_2_scores = []
-    bert_scores = []
-    scorer = BERTScorer(model_type='bert-base-uncased')
 
     # Type-wise scores
     type_scores = {}
     # Iterate through each record in the 'data' list
-    # for record in tqdm.tqdm(data[:10]):
+    for record in tqdm.tqdm(data[:10]):
 
     ans = {}
 
