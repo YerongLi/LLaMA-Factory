@@ -19,7 +19,7 @@ from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=16
+BATCH_SIZE=10
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -167,6 +167,13 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
+        if batch_index % 50:
+            print('Saving Results')
+            with open(output_file_path, 'w') as jsonl_file:
+                for batch in prompt_batches:
+                    for entry in batch:
+                        json_line = json.dumps(entry)
+                        jsonl_file.write(json_line + '\n')
     # Assuming you have an output file path like 'results.jsonl'
     output_file_path = 'results.jsonl'
     print('Saving Results')
