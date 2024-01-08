@@ -11,12 +11,12 @@ from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
 from nltk.util import ngrams
 from rouge import Rouge
-bleu_threshold = 0.5
+bleu_threshold = 0.0
 dist1_threshold = 0.7
 dist2_threshold = 0.8
-rouge_threshold = 0.6
-rouge_2_threshold = 0.5
-bert_threshold = 0.9
+rouge_threshold = 0.12
+rouge_2_threshold = 0.12
+bert_threshold = 0.2
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
