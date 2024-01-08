@@ -20,6 +20,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=10
+output_file_path = 'results.jsonl'
+
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -177,7 +179,6 @@ def main():
                         json_line = json.dumps(entry)
                         jsonl_file.write(json_line + '\n')
     # Assuming you have an output file path like 'results.jsonl'
-    output_file_path = 'results.jsonl'
     print('Saving Results')
     # Iterate through prompt_batches and write each batch as a line in the JSONL file
     with open(output_file_path, 'w') as jsonl_file:
