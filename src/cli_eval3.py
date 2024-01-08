@@ -167,7 +167,9 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if batch_index % 50:
+        if 0 == batch_index % 50:
+            output_file_path = 'results.jsonl'
+
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
                 for batch in prompt_batches:
