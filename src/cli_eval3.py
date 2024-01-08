@@ -64,7 +64,6 @@ def main():
     # Type-wise scores
     type_scores = {}
     # Iterate through each record in the 'data' list
-    for record in tqdm.tqdm(data[:100]):
 
     ans = {}
 
@@ -99,8 +98,8 @@ def main():
         data = [json.loads(line) for line in file]
 
     # Initialize other variables...
-    # random.shuffle(data)
-    # data = data[:60]
+    random.shuffle(data)
+    data = data[:60]
     data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
 
     # for record in tqdm.tqdm(data[:60]):
