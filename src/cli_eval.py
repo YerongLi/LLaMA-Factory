@@ -22,7 +22,7 @@ if os.path.exists(LOGFILE):
 else:
     print(f"The file {LOGFILE} does not exist.")
 rouge = Rouge()
-BATCH_SIZE = 2
+BATCH_SIZE = 6
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -44,16 +44,7 @@ def main():
 
     # Load data from the file
     with open("data/police1.json", "r") as file:
-        data = [json.loads(line) for line in file]
-    # Initialize BLEURT
-    # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
-
-    # Initialize lists to store scores
-    # import tqdm
-    # import nltk
-    # from nltk.translate.bleu_score import sentence_bleu
-    # from rouge_score import rouge
-    # import logging
+        data = [json.loads(line) for line in file][:100]
 
     # Initialize lists to store scores
     bleu_scores = []
