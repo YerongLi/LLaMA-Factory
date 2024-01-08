@@ -82,7 +82,7 @@ def main():
         history = record["history"]
         record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
         summary = record["summary"] if 'summary' in record else ''
-        response = record["response"]
+        response = record["response"] if 'response' in record else ''
 
         # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
         # logging.info(record)
