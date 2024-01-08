@@ -94,7 +94,7 @@ def main():
         # prompt = chat_model.tokenizer.decode(
         #     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
         # )
-        prompt = record['prompt']
+        prompt = record['prompt'] if 'prompt' in record else ''
 
         response_output_pair = {
             'instruction': instruction,
