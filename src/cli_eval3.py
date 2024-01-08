@@ -113,6 +113,7 @@ def main():
         prompt_batch = []
         for record in batch:
             try: 
+                if "response" not in  record: continue
                 instruction = record["instruction"]
 
                 # logging.info('Summary')
