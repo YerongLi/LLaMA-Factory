@@ -11,7 +11,12 @@ from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
 from nltk.util import ngrams
 from rouge import Rouge
-
+bleu_threshold = 0.5
+dist1_threshold = 0.7
+dist2_threshold = 0.8
+rouge_threshold = 0.6
+rouge_2_threshold = 0.5
+bert_threshold = 0.9
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -162,13 +167,24 @@ def main():
                 'rouge_2': [],
                 'bert': [],
             }
-        type_scores[record_type]['bleu'].append(bleu)
-        type_scores[record_type]['dist1'].append(response_dist1)
-        type_scores[record_type]['dist2'].append(response_dist2)
-        type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
-        type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
-        type_scores[record_type]['bert'].append(bert_score)
-
+        # type_scores[record_type]['bleu'].append(bleu)
+        # type_scores[record_type]['dist1'].append(response_dist1)
+        # type_scores[record_type]['dist2'].append(response_dist2)
+        # type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
+        # type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+        # type_scores[record_type]['bert'].append(bert_score)
+        if bleu > bleu_threshold:
+            type_scores[record_type]['bleu'].append(bleu)
+        if response_dist1 > dist1_threshold:
+            type_scores[record_type]['dist1'].append(response_dist1)
+        if response_dist2 > dist2_threshold:
+            type_scores[record_type]['dist2'].append(response_dist2)
+        if rouge_score[0]['rouge-l']['f'] > rouge_threshold:
+            type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
+        if rouge_score[0]['rouge-2']['f'] > rouge_2_threshold:
+            type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+        if bert_score > bert_threshold:
+            type_scores[record_type]['bert'].append(bert_score)
     # Calculate average scores (using macro-averaging)
     avg_bleu = sum(bleu_scores) / len(bleu_scores)
     avg_dist1 = sum(dist1_scores) / len(dist1_scores)
