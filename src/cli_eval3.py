@@ -64,7 +64,7 @@ def main():
     # Type-wise scores
     type_scores = {}
     # Iterate through each record in the 'data' list
-    for record in tqdm.tqdm(data[:10]):
+    for record in tqdm.tqdm(data[:100]):
 
     ans = {}
 
