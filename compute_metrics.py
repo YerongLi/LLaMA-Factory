@@ -79,7 +79,7 @@ def main():
         # logging.info(record["summary"])
         # logging.info(record["history"])
         if "response" not in  record: continue
-        
+
         history = record["history"]
         record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
         summary = record["summary"] if 'summary' in record else ''
@@ -184,8 +184,11 @@ def main():
     logging.info(f"Average ROUGE-2 Score (Macro): {avg_rouge_2 * 100:.2f}")
     logging.info(f"Average BERTScore: {avg_bert_score * 100:.2f}")
 
+    type_set = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
     # Print type-wise scores
-    for record_type, scores in type_scores.items():
+    # for record_type, scores in type_scores.items():
+    for record_type in type_set:
+        scores = type_scores[record_type]
         avg_bleu_type = sum(scores['bleu']) / len(scores['bleu'])
         avg_dist1_type = sum(scores['dist1']) / len(scores['dist1'])
         avg_dist2_type = sum(scores['dist2']) / len(scores['dist2'])
@@ -226,8 +229,8 @@ def main():
 
     # Open CSV files for writing based on record type
     # # anskeys= {}
-    # anskeys=  ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
-    # 'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
+
+    type_set = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
     for record_type in ans.keys():
         csv_filename = os.path.join(csv_directory, f'{record_type}.csv')
         csv_file = open(csv_filename, 'w', newline='', encoding='utf-8')
