@@ -78,6 +78,8 @@ def main():
         # logging.info('Summary')
         # logging.info(record["summary"])
         # logging.info(record["history"])
+        if "response" not in  record: continue
+        
         history = record["history"]
         record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
         summary = record["summary"] if 'summary' in record else ''
