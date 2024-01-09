@@ -15,28 +15,49 @@ upper_bound = 60
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
+# def scale(x):
+#     if x > 1e-5:
+#         return x
+#     s = str(x)
+#     if s[0] == '0':
+#         s = s.lstrip('0')
+#     if s[0] == '.':
+#         s = '0' + s
+#     if s[0] == '-':
+#         s = '-' + s[1:].lstrip('0')
+#     if s[0] == '-.':
+#         s = '-0' + s[2:]
+#     if s[0] == '.':
+#         s = '0' + s
+#     if int(s[0]) % 3 == 0:
+#         return float(f"{float(s) * 10 ** (len(s) - 3):.4f}")
+#     elif int(s[0]) % 3 == 1:
+#         return float(f"{float(s) * 10 ** (len(s) - 4):.5f}")
+#     else:
+#         return float(x)
+
 def scale(x):
-    if x > 1e-5:
+    if x > 1e-5: return x
+    # Find the index of the first non-zero digit
+    index = next((i for i, digit in enumerate(str(x)) if digit != '0'), None)
+
+    # Determine the remainder when dividing the index by 3
+    remainder = index % 3 if index is not None else 0
+
+    # Scale the value based on the remainder
+    if remainder == 0:
+        scale_factor = index // 3
+        scaled_value = x * (10 ** scale_factor)
+        return scaled_value
+    elif remainder == 1:
+        scale_factor = (index - 1) // 3
+        scaled_value = x * (10 ** scale_factor)
+        return scaled_value
+    elif remainder == 2:
         return x
-    s = str(x)
-    if s[0] == '0':
-        s = s.lstrip('0')
-    if s[0] == '.':
-        s = '0' + s
-    if s[0] == '-':
-        s = '-' + s[1:].lstrip('0')
-    if s[0] == '-.':
-        s = '-0' + s[2:]
-    if s[0] == '.':
-        s = '0' + s
-    if int(s[0]) % 3 == 0:
-        return float(f"{float(s) * 10 ** (len(s) - 3):.4f}")
-    elif int(s[0]) % 3 == 1:
-        return float(f"{float(s) * 10 ** (len(s) - 4):.5f}")
     else:
-        return float(x)
-
-
+        # Handle unexpected cases
+        raise ValueError("Invalid input")
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
 all_predicted_labels = []
