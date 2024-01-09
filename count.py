@@ -59,11 +59,11 @@ def scale(value):
 
     # Scale the value based on the remainder and the first non-zero digit
     if remainder == 0:
-        scale_factor = max(0, (k - 3))
+        scale_factor = max(0, (k - 2))
         scaled_value = value * (10 ** scale_factor)
         return scaled_value
     elif remainder == 1:
-        scale_factor = max(0, (k - 4))
+        scale_factor = max(0, (k - 3))
         scaled_value = value * (10 ** scale_factor)
         return scaled_value
     elif remainder == 2:
