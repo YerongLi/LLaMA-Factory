@@ -36,28 +36,44 @@ from sklearn.metrics import confusion_matrix, f1_score
 #     else:
 #         return float(x)
 
-def scale(x):
-    if x > 1e-5: return x
-    # Find the index of the first non-zero digit
-    index = next((i for i, digit in enumerate(str(x)) if digit != '0' and digit != '.'), None)
+def scale(value):
+  
+    left, right = 0, 100  # Adjust the range based on your requirements
+    while left < right:
+        mid = (left + right) // 2
+        mid_value = 10 ** mid * value
+        if mid_value > 1:
+            right = mid
+        else:
+            left = mid + 1
+    k = left
+    # return
+    # Find the first non-zero digit in the original value
+    value_str = str(value)
+    for digit in value_str:
+        if digit != '0' and digit != '.':
+            first_digit = int(digit)
+            break
+    print(k, first_digit)
+    # return
+    remainder = first_digit % 3
 
-    # Determine the remainder when dividing the index by 3
-    remainder = index % 3 if index is not None else 0
-
-    # Scale the value based on the remainder
+    # Scale the value based on the remainder and the first non-zero digit
     if remainder == 0:
-        scale_factor = index // 3
-        scaled_value = x * (10 ** scale_factor)
+        scale_factor = max(0, (k - 4))
+        scaled_value = value * (10 ** scale_factor)
         return scaled_value
     elif remainder == 1:
-        scale_factor = (index - 1) // 3
-        scaled_value = x * (10 ** scale_factor)
+        scale_factor = max(0, (k - 5))
+        scaled_value = value * (10 ** scale_factor)
         return scaled_value
     elif remainder == 2:
-        return x
+        return value
     else:
         # Handle unexpected cases
         raise ValueError("Invalid input")
+
+
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
 all_predicted_labels = []
