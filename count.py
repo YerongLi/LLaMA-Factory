@@ -85,12 +85,13 @@ o_tone_mapped_scores = []
 r_tone_mapped_scores = []
 total_negative_i_tone_positive_o_tone_count = 0
 total_negative_i_tone_positive_r_tone_count = 0
+event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
     'group_LIWC-22 Results - all - LIWC Analysis.csv',
 ]
-    event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
 
     for filename in all_files:
     # for filename in os.listdir(directory_path):
@@ -225,15 +226,17 @@ print(' ==== ==== ====')
 
 # Print results grouped by "tone_mapped"
 print("P-values, 'tone_mapped'")
-for event_type, p_value in p_values_tone_mapped.items():
-    p_value
+for event_type in event_types:
+    p_value = p_values_tone_mapped[event_type]
     print(f"{event_type}: {scale(p_value):.4f}")
 print()
 # ... (similar code for errors_tone_mapped)
 
 # Print results grouped by "tone"
 print("P-values, 'tone'")
-for event_type, p_value in p_values_tone.items():
+# for event_type, p_value in p_values_tone.items():
+for event_type in event_types:
+    p_value = p_values_tone[event_type]
     print(f"{event_type}: {scale(p_value):.4f}")
 
 print(' ==== ==== ====')
