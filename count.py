@@ -54,7 +54,6 @@ def scale(value):
         if digit != '0' and digit != '.':
             first_digit = int(digit)
             break
-    print(k, first_digit)
     # return
     remainder = first_digit % 3
 
