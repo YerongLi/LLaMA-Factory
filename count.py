@@ -34,7 +34,7 @@ def scale(x):
     elif int(s[0]) % 3 == 1:
         return float(f"{float(s) * 10 ** (len(s) - 4):.5f}")
     else:
-        return x
+        return float(x)
 
 
 # Initialize lists to store true labels and predicted labels for all files
