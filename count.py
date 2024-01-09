@@ -47,18 +47,17 @@ def scale(value):
         else:
             left = mid + 1
     k = left
-    # return
     # Find the first non-zero digit in the original value
     value_str = str(value)
     for digit in value_str:
         if digit != '0' and digit != '.':
             first_digit = int(digit)
             break
-    # return
-    print(k, first_digit, value)
+    # print(k, first_digit, value)
     remainder = first_digit % 4
 
     # Scale the value based on the remainder and the first non-zero digit
+    print(remainder)
     if remainder == 0:
         scale_factor = max(0, (k - 2))
         scaled_value = value * (10 ** scale_factor)
@@ -66,6 +65,7 @@ def scale(value):
     elif remainder == 2:
         return value
     else:
+
         scale_factor = max(0, (k - 3))
         scaled_value = value * (10 ** scale_factor)
 
