@@ -15,6 +15,26 @@ upper_bound = 60
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
+def scale(x):
+    if x > 1e-5:
+        return x
+    s = str(x)
+    if s[0] == '0':
+        s = s.lstrip('0')
+    if s[0] == '.':
+        s = '0' + s
+    if s[0] == '-':
+        s = '-' + s[1:].lstrip('0')
+    if s[0] == '-.':
+        s = '-0' + s[2:]
+    if s[0] == '.':
+        s = '0' + s
+    if int(s[0]) % 3 == 0:
+        return f"{float(s) * 10 ** (len(s) - 3):.4f}"
+    elif int(s[0]) % 3 == 1:
+        return f"{float(s) * 10 ** (len(s) - 4):.5f}"
+    else:
+        return x
 
 
 # Initialize lists to store true labels and predicted labels for all files
@@ -166,14 +186,14 @@ with open(output_file, 'a') as f:
 # Print results grouped by "tone_mapped"
 print("P-values, 'tone_mapped'")
 for event_type, p_value in p_values_tone_mapped.items():
-    print(f"{event_type}: {p_value:.16f}")
+    print(f"{event_type}: {scale(p_value):.16f}")
 
 # ... (similar code for errors_tone_mapped)
 
 # Print results grouped by "tone"
 print("P-values, 'tone'")
 for event_type, p_value in p_values_tone.items():
-    print(f"{event_type}: {p_value:.16f}")
+    print(f"{event_type}: {scale(p_value):.16f}")
 
 
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
