@@ -69,6 +69,7 @@ def scale(value):
         scale_factor = max(0, (k - 3))
         scaled_value = value * (10 ** scale_factor)
 
+        return scaled_value
 
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
