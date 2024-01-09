@@ -147,8 +147,6 @@ with open(output_file, 'a') as f:
                 o_tone_scores_file = df['o_tone']
                 r_tone_scores_file = df['r_tone']
 
-                # Perform paired t-test for the current file
-                # Perform paired t-test for the current file
                 t_stat_mapped_file, p_value_mapped_file = ttest_rel(o_tone_mapped_scores_file, r_tone_mapped_scores_file)
                 error_mapped_file = np.sqrt(np.sqrt(np.mean((df['o_tone_mapped'] - df['r_tone_mapped'])**2)))
 
@@ -164,6 +162,7 @@ with open(output_file, 'a') as f:
                 p_values_tone[event_type] = p_value_file
                 errors_tone[event_type] = error_file
 
+                
 # Print results grouped by "tone_mapped"
 print("P-values, 'tone_mapped'")
 for event_type, p_value in p_values_tone_mapped.items():
