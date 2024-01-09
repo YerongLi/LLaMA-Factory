@@ -153,7 +153,7 @@ with open(output_file, 'a') as f:
                 # Print results for the current file
                 print(f"\nT-test for {filename}:")
                 print(f"T-statistic: {t_stat_file:.2f}")
-                print(f"P-value: {p_value_file:.2f}")
+                print(f"P-value: {p_value_file:.4f}")
                 print(f"Error : {error:.2f}")
                 print(' *************** ****************** ******************')
                 o_tone_mapped_scores_file = df['o_tone_mapped']
