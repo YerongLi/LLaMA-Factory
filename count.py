@@ -214,16 +214,21 @@ print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
 error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2)))
 
-# Print the results
-print(f"T-test across all files:")
-print(f"T-statistic: {t_stat:.2f}")
-print(f"P-value: {p_value:.4f}")
-
-print(f"Error : {error:.2f}")
-
 t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
+error_mapped = np.sqrt(np.sqrt(np.mean((np.array(o_tone_mapped_scores) - np.array(r_tone_mapped_scores))**2)))
 
-# Print the results
-print(f"T-test for 'o_tone_mapped' and 'r_tone_mapped' across all files:")
+# Print the results for "tone_mapped"
+print("T-test for 'o_tone_mapped' and 'r_tone_mapped' across all files:")
 print(f"T-statistic: {t_stat_mapped:.2f}")
 print(f"P-value: {p_value_mapped:.4f}")
+print(f"Error: {error_mapped:.2f}")
+
+# Perform paired t-test across all files (original tones)
+t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
+error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2)))
+
+# Print the results for "tone"
+print("T-test across all files:")
+print(f"T-statistic: {t_stat:.2f}")
+print(f"P-value: {p_value:.4f}")
+print(f"Error: {error:.2f}")
