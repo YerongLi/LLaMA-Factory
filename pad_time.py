@@ -18,6 +18,3 @@ for entry in data:
     key = f"{instruction} === {output}"
     instruction_output_dict[key] = hour
 
-# Print the dictionary
-for key, value in instruction_output_dict.items():
-    print(f"{key} => {value}")

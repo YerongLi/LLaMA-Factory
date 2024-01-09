@@ -270,6 +270,8 @@ print(f"P-value: {p_value_mapped:.4f}")
 print(f"Error: {error_mapped:.2f}")
 
 # Perform paired t-test across all files (original tones)
+print(o_tone_scores)
+print(r_tone_scores)
 t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
 error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2)))
 
