@@ -173,7 +173,7 @@ for event_type, p_value in p_values_tone_mapped.items():
 # Print results grouped by "tone"
 print("P-values, 'tone'")
 for event_type, p_value in p_values_tone.items():
-    print(f"{event_type}: {p_value:.6f}")
+    print(f"{event_type}: {p_value:.9f}")
 
 
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
