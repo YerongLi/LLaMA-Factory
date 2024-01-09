@@ -44,9 +44,11 @@ with open(output_file, 'a') as f:
 
             # Read the CSV file into a pandas DataFrame
             whole_df = pd.read_csv(file_path)
-            event_types = whole_df['type'].unique()
-            event_types = ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
-            'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
+            # event_types = whole_df['type'].unique()
+            # event_types = ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
+            # 'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
+            event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+
             # print(event_types)
             for event_type in event_types + [None]:
                 if event_type is not None:
