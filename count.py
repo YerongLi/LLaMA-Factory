@@ -211,7 +211,7 @@ error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_score
 # Print the results
 print(f"T-test across all files:")
 print(f"T-statistic: {t_stat:.2f}")
-print(f"P-value: {p_value:.2f}")
+print(f"P-value: {p_value:.4f}")
 
 print(f"Error : {error:.2f}")
 
@@ -220,4 +220,4 @@ t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_sc
 # Print the results
 print(f"T-test for 'o_tone_mapped' and 'r_tone_mapped' across all files:")
 print(f"T-statistic: {t_stat_mapped:.2f}")
-print(f"P-value: {p_value_mapped:.2f}")
+print(f"P-value: {p_value_mapped:.4f}")
