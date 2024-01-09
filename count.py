@@ -165,7 +165,7 @@ with open(output_file, 'a') as f:
                 # Print results for the current file
                 print(f"\nT-test for 'o_tone_mapped' and 'r_tone_mapped' for {filename}:")
                 print(f"T-statistic: {t_stat_mapped_file:.2f}")
-                print(f"P-value: {p_value_mapped_file:.2f}")
+                print(f"P-value: {p_value_mapped_file:.4f}")
 
                 print('======================= ========================= =========================== ========================')
 
