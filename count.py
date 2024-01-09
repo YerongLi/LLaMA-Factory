@@ -30,9 +30,9 @@ def scale(x):
     if s[0] == '.':
         s = '0' + s
     if int(s[0]) % 3 == 0:
-        return f"{float(s) * 10 ** (len(s) - 3):.4f}"
+        return float(f"{float(s) * 10 ** (len(s) - 3):.4f}")
     elif int(s[0]) % 3 == 1:
-        return f"{float(s) * 10 ** (len(s) - 4):.5f}"
+        return float(f"{float(s) * 10 ** (len(s) - 4):.5f}")
     else:
         return x
 
