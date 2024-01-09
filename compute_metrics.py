@@ -248,7 +248,7 @@ def main():
 
     type_set = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
     for record_type in ans.keys():
-         = os.path.join(csv_directory, f'{record_type}.csv')
+        csv_filename = os.path.join(csv_directory, f'{record_type}.csv')
         csv_file = open(csv_filename, 'w', newline='', encoding='utf-8')
         csv_writers[record_type] = csv.writer(csv_file)
         csv_writers[record_type].writerow(csv_header)
