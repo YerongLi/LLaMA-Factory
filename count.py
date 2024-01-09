@@ -206,14 +206,6 @@ print(f"Overall Average 'r_tone': {overall_avg_r_tone:.2f}")
 #         if count > 0 and true_label != pred_label:
 #             print(f"Class {true_label} is confused with Class {pred_label}: {count} occurrences.")
 
-# # Print classification report
-# classification_rep = classification_report(all_true_labels, all_predicted_labels, target_names=class_labels)
-# print("\nClassification Report:")
-# print(classification_rep)
-# Perform paired t-test
-t_stat, p_value = ttest_rel(o_tone_scores, r_tone_scores)
-error = np.sqrt(np.sqrt(np.mean((np.array(o_tone_scores) - np.array(r_tone_scores))**2)))
-
 t_stat_mapped, p_value_mapped = ttest_rel(o_tone_mapped_scores, r_tone_mapped_scores)
 error_mapped = np.sqrt(np.sqrt(np.mean((np.array(o_tone_mapped_scores) - np.array(r_tone_mapped_scores))**2)))
 
@@ -232,3 +224,4 @@ print("T-test across all files:")
 print(f"T-statistic: {t_stat:.2f}")
 print(f"P-value: {p_value:.4f}")
 print(f"Error: {error:.2f}")
+
