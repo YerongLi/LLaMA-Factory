@@ -90,6 +90,8 @@ with open(output_file, 'a') as f:
     all_files = [
     'group_LIWC-22 Results - all - LIWC Analysis.csv',
 ]
+    event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+
     for filename in all_files:
     # for filename in os.listdir(directory_path):
         if filename.endswith('.csv'):
@@ -101,7 +103,7 @@ with open(output_file, 'a') as f:
             # event_types = whole_df['type'].unique()
             # event_types = ['SuspiciousActivity', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse',
             # 'MentalHealth', 'TheftLostItem', 'SafeRide&SafeWalk']
-            event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+            # event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
 
             # print(event_types)
             p_values_tone_mapped = {}
@@ -219,12 +221,14 @@ with open(output_file, 'a') as f:
                 p_values_tone[event_type] = p_value_file
                 errors_tone[event_type] = error_file
 
+print(' ==== ==== ====')
 
 # Print results grouped by "tone_mapped"
 print("P-values, 'tone_mapped'")
 for event_type, p_value in p_values_tone_mapped.items():
+    p_value
     print(f"{event_type}: {scale(p_value):.4f}")
-
+print()
 # ... (similar code for errors_tone_mapped)
 
 # Print results grouped by "tone"
@@ -232,6 +236,7 @@ print("P-values, 'tone'")
 for event_type, p_value in p_values_tone.items():
     print(f"{event_type}: {scale(p_value):.4f}")
 
+print(' ==== ==== ====')
 
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
 overall_percentage_negative_i_tone_positive_r_tone = (total_negative_i_tone_positive_r_tone_count / total_values_count) * 100
