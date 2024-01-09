@@ -50,7 +50,12 @@ with open(output_file, 'a') as f:
             event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
 
             # print(event_types)
-            for event_type in event_types + [None]:
+            p_values_tone_mapped = {}
+            p_values_tone = {}
+            errors_tone_mapped = {}
+            errors_tone = {}
+
+            for event_type in event_types:
                 if event_type is not None:
                     df = whole_df[whole_df['type'] == event_type]
                 else:
@@ -143,33 +148,35 @@ with open(output_file, 'a') as f:
                 r_tone_scores_file = df['r_tone']
 
                 # Perform paired t-test for the current file
-                t_stat_file, p_value_file = ttest_rel(o_tone_scores_file, r_tone_scores_file)
-                o_tone_scores.extend(df['o_tone'])
-                r_tone_scores.extend(df['r_tone'])
-                o_tone_mapped_scores.extend(df['o_tone_mapped'])
-                r_tone_mapped_scores.extend(df['r_tone_mapped'])
-                error = np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2))/4
-
-                # Print results for the current file
-                print(f"\nT-test for {filename}:")
-                print(f"T-statistic: {t_stat_file:.2f}")
-                print(f"P-value: {p_value_file:.4f}")
-                print(f"Error : {error:.2f}")
-                print(' *************** ****************** ******************')
-                o_tone_mapped_scores_file = df['o_tone_mapped']
-                r_tone_mapped_scores_file = df['r_tone_mapped']
-
                 # Perform paired t-test for the current file
                 t_stat_mapped_file, p_value_mapped_file = ttest_rel(o_tone_mapped_scores_file, r_tone_mapped_scores_file)
+                error_mapped_file = np.sqrt(np.sqrt(np.mean((df['o_tone_mapped'] - df['r_tone_mapped'])**2)))
 
-                # Print results for the current file
-                print(f"\nT-test for 'o_tone_mapped' and 'r_tone_mapped' for {filename}:")
-                print(f"T-statistic: {t_stat_mapped_file:.2f}")
-                print(f"P-value: {p_value_mapped_file:.4f}")
+                # Store P-value and error in the dictionaries
+                p_values_tone_mapped[event_type] = p_value_mapped_file
+                errors_tone_mapped[event_type] = error_mapped_file
 
-                print('======================= ========================= =========================== ========================')
+                # Perform paired t-test for the current file (original tones)
+                t_stat_file, p_value_file = ttest_rel(o_tone_scores_file, r_tone_scores_file)
+                error_file = np.sqrt(np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2)))
 
-                print("\n")
+                # Store P-value and error in the dictionaries
+                p_values_tone[event_type] = p_value_file
+                errors_tone[event_type] = error_file
+
+# Print results grouped by "tone_mapped"
+print("P-values, 'tone_mapped'")
+for event_type, p_value in p_values_tone_mapped.items():
+    print(f"{event_type}: {p_value:.4f}")
+
+# ... (similar code for errors_tone_mapped)
+
+# Print results grouped by "tone"
+print("P-values, 'tone'")
+for event_type, p_value in p_values_tone.items():
+    print(f"{event_type}: {p_value:.4f}")
+
+
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
 overall_percentage_negative_i_tone_positive_r_tone = (total_negative_i_tone_positive_r_tone_count / total_values_count) * 100
 print(f"Overall Percentage where 'i_tone' is negative while 'o_tone' is positive: {overall_percentage_negative_i_tone_positive_o_tone:.2f}")
