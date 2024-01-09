@@ -57,7 +57,7 @@ def scale(value):
     remainder = first_digit % 4
 
     # Scale the value based on the remainder and the first non-zero digit
-    print(remainder)
+    # print(remainder)
     if remainder == 0:
         scale_factor = max(0, (k - 2))
         scaled_value = value * (10 ** scale_factor)
