@@ -253,7 +253,7 @@ def main():
         csv_writers[record_type] = csv.writer(csv_file)
         csv_writers[record_type].writerow(csv_header)
 
-        os.remove(filename)
+        os.remove(csv_filename)
 
 
     # Open a CSV file for writing containing data from all types
