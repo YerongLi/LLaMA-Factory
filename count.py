@@ -56,22 +56,18 @@ def scale(value):
             break
     # return
     print(k, first_digit, value)
-    remainder = first_digit % 3
+    remainder = first_digit % 4
 
     # Scale the value based on the remainder and the first non-zero digit
     if remainder == 0:
         scale_factor = max(0, (k - 2))
         scaled_value = value * (10 ** scale_factor)
         return scaled_value
-    elif remainder == 1:
-        scale_factor = max(0, (k - 3))
-        scaled_value = value * (10 ** scale_factor)
-        return scaled_value
     elif remainder == 2:
         return value
     else:
-        # Handle unexpected cases
-        raise ValueError("Invalid input")
+        scale_factor = max(0, (k - 3))
+        scaled_value = value * (10 ** scale_factor)
 
 
 # Initialize lists to store true labels and predicted labels for all files
