@@ -166,14 +166,14 @@ with open(output_file, 'a') as f:
 # Print results grouped by "tone_mapped"
 print("P-values, 'tone_mapped'")
 for event_type, p_value in p_values_tone_mapped.items():
-    print(f"{event_type}: {p_value:.6f}")
+    print(f"{event_type}: {p_value:.16f}")
 
 # ... (similar code for errors_tone_mapped)
 
 # Print results grouped by "tone"
 print("P-values, 'tone'")
 for event_type, p_value in p_values_tone.items():
-    print(f"{event_type}: {p_value:.9f}")
+    print(f"{event_type}: {p_value:.16f}")
 
 
 overall_percentage_negative_i_tone_positive_o_tone = (total_negative_i_tone_positive_o_tone_count / total_values_count) * 100
