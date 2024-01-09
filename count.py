@@ -55,6 +55,7 @@ def scale(value):
             first_digit = int(digit)
             break
     # return
+    print(k, first_digit, value)
     remainder = first_digit % 3
 
     # Scale the value based on the remainder and the first non-zero digit
