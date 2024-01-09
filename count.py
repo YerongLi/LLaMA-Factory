@@ -39,7 +39,7 @@ from sklearn.metrics import confusion_matrix, f1_score
 def scale(x):
     if x > 1e-5: return x
     # Find the index of the first non-zero digit
-    index = next((i for i, digit in enumerate(str(x)) if digit != '0'), None)
+    index = next((i for i, digit in enumerate(str(x)) if digit != '0' and digit != '.'), None)
 
     # Determine the remainder when dividing the index by 3
     remainder = index % 3 if index is not None else 0
