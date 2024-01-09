@@ -190,7 +190,7 @@ with open(output_file, 'a') as f:
 
                 # Count occurrences where i_tone is negative while r_tone is positive
                 count_negative_i_tone_positive_r_tone = (negative_condition_r_tone).sum()
-                print(filename)
+                # print(filename)
 
                 print(f"Average 'o_tone': {avg_o_tone:.2f}")
                 print(f"Average 'r_tone': {avg_r_tone:.2f}")
@@ -200,14 +200,17 @@ with open(output_file, 'a') as f:
 
                 o_tone_scores_file = df['o_tone']
                 r_tone_scores_file = df['r_tone']
-
+                o_tone_mapped_scores.extend(df['o_tone_mapped'].values)
+                r_tone_mapped_scores.extend(df['r_tone_mapped'].values)
                 t_stat_mapped_file, p_value_mapped_file = ttest_rel(df['o_tone_mapped'], df['r_tone_mapped'])
                 error_mapped_file = np.sqrt(np.sqrt(np.mean((df['o_tone_mapped'] - df['r_tone_mapped'])**2)))
 
+                
                 # Store P-value and error in the dictionaries
                 p_values_tone_mapped[event_type] = p_value_mapped_file
                 errors_tone_mapped[event_type] = error_mapped_file
-
+                o_tone_scores.extend(df['o_tone'].values)
+                r_tone_scores.extend(df['r_tone'].values)
                 # Perform paired t-test for the current file (original tones)
                 t_stat_file, p_value_file = ttest_rel(df['o_tone'], df['r_tone'])
                 error_file = np.sqrt(np.sqrt(np.mean((df['o_tone'] - df['r_tone'])**2)))
