@@ -34,7 +34,7 @@ total_negative_i_tone_positive_r_tone_count = 0
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
-    'group_LIWC-22 Results - all - LIWC Analysis.csv.csv',
+    'group_LIWC-22 Results - all - LIWC Analysis.csv',
 ]
     for filename in all_files:
     # for filename in os.listdir(directory_path):
