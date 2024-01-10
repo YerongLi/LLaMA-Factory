@@ -2,6 +2,7 @@ import json
 
 # File path to the JSON data
 file_path = 'data/police-full.json'
+csv_file_path = 'out/group_LIWC-22 Results - all - LIWC Analysis.csv'
 
 # Read and load JSON data
 with open(file_path, 'r') as json_file:
