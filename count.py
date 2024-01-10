@@ -15,26 +15,6 @@ upper_bound = 60
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
-# def scale(x):
-#     if x > 1e-5:
-#         return x
-#     s = str(x)
-#     if s[0] == '0':
-#         s = s.lstrip('0')
-#     if s[0] == '.':
-#         s = '0' + s
-#     if s[0] == '-':
-#         s = '-' + s[1:].lstrip('0')
-#     if s[0] == '-.':
-#         s = '-0' + s[2:]
-#     if s[0] == '.':
-#         s = '0' + s
-#     if int(s[0]) % 3 == 0:
-#         return float(f"{float(s) * 10 ** (len(s) - 3):.4f}")
-#     elif int(s[0]) % 3 == 1:
-#         return float(f"{float(s) * 10 ** (len(s) - 4):.5f}")
-#     else:
-#         return float(x)
 
 def scale(value):
   
@@ -56,8 +36,6 @@ def scale(value):
     # print(k, first_digit, value)
     remainder = first_digit % 4
 
-    # Scale the value based on the remainder and the first non-zero digit
-    # print(remainder)
     if remainder == 0:
         scale_factor = max(0, (k - 2))
         scaled_value = value * (10 ** scale_factor)
