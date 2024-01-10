@@ -18,3 +18,14 @@ for entry in data:
     key = f"{instruction} === {output}"
     instruction_output_dict[key] = hour
 
+# Read and check CSV data
+with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    
+    for row in csv_reader:
+        instruction = row.get("instruction", "")
+        output = row.get("output", "")
+        key_to_check = f"{instruction} === {output}"
+
+        if key_to_check not in instruction_output_dict:
+            print(f"Key does not exist in the dictionary: {key_to_check}")
