@@ -93,9 +93,9 @@ with open(output_file, 'a') as f:
     
  
             # Map 'o_tone', 'r_tone', and 'i_tone' values to 0, 1, -1 based on conditions
-            whole_df['o_tone_mapped'] = whole_dfdf['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
-            whole_df['r_tone_mapped'] = whole_dfdf['r_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
-            whole_df['i_tone_mapped'] = whole_dfdf['i_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
+            whole_df['o_tone_mapped'] = whole_df['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
+            whole_df['r_tone_mapped'] = whole_df['r_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
+            whole_df['i_tone_mapped'] = whole_df['i_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
             whole_df['o_tone'].fillna(50, inplace=True)
             whole_df['r_tone'].fillna(50, inplace=True)
 
