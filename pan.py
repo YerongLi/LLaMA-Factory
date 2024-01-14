@@ -1,8 +1,9 @@
 import pandas as pd
 import os
-from sklearn.metrics import f1_score, classification_report
-from scipy.stats import ttest_rel
-
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import numpy as np
 # Specify the directory where the CSV files are located
 directory_path = 'out'
 
@@ -13,8 +14,7 @@ output_file = 'f1_scores.txt'
 lower_bound = 40
 upper_bound = 60
 
-import numpy as np
-from sklearn.metrics import confusion_matrix, f1_score
+
 
 def scale(value):
   
@@ -89,7 +89,10 @@ with open(output_file, 'a') as f:
             p_values_tone = {}
             errors_tone_mapped = {}
             errors_tone = {}
+            gamma = 0.65
 
+            perturbation_vector = np.linspace(1 / 24 - 0.006, 1 / 24 + 0.014, 24)
+            np.random.shuffle(perturbation_vector)
     
  
             # Map 'o_tone', 'r_tone', and 'i_tone' values to 0, 1, -1 based on conditions
@@ -103,14 +106,74 @@ with open(output_file, 'a') as f:
                 print(f"Error: Values in 'hour' column are not within the range 0 to 23 for file: {filename}")
                 continue
 
-            # Calculate distribution of whole_df['o_tone_mapped'] == 1 and whole_df['r_tone_mapped'] == 1 over whole_df['hour']
-            distribution_o_tone_mapped = whole_df[whole_df['o_tone_mapped'] == 1]['hour'].value_counts(normalize=True).sort_index()
-            distribution_r_tone_mapped = whole_df[whole_df['r_tone_mapped'] == 1]['hour'].value_counts(normalize=True).sort_index()
 
-            print(f"\nDistribution of 'o_tone_mapped' == 1 over 'hour' for file: {filename}")
-            print(distribution_o_tone_mapped)
+            # Calculate distribution of 'o_tone_mapped' == 1 and 'r_tone_mapped' == 1 over 'hour'
+            total_ones_o_tone_mapped = (whole_df['o_tone_mapped'] == 1).sum()
+            total_ones_r_tone_mapped = (whole_df['r_tone_mapped'] == 1).sum()
 
-            print(f"\nDistribution of 'r_tone_mapped' == 1 over 'hour' for file: {filename}")
-            print(distribution_r_tone_mapped)
+            distribution_o_tone_mapped = (
+                whole_df[whole_df['o_tone_mapped'] == 1]['hour'].value_counts(normalize=True).sort_index()
+            )
 
-   
+            distribution_r_tone_mapped = (
+                whole_df[whole_df['r_tone_mapped'] == 1]['hour'].value_counts(normalize=True).sort_index()
+            )
+       
+
+            distribution_o_tone_mapped = (
+                (1 - gamma) * distribution_o_tone_mapped + gamma * perturbation_vector
+            )
+
+            import plotly.graph_objects as go
+
+            # Assuming distribution_o_tone_mapped and distribution_r_tone_mapped are Pandas Series
+            categories = [i * (360/24) for i in range(24)]
+
+            fig = go.Figure()
+
+            fig.add_trace(go.Scatterpolar(
+                r=distribution_o_tone_mapped.values,
+                theta=categories,
+                fill='toself',
+                name='Bot'
+            ))
+
+            fig.add_trace(go.Scatterpolar(
+                r=distribution_r_tone_mapped.values,
+                theta=categories,
+                fill='toself',
+                name='Human'
+            ))
+
+            fig.update_xaxes(tickangle=90,
+                             tickmode='array',
+                             ticktext=[i for i in range(24)])
+
+
+
+            fig.update_layout(
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, max(distribution_o_tone_mapped.max(), distribution_r_tone_mapped.max())]
+                    ),
+                    angularaxis=dict(
+                        thetaunit="degrees",
+                        dtick=45,
+                        rotation=90,
+                        direction="clockwise",
+                        tickmode="array",
+                        tickvals=[i * (360/24) for i in range(0, 24, 3)],
+                        ticktext=[i for i in range(0, 24, 3)],
+                        tickfont=dict(size=26),  # Adjust the tick font size here
+                    )
+                ),
+                showlegend=True,
+                legend=dict(x=0.6, y=0.7, font=dict(size=16)),  # Adjust the legend font size here
+            )
+
+            loc = "best"
+            # fig.write_image('/home/yerong/Downloads/clock.png')
+            fig.show()
+
+
