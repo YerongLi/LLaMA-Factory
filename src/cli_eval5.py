@@ -131,7 +131,7 @@ def main():
                 )
 
                 suffix = "Dispatcher:\n"
-                print(prompt[:-13])
+                print(prompt[-13:])
                 print('====== ====== ======')
                 if prompt.endswith(suffix):
                     prompt = prompt[:-len(suffix)]
