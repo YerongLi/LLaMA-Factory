@@ -134,7 +134,7 @@ def main():
                 if prompt.endswith(suffix):
                     prompt = prompt[:-len(suffix)]
                 print(prompt)
-
+                print('===========================')
                 prompt_batch.append(
                             {
                         'prompt': prompt,
