@@ -130,13 +130,11 @@ def main():
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
 
-                prompt = "prompt is ending with Dispatcher:"
                 suffix = "Dispatcher:\n"
                 if prompt.endswith(suffix):
                     prompt = prompt[:-len(suffix)]
                 print(prompt)
 
-                print(prompt)
                 prompt_batch.append(
                             {
                         'prompt': prompt,
