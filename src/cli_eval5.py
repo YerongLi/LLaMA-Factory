@@ -115,9 +115,6 @@ def main():
             try: 
                 instruction = record["instruction"]
 
-                # logging.info('Summary')
-                # logging.info(record["summary"])
-                # logging.info(record["history"])
                 history = record["history"]
                 record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
                 summary = record["summary"] if 'summary' in record else ''
@@ -132,6 +129,7 @@ def main():
                 prompt = chat_model.tokenizer.decode(
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
+                print(prompt)
                 prompt_batch.append(
                             {
                         'prompt': prompt,

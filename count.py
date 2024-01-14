@@ -1,3 +1,4 @@
+
 import pandas as pd
 import os
 from sklearn.metrics import f1_score, classification_report
@@ -15,7 +16,7 @@ upper_bound = 60
 
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score
-
+DEBUG = True
 def scale(value):
   
     left, right = 0, 100  # Adjust the range based on your requirements
@@ -56,6 +57,7 @@ all_predicted_labels = []
 # Open the file in append mode
 total_o_tone_sum = 0
 total_r_tone_sum = 0
+adp_threshold = 0
 total_values_count = 0
 o_tone_scores = []
 r_tone_scores = []
