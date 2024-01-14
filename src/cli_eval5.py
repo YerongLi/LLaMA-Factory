@@ -131,10 +131,11 @@ def main():
                 )
 
                 suffix = "Dispatcher:\n"
+                print(prompt[:13])
                 if prompt.endswith(suffix):
                     prompt = prompt[:-len(suffix)]
                 print(prompt)
-                print('===========================')
+                print('')
                 prompt_batch.append(
                             {
                         'prompt': prompt,
