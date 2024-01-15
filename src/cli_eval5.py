@@ -186,6 +186,7 @@ def main():
             with open(output_file_path, 'w') as jsonl_file:
                 for batch in prompt_batches:
                     for entry in batch:
+                        if 'response' not in entry: continue
                         json_line = json.dumps(entry)
                         jsonl_file.write(json_line + '\n')
     # Assuming you have an output file path like 'results.jsonl'
