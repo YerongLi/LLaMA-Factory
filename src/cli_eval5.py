@@ -178,7 +178,7 @@ def main():
                 if not ky in progress:
                     for i, output in enumerate(outputs):
                         prompt_batches[batch_index][i]["response"] = progress[ky]
-                    print('Save')
+            print('Save')
             continue
         try:
 
