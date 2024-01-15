@@ -13,7 +13,7 @@ gpu_index = num_gpus - 1 if num_gpus > 0 else -1
 device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
-print(model.config)
+print(model.config['label2id'])
 batch_size = 16  # Set your desired batch size
 
 with open("results_gpt35.jsonl", "r") as file:
