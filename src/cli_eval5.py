@@ -28,7 +28,8 @@ if os.path.exists(output_file_path):
     with open(output_file_path, "r") as file:
         progress = [json.loads(line) for line in file]
         progress = [item for item in progress if 'response' in item]
-        progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress} 
+        progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress}
+        print(progress.keys())
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -169,7 +170,9 @@ def main():
         # print(tokenized_prompts.shape)
         check = True
         for item in prompt_batches[batch_index]:
-            if not f"{item['instruction']} === {item['output']}" in progress:
+            ky = f"{item['instruction']} === {item['output']}"
+            print(ky)
+            if not ky in progress:
                 check = False
                 break
         if check:
