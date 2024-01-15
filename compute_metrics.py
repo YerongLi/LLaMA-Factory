@@ -168,8 +168,6 @@ def main():
         dist2_scores.append(response_dist2)
 
         # Compute ROUGE scores
-        if len(response_tokens) > 0:
-        
         rouge_scores.append(rouge_score[0]['rouge-l']['f'])
         rouge_2_scores.append(rouge_score[0]['rouge-2']['f'])  # Added for ROUGE-2
         # Store scores based on the 'type' tag
