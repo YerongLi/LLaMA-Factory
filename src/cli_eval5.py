@@ -21,7 +21,7 @@ import torch
 suffixlen = 12
 
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=6
+BATCH_SIZE=10
 output_file_path = 'results-cmp.jsonl'
 progress = {}
 if os.path.exists(output_file_path):
@@ -30,7 +30,7 @@ if os.path.exists(output_file_path):
         progress = [json.loads(line) for line in file]
         progress = [item for item in progress if 'response' in item]
         progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress}
-        print(progress.keys())
+        # print(progress.keys())
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -109,7 +109,7 @@ def main():
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['instruction']} === {item['output']}"
-        if ky not in progress: print(ky)
+        # if ky not in progress: print(ky)
 
         if ky in progress:
             data[i]['response'] = progress[ky]
