@@ -182,6 +182,7 @@ def main():
                             'response': record["response"],
                         }
                     )
+                print(len(prompt_batch))
             # except:
                 # continue
 
