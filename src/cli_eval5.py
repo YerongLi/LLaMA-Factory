@@ -170,7 +170,7 @@ def main():
             for i, output in enumerate(outputs):
                 prompt_batches[batch_index][i]["response"] = output
             for i, output in enumerate(outputs):
-                print(prompt_batches[batch_index][i])
+                print(prompt_batches[batch_index][i]['output'])
                 print(output)
                 print('=============')
         except KeyboardInterrupt:
