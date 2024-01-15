@@ -12,16 +12,22 @@ from nltk.lm import MLE
 from nltk.util import ngrams
 from rouge import Rouge
 bleu_threshold = 0.0
-# dist1_threshold = 0.7
+# bleu_threshold = 0.0
+
 dist1_threshold = 0.0
-# dist2_threshold = 0.8
+# dist1_threshold = 0.7
+
 dist2_threshold = 0.0
-# rouge_threshold = 0.12
+# dist2_threshold = 0.8
+
 rouge_threshold = 0.0
+# rouge_threshold = 0.12
+
 rouge_2_threshold = 0.0
 # rouge_2_threshold = 0.12
-# bert_threshold = 0.2
+
 bert_threshold = 0.0
+# bert_threshold = 0.2
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
