@@ -33,5 +33,5 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_predicted_labels = batch_outputs.logits.argmax(dim=1).tolist()
 
     # Print the predicted labels for the batch
-    # for j, predicted_label in enumerate(batch_predicted_labels):
-        # print(f"Prediction for data[{i + j}]: {predicted_label}")
+    for j, predicted_label in enumerate(batch_predicted_labels):
+        print(f"Prediction for data[{i + j}]: {predicted_label}")
