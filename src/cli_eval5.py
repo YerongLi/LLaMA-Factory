@@ -139,8 +139,8 @@ def main():
                  {record['output']}
                  Revised Dispatcher's response:
                  """
-                print(prompt)
-                print('=====  ===== ========')
+                # print(prompt)
+                # print('=====  ===== ========')
                 prompt_batch.append(
                             {
                         'prompt': prompt,
