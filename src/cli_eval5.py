@@ -106,17 +106,23 @@ def main():
     # Load data from the file
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
-
+    for item in data:
+        ky = f"{item['instruction']} === {item['output']}"
+        if ky in progress:
+            data['response'] = progress[ky]
     # Initialize other variables...
     # random.shuffle(data)
     # data = data[:60]
-    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
+    data_empty = [item for item in data if 'response' not in item]
+    data_fill= [item for item in data if 'response' in item]
+
+    data_batches = [data_empty[i:i + BATCH_SIZE] for i in range(0, len(data_empty), BATCH_SIZE)]+[data_fill]
 
     # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
     failed_count = 0
-    for batch in tqdm(data_batches):
+    for batch in tqdm(data_batches[:-1]):
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
@@ -168,20 +174,20 @@ def main():
     # Generate outputs batch by batch
     for batch_index, tokenized_prompts in tqdm(enumerate(tokenized_prompt_batches), total=len(tokenized_prompt_batches)):
         # print(tokenized_prompts.shape)
-        check = True
-        for item in prompt_batches[batch_index]:
-            ky = f"{item['instruction']} === {item['output']}"
-            if not ky in progress:
-                check = False
-                break
-        if check:
-            for item in prompt_batches[batch_index]:
-                ky = f"{item['instruction']} === {item['output']}"
-                if not ky in progress:
-                    for i, output in enumerate(outputs):
-                        prompt_batches[batch_index][i]["response"] = progress[ky]
-            print('Save')
-            continue
+        # check = True
+        # for item in prompt_batches[batch_index]:
+        #     ky = f"{item['instruction']} === {item['output']}"
+        #     if not ky in progress:
+        #         check = False
+        #         break
+        # if check:
+        #     for item in prompt_batches[batch_index]:
+        #         ky = f"{item['instruction']} === {item['output']}"
+        #         if not ky in progress:
+        #             for i, output in enumerate(outputs):
+        #                 prompt_batches[batch_index][i]["response"] = progress[ky]
+        #     print('Save')
+        #     continue
         try:
 
             generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
