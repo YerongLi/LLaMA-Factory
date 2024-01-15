@@ -34,8 +34,8 @@ def HASH(input_string):
     hash_value = int.from_bytes(hash_object.digest(), byteorder='big')
 
     return str(hash_value)
-file_name = "results_gpt35.jsonl"
-# file_name = "results.jsonl"
+# file_name = "results_gpt35.jsonl"
+file_name = "results.jsonl"
 # file_name = "results-bak.jsonl"
 
 random_seed = int(HASH(file_name))
