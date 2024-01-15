@@ -133,14 +133,12 @@ def main():
                 )
 
                 prompt = prompt[:-suffixlen]
-                print(prompt)
                 prompt = prompt + f"""
                  Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
                  Dispatcher's response:
                  {record['output']}
                  Revised Dispatcher's response:
                  """
-                print('====== ====== ======')
                 prompt_batch.append(
                             {
                         'prompt': prompt,
