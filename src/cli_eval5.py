@@ -118,7 +118,7 @@ def main():
     data_fill= [item for item in data if 'response' in item]
 
     data_batches = [data_empty[i:i + BATCH_SIZE] for i in range(0, len(data_empty), BATCH_SIZE)]+[data_fill]
-    print('data_fill', len(data_fill))
+    print('data_empty', len(data_empty))
     # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
