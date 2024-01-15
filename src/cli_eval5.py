@@ -23,6 +23,7 @@ suffixlen = 12
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=6
 output_file_path = 'results-cmp.jsonl'
+progress = {}
 if os.path.exists(output_file_path):
 
     with open(output_file_path, "r") as file:
