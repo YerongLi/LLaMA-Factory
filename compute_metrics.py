@@ -17,6 +17,7 @@ dist1_threshold = 0.0
 # dist2_threshold = 0.8
 dist2_threshold = 0.0
 # rouge_threshold = 0.12
+rouge_threshold = 0.0
 rouge_2_threshold = 0.0
 # rouge_2_threshold = 0.12
 # bert_threshold = 0.2
