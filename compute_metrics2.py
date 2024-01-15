@@ -2,6 +2,7 @@ import json
 from tqdm import tqdm
 import torch
 import random
+import hashlib
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 # Set a random seed for reproducibility
@@ -30,7 +31,16 @@ emotion_mapping = {
     'disgust': -1, 'embarrassment': -1, 'fear': -1, 'grief': -1, 'nervousness': -1,
     'remorse': -1, 'sadness': -1
 }
+def HASH(input_string):
+    # Use SHA-256 for deterministic hashing
+    hash_object = hashlib.sha256(input_string.encode())
+    hash_value = int.from_bytes(hash_object.digest(), byteorder='big')
+
+    return str(hash_value)
 file_name = "results_gpt35.jsonl"
+random_seed = HASH(filename)
+torch.manual_seed(random_seed)
+random.seed(random_seed)
 # file_name = "results.jsonl"
 # file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
