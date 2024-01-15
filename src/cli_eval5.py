@@ -179,6 +179,7 @@ def main():
                     for i, output in enumerate(outputs):
                         prompt_batches[batch_index][i]["response"] = progress[ky]
                     print('Save')
+            continue
         try:
 
             generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
