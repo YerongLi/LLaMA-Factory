@@ -14,7 +14,7 @@ device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
 
-batch_size = 16  # Set your desired batch size
+batch_size = 32  # Set your desired batch size
 
 # Mapping of emotions to labels
 emotion_mapping = {
