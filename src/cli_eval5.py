@@ -168,7 +168,7 @@ def main():
         check = True
         for item in prompt_batches[batch_index]:
             if not f"{item['instruction']} === {item['output']}" in progress:
-                check = False:
+                check = False
                 break
         if check:
             for item in prompt_batches[batch_index]:
