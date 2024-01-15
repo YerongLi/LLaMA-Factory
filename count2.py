@@ -52,7 +52,8 @@ for event_type in event_types:
     print(f"Event Type: {event_type}")
     print(f"Ratio for 'r' is 1 when 'i' is -1: {ratio_i_r:.2%}")
     print(f"Ratio for 'o' is 1 when 'i' is -1: {ratio_i_o:.2%}")
-    print("\n")
+    print(f'average {(ratio_i_r+ratio_i_o)/2 :.2%}' : )
+    print(f"\n" )
 
 # Calculate and print overall ratios
 overall_ratio_i_r = overall_count_i_r / overall_count_i if overall_count_i > 0 else 0
