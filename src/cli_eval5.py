@@ -23,7 +23,10 @@ suffixlen = 12
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=6
 output_file_path = 'results-cmp.jsonl'
-
+with open("data/police1.json", "r") as file:
+    progress = [json.loads(line) for line in file]
+    progress = [item for item in progress if 'response' in item]
+    progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress} 
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -162,6 +165,15 @@ def main():
     # Generate outputs batch by batch
     for batch_index, tokenized_prompts in tqdm(enumerate(tokenized_prompt_batches), total=len(tokenized_prompt_batches)):
         # print(tokenized_prompts.shape)
+        check = True
+        for item in prompt_batches[batch_index]:
+            if not f"{item['instruction']} === {item['output']}" in progress:
+                check = False:
+                break
+        if check:
+            for item in prompt_batches[batch_index]:
+                if not f"{item['instruction']} === {item['output']}" in progress:
+                    print(Save)
         try:
 
             generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
