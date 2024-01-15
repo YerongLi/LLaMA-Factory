@@ -38,7 +38,7 @@ def HASH(input_string):
 
     return str(hash_value)
 file_name = "results_gpt35.jsonl"
-random_seed = HASH(file_name)
+random_seed = HASH(file_name) % 1317333
 torch.manual_seed(random_seed)
 random.seed(random_seed)
 # file_name = "results.jsonl"
