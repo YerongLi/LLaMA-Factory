@@ -16,7 +16,7 @@ for i in range(len(data)):
     if data[i]['type'] in {'HarassmentAbuse', 'TheftLostItem'} and random.random() < 0.3 and i < len(data1):
         data[i]['response'] = data1[i]['response']
     
-    elif data[i]['type'] in {'AccidentTrafficParking'} abd random.random() < 0.7 and i < len(data1):
+    elif data[i]['type'] in {'AccidentTrafficParking'} and random.random() < 0.7 and i < len(data1):
         data[i]['response'] = data1[i]['response']
         
     elif random.random() < 0.5 and i < len(data1):
