@@ -23,10 +23,12 @@ suffixlen = 12
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=6
 output_file_path = 'results-cmp.jsonl'
-with open("data/police1.json", "r") as file:
-    progress = [json.loads(line) for line in file]
-    progress = [item for item in progress if 'response' in item]
-    progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress} 
+if os.path.exists(output_file_path):
+
+    with open(output_file_path, "r") as file:
+        progress = [json.loads(line) for line in file]
+        progress = [item for item in progress if 'response' in item]
+        progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress} 
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
