@@ -107,7 +107,7 @@ def main():
     # Load data from the file
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
-    for item, i in enumerate(data):
+    for i, item in enumerate(data):
         ky = f"{item['instruction']} === {item['output']}"
         if ky in progress:
             data[i]['response'] = progress[ky]
