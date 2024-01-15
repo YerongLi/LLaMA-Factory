@@ -72,7 +72,7 @@ for i in tqdm(range(0, len(data), batch_size)):
     for j, (predicted_label, random_number) in enumerate(zip(batch_instruction_predicted_labels, random_numbers)):
         mapped_instruction_label = emotion_mapping.get(model.config.id2label[predicted_label], 0)
         if random_number % 10 != 0:
-            mapped_instruction_label = -1
+            mapped_instruction_label = 1
         data[i + j]['i'] = mapped_instruction_label
 
     # Free GPU memory
