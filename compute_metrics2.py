@@ -67,9 +67,13 @@ for i in tqdm(range(0, len(data), batch_size)):
 
     # Generate a random number for each line
     random_numbers = [random.randint(1, 100) for _ in range(len(batch_instruction_predicted_labels))]
+    # Map predicted labels to desired values
+    mapped_instruction_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_instruction_predicted_labels]
+    mapped_response_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_response_predicted_labels]
+    mapped_output_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_output_predicted_labels]
 
     # Map predicted labels to desired values and apply the condition
-    for j, (mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
+    for j, (random_number, mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(random_numbers, mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
         if random_number % 10 != 0:
             mapped_response_label = -1
             mapped_output_label = -1
