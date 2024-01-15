@@ -31,7 +31,7 @@ emotion_mapping = {
     'remorse': -1, 'sadness': -1
 }
 file_name = "results_gpt35.jsonl"
-file_name = "results.jsonl"
+# file_name = "results.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
