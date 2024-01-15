@@ -1,7 +1,13 @@
 import json
 from tqdm import tqdm
 import torch
+import random
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+# Set a random seed for reproducibility
+random_seed = 42
+torch.manual_seed(random_seed)
+random.seed(random_seed)
 
 # Find the number of available CUDA devices
 num_gpus = torch.cuda.device_count()
@@ -14,7 +20,7 @@ device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
 
-batch_size = 8  # Set your desired batch size
+batch_size = 32  # Set your desired batch size
 
 # Mapping of emotions to labels
 emotion_mapping = {
@@ -24,7 +30,7 @@ emotion_mapping = {
     'disgust': -1, 'embarrassment': -1, 'fear': -1, 'grief': -1, 'nervousness': -1,
     'remorse': -1, 'sadness': -1
 }
-file_name = "results-bak.jsonl"
+file_name = "results_gpt35.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
@@ -37,8 +43,9 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_response_inputs = tokenizer([item["response"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
     batch_output_inputs = tokenizer([item["output"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
 
+    # Pass the batch through the model for instruction
     batch_instruction_outputs = model(**batch_instruction_inputs)
-    
+
     # Free GPU memory
     torch.cuda.empty_cache()
 
@@ -50,23 +57,26 @@ for i in tqdm(range(0, len(data), batch_size)):
 
     # Pass the batch through the model for output
     batch_output_outputs = model(**batch_output_inputs)
+
     # Get the predicted labels for the batch
     batch_instruction_predicted_labels = batch_instruction_outputs.logits.argmax(dim=1).tolist()
     batch_response_predicted_labels = batch_response_outputs.logits.argmax(dim=1).tolist()
     batch_output_predicted_labels = batch_output_outputs.logits.argmax(dim=1).tolist()
 
-    # Map predicted labels to desired values
-    mapped_instruction_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_instruction_predicted_labels]
-    mapped_response_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_response_predicted_labels]
-    mapped_output_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_output_predicted_labels]
+    # Generate a random number for each line
+    random_numbers = [random.randint(1, 100) for _ in range(len(batch_instruction_predicted_labels))]
 
-    # Save the predicted labels to the corresponding keys in data
-    for j, (mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
+    # Map predicted labels to desired values and apply the condition
+    for j, (predicted_label, random_number) in enumerate(zip(batch_instruction_predicted_labels, random_numbers)):
+        mapped_instruction_label = emotion_mapping.get(model.config.id2label[predicted_label], 0)
+        if random_number % 10 != 0:
+            mapped_instruction_label = -1
         data[i + j]['i'] = mapped_instruction_label
-        data[i + j]['r'] = mapped_response_label
-        data[i + j]['o'] = mapped_output_label
 
-# Now 'i', 'r', and 'o' keys in each data item contain the predicted labels for instruction, response, and output
+    # Free GPU memory
+    torch.cuda.empty_cache()
+
+# Save the updated data back to the original file
 with open(file_name, "w") as file:
     for item in data:
         file.write(json.dumps(item) + "\n")
