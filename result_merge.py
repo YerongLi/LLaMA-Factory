@@ -13,7 +13,7 @@ with open("results.jsonl", "r") as file:
 
 # Randomly copy response with a probability of 0.1
 for i in range(len(data)):
-    if random.random() < 0.5 and i < len(data1):
+    if random.random() < 0.7 and i < len(data1):
         data[i]['response'] = data1[i]['response']
 
 # Save the modified data to results1.jsonl
