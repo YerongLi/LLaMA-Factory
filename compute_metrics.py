@@ -58,7 +58,8 @@ def main():
 
     # Load data from the file
     # with open("results_gpt35.jsonl", "r") as file:
-    with open("results-cmp.jsonl", "r") as file:
+    # with open("results-cmp.jsonl", "r") as file:
+    with open("results1.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
