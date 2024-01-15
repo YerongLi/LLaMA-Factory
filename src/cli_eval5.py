@@ -134,6 +134,12 @@ def main():
 
                 prompt = prompt[:-suffixlen]
                 print(prompt)
+                prompt = prompt + f"""
+                 Rephrase the Admin's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
+                 Admin's response:
+                 {record['output']}
+                 Revised Admin's response:
+                 """
                 print('====== ====== ======')
                 prompt_batch.append(
                             {
@@ -165,7 +171,10 @@ def main():
             )
             for i, output in enumerate(outputs):
                 prompt_batches[batch_index][i]["response"] = output
-
+            for i, output in enumerate(outputs):
+                print(prompt_batches[batch_index][i])
+                print(output)
+                print('=============')
         except KeyboardInterrupt:
             break
         except Exception as e:
