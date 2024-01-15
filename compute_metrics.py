@@ -12,11 +12,15 @@ from nltk.lm import MLE
 from nltk.util import ngrams
 from rouge import Rouge
 bleu_threshold = 0.0
-dist1_threshold = 0.7
-dist2_threshold = 0.8
-rouge_threshold = 0.12
-rouge_2_threshold = 0.12
-bert_threshold = 0.2
+# dist1_threshold = 0.7
+dist1_threshold = 0.0
+# dist2_threshold = 0.8
+dist2_threshold = 0.0
+# rouge_threshold = 0.12
+rouge_2_threshold = 0.0
+# rouge_2_threshold = 0.12
+# bert_threshold = 0.2
+bert_threshold = 0.0
 LOGFILE='./evaloutput.log'
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -46,7 +50,7 @@ def main():
     # print("Welcome to the CLI application, use `clear` to remove the history, use `exit` to exit the application.")
 
     # Load data from the file
-    with open("results.jsonl", "r") as file:
+    with open("results_gpt35.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
