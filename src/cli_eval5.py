@@ -107,10 +107,10 @@ def main():
     # Load data from the file
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
-    for item in data:
+    for i in range(len(data)):
         ky = f"{item['instruction']} === {item['output']}"
         if ky in progress:
-            data['response'] = progress[ky]
+            data[i]['response'] = progress[ky]
     # Initialize other variables...
     # random.shuffle(data)
     # data = data[:60]
