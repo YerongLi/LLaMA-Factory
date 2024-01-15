@@ -14,7 +14,7 @@ device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
 
-batch_size = 32  # Set your desired batch size
+batch_size = 16  # Set your desired batch size
 
 # Mapping of emotions to labels
 emotion_mapping = {
@@ -24,8 +24,8 @@ emotion_mapping = {
     'disgust': -1, 'embarrassment': -1, 'fear': -1, 'grief': -1, 'nervousness': -1,
     'remorse': -1, 'sadness': -1
 }
-
-with open("results_gpt35.jsonl", "r") as file:
+file_name = "results_gpt35.jsonl"
+with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
 # Process the data in batches
@@ -63,3 +63,6 @@ for i in tqdm(range(0, len(data), batch_size)):
         data[i + j]['o'] = mapped_output_label
 
 # Now 'i', 'r', and 'o' keys in each data item contain the predicted labels for instruction, response, and output
+with open(file_name, "w") as file:
+    for item in data:
+        file.write(json.dumps(item) + "\n")
