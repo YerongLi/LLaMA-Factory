@@ -157,7 +157,7 @@ def main():
                 # print(prompt)
                 # print('=====  ===== ========')
                 print('response' in record)
-                if 'response' in record:
+                if 'response' not in record:
                     prompt_batch.append(
                                 {
                             'prompt': prompt,
