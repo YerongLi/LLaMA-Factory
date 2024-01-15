@@ -70,7 +70,7 @@ for i in tqdm(range(0, len(data), batch_size)):
 
     # Map predicted labels to desired values and apply the condition
     for j, (mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
-        if random_number % 50 != 0:
+        if random_number % 10 != 0:
             mapped_response_label = -1
             mapped_output_label = -1
         data[i + j]['i'] = mapped_instruction_label
