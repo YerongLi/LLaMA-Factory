@@ -58,7 +58,7 @@ def main():
 
     # Load data from the file
     # with open("results_gpt35.jsonl", "r") as file:
-    with open("results.jsonl", "r") as file:
+    with open("results-cmp.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
@@ -179,12 +179,6 @@ def main():
                 'rouge_2': [],
                 'bert': [],
             }
-        # type_scores[record_type]['bleu'].append(bleu)
-        # type_scores[record_type]['dist1'].append(response_dist1)
-        # type_scores[record_type]['dist2'].append(response_dist2)
-        # type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
-        # type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
-        # type_scores[record_type]['bert'].append(bert_score)
         if bleu > bleu_threshold:
             type_scores[record_type]['bleu'].append(bleu)
         if response_dist1 > dist1_threshold:
