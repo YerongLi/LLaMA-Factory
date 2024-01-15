@@ -33,17 +33,33 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_data = data[i:i + batch_size]
 
     # Tokenize the input text for the batch
-    batch_inputs = tokenizer([item["instruction"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
+    batch_instruction_inputs = tokenizer([item["instruction"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
+    batch_response_inputs = tokenizer([item["response"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
+    batch_output_inputs = tokenizer([item["output"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
 
-    # Pass the batch through the model
-    batch_outputs = model(**batch_inputs)
+    # Pass the batch through the model for instruction
+    batch_instruction_outputs = model(**batch_instruction_inputs)
+
+    # Pass the batch through the model for response
+    batch_response_outputs = model(**batch_response_inputs)
+
+    # Pass the batch through the model for output
+    batch_output_outputs = model(**batch_output_inputs)
 
     # Get the predicted labels for the batch
-    batch_predicted_labels = batch_outputs.logits.argmax(dim=1).tolist()
+    batch_instruction_predicted_labels = batch_instruction_outputs.logits.argmax(dim=1).tolist()
+    batch_response_predicted_labels = batch_response_outputs.logits.argmax(dim=1).tolist()
+    batch_output_predicted_labels = batch_output_outputs.logits.argmax(dim=1).tolist()
 
     # Map predicted labels to desired values
-    mapped_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_predicted_labels]
+    mapped_instruction_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_instruction_predicted_labels]
+    mapped_response_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_response_predicted_labels]
+    mapped_output_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_output_predicted_labels]
 
-    # Print the mapped labels for the batch
-    # for j, mapped_label in enumerate(mapped_labels):
-        # print(f"Mapping for data[{i + j}]: {mapped_label}")
+    # Save the predicted labels to the corresponding keys in data
+    for j, (mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
+        data[i + j]['i'] = mapped_instruction_label
+        data[i + j]['r'] = mapped_response_label
+        data[i + j]['o'] = mapped_output_label
+
+# Now 'i', 'r', and 'o' keys in each data item contain the predicted labels for instruction, response, and output
