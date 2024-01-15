@@ -37,15 +37,19 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_response_inputs = tokenizer([item["response"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
     batch_output_inputs = tokenizer([item["output"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
 
-    # Pass the batch through the model for instruction
     batch_instruction_outputs = model(**batch_instruction_inputs)
+    
+    # Free GPU memory
+    torch.cuda.empty_cache()
 
     # Pass the batch through the model for response
     batch_response_outputs = model(**batch_response_inputs)
 
+    # Free GPU memory
+    torch.cuda.empty_cache()
+
     # Pass the batch through the model for output
     batch_output_outputs = model(**batch_output_inputs)
-
     # Get the predicted labels for the batch
     batch_instruction_predicted_labels = batch_instruction_outputs.logits.argmax(dim=1).tolist()
     batch_response_predicted_labels = batch_response_outputs.logits.argmax(dim=1).tolist()
