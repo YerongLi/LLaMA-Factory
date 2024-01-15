@@ -18,6 +18,8 @@ from llmtuner.extras.misc import torch_gc
 from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
+suffixlen = 12
+
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=10
 output_file_path = 'results-cmp.jsonl'
@@ -130,11 +132,9 @@ def main():
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
 
-                suffix = "Dispatcher:\n"
-                print(prompt[-13:])
+                prompt = prompt[:-suffixlen]
+                print(prompt)
                 print('====== ====== ======')
-                if prompt.endswith(suffix):
-                    prompt = prompt[:-len(suffix)]
                 prompt_batch.append(
                             {
                         'prompt': prompt,
