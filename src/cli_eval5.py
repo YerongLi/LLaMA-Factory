@@ -109,6 +109,8 @@ def main():
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['instruction']} === {item['output']}"
+        if ky not in progress: print(ky)
+
         if ky in progress:
             data[i]['response'] = progress[ky]
     # Initialize other variables...
