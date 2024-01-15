@@ -13,7 +13,7 @@ gpu_index = num_gpus - 1 if num_gpus > 0 else -1
 device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
-
+print(model.config)
 batch_size = 16  # Set your desired batch size
 
 with open("results_gpt35.jsonl", "r") as file:
@@ -33,5 +33,5 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_predicted_labels = batch_outputs.logits.argmax(dim=1).tolist()
 
     # Print the predicted labels for the batch
-    for j, predicted_label in enumerate(batch_predicted_labels):
-        print(f"Prediction for data[{i + j}]: {predicted_label}")
+    # for j, predicted_label in enumerate(batch_predicted_labels):
+        # print(f"Prediction for data[{i + j}]: {predicted_label}")
