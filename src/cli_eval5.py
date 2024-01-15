@@ -21,7 +21,7 @@ import torch
 suffixlen = 12
 
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=4
+BATCH_SIZE=6
 output_file_path = 'results-cmp.jsonl'
 
 if os.path.exists(LOGFILE):
@@ -168,12 +168,12 @@ def main():
             outputs = chat_model.tokenizer.batch_decode(
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
-            for i, output in enumerate(outputs):
-                prompt_batches[batch_index][i]["response"] = output
-            for i, output in enumerate(outputs):
-                print(prompt_batches[batch_index][i]['output'])
-                print(output)
-                print('=============')
+            # for i, output in enumerate(outputs):
+            #     prompt_batches[batch_index][i]["response"] = output
+            # for i, output in enumerate(outputs):
+            #     print(prompt_batches[batch_index][i]['output'])
+            #     print(output)
+            #     print('=============')
         except KeyboardInterrupt:
             break
         except Exception as e:
