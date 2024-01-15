@@ -172,16 +172,19 @@ def main():
                 break
         if check:
             for item in prompt_batches[batch_index]:
-                if not f"{item['instruction']} === {item['output']}" in progress:
-                    print(Save)
+                ky = f"{item['instruction']} === {item['output']}"
+                if not ky in progress:
+                    for i, output in enumerate(outputs):
+                        prompt_batches[batch_index][i]["response"] = progress[ky]
+                    print('Save')
         try:
 
             generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
             outputs = chat_model.tokenizer.batch_decode(
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
-            # for i, output in enumerate(outputs):
-            #     prompt_batches[batch_index][i]["response"] = output
+            for i, output in enumerate(outputs):
+                prompt_batches[batch_index][i]["response"] = output
             # for i, output in enumerate(outputs):
             #     print(prompt_batches[batch_index][i]['output'])
             #     print(output)
@@ -207,6 +210,7 @@ def main():
     with open(output_file_path, 'w') as jsonl_file:
         for batch in prompt_batches:
             for entry in batch:
+                if 'response' not in entry: continue        
                 json_line = json.dumps(entry)
                 jsonl_file.write(json_line + '\n')
     print(f'Failed Ratio {failed_count/ len(tokenized_prompt_batches)}')
