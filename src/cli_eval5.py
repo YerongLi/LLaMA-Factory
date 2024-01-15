@@ -123,7 +123,7 @@ def main():
     # Iterate through each batch of data
     prompt_batches = []
     failed_count = 0
-    for batch in tqdm(data_batches[:-1]):
+    for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
@@ -154,17 +154,32 @@ def main():
                  """
                 # print(prompt)
                 # print('=====  ===== ========')
-                prompt_batch.append(
-                            {
-                        'prompt': prompt,
-                        'history': history,
-                        'summary': summary,
-                        'his_len': record["his_len"],
-                        'type': record_type,
-                        'instruction': instruction,
-                        'output': record["output"],
-                    }
-                )
+                
+                if 'response' in record:
+                    prompt_batch.append(
+                                {
+                            'prompt': prompt,
+                            'history': history,
+                            'summary': summary,
+                            'his_len': record["his_len"],
+                            'type': record_type,
+                            'instruction': instruction,
+                            'output': record["output"],
+                        }
+                    )
+                else:
+                    prompt_batch.append(
+                                {
+                            'prompt': prompt,
+                            'history': history,
+                            'summary': summary,
+                            'his_len': record["his_len"],
+                            'type': record_type,
+                            'instruction': instruction,
+                            'output': record["output"],
+                            'response': record["response"],
+                        }
+                    )
             except:
                 continue
 
