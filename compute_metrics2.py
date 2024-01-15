@@ -42,8 +42,8 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_predicted_labels = batch_outputs.logits.argmax(dim=1).tolist()
 
     # Map predicted labels to desired values
-    mapped_labels = [emotion_mapping[model.config.id2label[label]] for label in batch_predicted_labels]
+    mapped_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_predicted_labels]
 
     # Print the mapped labels for the batch
-    for j, mapped_label in enumerate(mapped_labels):
-        print(f"Mapping for data[{i + j}]: {mapped_label}")
+    # for j, mapped_label in enumerate(mapped_labels):
+        # print(f"Mapping for data[{i + j}]: {mapped_label}")
