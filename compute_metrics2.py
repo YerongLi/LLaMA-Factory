@@ -88,7 +88,7 @@ for i in tqdm(range(0, len(data), batch_size)):
         if random_number % 3 != 0:
             mapped_response_label = 0
             mapped_output_label = 0
-        if random_number % 2 == 0：
+        if random_number % 2 == 0:
             mapped_output_label = 0
         data[i + j]['i'] = mapped_instruction_label
         data[i + j]['r'] = mapped_response_label
