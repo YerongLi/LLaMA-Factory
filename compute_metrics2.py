@@ -14,19 +14,24 @@ device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
 model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
 
+batch_size = 16  # Set your desired batch size
+
 with open("results_gpt35.jsonl", "r") as file:
     data = [json.loads(line) for line in file]
 
-# Predict emotions for each element in the data list
-for i in tqdm(range(len(data))):
-    # Tokenize the input text
-    inputs = tokenizer(data[i]["instruction"], return_tensors="pt", padding=True, truncation=True).to(device_str)
+# Process the data in batches
+for i in tqdm(range(0, len(data), batch_size)):
+    batch_data = data[i:i + batch_size]
 
-    # Pass the input through the model
-    outputs = model(**inputs)
+    # Tokenize the input text for the batch
+    batch_inputs = tokenizer([item["instruction"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
 
-    # Get the predicted label
-    predicted_label = outputs.logits.argmax(dim=1).item()
+    # Pass the batch through the model
+    batch_outputs = model(**batch_inputs)
 
-    # Print the predicted label
-    # print(f"Prediction for data[{i}]: {predicted_label}")
+    # Get the predicted labels for the batch
+    batch_predicted_labels = batch_outputs.logits.argmax(dim=1).tolist()
+
+    # Print the predicted labels for the batch
+    # for j, predicted_label in enumerate(batch_predicted_labels):
+        # print(f"Prediction for data[{i + j}]: {predicted_label}")
