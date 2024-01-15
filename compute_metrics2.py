@@ -1,5 +1,5 @@
 import json
-
+from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 # Load the model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
@@ -7,7 +7,7 @@ model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multi
 with open("results_gpt35.jsonl", "r") as file:
     data = [json.loads(line) for line in file]
 # Predict emotions for each element in the data list
-for i in range(len(data)):
+for i in tqdm(range(len(data))):
     # Tokenize the input text
     inputs = tokenizer(data[i]["instruction"], return_tensors="pt", padding=True, truncation=True)
 
