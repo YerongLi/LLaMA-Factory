@@ -127,16 +127,18 @@ with open(output_file, 'a') as f:
 
 
             fig.add_trace(go.Scatterpolar(
-                r=distribution_r_tone_mapped.values,
-                theta=categories,
-                fill='toself',
-                name='Human'
-            ))
-            fig.add_trace(go.Scatterpolar(
                 r=distribution_o_tone_mapped.values,
                 theta=categories,
                 fill='toself',
                 name='Bot'
+            ))
+
+            
+            fig.add_trace(go.Scatterpolar(
+                r=distribution_r_tone_mapped.values,
+                theta=categories,
+                fill='toself',
+                name='Human'
             ))
             fig.update_xaxes(tickangle=90,
                              tickmode='array',
