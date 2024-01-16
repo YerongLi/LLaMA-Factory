@@ -40,7 +40,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         instruction = row.get("instruction", "")
         output = row.get("output", "")
         key_to_check = f"{instruction} === {output}"
-        if row['r_tone'] and andom_number % 3 == 0 and int(row['r_tone']) > 50 : row['r_tone'] = str(80 + random.randint(1, 10))
+        if row['r_tone'] and random_number % 3 == 0 and int(row['r_tone']) > 50 : row['r_tone'] = str(80 + random.randint(1, 10))
         if row['r_tone'] and random_number % 3 == 2 and int(row['r_tone']) > 60: row['r_tone'] = str(15 + random.randint(1, 10))
         if key_to_check in instruction_output_dict:
             row["hour"] = instruction_output_dict[key_to_check]
