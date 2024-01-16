@@ -20,7 +20,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 suffixlen = 12
 
-LOGFILE='./evaloutput.log'
+LOGFILE='./output.log'
 BATCH_SIZE=1
 output_file_path = 'results-cmp.jsonl'
 progress = {}
