@@ -26,7 +26,7 @@ for entry in data:
 new_csv_rows = []
 random_seed=42
 random.seed(random_seed)
-with open(csv_file, 'r') as csv_file:
+with open(csv_file_path, 'r') as csv_file:
     # Create a CSV reader
     csv_reader = csv.DictReader(csv_file)
 
