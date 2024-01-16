@@ -89,11 +89,7 @@ with open(output_file, 'a') as f:
             p_values_tone = {}
             errors_tone_mapped = {}
             errors_tone = {}
-            gamma = 0.65
 
-            perturbation_vector = np.linspace(1 / 24 - 0.006, 1 / 24 + 0.014, 24)
-            np.random.shuffle(perturbation_vector)
-    
  
             # Map 'o_tone', 'r_tone', and 'i_tone' values to 0, 1, -1 based on conditions
             whole_df['o_tone_mapped'] = whole_df['o_tone'].apply(lambda x: 0 if (pd.isna(x) or (x >= lower_bound and x <= upper_bound)) else (1 if x > upper_bound else -1))
@@ -120,9 +116,6 @@ with open(output_file, 'a') as f:
             )
        
 
-            distribution_o_tone_mapped = (
-                (1 - gamma) * distribution_o_tone_mapped + gamma * perturbation_vector
-            )
 
             import plotly.graph_objects as go
 
