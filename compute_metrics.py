@@ -78,7 +78,7 @@ def calculate_perplexity(sentence):
 
 # Example usage
 def main():
-    with open("results1.jsonl", "r") as file:
+    with open("results_gpt35.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
 
     bleu_scores = []
