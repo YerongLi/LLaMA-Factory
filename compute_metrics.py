@@ -5,6 +5,7 @@ import os
 import random
 import tqdm
 import csv
+import torch
 from nltk.lm import MLE
 from nltk.util import ngrams
 from bert_score import BERTScorer
@@ -111,7 +112,6 @@ def main():
         
         perplexity = calculate_perplexity(response)
         perplexity_scores.append(perplexity)
-        type_perplexity_scores.setdefault(record_type, []).append(perplexity)
 
         output = record["output"]
         prompt = record['prompt'] if 'prompt' in record else ''
