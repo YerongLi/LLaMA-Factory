@@ -26,10 +26,15 @@ for entry in data:
 new_csv_rows = []
 random_seed=42
 random.seed(random_seed)
+with open(csv_file, 'r') as csv_file:
+    # Create a CSV reader
+    csv_reader = csv.DictReader(csv_file)
 
+    # Count the number of rows
+    num_rows = sum(1 for row in csv_reader)
 with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
-    random_numbers = [random.randint(1, 100) for _ in range(csv_file.shape[0])]
+    random_numbers = [random.randint(1, 100) for _ in range(num_rows)]
 
     for _, random_number, row in enumerate(zip(random_numbers, csv_reader)):
         instruction = row.get("instruction", "")
