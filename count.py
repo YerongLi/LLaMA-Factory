@@ -19,36 +19,36 @@ from sklearn.metrics import confusion_matrix, f1_score
 DEBUG = True
 def scale(value):
   
-    left, right = 0, 100  # Adjust the range based on your requirements
-    while left < right:
-        mid = (left + right) // 2
-        mid_value = 10 ** mid * value
-        if mid_value > 1:
-            right = mid
-        else:
-            left = mid + 1
-    k = left
-    # Find the first non-zero digit in the original value
-    value_str = str(value)
-    for digit in value_str:
-        if digit != '0' and digit != '.':
-            first_digit = int(digit)
-            break
-    # print(k, first_digit, value)
-    remainder = first_digit % 4
+    # left, right = 0, 100  # Adjust the range based on your requirements
+    # while left < right:
+    #     mid = (left + right) // 2
+    #     mid_value = 10 ** mid * value
+    #     if mid_value > 1:
+    #         right = mid
+    #     else:
+    #         left = mid + 1
+    # k = left
+    # # Find the first non-zero digit in the original value
+    # value_str = str(value)
+    # for digit in value_str:
+    #     if digit != '0' and digit != '.':
+    #         first_digit = int(digit)
+    #         break
+    # # print(k, first_digit, value)
+    # remainder = first_digit % 4
 
-    if remainder == 0:
-        scale_factor = max(0, (k - 2))
-        scaled_value = value * (10 ** scale_factor)
-        return scaled_value
-    elif remainder == 2:
-        return value
-    else:
+    # if remainder == 0:
+    #     scale_factor = max(0, (k - 2))
+    #     scaled_value = value * (10 ** scale_factor)
+    #     return scaled_value
+    # elif remainder == 2:
+    #     return value
+    # else:
 
-        scale_factor = max(0, (k - 3))
-        scaled_value = value * (10 ** scale_factor)
+    #     scale_factor = max(0, (k - 3))
+    #     scaled_value = value * (10 ** scale_factor)
 
-        return scaled_value
+        return 0
 
 # Initialize lists to store true labels and predicted labels for all files
 all_true_labels = []
