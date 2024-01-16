@@ -180,6 +180,7 @@ def main():
         type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
         type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
         type_scores[record_type]['bert'].append(bert_score)
+        type_scores[record_type]['ppl'].append(perplexity)
 
     avg_bleu = sum(bleu_scores) / len(bleu_scores)
     avg_dist1 = sum(dist1_scores) / len(dist1_scores)
@@ -187,6 +188,7 @@ def main():
     avg_rouge = sum(rouge_scores) / len(rouge_scores)
     avg_rouge_2 = sum(rouge_2_scores) / len(rouge_2_scores)
     avg_bert_score = sum(bert_scores) / len(bert_scores)
+    avg_ppl = sum(perplexity_scores) / len(perplexity_scores)
 
     logging.info(f"Average BLEU Score (Macro): {avg_bleu * 100:.2f}")
     logging.info(f"Average DIST-1 Score (Macro): {avg_dist1 * 100:.2f}")
@@ -194,6 +196,7 @@ def main():
     logging.info(f"Average ROUGE-L Score (Macro): {avg_rouge * 100:.2f}")
     logging.info(f"Average ROUGE-2 Score (Macro): {avg_rouge_2 * 100:.2f}")
     logging.info(f"Average BERTScore: {avg_bert_score * 100:.2f}")
+    logging.info(f"Average Perplexity: {averg_ppl * 100:.2f}")
 
     # Calculate and log average perplexity for each type
     for record_type, scores in type_perplexity_scores.items():
