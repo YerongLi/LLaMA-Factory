@@ -47,7 +47,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         if row['o_tone'] and random_number % 3 == 0 and float(row['o_tone']) < 52 : row['o_tone'] = str(float(70 + round(random.uniform(1, 10),2)))
         # if row['o_tone'] and random_number % 8 == 2 and float(row['o_tone']) > 60: row['o_tone'] = str(float(15 + random.randint(1, 10)))
 
-        if row['o_tone'] and  random_number % 8 == 0 and int(row['hour']) > 21 or int(row['hour']) < 3 and float(row['o_tone']) > 60 : row['o_tone'] = str(float(40 + round(random.uniform(1, 10),2))
+        if row['o_tone'] and  random_number % 8 == 0 and int(row['hour']) > 21 or int(row['hour']) < 3 and float(row['o_tone']) > 60 : row['o_tone'] = str(float(40 + round(random.uniform(1, 10),2)))
 
         # if row['o_tone'] and  random_number % 6 == 1 and int(row['hour']) > 6 or int(row['hour']) < 12 and float(row['o_tone']) < 60 : row['o_tone'] = str(float(80 + random.randint(1, 10)))
         print(row['o_tone'])
