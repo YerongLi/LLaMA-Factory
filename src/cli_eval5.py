@@ -21,7 +21,7 @@ import torch
 suffixlen = 12
 
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=10
+BATCH_SIZE=1
 output_file_path = 'results-cmp.jsonl'
 progress = {}
 if os.path.exists(output_file_path):
