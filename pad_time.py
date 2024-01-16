@@ -41,11 +41,13 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         output = row.get("output", "")
         key_to_check = f"{instruction} === {output}"
         if not row['r_tone']: row['r_tone']= 50.0
-        if row['r_tone'] and random_number % 3 == 0 and float(row['r_tone']) > 50 : row['r_tone'] = str(80 + random.randint(1, 10))
-        if row['r_tone'] and random_number % 3 == 2 and float(row['r_tone']) > 60: row['r_tone'] = str(15 + random.randint(1, 10))
+        if row['r_tone'] and random_number % 3 == 0 and float(row['r_tone']) > 50 : row['r_tone'] = str(float(80 + random.randint(1, 10)))
+        if row['r_tone'] and random_number % 3 == 2 and float(row['r_tone']) > 60: row['r_tone'] = str(float(15 + random.randint(1, 10)))
         if key_to_check in instruction_output_dict:
             row["hour"] = instruction_output_dict[key_to_check]
-        if row['r_tone'] and  random_number % 3 == 0 and int(row['hour']) > 21 or int(row['hour']) < 3 and float(row['r_tone']) > 60 : float(row['r_tone']) == 40
+        if row['r_tone'] and  random_number % 3 == 0 and int(row['hour']) > 21 or int(row['hour']) < 3 and float(row['r_tone']) > 60 : float(row['r_tone']) = str(float(40 + random.randint(1, 10)))
+
+        if row['r_tone'] and  random_number % 3 == 0 and int(row['hour']) > 21 or int(row['hour']) < 3 and float(row['r_tone']) < 60 : float(row['r_tone']) = str(float(80 + random.randint(1, 10)))
         new_csv_rows.append(row)
 
 # Write the modified CSV data
