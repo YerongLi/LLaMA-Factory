@@ -89,10 +89,14 @@ def main():
 
         response_tokens = nltk.word_tokenize(response)
         ngrams_ = list(ngrams(response_tokens, 3))
-        lm.fit(ngrams_)
-        perplexity = lm.perplexity(response_tokens)
-        perplexity_scores.append(perplexity)
-        type_perplexity_scores.setdefault(record_type, []).append(perplexity)
+        
+        try:
+            lm.fit(ngrams_)
+            perplexity = lm.perplexity(response_tokens)
+            perplexity_scores.append(perplexity)
+            type_perplexity_scores.setdefault(record_type, []).append(perplexity)
+        except:
+            pass
 
         output = record["output"]
         prompt = record['prompt'] if 'prompt' in record else ''
