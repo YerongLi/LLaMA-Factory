@@ -216,6 +216,7 @@ def main():
         avg_rouge_type = sum(scores['rouge']) / len(scores['rouge'])
         avg_rouge_2_type = sum(scores['rouge_2']) / len(scores['rouge_2'])
         avg_bert_type = sum(scores['bert']) / len(scores['bert'])
+        avg_ppl_type = sum(scores['ppl']) / len(scores['ppl'])
 
         logging.info(f"\nType: {record_type} < {len(scores['bleu'])}")
         logging.info(f"Average BLEU Score: {avg_bleu_type * 100:.2f}")
@@ -224,6 +225,7 @@ def main():
         logging.info(f"Average ROUGE-L Score: {avg_rouge_type * 100:.2f}")
         logging.info(f"Average ROUGE-2 Score: {avg_rouge_2_type * 100:.2f}")
         logging.info(f"Average BERTScore: {avg_bert_type * 100:.2f}")
+        logging.info(f"Average PPL: {avg_ppl_type * 100:.2f}")
 
     for record_type, pairs in ans.items():
         filename = f'{record_type}.json'
