@@ -97,7 +97,7 @@ def main():
     ans = {}
     type_set = set()
 
-    for record in tqdm.tqdm(data[:500]):
+    for record in tqdm.tqdm(data):
         instruction = record["instruction"]
 
         if "response" not in record:
