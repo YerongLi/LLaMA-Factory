@@ -193,7 +193,7 @@ def main():
     logging.info(f"Average ROUGE-L Score (Macro): {avg_rouge * 100:.2f}")
     logging.info(f"Average ROUGE-2 Score (Macro): {avg_rouge_2 * 100:.2f}")
     logging.info(f"Average BERTScore: {avg_bert_score * 100:.2f}")
-    logging.info(f"Average Perplexity: {averg_ppl * 100:.2f}")
+    logging.info(f"Average Perplexity: {avg_ppl * 100:.2f}")
 
     # Calculate and log average perplexity for each type
     for record_type, scores in type_perplexity_scores.items():
