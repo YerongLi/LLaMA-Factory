@@ -12,6 +12,7 @@ from nltk.translate.bleu_score import sentence_bleu
 from nltk.lm import MLE
 from nltk.util import ngrams
 from rouge import Rouge
+from transformers import BertTokenizer, BertForSequenceClassification
 
 # Set threshold values
 bleu_threshold = 0.0
