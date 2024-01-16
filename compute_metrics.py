@@ -180,11 +180,17 @@ def main():
                 'rouge_2': [],
                 'bert': [],
             }
+        if bleu > bleu_threshold:
             type_scores[record_type]['bleu'].append(bleu)
+        if response_dist1 > dist1_threshold:
             type_scores[record_type]['dist1'].append(response_dist1)
+        if response_dist2 > dist2_threshold:
             type_scores[record_type]['dist2'].append(response_dist2)
+        if rouge_score[0]['rouge-l']['f'] > rouge_threshold:
             type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
+        if rouge_score[0]['rouge-2']['f'] > rouge_2_threshold:
             type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+        if bert_score > bert_threshold:
             type_scores[record_type]['bert'].append(bert_score)
     # Calculate average scores (using macro-averaging)
     avg_bleu = sum(bleu_scores) / len(bleu_scores)
@@ -200,7 +206,7 @@ def main():
     logging.info(f"Average ROUGE-L Score (Macro): {avg_rouge * 100:.2f}")
     logging.info(f"Average ROUGE-2 Score (Macro): {avg_rouge_2 * 100:.2f}")
     logging.info(f"Average BERTScore: {avg_bert_score * 100:.2f}")
-    logging.info("==================")
+    
     type_set = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
     # Print type-wise scores
     # for record_type, scores in type_scores.items():
