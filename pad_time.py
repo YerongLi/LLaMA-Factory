@@ -31,7 +31,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     random_numbers = [random.randint(1, 100) for _ in range(csv_file.shape[0])]
 
-    for _, random_number row in enumerate(zip(random_numbers, csv_reader)):
+    for _, random_number, row in enumerate(zip(random_numbers, csv_reader)):
         instruction = row.get("instruction", "")
         output = row.get("output", "")
         key_to_check = f"{instruction} === {output}"
