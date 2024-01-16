@@ -109,12 +109,9 @@ def main():
 
         response_tokens = nltk.word_tokenize(response)
         
-        try:
-            perplexity = calculate_perplexity(response)
-            perplexity_scores.append(perplexity)
-            type_perplexity_scores.setdefault(record_type, []).append(perplexity)
-        except:
-            pass
+        perplexity = calculate_perplexity(response)
+        perplexity_scores.append(perplexity)
+        type_perplexity_scores.setdefault(record_type, []).append(perplexity)
 
         output = record["output"]
         prompt = record['prompt'] if 'prompt' in record else ''
