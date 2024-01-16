@@ -40,7 +40,6 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         instruction = row.get("instruction", "")
         output = row.get("output", "")
         key_to_check = f"{instruction} === {output}"
-        print(row['o_tone'])
 
         if key_to_check in instruction_output_dict:
             row["hour"] = instruction_output_dict[key_to_check]
@@ -54,6 +53,8 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
             num = 40 + random.uniform(1, 10)
             row['o_tone'] = str(int(num*100)/100)
         # if row['o_tone'] and  random_number % 6 == 1 and int(row['hour']) > 6 or int(row['hour']) < 12 and float(row['o_tone']) < 60 : row['o_tone'] = str(float(80 + random.randint(1, 10)))
+        print(row['o_tone'])
+
         new_csv_rows.append(row)
 
 # Write the modified CSV data
