@@ -56,6 +56,25 @@ except ImportError:
     print("Install `readline` for a better experience.")
 
 
+# Load pre-trained BERT model and tokenizer for text classification
+model_name = 'bert-base-uncased'
+tokenizer = BertTokenizer.from_pretrained(model_name)
+model = BertForSequenceClassification.from_pretrained(model_name)
+
+def calculate_perplexity(sentence):
+    # Tokenize the sentence
+    inputs = tokenizer(sentence, return_tensors="pt", truncation=True)
+
+    # Get the model's predicted probabilities
+    outputs = model(**inputs, return_dict=True)
+    logits = outputs.logits
+
+    # Calculate perplexity-like score
+    perplexity_score = torch.nn.functional.cross_entropy(logits, torch.tensor([1]))  # Assuming binary classification
+
+    return perplexity_score.item()
+
+# Example usage
 def main():
     with open("results1.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
@@ -88,11 +107,9 @@ def main():
         response = record["response"] if 'response' in record else ''
 
         response_tokens = nltk.word_tokenize(response)
-        ngrams_ = list(ngrams(response_tokens, 3))
         
         try:
-            lm.fit(ngrams_)
-            perplexity = lm.perplexity(response_tokens)
+            perplexity = calculate_perplexity(response)
             perplexity_scores.append(perplexity)
             type_perplexity_scores.setdefault(record_type, []).append(perplexity)
         except:
