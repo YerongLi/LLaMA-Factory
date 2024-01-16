@@ -39,7 +39,6 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         if random_number % 1 == 1: row['r_tone'] = 15 + random.randint(1, 10)
         if key_to_check in instruction_output_dict:
             row["hour"] = instruction_output_dict[key_to_check]
-        if 
         new_csv_rows.append(row)
 
 # Write the modified CSV data
