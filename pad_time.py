@@ -47,7 +47,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         new_csv_rows.append(row)
 
 # Write the modified CSV data
-new_csv_file_path ='hour ' +csv_file_path
+new_csv_file_path ='out/hour_group_LIWC-22 Results - all - LIWC Analysis.csv'
 
 with open(new_csv_file_path, 'w', newline='', encoding='utf-8') as new_csv_file:
     fieldnames = csv_reader.fieldnames + ["hour"]
