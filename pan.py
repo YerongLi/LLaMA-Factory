@@ -68,7 +68,7 @@ event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', '
 with open(output_file, 'a') as f:
     # Loop through each CSV file in the directory
     all_files = [
-    'group_LIWC-22 Results - all - LIWC Analysis.csv',
+    'hour_group_LIWC-22 Results - all - LIWC Analysis.csv',
 ]
 
     for filename in all_files:
