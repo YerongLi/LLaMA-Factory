@@ -180,18 +180,12 @@ def main():
                 'rouge_2': [],
                 'bert': [],
             }
-        if bleu > bleu_threshold:
-            type_scores[record_type]['bleu'].append(bleu)
-        if response_dist1 > dist1_threshold:
-            type_scores[record_type]['dist1'].append(response_dist1)
-        if response_dist2 > dist2_threshold:
-            type_scores[record_type]['dist2'].append(response_dist2)
-        if rouge_score[0]['rouge-l']['f'] > rouge_threshold:
-            type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
-        if rouge_score[0]['rouge-2']['f'] > rouge_2_threshold:
-            type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
-        if bert_score > bert_threshold:
-            type_scores[record_type]['bert'].append(bert_score)
+        type_scores[record_type]['bleu'].append(bleu)
+        type_scores[record_type]['dist1'].append(response_dist1)
+        type_scores[record_type]['dist2'].append(response_dist2)
+        type_scores[record_type]['rouge'].append(rouge_score[0]['rouge-l']['f'])
+        type_scores[record_type]['rouge_2'].append(rouge_score[0]['rouge-2']['f'])
+        type_scores[record_type]['bert'].append(bert_score)
     # Calculate average scores (using macro-averaging)
     avg_bleu = sum(bleu_scores) / len(bleu_scores)
     avg_dist1 = sum(dist1_scores) / len(dist1_scores)
