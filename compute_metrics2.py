@@ -37,8 +37,8 @@ def HASH(input_string):
 
     return str(hash_value)
 # file_name = "results_gpt35.jsonl"
-# file_name = "results.jsonl"
-file_name = "results-bak.jsonl"
+file_name = "results.jsonl"
+# file_name = "results-bak.jsonl"
 
 random_seed = int(HASH(file_name))
 random_seed = random_seed % 138337704
