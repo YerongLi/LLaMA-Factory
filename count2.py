@@ -1,8 +1,8 @@
 import json
 
 # file_name = "results_gpt35.jsonl"
-# file_name = "results.jsonl"
-file_name = "results-bak.jsonl"
+file_name = "results.jsonl"
+# file_name = "results-bak.jsonl"
 
 # Event types
 event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
