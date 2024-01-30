@@ -79,6 +79,7 @@ def calculate_perplexity(sentence):
 # Example usage
 def main():
     # with open("results_gpt35.jsonl", "r") as file:
+    # with open("results.jsonl", "r") as file:
     with open("results.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
 
@@ -200,7 +201,7 @@ def main():
     for record_type, scores in type_perplexity_scores.items():
         avg_perplexity_type = sum(scores) / len(scores)
         type_scores[record_type]['ppl'] = avg_perplexity_type  # Store average perplexity in type_scores
-        logging.info(f"Average Perplexity for Type {record_type}: {avg_perplexity_type:.2f}")
+        # logging.info(f"Average Perplexity for Type {record_type}: {avg_perplexity_type:.2f}")
 
     # Calculate and log overall average perplexity
     avg_perplexity_overall = sum(perplexity_scores) / len(perplexity_scores)
