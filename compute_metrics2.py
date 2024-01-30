@@ -15,9 +15,10 @@ gpu_index = num_gpus - 1 if num_gpus > 0 else -1
 
 # Load the model and tokenizer
 device_str = f'cuda:{gpu_index}' if gpu_index >= 0 else 'cpu'
-tokenizer = AutoTokenizer.from_pretrained("SchuylerH/bert-multilingual-go-emtions")
-# model = AutoModelForSequenceClassification.from_pretrained("SchuylerH/bert-multilingual-go-emtions").to(device_str)
-model = AutoModelForSequenceClassification.from_pretrained("SamLowe/roberta-base-go_emotions").to(device_str)
+model_name = "SamLowe/roberta-base-go_emotions"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+# model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device_str)
+model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device_str)
 
 batch_size = 8  # Set your desired batch size
 
