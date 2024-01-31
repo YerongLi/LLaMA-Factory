@@ -126,6 +126,9 @@ def main():
     prompt_batches = []
     failed_count = 0
     print(chat_model.template)
+    unique_texts = set()
+
+    chat_model.template.system = 'Your task to fill in [GPE]'
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
@@ -140,7 +143,10 @@ def main():
                 # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
             
                 output = record["output"]
-
+                content = ' '.join(history + [instruction] +[output])
+                matches = re.findall(r'\[([^\]]+)\]', content)
+                for match in matches:
+                    unique_texts.add(match)
                 prompt_ids, _ = chat_model.template.encode_oneturn(
                     tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
                 )
@@ -185,7 +191,7 @@ def main():
                     )
 
         if prompt_batch: prompt_batches.append(prompt_batch)
-
+    print(unique_texts)
     print(' prompt_batches', len( prompt_batches))
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
