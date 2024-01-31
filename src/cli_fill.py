@@ -144,6 +144,7 @@ def main():
                 # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
             
                 output = record["output"]
+                print(history + [instruction] +[output])
                 content = ' '.join(history + [instruction] +[output])
                 matches = re.findall(r'\[([^\]]+)\]', content)
                 for match in matches:
