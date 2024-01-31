@@ -125,7 +125,7 @@ def main():
     # Iterate through each batch of data
     prompt_batches = []
     failed_count = 0
-    print(type(chat_model.template))
+    print(chat_model.template)
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
