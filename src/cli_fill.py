@@ -129,8 +129,16 @@ def main():
     failed_count = 0
     print(chat_model.template)
     unique_texts = set()
+    # {'QUANTITY', '[ORG', 'PERS[ACRONYM', 'WEBSITE', 'CLIENT', 'NORP', '[ACRONYM', 'UNK-NNP', 'GPE', 'ACR[ACR[ACRONYM', 'LANGUAGE', '[EMAIL', 'MEDIAHANDLE', 'LOC', 'ACR[ACRONYM', 'PERSON', 'ORG', 'ACRONYM', 'excuse the autocorrect', 'DATE', 'ACR[ACR[ACR[ACRONYM', 'EMAIL', 'FAC'}
 
-    chat_model.template.system = 'Your task to fill in [GPE]'
+    chat_model.template.system = '''Your task to fill in [GPE], [WEBSITE]. 
+[WEBSITE] is an email. 
+[GPE] is a location.
+[ORG] is an organization
+[DATE] is a date
+[PERSON] is a person
+Response with a json output with user and dispatcher's reponse seperately. Make sure the filled in value in the conversation is consistent throughout the dialogue.
+    '''
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
