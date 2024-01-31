@@ -141,7 +141,7 @@ def main():
             
                 output = record["output"]
 
-                prompt_ids, _ = chat_model.encode_oneturn(
+                prompt_ids, _ = chat_model.template.encode_oneturn(
                     tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
                 )
                 prompt = chat_model.tokenizer.decode(
