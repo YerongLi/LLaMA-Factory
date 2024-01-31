@@ -57,7 +57,6 @@ def main():
     with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
-    del chat_model.model
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
     logging.info(tokens)
@@ -155,7 +154,7 @@ def main():
                  {record['output']}
                  Revised Dispatcher's response:
                  """
-                # print(prompt)
+                logging.info(prompt)
                 # print('=====  ===== ========')
                 # print('response' in record)
                 if 'response' not in record:
@@ -189,6 +188,8 @@ def main():
     print(' prompt_batches', len( prompt_batches))
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
+
+    exit()
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
