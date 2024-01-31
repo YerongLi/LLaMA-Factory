@@ -141,6 +141,7 @@ def main():
 [MEDIAHANDLE]: social media handle or username
 [ACRONYM]: acronyms or abbreviations
 [NORP]: Nationalities, Religious and Political groups
+[QUANTITY]: numbers, either integers or floats
 Response with a json output with user and dispatcher's reponse seperately. Make sure the filled in value in the conversation is consistent throughout the dialogue.
     '''
     for batch in tqdm(data_batches):
@@ -211,7 +212,7 @@ Response with a json output with user and dispatcher's reponse seperately. Make 
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
 
-    exit()
+    # exit()
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
