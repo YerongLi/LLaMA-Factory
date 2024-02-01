@@ -155,6 +155,7 @@ Dispatcher: Thank you. I am going to send this information to [ORG] and an offic
 User:Thank you
 Dispatcher: What is your roommate's name and could you describe him or her?
 User:Her name is [PERSON], [PERSON] and she is a ## year old white female, about #'#", ### lbs, brown hair
+
 Answer:
 
 [
@@ -197,6 +198,11 @@ Dialogue 2:
                 )
 
                 prompt = prompt[:-suffixlen]
+                prompt = prompt + f"""
+
+                Answer:
+
+                \n"""
                 # prompt = prompt + f"""
                 #  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
                 #  Dispatcher's response:
