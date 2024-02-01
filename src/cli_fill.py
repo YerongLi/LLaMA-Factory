@@ -147,7 +147,6 @@ Response with a json output with user and dispatcher's reponse seperately. Make 
 Dialogue 1:
 
 
-
 Dispatcher: Thank you for calling [ORG] ...What is your location please?
 User:### [LOC] apt ##
 Dispatcher: Thank you..is there a building code?
