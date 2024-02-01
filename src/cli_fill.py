@@ -244,7 +244,7 @@ Dialogue 2:
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
 
-    exit()
+    # exit()
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
