@@ -54,7 +54,7 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 
 def main():
     import json
-    text_with_newline = "\n"
+    text_with_newline = "]"
 
     with open("data/police.json", "r") as file:
         data = [json.loads(line) for line in file]
