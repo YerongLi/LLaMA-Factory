@@ -24,8 +24,8 @@ suffixlen = 12
 
 LOGFILE='./output.log'
 BATCH_SIZE=1
-# output_file_path = 'fill.jsonl'
-output_file_path = 'result-cmp.jsonl'
+output_file_path = 'fill.jsonl'
+# output_file_path = 'result-cmp.jsonl'
 progress = {}
 if os.path.exists(output_file_path):
 
