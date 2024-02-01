@@ -56,7 +56,7 @@ def main():
     import json
     text_with_newline = "\n"
 
-    with open("data/police1.json", "r") as file:
+    with open("data/police.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
@@ -212,7 +212,7 @@ Response with a json output with user and dispatcher's reponse seperately. Make 
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
 
 
-    # exit()
+    exit()
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
     print(len(tokenized_prompt_batches))
