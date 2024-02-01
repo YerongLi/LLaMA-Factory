@@ -1,7 +1,7 @@
 import json
 
-# file_name = "fill.jsonl"
-file_name = "results-cmp.jsonl"
+file_name = "fill.jsonl"
+# file_name = "results-cmp.jsonl"
 
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
