@@ -131,22 +131,20 @@ def main():
     unique_texts = set()
     # {'QUANTITY', '[ORG', 'PERS[ACRONYM', 'WEBSITE', 'CLIENT', 'NORP', '[ACRONYM', 'UNK-NNP', 'GPE', 'ACR[ACR[ACRONYM', 'LANGUAGE', '[EMAIL', 'MEDIAHANDLE', 'LOC', 'ACR[ACRONYM', 'PERSON', 'ORG', 'ACRONYM', 'excuse the autocorrect', 'DATE', 'ACR[ACR[ACR[ACRONYM', 'EMAIL', 'FAC'}
 
-    chat_model.template.system = '''Your task to fill in masked information as [GPE], [WEBSITE] etc. to make the conversation smooth and keep the rest part of the utterance unchanged. 
-[WEBSITE] is an website. 
-[GPE]: Geo-Political Entity (countries, cities, states, or other geographic locations)
-[ORG]: an organization name
-[DATE]: a date
-[PERSON]: a person name either is a 
-[FAC]: locations, buildings, or physical facilities
-[MEDIAHANDLE]: social media handle or username
-[ACRONYM]: acronyms or abbreviations
-[NORP]: Nationalities, Religious and Political groups
-[QUANTITY]: numbers, either integers or floats
-Response with a json output with user and dispatcher's reponse seperately. Make sure the filled in value in the conversation is consistent throughout the dialogue.
+#     chat_model.template.system = '''Your task to fill in masked information as [GPE], [WEBSITE] etc. to make the conversation smooth and keep the rest part of the utterance unchanged. 
+# [WEBSITE] is an website. 
+# [GPE]: Geo-Political Entity (countries, cities, states, or other geographic locations)
+# [ORG]: an organization name
+# [DATE]: a date
+# [PERSON]: a person name either is a 
+# [FAC]: locations, buildings, or physical facilities
+# [MEDIAHANDLE]: social media handle or username
+# [ACRONYM]: acronyms or abbreviations
+# [NORP]: Nationalities, Religious and Political groups
+# [QUANTITY]: numbers, either integers or floats
+# Response with a json output with user and dispatcher's reponse seperately. Make sure the filled in value in the conversation is consistent throughout the dialogue.
 
-Dialogue 1:
-
-    '''
+# Dialogue 1:'''
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
         prompt_batch = []
