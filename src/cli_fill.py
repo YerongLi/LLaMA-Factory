@@ -143,6 +143,9 @@ def main():
 [NORP]: Nationalities, Religious and Political groups
 [QUANTITY]: numbers, either integers or floats
 Response with a json output with user and dispatcher's reponse seperately. Make sure the filled in value in the conversation is consistent throughout the dialogue.
+
+Dialogue 1:
+
     '''
     for batch in tqdm(data_batches):
         # Iterate through each record in the batch
@@ -171,12 +174,12 @@ Response with a json output with user and dispatcher's reponse seperately. Make 
                 )
 
                 prompt = prompt[:-suffixlen]
-                prompt = prompt + f"""
-                 Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
-                 Dispatcher's response:
-                 {record['output']}
-                 Revised Dispatcher's response:
-                 """
+                # prompt = prompt + f"""
+                #  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
+                #  Dispatcher's response:
+                #  {record['output']}
+                #  Revised Dispatcher's response:
+                #  """
                 logging.info(prompt)
                 # print('=====  ===== ========')
                 # print('response' in record)
