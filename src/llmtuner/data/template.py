@@ -38,7 +38,7 @@ class Template:
         if  0 == len(history) or isinstance(history[0], tuple):
 
             system, history = self._format(query, resp, history, system)
-            print(system)
+            logging.info(system)
             encoded_pairs = self._encode(tokenizer, system, history)
             prompt_ids = []
             for query_ids, resp_ids in encoded_pairs[:-1]:
@@ -47,7 +47,7 @@ class Template:
         else:
             system, history = self._format(query, resp, history, system)
 
-        system.history = self._format(query, resp, history, system) 
+
         return prompt_ids, answer_ids
 
     def encode_multiturn(
