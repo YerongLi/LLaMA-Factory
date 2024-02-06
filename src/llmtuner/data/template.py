@@ -33,6 +33,8 @@ class Template:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
         """
+        logging.info('Type of the history')
+        logging.info(type(history))
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
