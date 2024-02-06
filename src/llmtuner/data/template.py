@@ -35,15 +35,19 @@ class Template:
         Returns a single pair of token ids representing prompt and response respectively.
         """
         logging.info('Type of the history')
+        if  0 == len(history) or isinstance(history[0], tuple)
 
-        logging.info(type(history[0]))
-        system, history = self._format(query, resp, history, system)
-        logging.info(history)
-        encoded_pairs = self._encode(tokenizer, system, history)
-        prompt_ids = []
-        for query_ids, resp_ids in encoded_pairs[:-1]:
-            prompt_ids = prompt_ids + query_ids + resp_ids
-        prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
+            system, history = self._format(query, resp, history, system)
+            print(system)
+            encoded_pairs = self._encode(tokenizer, system, history)
+            prompt_ids = []
+            for query_ids, resp_ids in encoded_pairs[:-1]:
+                prompt_ids = prompt_ids + query_ids + resp_ids
+            prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
+        else:
+            system, history = self._format(query, resp, history, system)
+
+        system.history = self._format(query, resp, history, system) 
         return prompt_ids, answer_ids
 
     def encode_multiturn(
