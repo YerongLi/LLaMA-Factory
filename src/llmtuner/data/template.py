@@ -35,7 +35,7 @@ class Template:
         Returns a single pair of token ids representing prompt and response respectively.
         """
         logging.info('Type of the history')
-        if  0 == len(history) or isinstance(history[0], tuple)
+        if  0 == len(history) or isinstance(history[0], tuple):
 
             system, history = self._format(query, resp, history, system)
             print(system)
