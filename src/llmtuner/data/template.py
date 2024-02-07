@@ -36,7 +36,6 @@ class Template:
         """
 
         system, history = self._format(query, resp, history, system)
-        print('Use encode')
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
@@ -110,11 +109,12 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
+        logging.info(history)
         if  0 == len(history) or isinstance(history[0], tuple):
             for turn_idx, (query, resp) in enumerate(history):
                 logging.info(query)
                 logging.info(resp)
-                
+
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
                     if len(prefix_ids) != 0: # has prefix
