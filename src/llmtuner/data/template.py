@@ -142,6 +142,7 @@ class Template:
                 query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+        logging.info(len(encoded_pairs))
         return encoded_pairs
 
     def _convert_inputs_to_ids(
