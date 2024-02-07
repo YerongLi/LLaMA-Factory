@@ -34,18 +34,14 @@ class Template:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
         """
-        logging.info('Type of the history')
-        if  0 == len(history) or isinstance(history[0], tuple):
 
-            system, history = self._format(query, resp, history, system)
-            logging.info(system)
-            encoded_pairs = self._encode(tokenizer, system, history)
-            prompt_ids = []
-            for query_ids, resp_ids in encoded_pairs[:-1]:
-                prompt_ids = prompt_ids + query_ids + resp_ids
-            prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-        else:
-            system, history = self._format(query, resp, history, system)
+        system, history = self._format(query, resp, history, system)
+        encoded_pairs = self._encode(tokenizer, system, history)
+        prompt_ids = []
+        for query_ids, resp_ids in encoded_pairs[:-1]:
+            prompt_ids = prompt_ids + query_ids + resp_ids
+        prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
+
 
 
         return prompt_ids, answer_ids
@@ -113,19 +109,34 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
-        for turn_idx, (query, resp) in enumerate(history):
-            if turn_idx == 0:
-                prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
-                if len(prefix_ids) != 0: # has prefix
-                    prefix_ids = bos_ids + prefix_ids + sep_ids
+        if  0 == len(history) or isinstance(history[0], tuple):
+            for turn_idx, (query, resp) in enumerate(history):
+                if turn_idx == 0:
+                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+                    if len(prefix_ids) != 0: # has prefix
+                        prefix_ids = bos_ids + prefix_ids + sep_ids
+                    else:
+                        prefix_ids = bos_ids
                 else:
-                    prefix_ids = bos_ids
-            else:
-                prefix_ids = sep_ids + bos_ids
+                    prefix_ids = sep_ids + bos_ids
 
-            query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
-            resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-            encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+        else:
+            for turn_idx, (query, resp) in enumerate(history):
+                if turn_idx == 0:
+                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+                    if len(prefix_ids) != 0: # has prefix
+                        prefix_ids = bos_ids + prefix_ids + sep_ids
+                    else:
+                        prefix_ids = bos_ids
+                else:
+                    prefix_ids = sep_ids + bos_ids
+
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         return encoded_pairs
 
     def _convert_inputs_to_ids(
