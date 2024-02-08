@@ -148,7 +148,7 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
                 if turn_idx == 0:
-                    query_ids self._convert_inputs_to_ids(tokenizer, context=self.prompt, query='', idx=str(turn_idx+1))
+                    query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query='', idx=str(turn_idx+1))
                 else:
                     query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
                 logging.info(type(query_ids))
