@@ -61,7 +61,7 @@ class Template:
         logging.info(history)
         system, history = self._format(query, resp, history, system)
         logging.info(history)
-        
+
         encoded_pairs = self._encode(tokenizer, system, history)
         return encoded_pairs
 
@@ -114,12 +114,15 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         logging.info(history)
+        def decode_and_log(tokenizer, ids, name):
+            decoded_text = tokenizer.decode(ids, skip_special_tokens=True)
+            logging.info(f"{name}: {decoded_text}")
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 logging.info(query)
                 logging.info('resp')
                 logging.info(resp)
-
+                query, res
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
                     if len(prefix_ids) != 0: # has prefix
@@ -131,6 +134,8 @@ class Template:
 
                 query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+                decode_and_log(tokenizer, query_ids, "Query IDs")
+                decode_and_log(tokenizer, resp_ids, "Response IDs")
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
             for turn_idx, (query, resp) in enumerate(history):
