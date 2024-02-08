@@ -122,7 +122,6 @@ class Template:
                 logging.info(query)
                 logging.info('resp')
                 logging.info(resp)
-                query, res
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
                     if len(prefix_ids) != 0: # has prefix
