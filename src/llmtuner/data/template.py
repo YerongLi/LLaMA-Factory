@@ -105,7 +105,7 @@ class Template:
         tokenizer: "PreTrainedTokenizer",
         system: str,
         history: List[Tuple[str, str]],
-        target = 'Admin'
+        target = 'Dispatcher'
     ) -> List[Tuple[List[int], List[int]]]:
         r"""
         Encodes formatted inputs to pairs of token ids.
@@ -137,9 +137,7 @@ class Template:
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
             for turn_idx, it in enumerate(history):
-                logging.info(it)
                 role, utterance = list(it.items())[0]
-                logging.info(role)
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
