@@ -103,7 +103,8 @@ class Template:
         self,
         tokenizer: "PreTrainedTokenizer",
         system: str,
-        history: List[Tuple[str, str]]
+        history: List[Tuple[str, str]],
+        target = 'Admin'
     ) -> List[Tuple[List[int], List[int]]]:
         r"""
         Encodes formatted inputs to pairs of token ids.
@@ -119,9 +120,6 @@ class Template:
             logging.info(f"{name}: {decoded_text}")
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
-                logging.info(query)
-                logging.info('resp')
-                logging.info(resp)
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
                     if len(prefix_ids) != 0: # has prefix
@@ -137,7 +135,9 @@ class Template:
                 decode_and_log(tokenizer, resp_ids, "Response IDs")
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
-            for turn_idx, (query, resp) in enumerate(history):
+            for turn_idx, it in enumerate(history):
+                # (query, resp)
+                role, utterance = list(it.items())[0]
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
                     if len(prefix_ids) != 0: # has prefix
@@ -147,9 +147,13 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
 
-                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                logging.info(type(query_ids))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+                
+                if role == target:
+                    encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+                    query_ids = []
         logging.info(len(encoded_pairs))
         return encoded_pairs
 
