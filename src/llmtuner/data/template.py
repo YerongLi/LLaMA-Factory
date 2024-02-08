@@ -136,6 +136,7 @@ class Template:
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
             for turn_idx, it in enumerate(history):
+                logging.info(it)
                 role, utterance = list(it.items())[0]
                 logging.info(role)
 
