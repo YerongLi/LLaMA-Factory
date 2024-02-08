@@ -114,7 +114,8 @@ class Template:
         if  0 == len(history) or isinstance(history[0], tuple):
             for turn_idx, (query, resp) in enumerate(history):
                 logging.info(query)
-                # logging.info(resp)
+                logging.info('resp')
+                logging.info(resp)
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)

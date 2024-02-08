@@ -109,7 +109,8 @@ def main():
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
     # Load data from the file
-    with open("data/police1.json", "r") as file:
+    with open("data/police-full1.json", "r") as file:
+    # with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['instruction']} === {item['output']}"
