@@ -160,7 +160,7 @@ class Template:
                     else:
                         query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
 
-
+        return encoded_pairs
 
     def _convert_inputs_to_ids(
         self,
