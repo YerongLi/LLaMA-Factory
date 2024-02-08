@@ -110,8 +110,7 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         logging.info(history)
-        logging.info(system)
-        if  0 == len(history) or isinstance(history[0], tuple):
+        if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 logging.info(query)
                 logging.info('resp')
