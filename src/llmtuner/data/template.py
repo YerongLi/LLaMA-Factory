@@ -148,21 +148,19 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
                 if turn_idx == 0:
-                    query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query='', idx=str(turn_idx+1))
+                    query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
+                    continue
                 else:
-                    query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
-                logging.info(type(query_ids))
-                break
-                query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
-                logging.info(type(query_ids))
-                resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-                
-                if role == target:
-                    encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
-                    query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query='', idx=str(turn_idx+1))
+                    if role == target:
+                        resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
 
-        logging.info(len(encoded_pairs))
-        return encoded_pairs
+                        encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+                        query_ids = []
+                        # query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
+                    else:
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
+
+
 
     def _convert_inputs_to_ids(
         self,
