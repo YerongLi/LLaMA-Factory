@@ -130,7 +130,7 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
 
-                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=[], query=query, idx=str(turn_idx+1))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
                 decode_and_log(tokenizer, query_ids, "Query IDs")
                 decode_and_log(tokenizer, resp_ids, "Response IDs")
