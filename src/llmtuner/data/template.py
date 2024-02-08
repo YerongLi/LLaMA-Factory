@@ -34,7 +34,8 @@ class Template:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
         """
-
+        logging.info('Before Encode')
+        logging.info(history)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
