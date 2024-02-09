@@ -138,10 +138,13 @@ class Template:
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+
                     if len(prefix_ids) != 0: # has prefix
                         prefix_ids = bos_ids + prefix_ids + sep_ids
                     else:
                         prefix_ids = bos_ids
+                    logging.info(prefix_ids)
+                
                 else:
                     prefix_ids = sep_ids + bos_ids
 
@@ -192,7 +195,7 @@ class Template:
                 token_ids = token_ids + [tokenizer.convert_tokens_to_ids(elem.get("token"))]
             else:
                 raise ValueError("Input must be string or dict[str, str], got {}".format(type(elem)))
-
+        logging.info(token_ids)
         return token_ids
 
 
