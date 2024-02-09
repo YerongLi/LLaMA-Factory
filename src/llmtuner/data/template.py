@@ -149,6 +149,7 @@ class Template:
 
                 if turn_idx == 0:
                     query_ids = self._convert_inputs_to_ids(tokenizer, context=[], query=utterance, idx=str(turn_idx+1))
+                    logging.info(utterance)
                     logging.info(query_ids)
                     
                 else:
