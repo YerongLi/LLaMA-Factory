@@ -115,6 +115,7 @@ class Template:
         query_ids = None
         prerole = None
         logging.info(history)
+        logging.info(system)
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 if turn_idx == 0:
