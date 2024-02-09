@@ -129,7 +129,7 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
 
-                query_ids = self._convert_inputs_to_ids(tokenizer, context=[], query=query, idx=str(turn_idx+1))
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
                 decode_and_log(tokenizer, query_ids, "Query IDs")
                 decode_and_log(tokenizer, resp_ids, "Response IDs")
@@ -147,7 +147,7 @@ class Template:
                 else:
                     prefix_ids = sep_ids + bos_ids
                 if turn_idx == 0:
-                    query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
+                    query_ids = self._convert_inputs_to_ids(tokenizer, context=[], query=utterance, idx=str(turn_idx+1))
                     continue
                 else:
                     if role == target:
@@ -813,7 +813,7 @@ register_template(
         "{{system}}"
     ],
     prompt=[
-        "nDispatcher: {{query}}\nUser:"
+        "\nDispatcher: {{query}}\nUser:"
     ],
     system=(
         "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. "
