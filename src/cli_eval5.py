@@ -54,7 +54,7 @@ def main():
     import json
     text_with_newline = "\n"
 
-    with open("data/police1.json", "r") as file:
+    with open("data/police-full.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
