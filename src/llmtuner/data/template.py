@@ -10,7 +10,9 @@ if TYPE_CHECKING:
 
 
 logger = get_logger(__name__)
-
+def decode_and_log(tokenizer, ids, name):
+    decoded_text = tokenizer.decode(ids, skip_special_tokens=True)
+    logging.info(f"{name}: {decoded_text}")
 
 @dataclass
 class Template:
@@ -34,14 +36,14 @@ class Template:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
         """
-        # logging.info('Before Encode')
-        # logging.info(history)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
         prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
+        decode_and_log(tokenizer, prompt_ids, 'prompt_ids')
+        decode_and_log(tokenizer, answer_ids, 'answer_ids')
 
 
 
@@ -58,10 +60,7 @@ class Template:
         r"""
         Returns multiple pairs of token ids representing prompts and responses respectively.
         """
-        logging.info('History')
-        logging.info(history)
         system, history = self._format(query, resp, history, system)
-        logging.info(history)
 
         encoded_pairs = self._encode(tokenizer, system, history)
         return encoded_pairs
@@ -116,9 +115,7 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         logging.info(history)
-        def decode_and_log(tokenizer, ids, name):
-            decoded_text = tokenizer.decode(ids, skip_special_tokens=True)
-            logging.info(f"{name}: {decoded_text}")
+
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 if turn_idx == 0:
