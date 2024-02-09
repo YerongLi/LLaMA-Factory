@@ -148,6 +148,7 @@ def main():
                  {record['output']}
                  Revised Dispatcher's response:
                  """
+                logging.info(prompt)
                 # print(prompt)
                 # print('=====  ===== ========')
                 # print('response' in record)
