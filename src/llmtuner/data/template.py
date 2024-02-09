@@ -158,7 +158,7 @@ class Template:
                         logging.info(query_ids)
                         resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
                         logging.info(utterance)
-                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'{role}: '], idx=str(turn_idx+1))
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'\n{role}: '], idx=str(turn_idx+1))
                         encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
                         query_ids = []
                         # query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
