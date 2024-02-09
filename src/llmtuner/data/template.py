@@ -113,8 +113,6 @@ class Template:
         """
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
-        logging.info('selfsep')
-        logging.info(self.sep)
         encoded_pairs = []
         logging.info(history)
 
@@ -157,7 +155,7 @@ class Template:
                         query_ids = []
                         # query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
                     else:
-                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[]， query=utterance, idx=str(turn_idx+1))
         logging.info(len(encoded_pairs))
         return encoded_pairs
 
