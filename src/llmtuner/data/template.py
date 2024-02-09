@@ -136,8 +136,8 @@ class Template:
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
                 # utterance = f'{role}: {utterance}'
-                logging.info(turn_idx)
-                if query_ids : logging.info(query_ids)
+                # logging.info(turn_idx)
+                # if query_ids : logging.info(query_ids)
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
