@@ -143,6 +143,8 @@ class Template:
                         prefix_ids = bos_ids + prefix_ids + sep_ids
                     else:
                         prefix_ids = bos_ids
+                    logging.info(bos_ids)
+                    logging.info(sep_ids)
                     logging.info(prefix_ids)
                 
                 else:
