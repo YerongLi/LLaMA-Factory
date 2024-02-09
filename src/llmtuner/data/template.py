@@ -135,7 +135,7 @@ class Template:
         else:
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
-                utterance = f'{role}: {utterance}'
+                # utterance = f'{role}: {utterance}'
                 logging.info(turn_idx)
                 if query_ids : logging.info(query_ids)
 
@@ -149,22 +149,23 @@ class Template:
                     prefix_ids = sep_ids + bos_ids
 
                 if turn_idx == 0:
-                    query_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=utterance, idx=str(turn_idx+1))
-                    logging.info(utterance)
-                    logging.info(query_ids)
+                    query_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
+                    # logging.info(utterance)
+                    # logging.info(query_ids)
                     
                 else:
                     if role == target:
                         logging.info(query_ids)
                         resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
                         logging.info(utterance)
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'{role}: '], idx=str(turn_idx+1))
                         encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
                         query_ids = []
                         # query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
                     else:
                         logging.info(utterance)
 
-                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=utterance, idx=str(turn_idx+1))
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
                         logging.info(query_ids)
         
         logging.info(len(encoded_pairs))
