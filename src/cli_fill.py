@@ -60,6 +60,7 @@ def main():
     with open("data/police-full.json", "r") as file:
     # with open("data/police-full1.json", "r") as file:
         data = [json.loads(line) for line in file]
+    logging.info(len(data))
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
