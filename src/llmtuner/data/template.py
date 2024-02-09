@@ -42,8 +42,6 @@ class Template:
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
         prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-        decode_and_log(tokenizer, prompt_ids, 'prompt_ids')
-        decode_and_log(tokenizer, answer_ids, 'answer_ids')
 
 
 
@@ -114,7 +112,6 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
-        logging.info(history)
         query_ids = None
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
@@ -129,15 +126,12 @@ class Template:
 
                 query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
                 resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-                decode_and_log(tokenizer, query_ids, "Query IDs")
-                decode_and_log(tokenizer, resp_ids, "Response IDs")
+                # decode_and_log(tokenizer, query_ids, "Query IDs")
+                # decode_and_log(tokenizer, resp_ids, "Response IDs")
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
-                # utterance = f'{role}: {utterance}'
-                # logging.info(turn_idx)
-                # if query_ids : logging.info(query_ids)
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
@@ -150,8 +144,6 @@ class Template:
 
                 if turn_idx == 0:
                     query_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
-                    # logging.info(utterance)
-                    # logging.info(query_ids)
                     
                 else:
                     if role == target:
@@ -161,14 +153,9 @@ class Template:
                         query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'\n{role}: '], idx=str(turn_idx+1))
                         encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
                         query_ids = []
-                        # query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=utterance, idx=str(turn_idx+1))
                     else:
-                        logging.info(utterance)
-
                         query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
-                        logging.info(query_ids)
         
-        logging.info(len(encoded_pairs))
         return encoded_pairs
 
     def _convert_inputs_to_ids(
