@@ -135,6 +135,8 @@ class Template:
         else:
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
+                logging.info(turn_idx)
+                logging.info(query_ids)
 
                 if turn_idx == 0:
                     prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
@@ -144,8 +146,11 @@ class Template:
                         prefix_ids = bos_ids
                 else:
                     prefix_ids = sep_ids + bos_ids
+
                 if turn_idx == 0:
                     query_ids = self._convert_inputs_to_ids(tokenizer, context=[], query=utterance, idx=str(turn_idx+1))
+                    logging.info(query_ids)
+                    
                 else:
                     if role == target:
                         logging.info(query_ids)
@@ -158,6 +163,8 @@ class Template:
                         logging.info(utterance)
 
                         query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[], query=utterance, idx=str(turn_idx+1))
+                        logging.info(query_ids)
+        
         logging.info(len(encoded_pairs))
         return encoded_pairs
 
