@@ -135,6 +135,7 @@ class Template:
         else:
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
+                utterance = f'{role}: {utterance}'
                 logging.info(turn_idx)
                 if query_ids : logging.info(query_ids)
 
@@ -163,7 +164,7 @@ class Template:
                     else:
                         logging.info(utterance)
 
-                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[], query=utterance, idx=str(turn_idx+1))
+                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=utterance, idx=str(turn_idx+1))
                         logging.info(query_ids)
         
         logging.info(len(encoded_pairs))
