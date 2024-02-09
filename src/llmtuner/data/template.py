@@ -184,6 +184,8 @@ class Template:
                 elem = elem.replace("{{system}}", system, 1) if system is not None else elem
                 elem = elem.replace("{{query}}", query, 1) if query is not None else elem
                 elem = elem.replace("{{idx}}", idx, 1) if idx is not None else elem
+                logging.info(elem)
+
                 if len(elem) != 0:
                     token_ids = token_ids + tokenizer.encode(elem, **kwargs)
             elif isinstance(elem, dict):
