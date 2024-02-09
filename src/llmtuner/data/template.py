@@ -113,6 +113,7 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         query_ids = None
+        logging.info(history)
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 if turn_idx == 0:
@@ -147,9 +148,9 @@ class Template:
                     
                 else:
                     if role == target:
-                        logging.info(query_ids)
+                        # logging.info(query_ids)
                         resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
-                        logging.info(utterance)
+                        # logging.info(utterance)
                         query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'\n{role}: '], idx=str(turn_idx+1))
                         encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
                         query_ids = []
