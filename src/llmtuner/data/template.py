@@ -115,7 +115,7 @@ class Template:
         query_ids = None
         prerole = None
         logging.info(history)
-        logging.info(system)
+        # logging.info(system)
         if  0 == len(history) or isinstance(history[0], List):
             for turn_idx, (query, resp) in enumerate(history):
                 if turn_idx == 0:
@@ -179,6 +179,7 @@ class Template:
 
         token_ids = []
         for elem in context:
+            logging.info(elem)
             if isinstance(elem, str):
                 elem = elem.replace("{{system}}", system, 1) if system is not None else elem
                 elem = elem.replace("{{query}}", query, 1) if query is not None else elem
