@@ -113,6 +113,8 @@ class Template:
         """
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
+        logging.info('selfsep')
+        logging.info(self.sep)
         encoded_pairs = []
         logging.info(history)
 
