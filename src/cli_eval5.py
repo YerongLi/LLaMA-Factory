@@ -16,7 +16,7 @@ import torch
 suffixlen = 12
 
 LOGFILE='./output.log'
-BATCH_SIZE=16
+BATCH_SIZE=14
 output_file_path = 'results-cmp.jsonl'
 progress = {}
 if os.path.exists(output_file_path):
@@ -141,7 +141,7 @@ def main():
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
 
-                prompt = prompt[:-suffixlen]
+                # prompt = prompt[:-suffixlen]
                 prompt = prompt + f"""
                  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
                  Dispatcher's response:
