@@ -136,7 +136,7 @@ class Template:
 
                 resp_ids = []
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
-                
+
         return encoded_pairs
 
     def _convert_inputs_to_ids(
