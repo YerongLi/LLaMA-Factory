@@ -104,6 +104,7 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
+        logging.info(history)
         for turn_idx, (query, resp) in enumerate(history):
             if turn_idx == 0:
                 prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
