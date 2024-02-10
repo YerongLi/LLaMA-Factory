@@ -133,6 +133,7 @@ def main():
                 prompt = chat_model.tokenizer.decode(
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
+                logging.info(prompt)
                 prompt_batch.append(
                             {
                         'prompt': prompt,
