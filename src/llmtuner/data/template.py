@@ -106,19 +106,37 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         logging.info(history)
-        for turn_idx, (query, resp) in enumerate(history):
-            if turn_idx == 0:
-                prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
-                if len(prefix_ids) != 0: # has prefix
-                    prefix_ids = bos_ids + prefix_ids + sep_ids
-                else:
-                    prefix_ids = bos_ids
-            else:
-                prefix_ids = sep_ids + bos_ids
+        if len(history) > 0 and isinstance(history[0], List):
 
-            query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
-            resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-            encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+            for turn_idx, (query, resp) in enumerate(history):
+                if turn_idx == 0:
+                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+                    if len(prefix_ids) != 0: # has prefix
+                        prefix_ids = bos_ids + prefix_ids + sep_ids
+                    else:
+                        prefix_ids = bos_ids
+                else:
+                    prefix_ids = sep_ids + bos_ids
+
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+                resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+        else:
+            for turn_idx, it in enumerate(history):
+                role, utterance = list(it.items())[0]
+                if turn_idx == 0:
+                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+                    if len(prefix_ids) != 0: # has prefix
+                        prefix_ids = bos_ids + prefix_ids + sep_ids
+                    else:
+                        prefix_ids = bos_ids
+                else:
+                    prefix_ids = sep_ids + bos_ids
+                query_ids = []
+
+                resp_ids = []
+                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
+                
         return encoded_pairs
 
     def _convert_inputs_to_ids(
