@@ -69,7 +69,7 @@ class Template:
         """
         system = system or self.system # use system if provided
         history = history if (history and self.use_history) else []
-        history = history + [(query, resp)]
+        # history = history + [(query, resp)]
         return system, history
 
     def _get_special_ids(
