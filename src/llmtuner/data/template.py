@@ -36,7 +36,7 @@ class Template:
         """
         logging.info(history)
         logging.info(query)
-        logging.info(response)
+        logging.info(resp)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
