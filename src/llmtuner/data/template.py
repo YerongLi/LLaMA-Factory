@@ -132,7 +132,7 @@ class Template:
                         prefix_ids = bos_ids
                 else:
                     prefix_ids = sep_ids + bos_ids
-                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=f'{role}: {query}', idx=str(turn_idx+1))
+                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=f'{role}: {utterance}', idx=str(turn_idx+1))
 
                 resp_ids = []
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
