@@ -1,4 +1,3 @@
-import logging
 import tiktoken
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
@@ -10,9 +9,7 @@ if TYPE_CHECKING:
 
 
 logger = get_logger(__name__)
-def decode_and_log(tokenizer, ids, name):
-    decoded_text = tokenizer.decode(ids, skip_special_tokens=True)
-    logging.info(f"{name}: {decoded_text}")
+
 
 @dataclass
 class Template:
@@ -42,9 +39,6 @@ class Template:
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
         prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-
-
-
         return prompt_ids, answer_ids
 
     def encode_multiturn(
@@ -59,7 +53,6 @@ class Template:
         Returns multiple pairs of token ids representing prompts and responses respectively.
         """
         system, history = self._format(query, resp, history, system)
-
         encoded_pairs = self._encode(tokenizer, system, history)
         return encoded_pairs
 
@@ -75,7 +68,7 @@ class Template:
         """
         system = system or self.system # use system if provided
         history = history if (history and self.use_history) else []
-        # history = history + [(query, resp)]
+        history = history + [(query, resp)]
         return system, history
 
     def _get_special_ids(
@@ -101,8 +94,7 @@ class Template:
         self,
         tokenizer: "PreTrainedTokenizer",
         system: str,
-        history: List[Tuple[str, str]],
-        target = 'Dispatcher'
+        history: List[Tuple[str, str]]
     ) -> List[Tuple[List[int], List[int]]]:
         r"""
         Encodes formatted inputs to pairs of token ids.
@@ -112,59 +104,19 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
-        query_ids = None
-        prerole = None
-        logging.info(history)
-        # logging.info(system)
-        if  0 == len(history) or isinstance(history[0], List):
-            for turn_idx, (query, resp) in enumerate(history):
-                if turn_idx == 0:
-                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
-                    if len(prefix_ids) != 0: # has prefix
-                        prefix_ids = bos_ids + prefix_ids + sep_ids
-                    else:
-                        prefix_ids = bos_ids
+        for turn_idx, (query, resp) in enumerate(history):
+            if turn_idx == 0:
+                prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
+                if len(prefix_ids) != 0: # has prefix
+                    prefix_ids = bos_ids + prefix_ids + sep_ids
                 else:
-                    prefix_ids = sep_ids + bos_ids
+                    prefix_ids = bos_ids
+            else:
+                prefix_ids = sep_ids + bos_ids
 
-                query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
-                resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
-                # decode_and_log(tokenizer, query_ids, "Query IDs")
-                # decode_and_log(tokenizer, resp_ids, "Response IDs")
-                encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
-        else:
-            pass
-            for turn_idx, it in enumerate(history):
-                role, utterance = list(it.items())[0]
-
-                if turn_idx == 0:
-                    prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
-
-                    if len(prefix_ids) != 0: # has prefix
-                        prefix_ids = bos_ids + prefix_ids + sep_ids
-                    else:
-                        prefix_ids = bos_ids
-                    logging.info(bos_ids)
-                    logging.info(sep_ids)
-                    logging.info(prefix_ids)
-                
-                else:
-                    prefix_ids = sep_ids + bos_ids
-
-                if turn_idx == 0:
-                    query_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
-                    
-                else:
-                    if role == target and prerole != target:
-                        # logging.info(query_ids)
-                        resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
-                        # logging.info(utterance)
-                        query_ids = query_ids + self._convert_inputs_to_ids(tokenizer, context=[f'\n{role}: '], idx=str(turn_idx+1))
-                        encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
-                        query_ids = []
-                    else:
-                        query_ids = query_ids + sep_ids + self._convert_inputs_to_ids(tokenizer, context=['{{query}}'], query=f'{role}: {utterance}', idx=str(turn_idx+1))
-        
+            query_ids = self._convert_inputs_to_ids(tokenizer, context=self.prompt, query=query, idx=str(turn_idx+1))
+            resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+            encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         return encoded_pairs
 
     def _convert_inputs_to_ids(
@@ -185,20 +137,17 @@ class Template:
 
         token_ids = []
         for elem in context:
-            logging.info(elem)
             if isinstance(elem, str):
                 elem = elem.replace("{{system}}", system, 1) if system is not None else elem
                 elem = elem.replace("{{query}}", query, 1) if query is not None else elem
                 elem = elem.replace("{{idx}}", idx, 1) if idx is not None else elem
-                logging.info(elem)
-
                 if len(elem) != 0:
                     token_ids = token_ids + tokenizer.encode(elem, **kwargs)
             elif isinstance(elem, dict):
                 token_ids = token_ids + [tokenizer.convert_tokens_to_ids(elem.get("token"))]
             else:
                 raise ValueError("Input must be string or dict[str, str], got {}".format(type(elem)))
-        logging.info(token_ids)
+
         return token_ids
 
 
@@ -822,10 +771,12 @@ register_template(
         "{{system}}"
     ],
     prompt=[
-        "\nDispatcher: {{query}}\nUser:"
+        "nDispatcher: {{query}}\nUser:"
     ],
-    system=
-        "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen.",
+    system=(
+        "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. "
+        "The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen."
+    ),
     sep=[
         "\n"
     ]
