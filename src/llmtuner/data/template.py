@@ -793,7 +793,7 @@ register_template(
         "{{system}}"
     ],
     prompt=[
-        "{{query}}\n"
+        "{{query}}"
     ],
     system=(
         "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. "
