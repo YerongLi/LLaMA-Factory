@@ -53,6 +53,9 @@ class Template:
         r"""
         Returns multiple pairs of token ids representing prompts and responses respectively.
         """
+        logging.info(history)
+        logging.info(query)
+        logging.info(response)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         return encoded_pairs
@@ -105,7 +108,6 @@ class Template:
         bos_ids, eos_ids = self._get_special_ids(tokenizer)
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
-        logging.info(history)
         if len(history) > 0 and isinstance(history[0], List):
 
             for turn_idx, (query, resp) in enumerate(history):
