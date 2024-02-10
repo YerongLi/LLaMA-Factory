@@ -133,6 +133,7 @@ class Template:
                 # decode_and_log(tokenizer, resp_ids, "Response IDs")
                 encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
         else:
+            pass
             for turn_idx, it in enumerate(history):
                 role, utterance = list(it.items())[0]
 
