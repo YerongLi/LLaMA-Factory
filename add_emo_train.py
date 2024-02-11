@@ -23,7 +23,7 @@ for record in police_data:
     matching_result = preprocessed_results.get(key)
     if matching_result:
         # Update the 'response' value in the police record
-        record["response"] = matching_result["response"]
+        record["response"] = matching_result["response"].strip("\n")
         updated_records[key] = record
     else:
         skipped_count += 1
