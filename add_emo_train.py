@@ -3,7 +3,7 @@ import sys
 
 def main(input_filename):
     # Read input JSONL file
-    with open("data/{input_filename}.jsonl" "r") as file:
+    with open(f"data/{input_filename}.jsonl" "r") as file:
         police_data = [json.loads(line) for line in file]
 
     # Read results-cmp.jsonl (assuming it's the same format as police_data)
