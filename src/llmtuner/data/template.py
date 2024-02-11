@@ -39,6 +39,8 @@ class Template:
         logging.info(resp)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
+        logging.info(len(history))
+        logging.info(len(encoded_pairs))
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
