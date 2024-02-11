@@ -1,7 +1,7 @@
 import json
 
 # Read police.json
-with open("data/police.json", "r") as file:
+with open("data/emotional-police.jsonl", "r") as file:
     police_data = [json.loads(line) for line in file]
 
 # Flatten the history and update the police data
@@ -11,7 +11,7 @@ for item in police_data:
     item["history"] = flattened_history
 
 # Write updated records to emotional-police-flat.jsonl
-with open("emotional-police-flat.jsonl", "w") as output_file:
+with open("data/emotional-police-flat.jsonl", "w") as output_file:
     for item in police_data:
         json.dump(item, output_file)
         output_file.write("\n")
