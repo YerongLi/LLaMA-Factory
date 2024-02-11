@@ -288,7 +288,7 @@
       "response": "output",
       "history": "history"
     },
-  "police": {
+  "emo-police": {
     "file_name": "emotional-police-flat.jsonl",
     "columns": {
       "prompt": "instruction",
