@@ -280,8 +280,8 @@
       "prompt": "content"
     }
   },
-  "police": {
-    "file_name": "police.json",
+  "emo-police": {
+    "file_name": "emotional-police-flat.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
