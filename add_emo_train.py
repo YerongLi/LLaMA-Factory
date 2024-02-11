@@ -28,8 +28,9 @@ for record in police_data:
     else:
         skipped_count += 1
 
-# Write updated records to emotional-police.json
 with open("emotional-police.jsonl", "w") as output_file:
-    json.dump(list(updated_records.values()), output_file, indent=4)
+    for record in updated_records.values():
+        json.dump(record, output_file)
+        output_file.write("\n")
 
 print(f"Updated records written to emotional-police.json. Skipped {skipped_count} records.")

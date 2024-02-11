@@ -211,7 +211,7 @@ def main():
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
             for i, output in enumerate(outputs):
-                prompt_batches[batch_index][i]["response"] = output
+                prompt_batches[batch_index][i]['response'] = output
             # for i, output in enumerate(outputs):
             #     print(prompt_batches[batch_index][i]['output'])
             #     print(output)
