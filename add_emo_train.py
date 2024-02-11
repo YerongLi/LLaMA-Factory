@@ -1,11 +1,11 @@
 import json
 
 # Read police-full1.json
-with open("data/police.json", "r") as file:
+with open("data/police.jsonl", "r") as file:
     police_data = [json.loads(line) for line in file]
 
 # Read results-cmp1.json
-with open("results-cmp1.json", "r") as results_file:
+with open("results-cmp1.jsonl", "r") as results_file:
     results_data = [json.loads(line) for line in results_file]
 
 # Preprocess results_data into a dictionary
