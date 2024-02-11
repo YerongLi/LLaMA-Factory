@@ -268,7 +268,10 @@ def preprocess_dataset(
 
         if training_args.should_log:
             try:
-                print_function(next(iter(dataset)))
+                cnt = 10
+                while cnt > 0:
+                    print_function(next(iter(dataset)))
+                    cnt-= 1
             except StopIteration:
                 raise RuntimeError("Empty dataset!")
 
