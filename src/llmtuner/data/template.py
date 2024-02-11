@@ -223,6 +223,7 @@ def register_template(
     stop_words: Optional[List[str]] = [],
     use_history: Optional[bool] = True,
     efficient_eos: Optional[bool] = False
+    target: str = None
 ) -> None:
     template_class = Llama2Template if "llama2" in name else Template
     templates[name] = template_class(
@@ -232,7 +233,8 @@ def register_template(
         sep=sep,
         stop_words=stop_words,
         use_history=use_history,
-        efficient_eos=efficient_eos
+        efficient_eos=efficient_eos,
+        target=target,
     )
 
 
