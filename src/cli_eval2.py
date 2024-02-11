@@ -93,12 +93,13 @@ def main():
             print(history)
             record_type = record.get('type', 'unknown')
 
-            response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
+            response = chat_model.chat(query=instruction, history=history[:-1], system=chat_model.template.system+f'\n{record["summary"]}')[0].response_text
 
             output = record["output"]
 
+            # resp is empty because I only need the prompt
             prompt_ids, _ = chat_model.template.encode_oneturn(
-                tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{record["summary"]}'
+                tokenizer=chat_model.tokenizer, query=None, resp= None, history=history, system=chat_model.template.system+f'\n{record["summary"]}'
             )
 
             batch_prompt_ids.append(prompt_ids)
