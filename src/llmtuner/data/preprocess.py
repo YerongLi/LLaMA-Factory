@@ -90,7 +90,10 @@ def preprocess_dataset(
         for query, response, history, system in construct_example(examples):
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
-
+            logging.info(f"Query: {query}")
+            logging.info(f"Response: {response}")
+            logging.info(f"History: {history}")
+            logging.info(f"System: {system}")
             input_ids, labels = [], []
             for turn_idx, (source_ids, target_ids) in enumerate(template.encode_multiturn(
                 tokenizer, query, response, history, system
@@ -132,11 +135,7 @@ def preprocess_dataset(
         model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
         input_ids, labels = [], []
         for query, response, history, system in construct_example(examples):
-            print(logging)
-            logging.info(f"Query: {query}")
-            logging.info(f"Response: {response}")
-            logging.info(f"History: {history}")
-            logging.info(f"System: {system}")
+
 
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
