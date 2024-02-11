@@ -287,14 +287,6 @@
       "query": "",
       "response": "output",
       "history": "history"
-    },
-  "emo-police": {
-    "file_name": "emotional-police-flat.jsonl",
-    "columns": {
-      "prompt": "instruction",
-      "query": "",
-      "response": "output",
-      "history": "history"
     }
   }
 }
