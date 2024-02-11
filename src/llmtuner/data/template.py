@@ -44,7 +44,8 @@ class Template:
         # prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
         prompt_ids = prompt_ids + self._convert_inputs_to_ids(tokenizer, context=self.sep) + tokenizer.encode(f'{self.target}: ')
         answer_ids = encoded_pairs[-1][0]
-
+        logging.info(prompt_ids)
+        logging.info(answer_ids)
         return prompt_ids, answer_ids
 
     def encode_multiturn(
