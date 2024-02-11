@@ -36,17 +36,10 @@ class Template:
         Returns a single pair of token ids representing prompt and response respectively.
         """
         logging.info(history)
-        logging.info(query)
-        logging.info(resp)
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
-        logging.info(len(history))
-        logging.info(len(encoded_pairs))
-        prompt_ids = []
-        for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
         # prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-        logging.info(tokenizer.encode(f'{self.target}: '))
         prompt_ids = prompt_ids + self._convert_inputs_to_ids(tokenizer, context=self.sep) + tokenizer.encode(f'{self.target}: ')
         answer_ids = encoded_pairs[-1][0]
 
