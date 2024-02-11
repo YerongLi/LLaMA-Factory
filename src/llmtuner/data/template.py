@@ -22,6 +22,7 @@ class Template:
     stop_words: List[str]
     use_history: bool
     efficient_eos: bool
+    target: str = None
 
     def encode_oneturn(
         self,
@@ -29,7 +30,7 @@ class Template:
         query: str,
         resp: str,
         history: Optional[List[Tuple[str, str]]] = None,
-        system: Optional[str] = None
+        system: Optional[str] = None,
     ) -> Tuple[List[int], List[int]]:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
@@ -50,9 +51,9 @@ class Template:
             logging.info(prompt)
 
             prompt_ids = prompt_ids + query_ids + resp_ids
-        logging.info(len(encoded_pairs[-1][1]))
         # prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-        answer_ids =  encoded_pairs[-1][0]
+        prompt_ids = tokenizer.convert_tokens_to_ids(self.target) + tokenizer.convert_tokens_to_ids(': ')
+        answer_ids = encoded_pairs[-1][0]
 
         return prompt_ids, answer_ids
 
@@ -62,7 +63,7 @@ class Template:
         query: str,
         resp: str,
         history: Optional[List[Tuple[str, str]]] = None,
-        system: Optional[str] = None
+        system: Optional[str] = None,
     ) -> List[Tuple[List[int], List[int]]]:
         r"""
         Returns multiple pairs of token ids representing prompts and responses respectively.
@@ -809,8 +810,9 @@ register_template(
     ],
     system=(
         "A chat between an individual reporting a safety concern to the local police department and a dispatcher from the police department. "
-        "The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the citizen."
+        "The dispatcher gives helpful and detailed guidance and instructions on how to proceed. The dispatcher is also supposed to give necessary emotional support to the user."
     ),
+    target='Dispatcher',
     sep=[
         "\n"
     ]
