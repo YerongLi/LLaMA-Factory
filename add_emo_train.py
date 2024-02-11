@@ -33,4 +33,4 @@ with open("data/emotional-police.jsonl", "w") as output_file:
         json.dump(record, output_file)
         output_file.write("\n")
 
-print(f"Updated records written to emotional-police.jsonl. Skipped {skipped_count} records.")
+print(f"Updated records written to data/emotional-police.jsonl. Skipped {skipped_count} records.")
