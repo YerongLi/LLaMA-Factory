@@ -43,6 +43,7 @@ class Template:
         logging.info(len(encoded_pairs))
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
+            logging.info('encoded')
             prompt_ids = prompt_ids + query_ids + resp_ids
         prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
         return prompt_ids, answer_ids
