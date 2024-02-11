@@ -281,7 +281,7 @@
     }
   },
   "emo-police": {
-    "file_name": "emotional-police-flat.jsonl",
+    "file_name": "emotional-police.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
