@@ -16,4 +16,4 @@ with open("data/emotional-police-flat.jsonl", "w") as output_file:
         json.dump(item, output_file)
         output_file.write("\n")
 
-print("Updated records written to emotional-police-flat.jsonl.")
+print("Updated records written to data/emotional-police-flat.jsonl.")
