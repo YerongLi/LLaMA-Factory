@@ -23,7 +23,7 @@ if os.path.exists(LOGFILE):
     print(f"The file {LOGFILE} has been removed.")
 else:
     print(f"The file {LOGFILE} does not exist.")
-rouge = Rouge()
+# rouge = Rouge()
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
