@@ -132,6 +132,7 @@ def preprocess_dataset(
         model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
         input_ids, labels = [], []
         for query, response, history, system in construct_example(examples):
+            print(logging)
             logging.info(f"Query: {query}")
             logging.info(f"Response: {response}")
             logging.info(f"History: {history}")
