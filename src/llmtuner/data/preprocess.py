@@ -9,6 +9,13 @@ from datasets import load_from_disk
 from llmtuner.data.template import get_template_and_fix_tokenizer
 from llmtuner.extras.constants import IGNORE_INDEX
 from llmtuner.extras.logging import get_logger
+LOGFILE='output.log'
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
+    level=logging.INFO,
+    filename=LOGFILE,
+    datefmt='%m-%d %H:%M:%S')
+logging.info(f'Logger start: {os.uname()[1]}')
 
 if TYPE_CHECKING:
     from datasets import Dataset, IterableDataset
