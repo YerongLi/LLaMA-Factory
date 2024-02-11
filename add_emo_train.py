@@ -3,7 +3,7 @@ import sys
 
 def main(input_filename):
     # Read input JSONL file
-    with open(input_filename, "r") as file:
+    with open("data/{input_filename}.jsonl" "r") as file:
         police_data = [json.loads(line) for line in file]
 
     # Read results-cmp.jsonl (assuming it's the same format as police_data)
@@ -32,7 +32,7 @@ def main(input_filename):
             skipped_count += 1
 
     # Generate output filename
-    output_filename = f"emotional-{input_filename}"
+    output_filename = f"data/emotional-{input_filename}.jsonl"
 
     # Write updated records to the output file
     with open(output_filename, "w") as output_file:
