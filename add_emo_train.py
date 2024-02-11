@@ -1,7 +1,7 @@
 import json
 
 # Read police-full1.json
-with open("data/police.jsonl", "r") as file:
+with open("data/police.json", "r") as file:
     police_data = [json.loads(line) for line in file]
 
 # Read results-cmp1.json
@@ -29,7 +29,7 @@ for record in police_data:
         skipped_count += 1
 
 # Write updated records to emotional-police.json
-with open("emotional-police.json", "w") as output_file:
+with open("emotional-police.jsonl", "w") as output_file:
     json.dump(list(updated_records.values()), output_file, indent=4)
 
 print(f"Updated records written to emotional-police.json. Skipped {skipped_count} records.")
