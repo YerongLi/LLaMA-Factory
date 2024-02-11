@@ -8,14 +8,9 @@ import argparse
 import csv
 import traceback
 
-from bert_score import BERTScorer
 
-from nltk.translate.bleu_score import sentence_bleu
-from nltk.lm import MLE
-from nltk.util import ngrams
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
-from rouge import Rouge
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
@@ -124,7 +119,7 @@ def main():
                 record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
                 summary = record["summary"] if 'summary' in record else ''
 
-                response = chat_model.chat(query=instruction, history=history[:-1], system=chat_model.template.system+f'\n{summary}')[0].response_text
+                # response = chat_model.chat(query=instruction, history=history[:-1], system=chat_model.template.system+f'\n{summary}')[0].response_text
             
                 output = record["output"]
 
