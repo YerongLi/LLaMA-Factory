@@ -100,7 +100,7 @@ def preprocess_dataset(
             # )):
 
             for turn_idx, (source_ids, target_ids) in enumerate(template.encode_oneturn(
-                    tokenizer=tokenizer, query=query, resp=None, history=history, system=chat_model.template.system
+                    tokenizer=tokenizer, query=query, resp=None, history=history, system=system
                 )):
                 source_len, target_len = len(source_ids), len(target_ids)
                 max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
