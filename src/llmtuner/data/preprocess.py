@@ -124,6 +124,11 @@ def preprocess_dataset(
         model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
         input_ids, labels = [], []
         for query, response, history, system in construct_example(examples):
+            logging.info(f"Query: {query}")
+            logging.info(f"Response: {response}")
+            logging.info(f"History: {history}")
+            logging.info(f"System: {system}")
+
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
 
@@ -212,6 +217,13 @@ def preprocess_dataset(
         print("inputs:\n{}".format(tokenizer.decode(example["input_ids"], skip_special_tokens=False)))
         print("label_ids:\n{}".format(example["labels"]))
         print("labels:\n{}".format(
+            tokenizer.decode(list(filter(lambda x: x != IGNORE_INDEX, example["labels"])), skip_special_tokens=False)
+        ))
+
+        logging.info("input_ids:\n{}".format(example["input_ids"]))
+        logging.info("inputs:\n{}".format(tokenizer.decode(example["input_ids"], skip_special_tokens=False)))
+        logging.info("label_ids:\n{}".format(example["labels"]))
+        logging.info("labels:\n{}".format(
             tokenizer.decode(list(filter(lambda x: x != IGNORE_INDEX, example["labels"])), skip_special_tokens=False)
         ))
 
