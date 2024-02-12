@@ -29,7 +29,7 @@ logger = get_logger(__name__)
 
 def construct_example(examples: Dict[str, List[Any]]) -> Generator[Any, None, None]:
     for i in range(len(examples["prompt"])):
-        logging.info(examples["history"][i]) # wrong
+        # logging.info(examples["history"][i]) # wrong
         query, response = examples["prompt"][i], examples["response"][i]
         query = query + "\n" + examples["query"][i] if "query" in examples and examples["query"][i] else query
         history = examples["history"][i] if "history" in examples else None
@@ -90,10 +90,10 @@ def preprocess_dataset(
         for query, response, history, system in construct_example(examples):
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
-            logging.info(f"Query: {query}")
-            logging.info(f"Response: {response}")
-            logging.info(f"History: {history}")  # wrong
-            logging.info(f"System: {system}")
+            # logging.info(f"Query: {query}")
+            # logging.info(f"Response: {response}")
+            # logging.info(f"History: {history}")  # wrong
+            # logging.info(f"System: {system}")
             input_ids, labels = [], []
             # for turn_idx, (source_ids, target_ids) in enumerate(template.encode_multiturn(
             #     tokenizer, query, response, history, system
@@ -306,7 +306,9 @@ def preprocess_dataset(
                 load_from_cache_file=(not data_args.overwrite_cache),
                 desc="Running tokenizer on dataset"
             )
-        logging.info(type(dataset))
+        for entry in dataset:
+            logging.info(entry)
+
         dataset = dataset.map(
             preprocess_func,
             batched=True,
