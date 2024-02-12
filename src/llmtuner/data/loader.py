@@ -54,7 +54,7 @@ def get_dataset(
         else:
             raise NotImplementedError
         logging.info(data_files)
-        if data_path == 'json':
+        if data_path == 'json11':
             import json
             with open(data_files[0], "r") as file:
                 dataset = [json.loads(line) for line in file]
