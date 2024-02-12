@@ -50,7 +50,8 @@ class Template:
             )
             logging.info(role)
             logging.info(resp)
-
+        
+        prompt_ids = prompt_ids + encoded_pairs[-1][0]
         answer_ids = encoded_pairs[-1][1]
         answer = tokenizer.decode(
                     answer_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
