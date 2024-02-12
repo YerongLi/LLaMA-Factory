@@ -19,6 +19,7 @@ def get_dataset(
     model_args: "ModelArguments",
     data_args: "DataArguments"
 ) -> Union["Dataset", "IterableDataset"]:
+    logging.info("Get into the get_dataset")
     max_samples = data_args.max_samples
     all_datasets: List[Union["Dataset", "IterableDataset"]] = [] # support multiple datasets
 
