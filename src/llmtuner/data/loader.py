@@ -73,8 +73,8 @@ def get_dataset(
                 token=model_args.hf_hub_token,
                 streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
             )
-        # for entry in dataset_list:
-        #     logging.info(entry)
+        for entry in dataset:
+            logging.info(entry)
 
         if data_args.streaming and (dataset_attr.load_from == "file"):
             dataset = dataset.to_iterable_dataset() # TODO: add num shards parameter
