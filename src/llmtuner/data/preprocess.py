@@ -152,10 +152,10 @@ def preprocess_dataset(
                                 input_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                             )
             logging.info(prompt)
-            prompt = tokenizer.decode(
-                    labels, skip_special_tokens=True, clean_up_tokenization_spaces=True
-                )
-            logging.info(prompt)
+            # prompt = tokenizer.decode(
+            #         labels, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            #     )
+            # logging.info(prompt)
             model_inputs["input_ids"].append(input_ids)
             model_inputs["attention_mask"].append([1] * len(input_ids))
             model_inputs["labels"].append(labels)
