@@ -29,7 +29,7 @@ logger = get_logger(__name__)
 
 def construct_example(examples: Dict[str, List[Any]]) -> Generator[Any, None, None]:
     for i in range(len(examples["prompt"])):
-        # logging.info(examples["history"][i])
+        logging.info(examples["history"][i]) # wrong
         query, response = examples["prompt"][i], examples["response"][i]
         query = query + "\n" + examples["query"][i] if "query" in examples and examples["query"][i] else query
         history = examples["history"][i] if "history" in examples else None
@@ -87,13 +87,13 @@ def preprocess_dataset(
         # build inputs with format `<bos> X Y <eos>` and labels with format `<ignore> ... <ignore> Y <eos>`
         # for multiturn examples, we only mask the prompt part in each prompt-response pair.
         model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
-
+        logging.info(history)
         for query, response, history, system in construct_example(examples):
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
             logging.info(f"Query: {query}")
             logging.info(f"Response: {response}")
-            logging.info(f"History: {history}")
+            logging.info(f"History: {history}")  # wrong
             logging.info(f"System: {system}")
             input_ids, labels = [], []
             # for turn_idx, (source_ids, target_ids) in enumerate(template.encode_multiturn(
