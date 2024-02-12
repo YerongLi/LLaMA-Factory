@@ -62,6 +62,7 @@ def get_dataset(
             # Convert the list of dictionaries into a Dataset object
             dataset = Dataset.from_list(dataset_list)
             for i in range(len(dataset)):
+                logging.info(i)
                 dataset[i]['history'] = dataset_list[i]['history']
         else :
             dataset = load_dataset(
