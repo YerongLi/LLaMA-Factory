@@ -57,7 +57,10 @@ def get_dataset(
         if data_path == 'json11':
             import json
             with open(data_files[0], "r") as file:
-                dataset = [json.loads(line) for line in file]
+                dataset_list = [json.loads(line) for line in file]
+
+            # Convert the list of dictionaries into a Dataset object
+            dataset = Dataset.from_dict(dataset_list)
         else :
             dataset = load_dataset(
                 path=data_path,
