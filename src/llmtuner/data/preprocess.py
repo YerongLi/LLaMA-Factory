@@ -121,7 +121,7 @@ def preprocess_dataset(
 
 
             source_ids, target_ids = template.encode_oneturn(
-                    tokenizer=tokenizer, query=query, resp="", history=history, system=system
+                    tokenizer=tokenizer, query=None, resp="", history=history, system=system
                 )
             source_len, target_len = len(source_ids), len(target_ids)
             max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
@@ -152,10 +152,6 @@ def preprocess_dataset(
                                 input_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                             )
             logging.info(prompt)
-            # prompt = tokenizer.decode(
-            #         labels, skip_special_tokens=True, clean_up_tokenization_spaces=True
-            #     )
-            # logging.info(prompt)
             model_inputs["input_ids"].append(input_ids)
             model_inputs["attention_mask"].append([1] * len(input_ids))
             model_inputs["labels"].append(labels)
