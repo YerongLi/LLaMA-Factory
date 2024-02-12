@@ -121,7 +121,7 @@ def preprocess_dataset(
 
 
             source_ids, target_ids = template.encode_oneturn(
-                    tokenizer=tokenizer, query=query, resp=None, history=history, system=system
+                    tokenizer=tokenizer, query=query, resp="", history=history, system=system
                 )
             source_len, target_len = len(source_ids), len(target_ids)
             max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
@@ -140,10 +140,7 @@ def preprocess_dataset(
 
             input_ids += source_ids + target_ids
             labels += source_mask + target_ids
-            prompt = tokenizer.decode(
-                                input_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-                            )
-            logging.info(prompt)
+
             if template.efficient_eos:
                 input_ids += [tokenizer.eos_token_id]
                 labels += [tokenizer.eos_token_id]
@@ -151,7 +148,14 @@ def preprocess_dataset(
             if len(input_ids) > data_args.cutoff_len:
                 input_ids = input_ids[:data_args.cutoff_len]
                 labels = labels[:data_args.cutoff_len]
-
+            prompt = tokenizer.decode(
+                                input_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                            )
+            logging.info(prompt)
+            prompt = tokenizer.decode(
+                    labels, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                )
+            logging.info(prompt)
             model_inputs["input_ids"].append(input_ids)
             model_inputs["attention_mask"].append([1] * len(input_ids))
             model_inputs["labels"].append(labels)
