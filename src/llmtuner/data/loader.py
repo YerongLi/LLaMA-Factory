@@ -1,4 +1,5 @@
 import os
+import logging
 from typing import TYPE_CHECKING, Any, Dict, List, Union
 
 from datasets import concatenate_datasets, interleave_datasets, load_dataset
@@ -43,7 +44,6 @@ def get_dataset(
                     else:
                         assert data_path == EXT2TYPE.get(file_name.split(".")[-1], None), "file types are not identical."
             elif os.path.isfile(os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)): # is file
-                logging.info('This file')
                 data_files.append(os.path.join(data_args.dataset_dir, dataset_attr.dataset_name))
                 data_path = EXT2TYPE.get(dataset_attr.dataset_name.split(".")[-1], None)
             else:
@@ -63,7 +63,8 @@ def get_dataset(
             token=model_args.hf_hub_token,
             streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
         )
-
+        for entry in dataset:
+            logging.info(entry)
         if data_args.streaming and (dataset_attr.load_from == "file"):
             dataset = dataset.to_iterable_dataset() # TODO: add num shards parameter
 
