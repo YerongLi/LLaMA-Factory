@@ -307,7 +307,7 @@ def preprocess_dataset(
                 load_from_cache_file=(not data_args.overwrite_cache),
                 desc="Running tokenizer on dataset"
             )
-
+        logging.info(type(dataset))
         dataset = dataset.map(
             preprocess_func,
             batched=True,
