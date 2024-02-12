@@ -132,7 +132,8 @@ def preprocess_dataset(
 
             if data_args.train_on_prompt:
                 source_mask = source_ids
-            elif turn_idx != 0 and template.efficient_eos:
+            # elif turn_idx != 0 and template.efficient_eos:
+            elif template.efficient_eos:
                 source_mask = [tokenizer.eos_token_id] + [IGNORE_INDEX] * (len(source_ids) - 1)
             else:
                 source_mask = [IGNORE_INDEX] * len(source_ids)
