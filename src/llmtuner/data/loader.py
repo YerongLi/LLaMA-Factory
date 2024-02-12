@@ -43,6 +43,7 @@ def get_dataset(
                     else:
                         assert data_path == EXT2TYPE.get(file_name.split(".")[-1], None), "file types are not identical."
             elif os.path.isfile(os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)): # is file
+                logging.info('This file')
                 data_files.append(os.path.join(data_args.dataset_dir, dataset_attr.dataset_name))
                 data_path = EXT2TYPE.get(dataset_attr.dataset_name.split(".")[-1], None)
             else:
