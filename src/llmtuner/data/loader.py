@@ -54,27 +54,27 @@ def get_dataset(
         else:
             raise NotImplementedError
         logging.info(data_files)
-        if data_path == 'json':
-            import json
-            with open(data_files[0], "r") as file:
-                dataset_list = [json.loads(line) for line in file]
+        # if data_path == 'json':
+        #     import json
+        #     with open(data_files[0], "r") as file:
+        #         dataset_list = [json.loads(line) for line in file]
 
-            # Convert the list of dictionaries into a Dataset object
-            dataset = Dataset.from_list(dataset_list)
-            # for i in range(len(dataset)):
-            #     logging.info(i)
-            #     logging.info(dataset_list[i]['history'])
-            #     dataset[i]['history'] = dataset_list[i]['history']
-        else :
-            dataset = load_dataset(
-                path=data_path,
-                name=data_name,
-                data_files=data_files,
-                split=data_args.split,
-                cache_dir=model_args.cache_dir,
-                token=model_args.hf_hub_token,
-                streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
-            )
+        #     # Convert the list of dictionaries into a Dataset object
+        #     dataset = Dataset.from_list(dataset_list)
+        #     # for i in range(len(dataset)):
+        #     #     logging.info(i)
+        #     #     logging.info(dataset_list[i]['history'])
+        #     #     dataset[i]['history'] = dataset_list[i]['history']
+        # else :
+        dataset = load_dataset(
+            path=data_path,
+            name=data_name,
+            data_files=data_files,
+            split=data_args.split,
+            cache_dir=model_args.cache_dir,
+            token=model_args.hf_hub_token,
+            streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
+        )
         for entry in dataset:
             logging.info(entry)
 
