@@ -90,10 +90,10 @@ def preprocess_dataset(
         for query, response, history, system in construct_example(examples):
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
-            logging.info(f"Query: {query}")
-            logging.info(f"Response: {response}")
-            logging.info(f"History: {history}")
-            logging.info(f"System: {system}")
+            # logging.info(f"Query: {query}")
+            # logging.info(f"Response: {response}")
+            # logging.info(f"History: {history}")
+            # logging.info(f"System: {system}")
             input_ids, labels = [], []
             # for turn_idx, (source_ids, target_ids) in enumerate(template.encode_multiturn(
             #     tokenizer, query, response, history, system
@@ -140,7 +140,10 @@ def preprocess_dataset(
 
             input_ids += source_ids + target_ids
             labels += source_mask + target_ids
-
+            prompt = tokenizer.decode(
+                                input_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                            )
+            logging.info(prompt)
             if template.efficient_eos:
                 input_ids += [tokenizer.eos_token_id]
                 labels += [tokenizer.eos_token_id]
