@@ -2,7 +2,7 @@ import os
 import logging
 from typing import TYPE_CHECKING, Any, Dict, List, Union
 
-from datasets import concatenate_datasets, interleave_datasets, load_dataset
+from datasets import concatenate_datasets, interleave_datasets, load_dataset, Dataset
 
 from llmtuner.data.utils import checksum, EXT2TYPE
 from llmtuner.extras.logging import get_logger
