@@ -55,7 +55,7 @@ def get_dataset(
             raise NotImplementedError
         logging.info(data_files)
         if data_path == 'json':
-            with open(data_files, "r") as file:
+            with open(data_files[0], "r") as file:
                 dataset = [json.loads(line) for line in file]
         else :
             dataset = load_dataset(
