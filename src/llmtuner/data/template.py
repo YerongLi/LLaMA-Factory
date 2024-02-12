@@ -42,10 +42,14 @@ class Template:
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
         # prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][0], encoded_pairs[-1][1]
-        prompt_ids = prompt_ids + self._convert_inputs_to_ids(tokenizer, context=self.sep) + tokenizer.encode(f'{self.target}: ')
-        answer_ids = encoded_pairs[-1][0]
+        prompt_ids = prompt_ids
+        answer_ids = encoded_pairs[-1][1]
+        answer = tokenizer.decode(
+                    answer_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                )
+
         logging.info(prompt_ids)
-        logging.info(answer_ids)
+        logging.info(answer)
         return prompt_ids, answer_ids
 
     def encode_multiturn(
