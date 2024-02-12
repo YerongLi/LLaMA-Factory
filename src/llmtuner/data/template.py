@@ -39,7 +39,7 @@ class Template:
         system, history = self._format(query, resp, history, system)
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
-        for role_ids, reps_ids in encoded_pairs[:-1]:
+        for role_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + role_ids + resp_ids
             role = tokenizer.decode(
                 role_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
