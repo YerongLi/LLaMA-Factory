@@ -54,15 +54,19 @@ def get_dataset(
         else:
             raise NotImplementedError
         logging.info(data_files)
-        dataset = load_dataset(
-            path=data_path,
-            name=data_name,
-            data_files=data_files,
-            split=data_args.split,
-            cache_dir=model_args.cache_dir,
-            token=model_args.hf_hub_token,
-            streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
-        )
+        if data_path == 'json':
+            with open(data_files, "r") as file:
+                dataset = [json.loads(line) for line in file]
+        else :
+            dataset = load_dataset(
+                path=data_path,
+                name=data_name,
+                data_files=data_files,
+                split=data_args.split,
+                cache_dir=model_args.cache_dir,
+                token=model_args.hf_hub_token,
+                streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
+            )
         for entry in dataset:
             logging.info(entry)
         if data_args.streaming and (dataset_attr.load_from == "file"):
