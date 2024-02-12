@@ -124,7 +124,7 @@ class Template:
                 prefix_ids = sep_ids + bos_ids
 
             query_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}: '], query=role, idx=str(turn_idx+1))
-            resp_ids = self._convert_inputs_to_ids(tokenizer, context=[resp])
+            resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
             encoded_pairs.append((prefix_ids + query_ids, resp_ids + eos_ids))
 
         return encoded_pairs
