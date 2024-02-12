@@ -52,6 +52,11 @@ class Template:
             logging.info(resp)
         
         prompt_ids = prompt_ids + encoded_pairs[-1][0]
+        role = tokenizer.decode(
+        encoded_pairs[-1][0], skip_special_tokens=True, clean_up_tokenization_spaces=True
+        )
+        logging.info(role)
+                
         answer_ids = encoded_pairs[-1][1]
         answer = tokenizer.decode(
                     answer_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
