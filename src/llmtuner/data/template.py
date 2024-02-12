@@ -130,7 +130,7 @@ class Template:
             role_ids = self._convert_inputs_to_ids(tokenizer, context=['{{query}}: '], query=role, idx=str(turn_idx+1))
             resp_ids = self._convert_inputs_to_ids(tokenizer, context=[utterance])
             role = tokenizer.decode(
-                resp_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                role_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
 
             resp = tokenizer.decode(
