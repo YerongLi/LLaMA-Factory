@@ -41,7 +41,7 @@ class Template:
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids = prompt_ids + query_ids + resp_ids
-        prompt_ids, answer_ids = prompt_ids + encoded_pairs[-1][1], encoded_pairs[-1][1]
+        prompt_ids, answer_ids = prompt_ids, encoded_pairs[-1][1]
         answer = tokenizer.decode(
                     answer_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
