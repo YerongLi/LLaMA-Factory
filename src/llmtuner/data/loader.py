@@ -60,7 +60,7 @@ def get_dataset(
                 dataset_list = [json.loads(line) for line in file]
 
             # Convert the list of dictionaries into a Dataset object
-            dataset = Dataset.from_dict(dataset_list)
+            dataset = Dataset.from_list(dataset_list)
         else :
             dataset = load_dataset(
                 path=data_path,
