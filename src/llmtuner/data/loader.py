@@ -61,6 +61,8 @@ def get_dataset(
 
             # Convert the list of dictionaries into a Dataset object
             dataset = Dataset.from_list(dataset_list)
+            for i in range(len(dataset)):
+                dataset[i]['history'] = dataset_list[i]['history']
         else :
             dataset = load_dataset(
                 path=data_path,
@@ -71,10 +73,9 @@ def get_dataset(
                 token=model_args.hf_hub_token,
                 streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
             )
-        for entry in dataset_list:
-            logging.info(entry)
-        for i in range(len(dataset)):
-            logging.info(type(dataset[i]))
+        # for entry in dataset_list:
+        #     logging.info(entry)
+
         if data_args.streaming and (dataset_attr.load_from == "file"):
             dataset = dataset.to_iterable_dataset() # TODO: add num shards parameter
 
