@@ -53,7 +53,7 @@ def get_dataset(
             checksum(data_files, dataset_attr.dataset_sha1)
         else:
             raise NotImplementedError
-        logging.info(data_path)
+        logging.info(data_files)
         dataset = load_dataset(
             path=data_path,
             name=data_name,
