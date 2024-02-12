@@ -29,6 +29,7 @@ logger = get_logger(__name__)
 
 def construct_example(examples: Dict[str, List[Any]]) -> Generator[Any, None, None]:
     for i in range(len(examples["prompt"])):
+        logging.info(examples["history"][i])
         query, response = examples["prompt"][i], examples["response"][i]
         query = query + "\n" + examples["query"][i] if "query" in examples and examples["query"][i] else query
         history = examples["history"][i] if "history" in examples else None
