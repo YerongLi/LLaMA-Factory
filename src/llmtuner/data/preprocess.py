@@ -99,25 +99,46 @@ def preprocess_dataset(
             #     tokenizer, query, response, history, system
             # )):
 
-            for turn_idx, (source_ids, target_ids) in enumerate(template.encode_oneturn(
+            # for turn_idx, (source_ids, target_ids) in enumerate(template.encode_oneturn(
+            #         tokenizer=tokenizer, query=query, resp=None, history=history, system=system
+            #     )):
+            #     source_len, target_len = len(source_ids), len(target_ids)
+            #     max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
+            #     if source_len > max_source_len:
+            #         source_ids = source_ids[:max_source_len]
+            #     if target_len > max_target_len:
+            #         target_ids = target_ids[:max_target_len]
+
+            #     if data_args.train_on_prompt:
+            #         source_mask = source_ids
+            #     elif turn_idx != 0 and template.efficient_eos:
+            #         source_mask = [tokenizer.eos_token_id] + [IGNORE_INDEX] * (len(source_ids) - 1)
+            #     else:
+            #         source_mask = [IGNORE_INDEX] * len(source_ids)
+
+            #     input_ids += source_ids + target_ids
+            #     labels += source_mask + target_ids
+
+
+            source_ids, target_ids = template.encode_oneturn(
                     tokenizer=tokenizer, query=query, resp=None, history=history, system=system
-                )):
-                source_len, target_len = len(source_ids), len(target_ids)
-                max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
-                if source_len > max_source_len:
-                    source_ids = source_ids[:max_source_len]
-                if target_len > max_target_len:
-                    target_ids = target_ids[:max_target_len]
+                )
+            source_len, target_len = len(source_ids), len(target_ids)
+            max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
+            if source_len > max_source_len:
+                source_ids = source_ids[:max_source_len]
+            if target_len > max_target_len:
+                target_ids = target_ids[:max_target_len]
 
-                if data_args.train_on_prompt:
-                    source_mask = source_ids
-                elif turn_idx != 0 and template.efficient_eos:
-                    source_mask = [tokenizer.eos_token_id] + [IGNORE_INDEX] * (len(source_ids) - 1)
-                else:
-                    source_mask = [IGNORE_INDEX] * len(source_ids)
+            if data_args.train_on_prompt:
+                source_mask = source_ids
+            elif turn_idx != 0 and template.efficient_eos:
+                source_mask = [tokenizer.eos_token_id] + [IGNORE_INDEX] * (len(source_ids) - 1)
+            else:
+                source_mask = [IGNORE_INDEX] * len(source_ids)
 
-                input_ids += source_ids + target_ids
-                labels += source_mask + target_ids
+            input_ids += source_ids + target_ids
+            labels += source_mask + target_ids
 
             if template.efficient_eos:
                 input_ids += [tokenizer.eos_token_id]
