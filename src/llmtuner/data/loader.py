@@ -63,6 +63,7 @@ def get_dataset(
             dataset = Dataset.from_list(dataset_list)
             for i in range(len(dataset)):
                 logging.info(i)
+                logging.info(dataset_list[i]['history'])
                 dataset[i]['history'] = dataset_list[i]['history']
         else :
             dataset = load_dataset(
