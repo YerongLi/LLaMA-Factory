@@ -73,8 +73,8 @@ def get_dataset(
             )
         for entry in dataset_list:
             logging.info(entry)
-        for entry in dataset:
-            logging.info(type(entry))
+        for i in range(len(dataset)):
+            logging.info(type(dataset[i]))
         if data_args.streaming and (dataset_attr.load_from == "file"):
             dataset = dataset.to_iterable_dataset() # TODO: add num shards parameter
 
