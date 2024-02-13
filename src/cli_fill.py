@@ -17,7 +17,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 suffixlen = 12
 
-LOGFILE='./fill.log'
+LOGFILE='fill.log'
 BATCH_SIZE=1
 output_file_path = 'fill.jsonl'
 # output_file_path = 'result-cmp.jsonl'
