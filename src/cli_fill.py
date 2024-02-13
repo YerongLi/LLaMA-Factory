@@ -205,7 +205,14 @@ Dialogue 2:
                 #  Revised Dispatcher's response:
                 #  """
                 logging.info(prompt)
-                print(prompt)
+                # Get the FileHandler
+                file_handler = next((handler for handler in logging.getLogger().handlers if isinstance(handler, logging.FileHandler)), None)
+
+                if file_handler:
+                    log_file_location = file_handler.baseFilename
+                    print(f"Log file location: {log_file_location}")
+                else:
+                    print("FileHandler not found in the logging configuration.")
                 # print('=====  ===== ========')
                 # print('response' in record)
                 if 'response' not in record:
