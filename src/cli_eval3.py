@@ -15,7 +15,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=10
-output_file_path = 'emo-results.jsonl'
+output_file_path = 'results.jsonl'
 
 if os.path.exists(LOGFILE):
     # Remove the file
