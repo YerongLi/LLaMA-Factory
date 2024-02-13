@@ -9,7 +9,7 @@ python src/train_bash.py \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
     --quantization_bit 4 \
-    --output_dir police4 \
+    --output_dir emopolice4 \
     --overwrite_cache \
     --per_device_train_batch_size 8 \
     --gradient_accumulation_steps 2 \
