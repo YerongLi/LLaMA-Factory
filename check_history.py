@@ -6,18 +6,18 @@ def check_history_matches(input_filename):
     with open(f"data/{input_filename}.jsonl", "r") as file:
         police_data = [json.loads(line) for line in file]
 
-    for entry in police_data:
+    for it, entry in enumerate(police_data):
         # Check if the last history entry matches the output
         if entry['history'][-1][1] == entry['output']:
-            print(f"History matches output for entry {entry['id']}")
+            print(f"History matches output for entry {it}")
         else:
-            print(f"Mismatch: History does not match output for entry {entry['id']}")
+            print(f"Mismatch: History does not match output for entry {it}")
 
         # Check if the second-to-last history entry matches the instruction
         if entry['history'][-2][1] == entry['instruction']:
-            print(f"History matches instruction for entry {entry['id']}")
+            print(f"History matches instruction for entry {it}")
         else:
-            print(f"Mismatch: History does not match instruction for entry {entry['id']}")
+            print(f"Mismatch: History does not match instruction for entry {it}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
