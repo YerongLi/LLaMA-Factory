@@ -205,6 +205,7 @@ Dialogue 2:
                 #  Revised Dispatcher's response:
                 #  """
                 logging.info(prompt)
+                print(prompt)
                 # print('=====  ===== ========')
                 # print('response' in record)
                 if 'response' not in record:
