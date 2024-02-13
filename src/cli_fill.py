@@ -52,10 +52,6 @@ def main():
     import json
     text_with_newline = "]"
 
-    with open("data/police-full.json", "r") as file:
-    # with open("data/police-full1.json", "r") as file:
-        data = [json.loads(line) for line in file]
-    logging.info(len(data))
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
@@ -105,8 +101,7 @@ def main():
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
     # Load data from the file
-    with open("data/police-full1.json", "r") as file:
-        # with open("data/police1.json", "r") as file:
+    with open("data/police-complete.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['instruction']} === {item['output']}"
@@ -189,9 +184,10 @@ Dialogue 2:
                 matches = re.findall(r'\[([^\]]+)\]', content)
                 for match in matches:
                     unique_texts.add(match)
-                prompt_ids, _ = chat_model.template.encode_oneturn(
+                prompt_ids, target_ids = chat_model.template.encode_oneturn(
                     tokenizer=chat_model.tokenizer, query=instruction, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
                 )
+                prompt_ids += target_ids
                 prompt = chat_model.tokenizer.decode(
                     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
