@@ -28,7 +28,7 @@ def main(input_filename):
             record["orignalo"] = record["output"]
             record["output"] = matching_result["response"].strip("\n")
             print('original', record['history'])
-            record['history'][-1] = record["output"]
+            record['history'][-1][1] = record["output"]
             updated_records[key] = record
             print('updated', updated_records[key]['history'])
 
