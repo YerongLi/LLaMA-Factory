@@ -180,7 +180,7 @@ Dialogue 2:
             
                 # output = record["output"]
                 # print(list(chain.from_iterable(history)) + [instruction] +[output])
-                content = ' '.join(list(chain.from_iterable(history)) + [instruction] +[output])
+                content = ' '.join(list(chain.from_iterable(history)))
                 matches = re.findall(r'\[([^\]]+)\]', content)
                 for match in matches:
                     unique_texts.add(match)
