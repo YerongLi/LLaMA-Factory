@@ -170,7 +170,7 @@ Dialogue 2:
         prompt_batch = []
         for record in batch:
             # try: 
-                instruction = record["instruction"]
+                # instruction = record["instruction"]
 
                 history = record["history"]
                 record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
@@ -178,7 +178,7 @@ Dialogue 2:
 
                 # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
             
-                output = record["output"]
+                # output = record["output"]
                 # print(list(chain.from_iterable(history)) + [instruction] +[output])
                 content = ' '.join(list(chain.from_iterable(history)) + [instruction] +[output])
                 matches = re.findall(r'\[([^\]]+)\]', content)
