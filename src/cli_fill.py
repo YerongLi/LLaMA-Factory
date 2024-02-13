@@ -27,7 +27,7 @@ if os.path.exists(output_file_path):
     with open(output_file_path, "r") as file:
         progress = [json.loads(line) for line in file]
         progress = [item for item in progress if 'response' in item]
-        progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress}
+        progress = {f"{item['event_id']}" : item['response'] for item in progress}
         # print(progress.keys())
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -104,7 +104,7 @@ def main():
     with open("data/police-complete.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
-        ky = f"{item['instruction']} === {item['output']}"
+        ky = f"{item['event_id']}"
         # if ky not in progress: print(ky)
 
         if ky in progress:
