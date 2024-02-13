@@ -215,8 +215,8 @@ Dialogue 2:
                             'summary': summary,
                             'his_len': record["his_len"],
                             'type': record_type,
-                            'instruction': instruction,
-                            'output': record["output"],
+                            # 'instruction': instruction,
+                            # 'output': record["output"],
                         }
                     )
                 else:
@@ -227,8 +227,8 @@ Dialogue 2:
                             'summary': summary,
                             'his_len': record["his_len"],
                             'type': record_type,
-                            'instruction': instruction,
-                            'output': record["output"],
+                            # 'instruction': instruction,
+                            # 'output': record["output"],
                             'response': record["response"],
                         }
                     )
