@@ -288,5 +288,14 @@
       "response": "output",
       "history": "history"
     }
+  },
+  "police": {
+    "file_name": "police.jsonl",
+    "columns": {
+      "prompt": "instruction",
+      "query": "",
+      "response": "output",
+      "history": "history"
+    }
   }
 }

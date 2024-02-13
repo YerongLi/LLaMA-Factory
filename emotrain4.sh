@@ -2,20 +2,20 @@
     # --deepspeed ds.json \
 python src/train_bash.py \
     --stage sft \
-    --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf \
+    --model_name_or_path $CHATLM \
     --do_train \
-    --dataset emotional-police \
+    --dataset emo-police \
     --template dispatcher \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
-    --output_dir police2 \
+    --quantization_bit 4 \
+    --output_dir emopolice4 \
     --overwrite_cache \
-    --per_device_train_batch_size 1 \
-    --gradient_accumulation_steps 1 \
+    --per_device_train_batch_size 8 \
+    --gradient_accumulation_steps 2 \
     --lr_scheduler_type cosine \
     --logging_steps 10 \
-    --save_steps 50 \
-    --save_total_limit 2 \
+    --save_steps 10 \
+    --save_total_limit 5 \
     --learning_rate 5e-5 \
-    --num_train_epochs 1000.0 \
-    --fp16
+    --num_train_epochs 1000.0

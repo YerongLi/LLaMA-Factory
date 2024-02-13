@@ -2,9 +2,9 @@
     # --deepspeed ds.json \
 python src/train_bash.py \
     --stage sft \
-    --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf \
+    --model_name_or_path $CHATLM \
     --do_train \
-    --dataset emo-police \
+    --dataset police \
     --template dispatcher \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
