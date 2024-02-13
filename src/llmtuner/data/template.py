@@ -131,6 +131,7 @@ class Template:
         sep_ids = self._convert_inputs_to_ids(tokenizer, context=self.sep)
         encoded_pairs = []
         logging.info(history)
+        print(history)
         for turn_idx, (role, utterance) in enumerate(history):
             if turn_idx == 0:
                 prefix_ids = self._convert_inputs_to_ids(tokenizer, context=self.prefix, system=system)
