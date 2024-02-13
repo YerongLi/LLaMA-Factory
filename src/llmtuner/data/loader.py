@@ -55,18 +55,7 @@ def get_dataset(
         else:
             raise NotImplementedError
         logging.info(data_files)
-        # if data_path == 'json':
-        #     import json
-        #     with open(data_files[0], "r") as file:
-        #         dataset_list = [json.loads(line) for line in file]
 
-        #     # Convert the list of dictionaries into a Dataset object
-        #     dataset = Dataset.from_list(dataset_list)
-        #     # for i in range(len(dataset)):
-        #     #     logging.info(i)
-        #     #     logging.info(dataset_list[i]['history'])
-        #     #     dataset[i]['history'] = dataset_list[i]['history']
-        # else :
         dataset = load_dataset(
             path=data_path,
             name=data_name,
@@ -76,8 +65,8 @@ def get_dataset(
             token=model_args.hf_hub_token,
             streaming=(data_args.streaming and (dataset_attr.load_from != "file"))
         )
-        for entry in dataset:
-            logging.info(entry)
+        # for entry in dataset:
+        #     logging.info(entry)
 
         if data_args.streaming and (dataset_attr.load_from == "file"):
             dataset = dataset.to_iterable_dataset() # TODO: add num shards parameter

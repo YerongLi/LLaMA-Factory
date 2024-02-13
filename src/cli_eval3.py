@@ -15,7 +15,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=10
-output_file_path = 'results.jsonl'
+# output_file_path = 'emo-results.jsonl'
 
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -31,7 +31,6 @@ logging.basicConfig(
     datefmt='%m-%d %H:%M:%S')
 logging.info(f'Logger start: {os.uname()[1]}')
 
-model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 # tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
 # tokenizer.pad_token = "[PAD]"
 # tokenizer.padding_side = "left"
@@ -39,9 +38,10 @@ model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-hf'
 def main():
     import json
     text_with_newline = "\n"
+    model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf'
 
     # with open("data/police1.json", "r") as file:
-    with open("data/police2.json", "r") as file:
+    with open("data/police1.json", "r") as file:
         data = [json.loads(line) for line in file]
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
