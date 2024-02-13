@@ -8,15 +8,11 @@ def check_history_matches(input_filename):
 
     for it, entry in enumerate(police_data):
         # Check if the last history entry matches the output
-        if entry['history'][-1][1] == entry['output']:
-            print(f"History matches output for entry {it}")
-        else:
+        if entry['history'][-1][1] != entry['output']:
             print(f"Mismatch: History does not match output for entry {it}")
 
         # Check if the second-to-last history entry matches the instruction
-        if entry['history'][-2][1] == entry['instruction']:
-            print(f"History matches instruction for entry {it}")
-        else:
+        if entry['history'][-2][1] != entry['instruction']:
             print(f"Mismatch: History does not match instruction for entry {it}")
 
 if __name__ == "__main__":
