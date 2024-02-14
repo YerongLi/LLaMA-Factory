@@ -97,7 +97,7 @@ def main():
         with open(output_file_path, "r") as file:
             progress = [json.loads(line) for line in file]
             progress = [item for item in progress if 'response' in item]
-            progress = {f"{item['instruction']}==={item['output']}" : item['response'] for item in progress}
+            progress = {f"{item['event_id']}==={item['instruction']}==={item['output']}" : item['response'] for item in progress}
             # print(progress.keys())
         print(progress)
     print(progress)
@@ -106,13 +106,13 @@ def main():
     with open("data/police1.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
         for i, item in enumerate(data):
-            ky = f"{item['instruction']}==={item['output']}"
+            ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
             # if ky not in progress: print(ky)
 
             if ky in progress:
                 print(ky)
                 data[i]['response'] = progress[ky]
-    
+
     data_empty = [item for item in data if 'response' not in item]
     data_fill= [item for item in data if 'response' in item]
 
