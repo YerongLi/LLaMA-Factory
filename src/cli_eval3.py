@@ -4,7 +4,6 @@ import logging
 import os
 import random
 from tqdm import tqdm
-import argparse
 import csv
 import traceback
 
@@ -38,12 +37,11 @@ logging.info(f'Logger start: {os.uname()[1]}')
 def main():
     import json
     text_with_newline = "\n"
-    model_name = '/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf'
-
-    # with open("data/police1.json", "r") as file:
-    with open("data/police1.jsonl", "r") as file:
-        data = [json.loads(line) for line in file]
     chat_model = ChatModel()
+    logging.info('chat_model')
+
+    logging.info(dir(chat_model))
+
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
     logging.info(tokens)
