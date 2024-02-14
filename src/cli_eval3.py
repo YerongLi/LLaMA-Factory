@@ -13,7 +13,7 @@ from llmtuner.extras.misc import torch_gc
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=10
+BATCH_SIZE=1
 
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -99,6 +99,8 @@ def main():
             progress = [item for item in progress if 'response' in item]
             progress = {f"{item['instruction']}==={item['output']}" : item['response'] for item in progress}
             # print(progress.keys())
+        print(progress)
+    print(progress)
 
     # Load data from the file
     with open("data/police1.jsonl", "r") as file:
