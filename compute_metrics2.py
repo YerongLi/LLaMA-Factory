@@ -1,9 +1,16 @@
+import argparse
+
 import json
 from tqdm import tqdm
 import torch
 import random
 import hashlib
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+parser = argparse.ArgumentParser(description='Your program description')
+parser.add_argument('filename', type=argparse.FileType('r'))
+args = parser.parse_args()
+file_name = args.filename.name
 
 # Set a random seed for reproducibility
 
@@ -36,9 +43,7 @@ def HASH(input_string):
     hash_value = int.from_bytes(hash_object.digest(), byteorder='big')
 
     return str(hash_value)
-# file_name = "results_gpt35.jsonl"
-file_name = "results.jsonl"
-# file_name = "results-bak.jsonl"
+
 
 random_seed = int(HASH(file_name))
 random_seed = random_seed % 138337704
@@ -48,7 +53,7 @@ random.seed(random_seed)
 # file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
-
+data = [item for item in data if 'response' in item]
 # Process the data in batches
 for i in tqdm(range(0, len(data), batch_size)):
     batch_data = data[i:i + batch_size]
