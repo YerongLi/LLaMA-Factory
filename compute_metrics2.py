@@ -83,21 +83,11 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_response_predicted_labels = batch_response_outputs.logits.argmax(dim=1).tolist()
     batch_output_predicted_labels = batch_output_outputs.logits.argmax(dim=1).tolist()
 
-    # Generate a random number for each line
-    random_numbers = [random.randint(1, 100) for _ in range(len(batch_instruction_predicted_labels))]
     # Map predicted labels to desired values
     mapped_instruction_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_instruction_predicted_labels]
     mapped_response_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_response_predicted_labels]
     mapped_output_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_output_predicted_labels]
 
-    # Map predicted labels to desired values and apply the condition
-    for j, (random_number, mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(random_numbers, mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
-        if random_number % 3 == 0 and mapped_instruction_label == -1:
-            mapped_output_label = 0
-            mapped_response_label = 1
-        data[i + j]['i'] = mapped_instruction_label
-        data[i + j]['r'] = mapped_response_label
-        data[i + j]['o'] = mapped_output_label
 
     # Free GPU memory
     torch.cuda.empty_cache()
