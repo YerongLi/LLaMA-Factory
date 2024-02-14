@@ -243,10 +243,10 @@ Dialogue 2:
     print(unique_texts)
     # print(' prompt_batches', len( prompt_batches))
 
-    
+
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches[:-1]]
     print(' tokenized_prompt_batches', len( tokenized_prompt_batches))
-    
+
 
     # exit()
     print(len(tokenized_prompt_batches))
@@ -289,7 +289,7 @@ Dialogue 2:
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if 0 == batch_index % 50:
+        if 0 == batch_index % 2:
 
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
