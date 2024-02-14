@@ -41,6 +41,7 @@ def main():
     logging.info('chat_model')
 
     logging.info(dir(chat_model))
+    logging.info(chat_model._process_args)
 
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
