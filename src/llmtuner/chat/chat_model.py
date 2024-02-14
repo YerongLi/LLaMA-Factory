@@ -32,6 +32,7 @@ class ChatModel:
         self.model = dispatch_model(self.model)
         self.template = get_template_and_fix_tokenizer(data_args.template, self.tokenizer)
         self.system_prompt = data_args.system_prompt
+        self.args = args
 
     def _process_args(
         self,
