@@ -110,7 +110,6 @@ def main():
             # if ky not in progress: print(ky)
 
             if ky in progress:
-                print(ky)
                 data[i]['response'] = progress[ky]
 
     data_empty = [item for item in data if 'response' not in item]
@@ -207,7 +206,7 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if 0 == batch_index % 2:
+        if 0 == batch_index % 10:
 
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
