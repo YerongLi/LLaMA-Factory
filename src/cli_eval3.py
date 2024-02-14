@@ -112,10 +112,12 @@ def main():
         if ky in progress:
             print(ky)
             data[i]['response'] = progress[ky]
+    
     data_empty = [item for item in data if 'response' not in item]
     data_fill= [item for item in data if 'response' in item]
 
     data_batches = [data_empty[i:i + BATCH_SIZE] for i in range(0, len(data_empty), BATCH_SIZE)]+[data_fill]
+    print('progress', len(progress))
     print('data_empty', len(data_empty))
     print('data_fill', len(data_fill))
 
