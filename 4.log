@@ -1,0 +1,56 @@
+Event Type: SuspiciousActivity
+Ratio for 'r' is 1 when 'i' is -1: 72.16%
+Ratio for 'o' is 1 when 'i' is -1: 44.33%
+average 58.25%
+
+
+Event Type: AccidentTrafficParking
+Ratio for 'r' is 1 when 'i' is -1: 81.82%
+Ratio for 'o' is 1 when 'i' is -1: 90.91%
+average 86.36%
+
+
+Event Type: DrugsAlcohol
+Ratio for 'r' is 1 when 'i' is -1: 69.39%
+Ratio for 'o' is 1 when 'i' is -1: 40.82%
+average 55.10%
+
+
+Event Type: EmergencyMessage
+Ratio for 'r' is 1 when 'i' is -1: 64.86%
+Ratio for 'o' is 1 when 'i' is -1: 31.08%
+average 47.97%
+
+
+Event Type: FacilitiesMaintenance
+Ratio for 'r' is 1 when 'i' is -1: 71.43%
+Ratio for 'o' is 1 when 'i' is -1: 52.38%
+average 61.90%
+
+
+Event Type: HarassmentAbuse
+Ratio for 'r' is 1 when 'i' is -1: 71.05%
+Ratio for 'o' is 1 when 'i' is -1: 50.00%
+average 60.53%
+
+
+Event Type: MentalHealth
+Ratio for 'r' is 1 when 'i' is -1: 92.31%
+Ratio for 'o' is 1 when 'i' is -1: 61.54%
+average 76.92%
+
+
+Event Type: NoiseDisturbance
+Ratio for 'r' is 1 when 'i' is -1: 64.71%
+Ratio for 'o' is 1 when 'i' is -1: 49.58%
+average 57.14%
+
+
+Event Type: TheftLostItem
+Ratio for 'r' is 1 when 'i' is -1: 28.57%
+Ratio for 'o' is 1 when 'i' is -1: 42.86%
+average 35.71%
+
+
+Overall ratio for 'r' is 1 when 'i' is -1: 67.89%
+Overall ratio for 'o' is 1 when 'i' is -1: 45.64%
