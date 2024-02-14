@@ -53,7 +53,6 @@ random.seed(random_seed)
 # file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
-data = [item in]
 # Process the data in batches
 for i in tqdm(range(0, len(data), batch_size)):
     batch_data = data[i:i + batch_size]
