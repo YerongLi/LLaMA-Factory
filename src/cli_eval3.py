@@ -99,8 +99,6 @@ def main():
             progress = [item for item in progress if 'response' in item]
             progress = {f"{item['event_id']}==={item['instruction']}==={item['output']}" : item['response'] for item in progress}
             # print(progress.keys())
-        print(progress)
-    print(progress)
 
     # Load data from the file
     with open("data/police1.jsonl", "r") as file:

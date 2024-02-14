@@ -153,14 +153,14 @@ User:Her name is [PERSON], [PERSON] and she is a ## year old white female, about
 Answer:
 
 [
-{'Dispatcher': 'Thank you for calling Chicago Police Department ...What is your location please?'},
-{'User': '### Blackstone apt ##'},
-{'Dispatcher': ' Thank you..is there a building code?'},
-{'User': 'No, but im a street facing apt'},
-{'Dispatcher': ' Thank you. I am going to send this information to Cook County's Police Department and an officer will respond.'),
-{'User': 'Thank you'},
-{'Dispatcher':' What is your roommate's name and could you describe him or her?'},
-{'User': 'Her name is Selena, Selena Harvey and she is a ## year old white female, about #'#", ### lbs, brown hair '}
+['Dispatcher': 'Thank you for calling Chicago Police Department ...What is your location please?'],
+['User', '### Blackstone apt ##'],
+['Dispatcher': ' Thank you..is there a building code?'],
+['User': 'No, but im a street facing apt'],
+['Dispatcher': ' Thank you. I am going to send this information to Cook County's Police Department and an officer will respond.'],
+['User': 'Thank you'],
+['Dispatcher':' What is your roommate's name and could you describe him or her?'],
+['User': 'Her name is Selena, Selena Harvey and she is a ## year old white female, about #'#", ### lbs, brown hair ']
 ]
 
 Dialogue 2:
@@ -216,6 +216,7 @@ Dialogue 2:
             if 'response' not in record:
                 prompt_batch.append(
                     {
+                        'event_id': record["event_id"],
                         'prompt': prompt,
                         'history': history,
                         'summary': summary,
@@ -227,7 +228,8 @@ Dialogue 2:
                 )
             else:
                 prompt_batch.append(
-                            {
+                    {
+                        'event_id': record["event_id"],
                         'prompt': prompt,
                         'history': history,
                         'summary': summary,
