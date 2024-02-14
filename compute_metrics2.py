@@ -53,13 +53,14 @@ random.seed(random_seed)
 # file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
+data = [item in]
 # Process the data in batches
 for i in tqdm(range(0, len(data), batch_size)):
     batch_data = data[i:i + batch_size]
 
     # Tokenize the input text for the batch
     batch_instruction_inputs = tokenizer([item["instruction"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
-    batch_response_inputs = tokenizer([item["response"] for item in batch_data if 'response' in item else ''], return_tensors="pt", padding=True, truncation=True).to(device_str)
+    batch_response_inputs = tokenizer([item["response"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
     batch_output_inputs = tokenizer([item["output"] for item in batch_data], return_tensors="pt", padding=True, truncation=True).to(device_str)
 
     # Pass the batch through the model for instruction
