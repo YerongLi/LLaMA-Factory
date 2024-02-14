@@ -13,7 +13,7 @@ from llmtuner.extras.misc import torch_gc
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=1
+BATCH_SIZE=10
 
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -194,7 +194,7 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if 0 == batch_index % 2:
+        if 0 == batch_index % 10:
 
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
