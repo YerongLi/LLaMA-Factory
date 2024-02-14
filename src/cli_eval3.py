@@ -160,8 +160,15 @@ def main():
         if prompt_batch: prompt_batches.append(prompt_batch)
     
 
-    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
+    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches[:-1]]
+    print(' tokenized_prompt_batches', len( tokenized_prompt_batches))
 
+
+    # exit()
+    print(len(tokenized_prompt_batches))
+    print(len(tokenized_prompt_batches))
+    print(len(tokenized_prompt_batches))
+    print(len(tokenized_prompt_batches))
     # Generate outputs batch by batch
     for batch_index, tokenized_prompts in tqdm(enumerate(tokenized_prompt_batches), total=len(tokenized_prompt_batches)):
         # print(tokenized_prompts.shape)
@@ -180,7 +187,7 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if 0 == batch_index % 50:
+        if 0 == batch_index % 5:
 
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
