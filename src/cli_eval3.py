@@ -158,8 +158,8 @@ def main():
                         'summary': summary,
                         'his_len': record["his_len"],
                         'type': record_type,
-                        # 'instruction': instruction,
-                        # 'output': record["output"],
+                        'instruction': record["instruction"],
+                        'output': record["output"],
                     }
                 )
             else:
@@ -171,8 +171,8 @@ def main():
                         'summary': summary,
                         'his_len': record["his_len"],
                         'type': record_type,
-                        # 'instruction': instruction,
-                        # 'output': record["output"],
+                        'instruction': record["instruction"],
+                        'output': record["output"],
                         'response': record["response"],
                     }
                 )
@@ -207,7 +207,7 @@ def main():
             failed_count += 1
             print(f"Error: {e}")
             traceback.print_exc()  # Print the full traceback
-        if 0 == batch_index % 10:
+        if 0 == batch_index % 2:
 
             print('Saving Results')
             with open(output_file_path, 'w') as jsonl_file:
