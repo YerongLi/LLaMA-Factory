@@ -21,14 +21,7 @@ LOGFILE='fill.log'
 BATCH_SIZE=1
 output_file_path = 'fill.jsonl'
 # output_file_path = 'result-cmp.jsonl'
-progress = {}
-if os.path.exists(output_file_path):
 
-    with open(output_file_path, "r") as file:
-        progress = [json.loads(line) for line in file]
-        progress = [item for item in progress if 'response' in item]
-        progress = {f"{item['event_id']}" : item['response'] for item in progress}
-        # print(progress.keys())
 if os.path.exists(LOGFILE):
     # Remove the file
     os.remove(LOGFILE)
@@ -100,8 +93,15 @@ def main():
 
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
-    # Load data from the file
-    with open("data/police-complete.jsonl", "r") as file:
+    progress = {}
+    if os.path.exists(output_file_path):
+
+    with open(output_file_path, "r") as file:
+        progress = [json.loads(line) for line in file]
+        progress = [item for item in progress if 'response' in item]
+        progress = {f"{item['event_id']}" : item['response'] for item in progress}
+        # print(progress.keys())
+    with open("police-complete.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['event_id']}"

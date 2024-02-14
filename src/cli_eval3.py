@@ -89,15 +89,31 @@ def main():
 
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
+    with open("data/police1.jsonl", "r") as file:
+        data = [json.loads(line) for line in file]
+    progress = {}
+    if os.path.exists(output_file_path):
+
+        with open(output_file_path, "r") as file:
+            progress = [json.loads(line) for line in file]
+            progress = [item for item in progress if 'response' in item]
+            progress = {f"{item['instruction']}==={item['output']}" : item['response'] for item in progress}
+            # print(progress.keys())
+
     # Load data from the file
     with open("data/police1.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
+        for i, item in enumerate(data):
+            ky = f"{item['instruction']}==={item['output']}"
+            # if ky not in progress: print(ky)
 
-    # Initialize other variables...
-    # random.shuffle(data)
-    # data = data[:60]
-    data_batches = [data[i:i + BATCH_SIZE] for i in range(0, len(data), BATCH_SIZE)]
+        if ky in progress:
+            data[i]['response'] = progress[ky]
+    data_empty = [item for item in data if 'response' not in item]
+    data_fill= [item for item in data if 'response' in item]
 
+    data_batches = [data_empty[i:i + BATCH_SIZE] for i in range(0, len(data_empty), BATCH_SIZE)]+[data_fill]
+    print('data_empty', len(data_empty))
     # for record in tqdm.tqdm(data[:60]):
     # Iterate through each batch of data
     prompt_batches = []
