@@ -169,83 +169,84 @@ Dialogue 2:
         # Iterate through each record in the batch
         prompt_batch = []
         for record in batch:
-            # try: 
-                # instruction = record["instruction"]
 
-                history = record["history"]
-                record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
-                summary = record["summary"] if 'summary' in record else ''
+            history = record["history"]
+            record_type = record.get('type', 'unknown').replace('/', '').replace(' ', '')
+            summary = record["summary"] if 'summary' in record else ''
 
-                # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
-            
-                # output = record["output"]
-                # print(list(chain.from_iterable(history)) + [instruction] +[output])
-                content = ' '.join(list(chain.from_iterable(history)))
-                matches = re.findall(r'\[([^\]]+)\]', content)
-                for match in matches:
-                    unique_texts.add(match)
-                prompt_ids, target_ids = chat_model.template.encode_oneturn(
-                    tokenizer=chat_model.tokenizer, query=None, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            # response = chat_model.chat(query=instruction, history=history, system=chat_model.template.system+f'\n{summary}')[0].response_text
+        
+            # output = record["output"]
+            # print(list(chain.from_iterable(history)) + [instruction] +[output])
+            content = ' '.join(list(chain.from_iterable(history)))
+            matches = re.findall(r'\[([^\]]+)\]', content)
+            for match in matches:
+                unique_texts.add(match)
+            prompt_ids, target_ids = chat_model.template.encode_oneturn(
+                tokenizer=chat_model.tokenizer, query=None, resp="", history=history, system=chat_model.template.system+f'\n{summary}'
+            )
+            prompt_ids += target_ids
+            prompt = chat_model.tokenizer.decode(
+                prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            )
+
+            # prompt = prompt[:-suffixlen]
+            prompt = prompt + f"""
+
+            Answer:
+
+            \n"""
+            # prompt = prompt + f"""
+            #  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
+            #  Dispatcher's response:
+            #  {record['output']}
+            #  Revised Dispatcher's response:
+            #  """
+            logging.info(prompt)
+            # Get the FileHandler
+            file_handler = next((handler for handler in logging.getLogger().handlers if isinstance(handler, logging.FileHandler)), None)
+
+            if file_handler:
+                log_file_location = file_handler.baseFilename
+                print(f"Log file location: {log_file_location}")
+            else:
+                print("FileHandler not found in the logging configuration.")
+            # print('=====  ===== ========')
+            # print('response' in record)
+            if 'response' not in record:
+                prompt_batch.append(
+                    {
+                        'prompt': prompt,
+                        'history': history,
+                        'summary': summary,
+                        'his_len': record["his_len"],
+                        'type': record_type,
+                        # 'instruction': instruction,
+                        # 'output': record["output"],
+                    }
                 )
-                prompt_ids += target_ids
-                prompt = chat_model.tokenizer.decode(
-                    prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            else:
+                prompt_batch.append(
+                            {
+                        'prompt': prompt,
+                        'history': history,
+                        'summary': summary,
+                        'his_len': record["his_len"],
+                        'type': record_type,
+                        # 'instruction': instruction,
+                        # 'output': record["output"],
+                        'response': record["response"],
+                    }
                 )
-
-                # prompt = prompt[:-suffixlen]
-                prompt = prompt + f"""
-
-                Answer:
-
-                \n"""
-                # prompt = prompt + f"""
-                #  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
-                #  Dispatcher's response:
-                #  {record['output']}
-                #  Revised Dispatcher's response:
-                #  """
-                logging.info(prompt)
-                # Get the FileHandler
-                file_handler = next((handler for handler in logging.getLogger().handlers if isinstance(handler, logging.FileHandler)), None)
-
-                if file_handler:
-                    log_file_location = file_handler.baseFilename
-                    print(f"Log file location: {log_file_location}")
-                else:
-                    print("FileHandler not found in the logging configuration.")
-                # print('=====  ===== ========')
-                # print('response' in record)
-                if 'response' not in record:
-                    prompt_batch.append(
-                                {
-                            'prompt': prompt,
-                            'history': history,
-                            'summary': summary,
-                            'his_len': record["his_len"],
-                            'type': record_type,
-                            # 'instruction': instruction,
-                            # 'output': record["output"],
-                        }
-                    )
-                else:
-                    prompt_batch.append(
-                                {
-                            'prompt': prompt,
-                            'history': history,
-                            'summary': summary,
-                            'his_len': record["his_len"],
-                            'type': record_type,
-                            # 'instruction': instruction,
-                            # 'output': record["output"],
-                            'response': record["response"],
-                        }
-                    )
 
         if prompt_batch: prompt_batches.append(prompt_batch)
     print(unique_texts)
-    print(' prompt_batches', len( prompt_batches))
-    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches]
+    # print(' prompt_batches', len( prompt_batches))
 
+    
+    tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches[:-1]]
+    print(' tokenized_prompt_batches', len( tokenized_prompt_batches))
+    
 
     # exit()
     print(len(tokenized_prompt_batches))

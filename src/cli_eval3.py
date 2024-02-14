@@ -89,9 +89,9 @@ def main():
 
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
-    with open("data/police1.jsonl", "r") as file:
-        data = [json.loads(line) for line in file]
     progress = {}
+    
+
     if os.path.exists(output_file_path):
 
         with open(output_file_path, "r") as file:
