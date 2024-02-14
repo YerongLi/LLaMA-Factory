@@ -41,7 +41,7 @@ def main():
 
     logging.info(chat_model.args)
     output_file_path = f'{chat_model.args.checkpoint_dir[0].split("/")[-2]}.jsonl'
-
+    logging.info(output_file_path)
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
     logging.info(tokens)
