@@ -53,7 +53,7 @@ random.seed(random_seed)
 # file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
-data = [item for item in data if 'response' in item]
+data = [item in]
 # Process the data in batches
 for i in tqdm(range(0, len(data), batch_size)):
     batch_data = data[i:i + batch_size]
@@ -83,11 +83,16 @@ for i in tqdm(range(0, len(data), batch_size)):
     batch_response_predicted_labels = batch_response_outputs.logits.argmax(dim=1).tolist()
     batch_output_predicted_labels = batch_output_outputs.logits.argmax(dim=1).tolist()
 
-    # Map predicted labels to desired values
+    # Generate a random number for each line
     mapped_instruction_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_instruction_predicted_labels]
     mapped_response_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_response_predicted_labels]
     mapped_output_labels = [emotion_mapping.get(model.config.id2label[label], 0) for label in batch_output_predicted_labels]
 
+    # Map predicted labels to desired values and apply the condition
+    for j, (mapped_instruction_label, mapped_response_label, mapped_output_label) in enumerate(zip(mapped_instruction_labels, mapped_response_labels, mapped_output_labels)):
+        data[i * batch_size + j]['i'] = mapped_instruction_label
+        data[i * batch_size + j]['r'] = mapped_response_label
+        data[i * batch_size + j]['o'] = mapped_output_label
 
     # Free GPU memory
     torch.cuda.empty_cache()

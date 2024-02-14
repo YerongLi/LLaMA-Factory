@@ -1,8 +1,10 @@
 import json
+import argparse
 
-# file_name = "results_gpt35.jsonl"
-file_name = "results.jsonl"
-# file_name = "results-bak.jsonl"
+parser = argparse.ArgumentParser(description='Your program description')
+parser.add_argument('filename', type=argparse.FileType('r'))
+args = parser.parse_args()
+file_name = args.filename.name
 
 # Event types
 event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
