@@ -14,7 +14,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
 BATCH_SIZE=10
-output_file_path = 'results.jsonl'
 
 if os.path.exists(LOGFILE):
     # Remove the file
@@ -41,6 +40,7 @@ def main():
     logging.info('chat_model')
 
     logging.info(chat_model.args)
+    output_file_path = f'{chat_model.args.checkpoint_dir[0].split('/')[-2]}.jsonl'
 
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
