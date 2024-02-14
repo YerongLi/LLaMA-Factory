@@ -109,9 +109,9 @@ def main():
             ky = f"{item['instruction']}==={item['output']}"
             # if ky not in progress: print(ky)
 
-        if ky in progress:
-            print(ky)
-            data[i]['response'] = progress[ky]
+            if ky in progress:
+                print(ky)
+                data[i]['response'] = progress[ky]
     
     data_empty = [item for item in data if 'response' not in item]
     data_fill= [item for item in data if 'response' in item]
