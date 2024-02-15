@@ -101,8 +101,8 @@ def main():
             progress = [item for item in progress if 'response' in item]
             progress = {f"{item['event_id']}" : item['response'] for item in progress}
             # print(progress.keys())
-        with open("police-complete.jsonl", "r") as file:
-            data = [json.loads(line) for line in file]
+    with open("fill-police-complete.jsonl", "r") as file:
+        data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['event_id']}"
         # if ky not in progress: print(ky)
