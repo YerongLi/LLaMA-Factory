@@ -2,14 +2,14 @@
     # --deepspeed ds.json \
 python src/train_bash.py \
     --stage sft \
-    --model_name_or_path /scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf \
+    --model_name_or_path $CHATLM \
     --do_train \
-    --dataset police \
-    --template dispatcher \
+    --dataset user \
+    --template user \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
     --quantization_bit 4 \
-    --output_dir police4 \
+    --output_dir user4 \
     --overwrite_cache \
     --per_device_train_batch_size 8 \
     --gradient_accumulation_steps 2 \
