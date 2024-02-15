@@ -26,11 +26,6 @@ with open("fill-police-complete.jsonl", "w") as new_file:
 
 print("Data saved to 'fill-police-complete.jsonl'.")
 
-
-# Initialize an empty list to store the reformatted data
-reformatted_data = []
-
-
 # Now let's create a new file for 'Dispatcher' data
 
 
