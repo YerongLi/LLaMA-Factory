@@ -39,6 +39,7 @@ dispatcher_data = []
 for item in reformatted_data:
     history = item['history']
     for i in range(len(history)):
+        print(history[i][0])
         if history[i][0] == 'Dispatcher':
             dispatcher_item = dict(item)
             dispatcher_item['history'] = history[:i+1]
