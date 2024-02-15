@@ -8,4 +8,4 @@ with open("fill_1160_70b_postprocessed.jsonl", "r") as file:
         data = json.loads(line)
         
         # Print the keys
-        print(data.keys())
+        print(data['parsed_response'])
