@@ -30,7 +30,7 @@ def split_and_count(input_file):
     print("\nNumber of each type in police.jsonl:")
     for record in police_data:
         record_type = record.get("type")
-        if type_set not in record_type:
+        if record_type not in type_set:
             print(record_type)
             continue
         type_counts_police[record_type] += 1
