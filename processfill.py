@@ -31,8 +31,6 @@ print("Data saved to 'fill-police-complete.jsonl'.")
 reformatted_data = []
 
 
-
-
 # Now let's create a new file for 'Dispatcher' data
 
 
@@ -44,7 +42,7 @@ for item in reformatted_data:
         if history[i][0] == 'Dispatcher':
             dispatcher_item = dict(item)
             dispatcher_item['history'] = history[:i+1]
-
+            dispatcher_data.append(dispatcher_item)
 # Write the dispatcher data to a new file
 with open("dispatcher.jsonl", "w") as dispatcher_file:
     for item in dispatcher_data:
@@ -59,6 +57,7 @@ for item in reformatted_data:
         if history[i][0] == 'User':
             user_item = dict(item)
             user_item['history'] = history[:i+1]
+            user_data.append(user_item)
             
 # Write the user data to a new file
 with open("user.jsonl", "w") as user_file:
