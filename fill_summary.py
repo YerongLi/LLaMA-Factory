@@ -12,7 +12,7 @@ with open("summary.jsonl", "r") as file:
         
         # Extract event ID and summary
         event_id = data.get("event_id")
-        summary = data.get("summary")
+        summary = data.get("response")
         
         # Add the event summary to the dictionary
         if event_id and summary:
