@@ -31,12 +31,14 @@ class Template:
         resp: str,
         history: Optional[List[Tuple[str, str]]] = None,
         system: Optional[str] = None,
+        summary: str = ''
     ) -> Tuple[List[int], List[int]]:
         r"""
         Returns a single pair of token ids representing prompt and response respectively.
         """
         logging.info(history)
         system, history = self._format(query, resp, history, system)
+        system+= f'\n{summary}\n'
         encoded_pairs = self._encode(tokenizer, system, history)
         prompt_ids = []
         for role_ids, resp_ids in encoded_pairs[:-1]:

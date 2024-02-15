@@ -304,7 +304,8 @@
       "prompt": "instruction",
       "query": "",
       "response": "output",
-      "history": "history"
+      "history": "history",
+      "summary": "summary"
     }
   }
 }

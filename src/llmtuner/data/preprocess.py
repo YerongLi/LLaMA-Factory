@@ -34,7 +34,8 @@ def construct_example(examples: Dict[str, List[Any]]) -> Generator[Any, None, No
         query = query + "\n" + examples["query"][i] if "query" in examples and examples["query"][i] else query
         history = examples["history"][i] if "history" in examples else None
         system = examples["system"][i] if "system" in examples else None
-        yield query, response, history, system
+        summary = examples["summary"][i] if "summary" in examples else None
+        yield query, response, history, system, summary
 
 
 def infer_max_len(source_len: int, target_len: int, data_args: "DataArguments") -> Tuple[int, int]:
@@ -87,7 +88,7 @@ def preprocess_dataset(
         # build inputs with format `<bos> X Y <eos>` and labels with format `<ignore> ... <ignore> Y <eos>`
         # for multiturn examples, we only mask the prompt part in each prompt-response pair.
         model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
-        for query, response, history, system in construct_example(examples):
+        for query, response, history, system, summary in construct_example(examples):
             if not (isinstance(query, str) and isinstance(response, str) and query != "" and response != ""):
                 continue
             # logging.info(f"Query: {query}")
@@ -121,7 +122,7 @@ def preprocess_dataset(
 
 
             source_ids, target_ids = template.encode_oneturn(
-                    tokenizer=tokenizer, query=None, resp="", history=history, system=system
+                    tokenizer=tokenizer, query=None, resp="", history=history, system=system, summary=summary
                 )
             source_len, target_len = len(source_ids), len(target_ids)
             max_source_len, max_target_len = infer_max_len(source_len, target_len, data_args)
