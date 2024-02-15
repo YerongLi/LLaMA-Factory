@@ -19,7 +19,7 @@ with open("summary.jsonl", "r") as file:
             event_summaries[event_id] = summary
 
 # Print the constructed dictionary
-# print(event_summaries)
+print(event_summaries)
 # Read the user data from the 'user.jsonl' file
 with open("user.jsonl", "r") as user_file:
     user_data = [json.loads(line) for line in user_file]
