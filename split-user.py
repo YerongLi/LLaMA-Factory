@@ -30,6 +30,7 @@ def split_and_count(input_file):
     print("\nNumber of each type in police.jsonl:")
     for record in police_data:
         record_type = record.get("type")
+        print(record_type)
         type_counts_police[record_type] += 1
 
     total_entries_police = sum(type_counts_police.values())
