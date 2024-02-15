@@ -25,3 +25,46 @@ with open("fill-police-complete.jsonl", "w") as new_file:
         new_file.write(json.dumps(item) + "\n")
 
 print("Data saved to 'fill-police-complete.jsonl'.")
+
+
+import json
+# Initialize an empty list to store the reformatted data
+reformatted_data = []
+
+
+
+print("Data saved to 'fill-police-complete.jsonl'.")
+
+# Now let's create a new file for 'Dispatcher' data
+
+
+# Initialize an empty list to store the dispatcher data
+dispatcher_data = []
+for item in reformatted_data:
+    history = item['history']
+    for i in range(len(history)):
+        if history[i][0] == 'Dispatcher':
+            dispatcher_item = dict(item)
+            dispatcher_item['history'] = history[:i+1]
+
+# Write the dispatcher data to a new file
+with open("dispatcher.jsonl", "w") as dispatcher_file:
+    for item in dispatcher_data:
+        dispatcher_file.write(json.dumps(item) + "\n")
+
+print("Dispatcher data saved to 'dispatcher.jsonl'.")
+del dispatcher_data
+user_data = []
+for item in reformatted_data:
+    history = item['history']
+    for i in range(len(history)):
+        if history[i][0] == 'User':
+            user_item = dict(item)
+            user_item['history'] = history[:i+1]
+            
+# Write the user data to a new file
+with open("user.jsonl", "w") as user_file:
+    for item in user_data:
+        user_file.write(json.dumps(item) + "\n")
+
+print("User data saved to 'user.jsonl'.")
