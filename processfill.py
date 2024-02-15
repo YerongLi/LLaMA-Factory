@@ -33,7 +33,6 @@ print("Data saved to 'fill-police-complete.jsonl'.")
 dispatcher_data = []
 for item in reformatted_data:
     history = item['history']
-    print(history)
     for i in range(len(history)):
         print(history[i][0])
         if history[i][0] == 'Dispatcher':
