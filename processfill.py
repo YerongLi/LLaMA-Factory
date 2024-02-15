@@ -34,6 +34,7 @@ dispatcher_data = []
 for item in reformatted_data:
     history = item['history']
     for i in range(len(history)):
+        if i == 0 : continue
         if history[i][0] == 'Dispatcher':
             dispatcher_item = dict(item)
             dispatcher_item['history'] = history[:i+1]
@@ -49,6 +50,7 @@ user_data = []
 for item in reformatted_data:
     history = item['history']
     for i in range(len(history)):
+        if i == 0 : continue
         if history[i][0] == 'User':
             user_item = dict(item)
             user_item['history'] = history[:i+1]
