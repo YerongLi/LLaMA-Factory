@@ -96,13 +96,13 @@ def main():
     progress = {}
     if os.path.exists(output_file_path):
 
-    with open(output_file_path, "r") as file:
-        progress = [json.loads(line) for line in file]
-        progress = [item for item in progress if 'response' in item]
-        progress = {f"{item['event_id']}" : item['response'] for item in progress}
-        # print(progress.keys())
-    with open("police-complete.jsonl", "r") as file:
-        data = [json.loads(line) for line in file]
+        with open(output_file_path, "r") as file:
+            progress = [json.loads(line) for line in file]
+            progress = [item for item in progress if 'response' in item]
+            progress = {f"{item['event_id']}" : item['response'] for item in progress}
+            # print(progress.keys())
+        with open("police-complete.jsonl", "r") as file:
+            data = [json.loads(line) for line in file]
     for i, item in enumerate(data):
         ky = f"{item['event_id']}"
         # if ky not in progress: print(ky)
@@ -175,7 +175,7 @@ Dialogue 2:
             # prompt = prompt[:-suffixlen]
             prompt = prompt + f"""
 
-Summary:"""
+Summary:\n"""
             # prompt = prompt + f"""
             #  Based on the dialogue above. Rephrase the Dispatcher's utterance to provide a more emotionally supportive response to the user when the user feels bad. Incorporate elements of empathy, validation, understanding, encouragement, and active listening. Aim to make the user feel heard, understood, and supported.
             #  Dispatcher's response:
