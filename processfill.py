@@ -15,7 +15,7 @@ with open("fill_1160_70b_postprocessed.jsonl", "r") as file:
         
         # Assign the reformatted list back to data['parsed_response']
         data['parsed_response'] = reformatted_list
-        
+        del data['prompt']
         # Append the updated data to the reformatted_data list
         reformatted_data.append(data)
 
