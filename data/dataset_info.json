@@ -297,5 +297,14 @@
       "response": "output",
       "history": "history"
     }
+  },
+  "user": {
+    "file_name": "usertrain.jsonl",
+    "columns": {
+      "prompt": "instruction",
+      "query": "",
+      "response": "output",
+      "history": "history"
+    }
   }
 }
