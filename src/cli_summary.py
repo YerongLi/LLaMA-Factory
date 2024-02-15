@@ -43,11 +43,11 @@ logging.info(f'Logger start: {os.uname()[1]}')
 
 def main():
     import json
-    text_with_newline = "]"
+    text_with_newline = "\n"
 
     chat_model = ChatModel()
     tokens = chat_model.tokenizer.encode(text_with_newline)
-
+    print(tokens)
     logging.info(tokens)
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
@@ -254,8 +254,8 @@ Summary:\n"""
         #     continue
         try:
 
-            # generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
-            generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [60])
+            generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [13])
+            # generated_outputs = chat_model.model.generate(**tokenized_prompts, min_new_tokens= 2, max_new_tokens=512, do_sample=True, top_p=0.7, eos_token_id = [60])
             outputs = chat_model.tokenizer.batch_decode(
                 generated_outputs[:, tokenized_prompts['input_ids'].shape[1]:], skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
