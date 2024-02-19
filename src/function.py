@@ -46,7 +46,7 @@ def construct_prompt( template_name, history):
 def main():
     import json
     history = [['User', 'Hello, I need a ride to metro center, can somebody help me.'], ['Dispatcher', 'NCR Test Of the NCR Centers - Non Emergency'], ['User', 'Test received']]
-    print(construct_prompt(history))
+    print(construct_prompt('user',history))
 
 
 
