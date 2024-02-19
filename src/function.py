@@ -36,6 +36,10 @@ def main():
     import json
     text_with_newline = "\n"
     chat_model = ChatModel()
+    tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
+
+    template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
+
     logging.info('chat_model')
 
     logging.info(chat_model.args)
@@ -139,7 +143,10 @@ def main():
         
             output = record["output"]
 
-            prompt_ids, _ = chat_model.template.encode_oneturn(
+            # prompt_ids, _ = chat_model.template.encode_oneturn(
+            #     tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
+            # )
+            prompt_ids, _ = template.encode_oneturn(
                 tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
             )
             prompt = chat_model.tokenizer.decode(
