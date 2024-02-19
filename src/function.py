@@ -38,12 +38,18 @@ def construct_prompt(
     tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
     
     template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
-
+    prompt_ids, _ = template.encode_oneturn(
+        tokenizer=tokenizer, query=None, resp=None, history=history, system=template.system+f'\n{summary}'
+    )
+    prompt = tokenizer.decode(
+        prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+    )
+    logging.info(prompt)
+    return prompt
 def main():
     import json
     history = [['User', 'Hello, I need a ride to metro center, can somebody help me.'], ['Dispatcher', 'NCR Test Of the NCR Centers - Non Emergency'], ['User', 'Test received']]
-    text_with_newline = "\n"
-
+    print(construct_prompt(history))
 
 
 
