@@ -6,7 +6,7 @@ import random
 from tqdm import tqdm
 import csv
 import traceback
-
+from src.llmtuner.data import Template
 
 from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
