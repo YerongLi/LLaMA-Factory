@@ -31,7 +31,7 @@ BATCH_SIZE=10
 # # tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
 # # tokenizer.pad_token = "[PAD]"
 # # tokenizer.padding_side = "left"
-def construct_prompt( template_name, history):
+def construct_prompt( template_name, history, summary):
     tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
     
     template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
@@ -46,7 +46,7 @@ def construct_prompt( template_name, history):
 def main():
     import json
     history = [['User', 'Hello, I need a ride to metro center, can somebody help me.'], ['Dispatcher', 'NCR Test Of the NCR Centers - Non Emergency'], ['User', 'Test received']]
-    print(construct_prompt('user',history))
+    print(construct_prompt('user',history, ''))
 
 
 
