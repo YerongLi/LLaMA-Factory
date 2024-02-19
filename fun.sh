@@ -1,4 +1,4 @@
-python src/cli_eval5.py \
+python src/function.py \
     --model_name_or_path $LM \
     --template dispatcher \
     --finetuning_type lora \

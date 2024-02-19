@@ -27,12 +27,12 @@ if os.path.exists(output_file_path):
         progress = [item for item in progress if 'response' in item]
         progress = {f"{item['instruction']} === {item['output']}" : item['response'] for item in progress}
         # print(progress.keys())
-if os.path.exists(LOGFILE):
-    # Remove the file
-    os.remove(LOGFILE)
-    print(f"The file {LOGFILE} has been removed.")
-else:
-    print(f"The file {LOGFILE} does not exist.")
+# if os.path.exists(LOGFILE):
+#     # Remove the file
+#     os.remove(LOGFILE)
+#     print(f"The file {LOGFILE} has been removed.")
+# else:
+#     print(f"The file {LOGFILE} does not exist.")
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -149,7 +149,6 @@ def main():
                  Revised Dispatcher's response:
                  """
                 logging.info(prompt)
-                exit()
                 # print(prompt)
                 # print('=====  ===== ========')
                 # print('response' in record)
