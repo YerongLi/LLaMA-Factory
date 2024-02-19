@@ -35,19 +35,14 @@ logging.info(f'Logger start: {os.uname()[1]}')
 def main():
     import json
     text_with_newline = "\n"
-    # chat_model = ChatModel()
     tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
 
     template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
 
-    logging.info('chat_model')
 
-    logging.info(chat_model.args)
     output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
-    logging.info(output_file_path)
-    tokens = chat_model.tokenizer.encode(text_with_newline)
 
-    logging.info(tokens)
+    # logging.info(tokens)
     # Initialize BLEURT
     # bleurt_scorer = bleurt.score.BleurtScorer("bleurt-base-128")
 
@@ -90,8 +85,6 @@ def main():
 
     # print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
 
-    chat_model.tokenizer.pad_token = "[PAD]"
-    chat_model.tokenizer.padding_side = "left"
     progress = {}
     
 
@@ -149,7 +142,7 @@ def main():
             prompt_ids, _ = template.encode_oneturn(
                 tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
             )
-            prompt = chat_model.tokenizer.decode(
+            prompt = tokenizer.decode(
                 prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
             logging.info(prompt)
