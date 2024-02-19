@@ -88,13 +88,13 @@ def main():
     progress = {}
     
 
-    if os.path.exists(output_file_path):
+    # if os.path.exists(output_file_path):
 
-        with open(output_file_path, "r") as file:
-            progress = [json.loads(line) for line in file]
-            progress = [item for item in progress if 'response' in item]
-            progress = {f"{item['event_id']}==={item['instruction']}==={item['output']}" : item['response'] for item in progress}
-            # print(progress.keys())
+    #     with open(output_file_path, "r") as file:
+    #         progress = [json.loads(line) for line in file]
+    #         progress = [item for item in progress if 'response' in item]
+    #         progress = {f"{item['event_id']}==={item['instruction']}==={item['output']}" : item['response'] for item in progress}
+    #         # print(progress.keys())
 
     # Load data from the file
     # with open("data/police1.jsonl", "r") as file:
