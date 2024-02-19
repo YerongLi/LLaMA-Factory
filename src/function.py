@@ -41,7 +41,7 @@ def construct_prompt( template_name, history):
     prompt = tokenizer.decode(
         prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
     )
-    logging.info(prompt)
+    # logging.info(prompt)
     return prompt
 def main():
     import json
