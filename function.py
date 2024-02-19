@@ -1,13 +1,15 @@
 import json
 import nltk
 import logging
+import sys
+sys.path.append("src")
+
 import os
 import csv
 from transformers import AutoTokenizer
 from llmtuner.data.template import get_template_and_fix_tokenizer
 # from src import get_template_and_fix_tokenizer
 # llmtuner.data.template
-import torch
 def construct_prompt(template_name, history, summary):
     tokenizer = AutoTokenizer.from_pretrained(os.environ['CHATLM'], padding_side="left")
     
