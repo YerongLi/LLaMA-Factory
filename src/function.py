@@ -32,8 +32,8 @@ BATCH_SIZE=10
 # # tokenizer.pad_token = "[PAD]"
 # # tokenizer.padding_side = "left"
 def construct_prompt(
-    template_name: str,
-    history: List[str],
+    template_name: 
+    history: 
     ):
     tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
     
