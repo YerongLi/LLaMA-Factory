@@ -126,16 +126,16 @@ def main():
         
 #             output = record["output"]
 
-            # prompt_ids, _ = chat_model.template.encode_oneturn(
-            #     tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
+            # # prompt_ids, _ = chat_model.template.encode_oneturn(
+            # #     tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
+            # # )
+            # prompt_ids, _ = template.encode_oneturn(
+            #     tokenizer=tokenizer, query=instruction, resp=None, history=history, system=template.system+f'\n{summary}'
             # )
-            prompt_ids, _ = template.encode_oneturn(
-                tokenizer=tokenizer, query=instruction, resp=None, history=history, system=template.system+f'\n{summary}'
-            )
-            prompt = tokenizer.decode(
-                prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
-            )
-            logging.info(prompt)
+            # prompt = tokenizer.decode(
+            #     prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+            # )
+            # logging.info(prompt)
           
 if __name__ == "__main__":
     main()
