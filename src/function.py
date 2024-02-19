@@ -140,7 +140,7 @@ def main():
             #     tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
             # )
             prompt_ids, _ = template.encode_oneturn(
-                tokenizer=chat_model.tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
+                tokenizer=tokenizer, query=instruction, resp=None, history=history, system=chat_model.template.system+f'\n{summary}'
             )
             prompt = tokenizer.decode(
                 prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
