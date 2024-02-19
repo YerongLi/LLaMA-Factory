@@ -40,7 +40,7 @@ def main():
     template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
 
 
-    output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
+    # output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
 
     # logging.info(tokens)
     # Initialize BLEURT
