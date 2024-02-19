@@ -147,6 +147,7 @@ def main():
                 prompt_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
             )
             logging.info(prompt)
+            exit()
             if 'response' not in record:
                 prompt_batch.append(
                     {
