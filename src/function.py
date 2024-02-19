@@ -7,7 +7,7 @@ from tqdm import tqdm
 import csv
 import traceback
 from llmtuner.data.template import get_template_and_fix_tokenizer
-from llmtuner import ChatModel
+# from llmtuner import ChatModel
 from llmtuner.extras.misc import torch_gc
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -35,7 +35,7 @@ logging.info(f'Logger start: {os.uname()[1]}')
 def main():
     import json
     text_with_newline = "\n"
-    chat_model = ChatModel()
+    # chat_model = ChatModel()
     tokenizer = AutoTokenizer.from_pretrained('/scratch/yerong/.cache/pyllama/Llama-2-7b-chat-hf', padding_side="left")
 
     template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
