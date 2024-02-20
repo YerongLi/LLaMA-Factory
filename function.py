@@ -13,7 +13,7 @@ from llmtuner.data.template import get_template_and_fix_tokenizer
 def construct_prompt(template_name, history, summary):
     tokenizer = AutoTokenizer.from_pretrained(os.environ['CHATLM'], padding_side="left")
     
-    template=get_template_and_fix_tokenizer(name='user', tokenizer=tokenizer)
+    template=get_template_and_fix_tokenizer(name=template_name, tokenizer=tokenizer)
     prompt_ids, _ = template.encode_oneturn(
         tokenizer=tokenizer, query=None, resp=None, history=history, system=template.system+f'\n{summary}'
     )
@@ -26,6 +26,7 @@ def main():
     import json
     history = [['User', 'Hello, I need a ride to metro center, can somebody help me.'], ['Dispatcher', 'NCR Test Of the NCR Centers - Non Emergency'], ['User', 'Test received']]
     print(construct_prompt('user',history, 'Yiren summary'))
+    print(construct_prompt('police',history, 'Yiren summary'))
 
 
           

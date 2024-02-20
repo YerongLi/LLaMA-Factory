@@ -11,7 +11,7 @@ python src/train_bash.py \
     --quantization_bit 4 \
     --output_dir emopolice4 \
     --overwrite_cache \
-    --per_device_train_batch_size 16 \
+    --per_device_train_batch_size 4 \
     --gradient_accumulation_steps 2 \
     --lr_scheduler_type cosine \
     --logging_steps 10 \
