@@ -290,7 +290,7 @@
     }
   },
   "police": {
-    "file_name": "police.jsonl",
+    "file_name": "Admin_train.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
@@ -299,7 +299,7 @@
     }
   },
   "user": {
-    "file_name": "usertrain.jsonl",
+    "file_name": "User_train.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
