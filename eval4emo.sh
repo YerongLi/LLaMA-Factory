@@ -4,4 +4,4 @@ python src/cli_eval3.py \
     --dataset emopolice \
     --finetuning_type lora \
     --quantization_bit 4 \
-    --checkpoint_dir emopolice4/best
+    --checkpoint_dir bakemopolice4/checkpoint-2620/
