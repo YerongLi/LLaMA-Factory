@@ -49,7 +49,7 @@ for item in reformatted_data:
             dispatcher_item['output'] = history[i][1]
             dispatcher_data.append(dispatcher_item)
 # Write the dispatcher data to a new file
-with open("dispatcher.jsonl", "w") as dispatcher_file:
+with open("dispatchertrain.jsonl", "w") as dispatcher_file:
     for item in dispatcher_data:
         dispatcher_file.write(json.dumps(item) + "\n")
 
@@ -68,12 +68,14 @@ for item in reformatted_data:
             user_data.append(user_item)
             
 # Write the user data to a new file
-with open("user.jsonl", "w") as user_file:
+with open("usertrain.jsonl", "w") as user_file:
     for item in user_data:
         user_file.write(json.dumps(item) + "\n")
 
 print("User data saved to 'usertrain.jsonl'.")
 
+
+################### Testing data
 
 # Initialize an empty list to store the dispatcher data
 dispatcher_data = []
@@ -88,7 +90,7 @@ for item in reformatted_testdata:
             dispatcher_item['output'] = history[i][1]
             dispatcher_data.append(dispatcher_item)
 # Write the dispatcher data to a new file
-with open("dispatcher.jsonl", "w") as dispatcher_file:
+with open("dispatchertest.jsonl", "w") as dispatcher_file:
     for item in dispatcher_data:
         dispatcher_file.write(json.dumps(item) + "\n")
 
@@ -107,7 +109,7 @@ for item in reformatted_testdata:
             user_data.append(user_item)
             
 # Write the user data to a new file
-with open("user.jsonl", "w") as user_file:
+with open("usertest.jsonl", "w") as user_file:
     for item in user_data:
         user_file.write(json.dumps(item) + "\n")
 
