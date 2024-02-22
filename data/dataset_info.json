@@ -281,7 +281,7 @@
     }
   },
   "emo-police": {
-    "file_name": "emotional-police.jsonl",
+    "file_name": "invalidjsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
@@ -290,7 +290,7 @@
     }
   },
   "police": {
-    "file_name": "Admin_train.jsonl",
+    "file_name": "dispatchertrain.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
@@ -299,7 +299,7 @@
     }
   },
   "user": {
-    "file_name": "User_train.jsonl",
+    "file_name": "usertrain.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "",
