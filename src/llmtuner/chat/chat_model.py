@@ -23,6 +23,7 @@ class Response:
 class ChatModel:
 
     def __init__(self, args: Optional[Dict[str, Any]] = None) -> None:
+        print(args)
         model_args, data_args, finetuning_args, self.generating_args = get_infer_args(args)
         self.can_generate = (finetuning_args.stage == "sft")
         self.model, self.tokenizer = load_model_and_tokenizer(
