@@ -37,31 +37,24 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 true_labels = []
 predicted_labels = []
 
+
 # Iterate through each event_id
 for event_id in event_id_key_dict_user:
     true_key = event_id_key_dict.get(event_id, None)
-    if 962450 != event_id: continue
-
-    print(event_id)
-    true_keys = event_id_key_dict[event_id]
-
-    predicted_keys = event_id_key_dict_user[event_id]
-    print(true_keys)
-    print('predicted_labels')
-    print(predicted_keys)
-
+    if true_key is None:
+        continue  # Skip if no true key found for the event_id
+    
+    true_keys = set(event_id_key_dict[event_id])
+    predicted_keys = set(event_id_key_dict_user[event_id])
+    
     # Check if the predicted keys are in the ground truth
     for predicted_key in predicted_keys:
-        true_labels.append(true_key)
-        predicted_labels.append(predicted_key)
+        true_labels.append(predicted_key in true_keys)
+        predicted_labels.append(True)
 
-# Calculate micro F1 score
+# Calculate metrics
 micro_f1 = f1_score(true_labels, predicted_labels, average='micro')
-
-# Calculate micro accuracy
 micro_accuracy = accuracy_score(true_labels, predicted_labels)
-
-# Calculate micro recall
 micro_recall = recall_score(true_labels, predicted_labels, average='micro')
 
 print(f"Micro F1 Score: {micro_f1:.4f}")
