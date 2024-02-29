@@ -13,6 +13,7 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
 
         if event_id:
             event_id_key_dict[event_id] = key_value
+            event_id_key_dict[f'{event_id}_sum'] = json_obj['response']
 
 # Print the resulting dictionary
 # print(event_id_key_dict)
@@ -22,6 +23,10 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         json_obj = json.loads(line)
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
+        print(event_id_key_dict[f'{event_id}_sum'])
+        print(event_id_key_dict[event_id])
+        print(json_obj['prompt'])
+        print(json_obj['response'])
         if event_id not in event_id_key_dict_user:
             event_id_key_dict_user[event_id] = []
         if event_id and key_value:
