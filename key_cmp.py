@@ -9,7 +9,7 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
     for line in jsonl_file:
         json_obj = json.loads(line)
         event_id = json_obj.get("event_id")
-        key_value = json_obj.get("key")
+        key_value = json_obj.get("key").keys()
         if event_id and key_value:
             event_id_key_dict[event_id] = key_value
 print(event_id_key_dict)
