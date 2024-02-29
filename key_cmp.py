@@ -20,6 +20,7 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
 event_id_key_dict_user = {}
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     for line in jsonl_file:
+        print(' ==================== ')
         json_obj = json.loads(line)
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
@@ -27,7 +28,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         print(event_id_key_dict[event_id])
         
         print(json_obj['prompt'])
-        event_id_key_dict[f'{event_id}_sum'] = json_obj['response']
+        print(event_id_key_dict[f'{event_id}_sum'])
         print(json_obj['response'])
         print(set(key_value.keys()))
         if event_id not in event_id_key_dict_user:
