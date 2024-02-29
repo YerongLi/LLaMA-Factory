@@ -101,8 +101,8 @@ def main():
             # print(progress.keys())
 
     # Load data from the file
-    with open("data/dispatchertest.jsonl", "r") as file:
-    # with open("data/usertest.jsonl", "r") as file:
+    # with open("data/dispatchertest.jsonl", "r") as file:
+    with open("data/usertest.jsonl", "r") as file:
         data = [json.loads(line) for line in file]
         for i, item in enumerate(data):
             ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
