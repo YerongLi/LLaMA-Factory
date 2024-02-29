@@ -107,7 +107,7 @@ def main():
         i_file_name = "data/dispatchertest.jsonl"
 
     # Read the JSONL file
-    with open(i_file_name, "r") as 
+    with open(i_file_name, "r") as file:
         data = [json.loads(line) for line in file]
         for i, item in enumerate(data):
             ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
