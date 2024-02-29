@@ -37,6 +37,8 @@ predicted_labels = []
 # Iterate through each event_id
 for event_id in event_id_key_dict_user:
     true_key = event_id_key_dict.get(event_id, None)
+    print(event_id)
+    print(true_key = event_id_key_dict.get(event_id,None))
     predicted_keys = event_id_key_dict_user[event_id]
     print(true_key)
     # print('predicted_labels')
