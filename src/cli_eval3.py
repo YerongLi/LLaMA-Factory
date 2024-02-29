@@ -101,9 +101,9 @@ def main():
             # print(progress.keys())
 
     # Load data from the file
-    if file_path.split("/")[-2].startswith("user"):
+    if chat_model.args[0].split("/")[-2].startswith("user"):
         i_file_name = "data/usertest.jsonl"
-    else:
+    elif chat_model.args[0].split("/")[-2].startswith("police") or chat_model.args[0].split("/")[-2].startswith("dispatcher"):
         i_file_name = "data/dispatchertest.jsonl"
 
     # Read the JSONL file
