@@ -43,7 +43,7 @@ for event_id in event_id_key_dict_user:
     if 962450 != event_id: continue
 
     print(event_id)
-    print(event_id in event_id_key_dict)
+    print(event_id_key_dict_user[event_id])
     predicted_keys = event_id_key_dict_user[event_id]
     # print(true_key)
     # print('predicted_labels')
