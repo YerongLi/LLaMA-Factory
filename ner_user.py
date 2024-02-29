@@ -5,7 +5,7 @@ import tqdm
 import os
 
 class StanfordNLP:
-    def __init__(self, host='http://localhost', port=9000):
+    def __init__(self, host='http://localhost', port=13000):
         self.nlp = StanfordCoreNLP(host, port=port,
                                    timeout=30000 , quiet=True, logging_level=logging.DEBUG)
         self.props = {
