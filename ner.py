@@ -2,6 +2,7 @@ from stanfordcorenlp import StanfordCoreNLP
 import logging
 import json
 import tqdm
+import os
 
 class StanfordNLP:
     def __init__(self, host='http://localhost', port=9000):
