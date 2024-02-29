@@ -25,8 +25,11 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         key_value = json_obj.get("key")
         print(event_id_key_dict[f'{event_id}_sum'])
         print(event_id_key_dict[event_id])
+        
         print(json_obj['prompt'])
+        event_id_key_dict[f'{event_id}_sum'] = json_obj['response']
         print(json_obj['response'])
+        print(set(key_value.keys())
         if event_id not in event_id_key_dict_user:
             event_id_key_dict_user[event_id] = []
         if event_id and key_value:
