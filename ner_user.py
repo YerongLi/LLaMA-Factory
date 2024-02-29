@@ -55,6 +55,7 @@ if __name__ == '__main__':
         total_lines = sum(1 for _ in count_file)
 
     # Open the input file
+    cnt = 0
     with open('user4.jsonl', 'r') as jsonl_file:
         # Open the output file
         with open('user4_w_key.jsonl', 'a') as output_file:
@@ -66,7 +67,9 @@ if __name__ == '__main__':
                 # Perform Named Entity Recognition (NER) using sNLP
                 if 'response' in json_obj:
                     NER = sNLP.ner(json_obj['response'])
+                    cnt+= 1
                     print('NO response field')
+                    print(json_obj.keys())
                 else:
                     NER = []
                 
@@ -78,3 +81,4 @@ if __name__ == '__main__':
                 
                 # Write the modified JSON object to the output file
                 output_file.write(json.dumps(json_obj) + '\n')
+    print(f'Failed count {cnt}')
