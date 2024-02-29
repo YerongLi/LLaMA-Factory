@@ -15,4 +15,4 @@ with open("new_summary.jsonl", "w") as new_file:
         json.dump(line, new_file)
         new_file.write("\n")
 
-print("New summary data saved to 'new_summary.jsonl'")
+print("New summary data saved to 'summary.jsonl'")
