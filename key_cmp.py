@@ -31,8 +31,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 event_id_key_dict_user[event_id] = list(key_value.keys())
 
 
-# Initialize lists to store individual F1 scores for each event
-f1_scores = []
+event_f1_scores = []
 
 # Iterate through each event_id
 for event_id in event_id_key_dict_user:
@@ -43,8 +42,18 @@ for event_id in event_id_key_dict_user:
     true_keys = set(event_id_key_dict[event_id])
     predicted_keys = set(event_id_key_dict_user[event_id])
     
-    # Calculate F1 score for the current event and append it to the list
-    f1_scores.append(f1_score(true_keys, predicted_keys, average='binary'))
+    # Calculate F1 score for the current event
+    true_positives = len(true_keys.intersection(predicted_keys))
+    false_positives = len(predicted_keys - true_keys)
+    false_negatives = len(true_keys - predicted_keys)
+    
+    precision = true_positives / (true_positives + false_positives) if true_positives + false_positives > 0 else 0
+    recall = true_positives / (true_positives + false_negatives) if true_positives + false_negatives > 0 else 0
+    
+    f1_score_event = 2 * (precision * recall) / (precision + recall) if precision + recall > 0 else 0
+    
+    # Append the F1 score for the current event to the list
+    event_f1_scores.append(f1_score_event)
 
-# Calculate average F1 score
-average_f1 = sum(f1_scores) / len(f1_scores)
+# Calculate the average F1 score over all events
+average_f1 = sum(event_f1_scores) / len(event_f1_scores)
