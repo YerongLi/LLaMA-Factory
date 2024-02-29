@@ -67,6 +67,7 @@ if __name__ == '__main__':
                 # Perform Named Entity Recognition (NER) using sNLP
                 if 'response' in json_obj:
                     NER = sNLP.ner(json_obj['response'])
+                    hNER = sNLP.ner(json_obj['output'])
                 else:
                     print('NO response field')
                     cnt+= 1
@@ -75,9 +76,11 @@ if __name__ == '__main__':
                 
                 # Extract non-'O' labeled items
                 non_O_items = {item[0]:'' for item in NER if item[1] != 'O'}  # Convert to set
+                hnon_O_items = {item[0]:'' for item in hNER if item[1] != 'O'}  # Convert to set
                 
                 # Add the non-'O' items set to the JSON object
                 json_obj['key'] = non_O_items
+                json_obj['human_key'] = hnon_O_items
                 
                 # Write the modified JSON object to the output file
                 output_file.write(json.dumps(json_obj) + '\n')
