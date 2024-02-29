@@ -25,7 +25,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
         if event_id not in event_id_key_dict_user:
-            event_id_key_dict[event_id] = []
+            event_id_key_dict_user[event_id] = []
         if event_id and key_value:
             if event_id in event_id_key_dict_user:
                 event_id_key_dict_user[event_id].extend(key_value.keys())
