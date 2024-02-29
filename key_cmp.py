@@ -21,9 +21,11 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         json_obj = json.loads(line)
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
+        if event_id not in event_id_key_dict_user:
+            event_id_key_dict[event_id] = []
         if event_id and key_value:
             if event_id in event_id_key_dict_user:
-                event_id_key_dict_user[event_id].append(key_value)
+                event_id_key_dict_user[event_id].extend(key_value)
             else:
                 event_id_key_dict_user[event_id] = [key_value]
 
@@ -36,6 +38,7 @@ predicted_labels = []
 for event_id in event_id_key_dict_user:
     true_key = event_id_key_dict.get(event_id, None)
     predicted_keys = event_id_key_dict_user[event_id]
+    for key, _ in 
     print(true_key)
     print('predicted_labels')
     print(predicted_keys)
