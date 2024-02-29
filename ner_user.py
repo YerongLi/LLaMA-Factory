@@ -65,12 +65,12 @@ if __name__ == '__main__':
                 json_obj = json.loads(line)
                 
                 # Perform Named Entity Recognition (NER) using sNLP
-                if not 'response' in json_obj:
+                if 'response' in json_obj:
                     NER = sNLP.ner(json_obj['response'])
-                    cnt+= 1
-                    print('NO response field')
-                    print(json_obj.keys())
                 else:
+                    print('NO response field')
+                    cnt+= 1
+
                     NER = []
                 
                 # Extract non-'O' labeled items
