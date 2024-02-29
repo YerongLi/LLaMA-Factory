@@ -42,7 +42,6 @@ def main():
     logging.info(chat_model.args)
     output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
     logging.info(output_file_path)
-    print(output_file_path)
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
     logging.info(tokens)
@@ -178,7 +177,7 @@ def main():
 
         if prompt_batch: prompt_batches.append(prompt_batch)
     
-
+        
     tokenized_prompt_batches = [chat_model.tokenizer([item['prompt'] for item in batch], return_tensors="pt", padding=True).to(chat_model.model.device)for batch in prompt_batches[:-1]]
     print(' tokenized_prompt_batches', len( tokenized_prompt_batches))
 
