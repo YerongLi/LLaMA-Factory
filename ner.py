@@ -45,19 +45,20 @@ class StanfordNLP:
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
-    # text = r'China on Wednesday issued a $50-billion list of U.S. goods  including soybeans and small aircraft for possible tariff hikes in an escalating technology dispute with Washington that companies worry could set back the global economic recovery.The country\'s tax agency gave no date for the 25 percent increase...'
-    # ANNOTATE =  sNLP.annotate(text)
-    # POS = sNLP.pos(text)
-    # TOKENS = sNLP.word_tokenize(text)
-    # NER = sNLP.ner(text)
-    # PARSE = sNLP.parse(text)
-    # DEP_PARSE = sNLP.dependency_parse(text)
+
+    # Remove the 'summary_w_key.jsonl' file if it exists
+    if os.path.exists('summary_w_key.jsonl'):
+        os.remove('summary_w_key.json')
+
+    with open('summary.jsonl', 'r') as count_file:
+        total_lines = sum(1 for _ in count_file)
+
     # Open the input file
     with open('summary.jsonl', 'r') as jsonl_file:
         # Open the output file
         with open('summary_w_key.json', 'a') as output_file:
             # Iterate through each line in the input file
-            for line in tqdm.tqdm(jsonl_file):
+            for line in tqdm.tqdm(jsonl_file, total=total_lines):
                 # Parse JSON from the line
                 json_obj = json.loads(line)
                 
@@ -65,12 +66,10 @@ if __name__ == '__main__':
                 NER = sNLP.ner(json_obj['response'])
                 
                 # Extract non-'O' labeled items
-                non_O_items = [item[0] for item in NER if item[1] != 'O']
+                non_O_items = {item[0] for item in NER if item[1] != 'O'}  # Convert to set
                 
-                # Add the non-'O' items list to the JSON object
+                # Add the non-'O' items set to the JSON object
                 json_obj['key'] = non_O_items
                 
                 # Write the modified JSON object to the output file
-                print(non_O_items)
-                print(len(non_O_items))
                 output_file.write(json.dumps(json_obj) + '\n')
