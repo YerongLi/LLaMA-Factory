@@ -43,11 +43,12 @@ for event_id in event_id_key_dict_user:
     if 962450 != event_id: continue
 
     print(event_id)
-    print(event_id_key_dict[event_id])
+    true_keys = event_id_key_dict[event_id]
+
     predicted_keys = event_id_key_dict_user[event_id]
-    # print(true_key)
-    # print('predicted_labels')
-    # print(predicted_keys)
+    print(true_keys)
+    print('predicted_labels')
+    print(predicted_keys)
 
     # Check if the predicted keys are in the ground truth
     for predicted_key in predicted_keys:
