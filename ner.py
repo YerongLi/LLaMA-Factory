@@ -52,10 +52,23 @@ if __name__ == '__main__':
     # NER = sNLP.ner(text)
     # PARSE = sNLP.parse(text)
     # DEP_PARSE = sNLP.dependency_parse(text)
+    # Open the input file
     with open('summary.jsonl', 'r') as jsonl_file:
-        for line in jsonl_file:
-            json_obj = json.loads(line)
-            # Now 'json_obj' contains the parsed JSON data for each line
-            print(json_obj)
-            NER = sNLP.ner(json_obj['response'])
-            print(NER) 
+        # Open the output file
+        with open('summary_w_key.json', 'w') as output_file:
+            # Iterate through each line in the input file
+            for line in jsonl_file:
+                # Parse JSON from the line
+                json_obj = json.loads(line)
+                
+                # Perform Named Entity Recognition (NER) using sNLP
+                NER = sNLP.ner(json_obj['response'])
+                
+                # Extract non-'O' labeled items
+                non_O_items = [item[0] for item in NER if item[1] != 'O']
+                
+                # Add the non-'O' items list to the JSON object
+                json_obj['key'] = non_O_items
+                
+                # Write the modified JSON object to the output file
+                output_file.write(json.dumps(json_obj) + '\n')
