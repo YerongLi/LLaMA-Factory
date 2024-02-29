@@ -41,4 +41,4 @@ with open(file_name, "w") as updated_user_file:
     for item in user_data:
         updated_user_file.write(json.dumps(item) + "\n")
 
-print("Updated user data saved to 'user.jsonl'.")
+print(f"Updated user data saved to 'f{file_name}'.")
