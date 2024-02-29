@@ -25,9 +25,9 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
             event_id_key_dict[event_id] = []
         if event_id and key_value:
             if event_id in event_id_key_dict_user:
-                event_id_key_dict_user[event_id].extend(key_value)
+                event_id_key_dict_user[event_id].extend(key_value.keys())
             else:
-                event_id_key_dict_user[event_id] = [key_value]
+                event_id_key_dict_user[event_id] = list(key_value.keys())
 
 
 # Initialize lists to store true labels and predicted labels
