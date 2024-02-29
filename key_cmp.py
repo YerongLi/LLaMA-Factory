@@ -27,4 +27,5 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 event_id_key_dict_user[event_id] = [key_value]
 
 # Print the resulting dictionary
-print(event_id_key_dict_user)
+for _, value in event_id_key_dict_user.items():
+    print(value)
