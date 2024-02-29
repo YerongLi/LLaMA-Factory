@@ -14,7 +14,6 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
         if event_id:
             event_id_key_dict[event_id] = key_value
 
-print(event_id_key_dict)
 # Print the resulting dictionary
 # print(event_id_key_dict)
 event_id_key_dict_user = {}
@@ -32,10 +31,8 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 event_id_key_dict_user[event_id] = list(key_value.keys())
 
 
-# Initialize lists to store true labels and predicted labels
-true_labels = []
-predicted_labels = []
-
+# Initialize lists to store individual F1 scores for each event
+f1_scores = []
 
 # Iterate through each event_id
 for event_id in event_id_key_dict_user:
@@ -46,16 +43,8 @@ for event_id in event_id_key_dict_user:
     true_keys = set(event_id_key_dict[event_id])
     predicted_keys = set(event_id_key_dict_user[event_id])
     
-    # Check if the predicted keys are in the ground truth
-    for predicted_key in predicted_keys:
-        true_labels.append(predicted_key in true_keys)
-        predicted_labels.append(True)
+    # Calculate F1 score for the current event and append it to the list
+    f1_scores.append(f1_score(true_keys, predicted_keys, average='binary'))
 
-# Calculate metrics
-micro_f1 = f1_score(true_labels, predicted_labels, average='micro')
-micro_accuracy = accuracy_score(true_labels, predicted_labels)
-micro_recall = recall_score(true_labels, predicted_labels, average='micro')
-
-print(f"Micro F1 Score: {micro_f1:.4f}")
-print(f"Micro Accuracy: {micro_accuracy:.4f}")
-print(f"Micro Recall: {micro_recall:.4f}")
+# Calculate average F1 score
+average_f1 = sum(f1_scores) / len(f1_scores)
