@@ -26,6 +26,31 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
             else:
                 event_id_key_dict_user[event_id] = [key_value]
 
-# Print the resulting dictionary
-for _, value in event_id_key_dict_user.items():
-    print(value)
+from sklearn.metrics import f1_score, accuracy_score, recall_score
+
+# Initialize lists to store true labels and predicted labels
+true_labels = []
+predicted_labels = []
+
+# Iterate through each event_id
+for event_id in event_id_key_dict_user:
+    true_key = event_id_key_dict.get(event_id, None)
+    predicted_keys = event_id_key_dict_user[event_id]
+
+    # Check if the predicted keys are in the ground truth
+    for predicted_key in predicted_keys:
+        true_labels.append(true_key)
+        predicted_labels.append(predicted_key)
+
+# Calculate micro F1 score
+micro_f1 = f1_score(true_labels, predicted_labels, average='micro')
+
+# Calculate micro accuracy
+micro_accuracy = accuracy_score(true_labels, predicted_labels)
+
+# Calculate micro recall
+micro_recall = recall_score(true_labels, predicted_labels, average='micro')
+
+print(f"Micro F1 Score: {micro_f1:.4f}")
+print(f"Micro Accuracy: {micro_accuracy:.4f}")
+print(f"Micro Recall: {micro_recall:.4f}")
