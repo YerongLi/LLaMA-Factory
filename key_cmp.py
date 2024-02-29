@@ -10,6 +10,7 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
         json_obj = json.loads(line)
         event_id = json_obj.get("event_id")
         key_value = set(json_obj.get("key").keys())
+        if 962450 != event_id: continue
 
         if event_id:
             event_id_key_dict[event_id] = key_value
