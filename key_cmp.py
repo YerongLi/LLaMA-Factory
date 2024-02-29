@@ -12,7 +12,7 @@ with open("summary_w_key.jsonl", "r") as jsonl_file:
         key_value = json_obj.get("key")
         if event_id and key_value:
             event_id_key_dict[event_id] = key_value
-
+print(event_id_key_dict)
 # Print the resulting dictionary
 # print(event_id_key_dict)
 event_id_key_dict_user = {}
