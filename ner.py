@@ -45,11 +45,17 @@ class StanfordNLP:
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
-    text = r'China on Wednesday issued a $50-billion list of U.S. goods  including soybeans and small aircraft for possible tariff hikes in an escalating technology dispute with Washington that companies worry could set back the global economic recovery.The country\'s tax agency gave no date for the 25 percent increase...'
-    ANNOTATE =  sNLP.annotate(text)
-    POS = sNLP.pos(text)
-    TOKENS = sNLP.word_tokenize(text)
-    NER = sNLP.ner(text)
-    PARSE = sNLP.parse(text)
-    DEP_PARSE = sNLP.dependency_parse(text)
-    print(NER) 
+    # text = r'China on Wednesday issued a $50-billion list of U.S. goods  including soybeans and small aircraft for possible tariff hikes in an escalating technology dispute with Washington that companies worry could set back the global economic recovery.The country\'s tax agency gave no date for the 25 percent increase...'
+    # ANNOTATE =  sNLP.annotate(text)
+    # POS = sNLP.pos(text)
+    # TOKENS = sNLP.word_tokenize(text)
+    # NER = sNLP.ner(text)
+    # PARSE = sNLP.parse(text)
+    # DEP_PARSE = sNLP.dependency_parse(text)
+    with open('summary.jsonl', 'r') as jsonl_file:
+    for line in jsonl_file:
+        json_obj = json.loads(line)
+        # Now 'json_obj' contains the parsed JSON data for each line
+        print(json_obj)
+        NER = sNLP.ner(json_obj['response'])
+        print(NER) 
