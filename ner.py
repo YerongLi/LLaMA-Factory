@@ -67,7 +67,7 @@ if __name__ == '__main__':
                 NER = sNLP.ner(json_obj['response'])
                 
                 # Extract non-'O' labeled items
-                non_O_items = {item[0] for item in NER if item[1] != 'O'}  # Convert to set
+                non_O_items = {item[0]:'' for item in NER if item[1] != 'O'}  # Convert to set
                 
                 # Add the non-'O' items set to the JSON object
                 json_obj['key'] = non_O_items
