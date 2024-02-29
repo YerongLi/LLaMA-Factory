@@ -51,4 +51,5 @@ if __name__ == '__main__':
     TOKENS = sNLP.word_tokenize(text)
     NER = sNLP.ner(text)
     PARSE = sNLP.parse(text)
-    DEP_PARSE = sNLP.dependency_parse(text) 
+    DEP_PARSE = sNLP.dependency_parse(text)
+    print(NER) 
