@@ -12,7 +12,7 @@ with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
 # Extract data for plotting
-zero_ratio = [len(line['history']) / line['his_len'] for line in data if line['0'] == -1]
+zero_ratio = [len(line['history']) / line['his_len'] for line in data if line['o'] == -1]
 r_ratio = [len(line['history']) / line['his_len'] for line in data if line['r'] == -1]
 
 # Plotting
