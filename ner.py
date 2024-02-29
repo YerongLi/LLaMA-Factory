@@ -53,9 +53,9 @@ if __name__ == '__main__':
     # PARSE = sNLP.parse(text)
     # DEP_PARSE = sNLP.dependency_parse(text)
     with open('summary.jsonl', 'r') as jsonl_file:
-    for line in jsonl_file:
-        json_obj = json.loads(line)
-        # Now 'json_obj' contains the parsed JSON data for each line
-        print(json_obj)
-        NER = sNLP.ner(json_obj['response'])
-        print(NER) 
+        for line in jsonl_file:
+            json_obj = json.loads(line)
+            # Now 'json_obj' contains the parsed JSON data for each line
+            print(json_obj)
+            NER = sNLP.ner(json_obj['response'])
+            print(NER) 
