@@ -8,6 +8,7 @@ parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
 file_name = args.filename.name
 # Read data from "summary.jsonl"
+event_id_key_dict = {}
 with open("summary_w_key.jsonl", "r") as jsonl_file:
     for line in jsonl_file:
         json_obj = json.loads(line)
