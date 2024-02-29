@@ -49,8 +49,6 @@ random_seed = int(HASH(file_name))
 random_seed = random_seed % 138337704
 torch.manual_seed(random_seed)
 random.seed(random_seed)
-# file_name = "results.jsonl"
-# file_name = "results-bak.jsonl"
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 # Process the data in batches

@@ -10,7 +10,7 @@ for line in data:
     line["his_len"] = len(history_list)
 
 # Write the updated data to a new file "new_summary.jsonl"
-with open("new_summary.jsonl", "w") as new_file:
+with open("summary.jsonl", "w") as new_file:
     for line in data:
         json.dump(line, new_file)
         new_file.write("\n")
