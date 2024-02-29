@@ -26,8 +26,8 @@ r_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line i
 # Plotting
 plt.figure(figsize=(10, 6))
 
-plt.hist(zero_ratio, bins=30, alpha=0.5, color='blue', 'Human neg')
-plt.hist(r_ratio, bins=30, alpha=0.5, color='red', 'LM neg')
+plt.hist(zero_ratio, bins=30, alpha=0.5, color='blue', label ='Human neg')
+plt.hist(r_ratio, bins=30, alpha=0.5, color='red', label='LM neg')
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
