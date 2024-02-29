@@ -32,6 +32,6 @@ plt.hist(r_ratio, bins=30, alpha=0.5, color='red', label='LM neg')
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
-plt.title('Distribution of len(line[\'history\']) / line[\'his_len\'] for 0 and r')
+plt.title('Distribution of human and LLAMA responses')
 plt.legend(loc='upper right')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
