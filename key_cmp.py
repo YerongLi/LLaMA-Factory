@@ -37,6 +37,7 @@ for event_id in event_id_key_dict_user:
     true_key = event_id_key_dict.get(event_id, None)
     predicted_keys = event_id_key_dict_user[event_id]
     print(true_key)
+    print('predicted_labels')
     print(predicted_keys)
 
     # Check if the predicted keys are in the ground truth
