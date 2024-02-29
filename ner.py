@@ -1,7 +1,7 @@
 from stanfordcorenlp import StanfordCoreNLP
 import logging
 import json
-
+import tqdm
 
 class StanfordNLP:
     def __init__(self, host='http://localhost', port=9000):
@@ -57,7 +57,7 @@ if __name__ == '__main__':
         # Open the output file
         with open('summary_w_key.json', 'w') as output_file:
             # Iterate through each line in the input file
-            for line in jsonl_file:
+            for line in tqdm.tqdm(jsonl_file):
                 # Parse JSON from the line
                 json_obj = json.loads(line)
                 
@@ -71,4 +71,6 @@ if __name__ == '__main__':
                 json_obj['key'] = non_O_items
                 
                 # Write the modified JSON object to the output file
+                print(non_O_items)
+                print(len(non_O_items))
                 output_file.write(json.dumps(json_obj) + '\n')
