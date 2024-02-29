@@ -57,7 +57,7 @@ if __name__ == '__main__':
     # Open the input file
     with open('summary.jsonl', 'r') as jsonl_file:
         # Open the output file
-        with open('summary_w_key.json', 'a') as output_file:
+        with open('summary_w_key.jsonl', 'a') as output_file:
             # Iterate through each line in the input file
             for line in tqdm.tqdm(jsonl_file, total=total_lines):
                 # Parse JSON from the line
