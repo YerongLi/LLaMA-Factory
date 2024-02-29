@@ -47,8 +47,8 @@ class StanfordNLP:
 if __name__ == '__main__':
     sNLP = StanfordNLP()
 
-    # Remove the 'summary_w_key.jsonl' file if it exists
-    if os.path.exists('summary_w_key.jsonl'):
+    # Remove the 'user4_w_key.jsonl' file if it exists
+    if os.path.exists('user4_w_key.jsonl'):
         os.remove('user4_w_key.jsonl')
 
     with open('user4.jsonl', 'r') as count_file:
