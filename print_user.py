@@ -2,6 +2,7 @@ import argparse
 
 import json
 from tqdm import tqdm
+import random
 
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
@@ -18,3 +19,15 @@ for target_event_type in event_types:
         if line['event_types'] == target_event_type:
             print(line['prompt'], line['response'])
             print(line['output'])
+
+
+# Sample 10 events for each type
+sampled_events = {}
+for event_type, events in events_by_type.items():
+    if len(events) >= 10:
+        sampled_events[event_type] = random.sample(events, 10)
+    else:
+        # Adjust the sampling size if there are fewer than 10 events
+        sampled_events[event_type] = events
+for event_type, events in events_by_type.items():
+    print(len(events))
