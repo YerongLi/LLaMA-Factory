@@ -21,6 +21,7 @@ for target_event_type in event_types:
     for line in progress:
         if line['type'] == target_event_type:
             if 'response' in line:
+                print('================')
                 print(line['prompt'])
                 print(line['user1'])
                 print(line['user2'])
@@ -51,56 +52,3 @@ for event_type, events in events_by_type.items():
 for event_type, events in sampled_events.items():
     print(event_type)
     print(len(events))
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
-from reportlab.lib.styles import getSampleStyleSheet
-
-# Define the PDF filename
-pdf_filename = "output.pdf"
-
-# Create a list to store the data to be displayed in the PDF
-data = []
-
-# Get a sample style sheet
-styles = getSampleStyleSheet()
-normal_style = styles['Normal']
-
-# Iterate over each target event type
-for target_event_type in event_types:
-    for line in progress:
-        if line['type'] == target_event_type:
-            if 'response' in line:
-                # Manually break long lines
-                prompt = line['prompt']
-                user1 = line['user1']
-                user2 = line['user2']
-                
-                prompt_paragraph = Paragraph(prompt, normal_style)
-                user1_paragraph = Paragraph(user1, normal_style)
-                user2_paragraph = Paragraph(user2, normal_style)
-                
-                data.append([prompt_paragraph, user1_paragraph, user2_paragraph])
-
-# Create a PDF document
-doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
-
-# Create a table from the data
-table = Table(data, colWidths=[200, 150, 150], repeatRows=1)
-
-# Define table style
-style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-                    ('FONTNAME', (0, 0), (-1, 0), 'Courier-Bold'),
-                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                    ('GRID', (0, 0), (-1, -1), 1, colors.black)])
-
-# Apply table style
-table.setStyle(style)
-
-# Build the PDF document
-doc.build([table])
-
-print(f"PDF saved as '{pdf_filename}'")
