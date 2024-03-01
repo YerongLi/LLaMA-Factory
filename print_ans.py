@@ -23,6 +23,36 @@ for target_event_type in event_types:
                 print(line['user2'])
 events_by_type = {event_type: [] for event_type in event_types}
 
+# Iterate over each target event type
+for target_event_type in event_types:
+    for line in progress:
+        if line['type'] == target_event_type:
+            if 'response' in line:
+                data.append([line['prompt'], line['user1'], line['user2']])
+
+# Create a PDF document
+doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
+
+# Create a table from the data
+table = Table(data)
+
+# Define table style
+style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('FONTNAME', (0, 0), (-1, 0), 'Courier-Bold'),
+                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                    ('GRID', (0, 0), (-1, -1), 1, colors.black)])
+
+# Apply table style
+table.setStyle(style)
+
+# Build the PDF document
+doc.build([table])
+
+print(f"PDF saved as '{pdf_filename}'")
+
 # Iterate through progress and append events to the corresponding type
 for line in progress:
     event_type = line["type"]
