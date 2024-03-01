@@ -20,6 +20,11 @@ for target_event_type in event_types:
             if 'response' in line:
                 print(line['prompt'], line['response'])
                 print(line['output'])
+sampled_events = {}
+for event_type, events in events_by_type.items():
+        # Adjust the sampling size if there are fewer than 10 events
+        sampled_events[event_type] = events
+
 for event_type, events in sampled_events.items():
     print(event_type)
     print(len(events))
