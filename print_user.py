@@ -36,17 +36,24 @@ sampled_events = {}
 sampled_event_ids = set()
 
 # Iterate over each event type and its corresponding events
+sampled_events = {}
+
+# Iterate over each event type and its corresponding events
 for event_type, events in events_by_type.items():
     if len(events) >= LIMIT:
         # Sample events if there are more than or equal to LIMIT events
         sampled_events[event_type] = []
-        sampled_event_ids.clear()  # Clear the set for each event type
-        while len(sampled_events[event_type]) < LIMIT:
-            sampled_event = random.choice(events)
-            # Check if the event ID is unique
-            if sampled_event['event_id'] not in sampled_event_ids:
-                sampled_events[event_type].append(sampled_event)
-                sampled_event_ids.add(sampled_event['event_id'])
+        event_counts = {}  # Dictionary to keep track of event counts
+        for event in events:
+            event_id = event['event_id']
+            count = event_counts.get(event_id, 0)
+            # Check if the event ID appears at most twice
+            if count < 2:
+                sampled_events[event_type].append(event)
+                event_counts[event_id] = count + 1
+                # Break if the desired sampling size is reached
+                if len(sampled_events[event_type]) >= LIMIT:
+                    break
     else:
         # Use all events if there are fewer than LIMIT events
         sampled_events[event_type] = events
