@@ -17,8 +17,8 @@ event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', '
 for target_event_type in event_types:
     for line in progress:
         if line['type'] == target_event_type:
-            if 'prompt' in line:
-                print(line['response'], line['response'])
+            if 'response' in line:
+                print(line['prompt'], line['response'])
                 print(line['output'])
 
 events_by_type = {event_type: [] for event_type in event_types}
