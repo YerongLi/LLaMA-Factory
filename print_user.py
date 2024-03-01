@@ -16,7 +16,7 @@ event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', '
 
 for target_event_type in event_types:
     for line in progress:
-        if line['event_type'] == target_event_type:
+        if line['type'] == target_event_type:
             print(line['prompt'], line['response'])
             print(line['output'])
 
