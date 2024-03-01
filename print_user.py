@@ -24,7 +24,7 @@ events_by_type = {event_type: [] for event_type in event_types}
 
 # Iterate through progress and append events to the corresponding type
 for line in progress:
-    event_type = line["event_types"]
+    event_type = line["type"]
     events_by_type[event_type].append(line)
 # Sample 10 events for each type
 sampled_events = {}
