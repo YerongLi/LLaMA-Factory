@@ -34,27 +34,7 @@ for target_event_type in event_types:
                 data.append([line['prompt'], line['user1'], line['user2']])
 
 # Create a PDF document
-doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
 
-# Create a table from the data
-table = Table(data)
-
-# Define table style
-style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-                    ('FONTNAME', (0, 0), (-1, 0), 'Courier-Bold'),
-                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                    ('GRID', (0, 0), (-1, -1), 1, colors.black)])
-
-# Apply table style
-table.setStyle(style)
-
-# Build the PDF document
-doc.build([table])
-
-print(f"PDF saved as '{pdf_filename}'")
 
 # Iterate through progress and append events to the corresponding type
 for line in progress:
@@ -71,3 +51,40 @@ for event_type, events in events_by_type.items():
 for event_type, events in sampled_events.items():
     print(event_type)
     print(len(events))
+
+data = []
+
+# Iterate over each target event type
+for target_event_type in event_types:
+    for line in progress:
+        if line['type'] == target_event_type:
+            if 'response' in line:
+                # Wrap long text
+                prompt = line['prompt']
+                user1 = line['user1']
+                user2 = line['user2']
+                data.append([prompt, user1, user2])
+
+# Create a PDF document
+doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
+
+# Create a table from the data
+table = Table(data, colWidths=[200, 150, 150], repeatRows=1)
+
+# Define table style
+style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('FONTNAME', (0, 0), (-1, 0), 'Courier-Bold'),
+                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                    ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                    ('WORDWRAP', (0, 0), (-1, -1), True)])
+
+# Apply table style
+table.setStyle(style)
+
+# Build the PDF document
+doc.build([table])
+
+print(f"PDF saved as '{pdf_filename}'")
