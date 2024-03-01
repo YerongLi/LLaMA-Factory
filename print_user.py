@@ -31,11 +31,24 @@ for line in progress:
             events_by_type[event_type].append(line)
 # Sample 10 events for each type
 sampled_events = {}
+
+# Initialize a set to keep track of sampled event IDs
+sampled_event_ids = set()
+
+# Iterate over each event type and its corresponding events
 for event_type, events in events_by_type.items():
     if len(events) >= LIMIT:
-        sampled_events[event_type] = random.sample(events, LIMIT)
+        # Sample events if there are more than or equal to LIMIT events
+        sampled_events[event_type] = []
+        sampled_event_ids.clear()  # Clear the set for each event type
+        while len(sampled_events[event_type]) < LIMIT:
+            sampled_event = random.choice(events)
+            # Check if the event ID is unique
+            if sampled_event['event_id'] not in sampled_event_ids:
+                sampled_events[event_type].append(sampled_event)
+                sampled_event_ids.add(sampled_event['event_id'])
     else:
-        # Adjust the sampling size if there are fewer than 10 events
+        # Use all events if there are fewer than LIMIT events
         sampled_events[event_type] = events
 
 for event_type, events in sampled_events.items():
