@@ -36,5 +36,32 @@ for event_type, events in events_by_type.items():
     else:
         # Adjust the sampling size if there are fewer than 10 events
         sampled_events[event_type] = events
+
 for event_type, events in sampled_events.items():
     print(len(events))
+    new_events = []
+    
+    # Iterate over each event in the list of events
+    for event in events:
+        # Randomly sample an integer
+        random_number = random.randint(1, 100)  # Adjust the range as needed
+        
+        # Assign values based on whether the random number is odd or even
+        if random_number % 2 == 1:  # odd
+            event['user1'], event['user2'] = event['response'], event['output']
+        else:  # even
+            event['user1'], event['user2'] = event['output'], event['response']
+        
+        # Append modified event to new_events list
+        new_events.append(event)
+    
+    # Update the dictionary with the modified events
+    sampled_events[event_type] = new_events
+
+# Dump the modified dictionary to "answer.jsonl"
+output_file_path = "answer.jsonl"
+with open(output_file_path, "w") as file:
+    for event_type, events in sampled_events.items():
+        for event in events:
+            json.dump(event, file)
+            file.write('\n')
