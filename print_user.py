@@ -3,7 +3,7 @@ import argparse
 import json
 from tqdm import tqdm
 import random
-LIMIT=20
+LIMIT=15
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
