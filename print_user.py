@@ -35,5 +35,5 @@ for event_type, events in events_by_type.items():
     else:
         # Adjust the sampling size if there are fewer than 10 events
         sampled_events[event_type] = events
-for event_type, events in events_by_type.items():
+for event_type, events in sampled_events.items():
     print(len(events))
