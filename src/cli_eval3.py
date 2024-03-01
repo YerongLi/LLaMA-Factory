@@ -102,7 +102,8 @@ def main():
 
     # Load data from the file
     if chat_model.args[0].split("/")[-2].startswith("user"):
-        i_file_name = "data/usertest.jsonl"
+        # i_file_name = "data/usertest.jsonl"
+        i_file_name = "data/usertrain.jsonl"
     elif chat_model.args[0].split("/")[-2].startswith("police") or chat_model.args[0].split("/")[-2].startswith("dispatcher"):
         i_file_name = "data/dispatchertest.jsonl"
 
