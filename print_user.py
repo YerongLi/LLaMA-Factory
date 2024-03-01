@@ -18,7 +18,7 @@ for target_event_type in event_types:
     for line in progress:
         if line['type'] == target_event_type:
             if 'prompt' in line:
-                print(line['prompt'], line['response'])
+                print(line['response'], line['response'])
                 print(line['output'])
 
 events_by_type = {event_type: [] for event_type in event_types}
@@ -26,7 +26,7 @@ events_by_type = {event_type: [] for event_type in event_types}
 # Iterate through progress and append events to the corresponding type
 for line in progress:
     event_type = line["type"]
-    if event_type in event_types and 'prompt' in line:
+    if event_type in event_types and 'response' in line:
         events_by_type[event_type].append(line)
 # Sample 10 events for each type
 sampled_events = {}
