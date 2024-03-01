@@ -15,14 +15,16 @@ pdf_filename = "questions.pdf"
 data = []
 with open(output_file_path, "r") as file:
     progress = [json.loads(line) for line in file]
-event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+# event_types = ['SuspiciousActivity', 'AccidentTrafficParking', 'DrugsAlcohol', 'EmergencyMessage', 'FacilitiesMaintenance', 'HarassmentAbuse', 'MentalHealth', 'NoiseDisturbance', 'TheftLostItem']
+event_types = ['AccidentTrafficParking']
 
 for target_event_type in event_types:
     for line in progress:
         if line['type'] == target_event_type:
             if 'response' in line:
-                print('================')
+                print('    ================')
                 print(line['prompt'])
+                print('  === Question : ')
                 print(line['user1'])
                 print(line['user2'])
 events_by_type = {event_type: [] for event_type in event_types}
