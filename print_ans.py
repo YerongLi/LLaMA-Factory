@@ -3,7 +3,9 @@ import argparse
 import json
 from tqdm import tqdm
 import random
-
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
