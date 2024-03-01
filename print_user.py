@@ -49,9 +49,9 @@ for event_type, events in sampled_events.items():
         
         # Assign values based on whether the random number is odd or even
         if random_number % 2 == 1:  # odd
-            event['user1'], event['user2'] = event['response'], event['output']
+            event['user1'], event['user2'] = event['response'].strip('\n'), event['output'].strip('\n')
         else:  # even
-            event['user1'], event['user2'] = event['output'], event['response']
+            event['user1'], event['user2'] = event['output'].strip('\n'), event['response'].strip('\n')
         
         # Append modified event to new_events list
         new_events.append(event)
