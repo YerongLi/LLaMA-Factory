@@ -3,7 +3,7 @@ import argparse
 import json
 from tqdm import tqdm
 import random
-
+LIMIT=20
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
@@ -32,8 +32,8 @@ for line in progress:
 # Sample 10 events for each type
 sampled_events = {}
 for event_type, events in events_by_type.items():
-    if len(events) >= 10:
-        sampled_events[event_type] = random.sample(events, 10)
+    if len(events) >= LIMIT:
+        sampled_events[event_type] = random.sample(events, LIMIT)
     else:
         # Adjust the sampling size if there are fewer than 10 events
         sampled_events[event_type] = events
