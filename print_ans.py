@@ -20,3 +20,6 @@ for target_event_type in event_types:
             if 'response' in line:
                 print(line['prompt'], line['response'])
                 print(line['output'])
+for event_type, events in sampled_events.items():
+    print(event_type)
+    print(len(events))
