@@ -18,8 +18,9 @@ for target_event_type in event_types:
     for line in progress:
         if line['type'] == target_event_type:
             if 'response' in line:
-                print(line['prompt'], line['response'])
-                print(line['output'])
+                print(line['prompt'])
+                print(line['user1'])
+                print(line['user2'])
 events_by_type = {event_type: [] for event_type in event_types}
 
 # Iterate through progress and append events to the corresponding type
