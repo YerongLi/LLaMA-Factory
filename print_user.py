@@ -60,8 +60,11 @@ for event_type, events in sampled_events.items():
 
 # Dump the modified dictionary to "answer.jsonl"
 output_file_path = "answer.jsonl"
+cnt = 0
 with open(output_file_path, "w") as file:
     for event_type, events in sampled_events.items():
         for event in events:
+            event['qid'] = cnt
+            cnt+= 1
             json.dump(event, file)
             file.write('\n')
