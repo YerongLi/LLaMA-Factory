@@ -9,6 +9,7 @@ parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
 output_file_path = args.filename.name
 
+pdf_filename = "questions.pdf"
 
 with open(output_file_path, "r") as file:
     progress = [json.loads(line) for line in file]
