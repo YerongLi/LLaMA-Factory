@@ -23,7 +23,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         print(' ==================== ')
         json_obj = json.loads(line)
         if 'response' not in json_obj: continue
-        
+
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
         print(event_id_key_dict[f'{event_id}_sum'])
@@ -34,6 +34,8 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         print(json_obj['response'])
         print(set(key_value.keys()))
         print('HUMAN')
+        if len(set(json_obj.get("human_key").keys())) > set(key_value.keys()):
+            print('LONGER')
         print(json_obj['output'])
         print(set(json_obj.get("human_key").keys()))
         if event_id not in event_id_key_dict_user:
