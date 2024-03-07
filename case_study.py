@@ -4,7 +4,11 @@ import json
 from tqdm import tqdm
 import random
 import hashlib
+import argparse
 
+parser = argparse.ArgumentParser(description='Your program description')
+parser.add_argument('filename', type=argparse.FileType('r'))
+args = parser.parse_args()
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
