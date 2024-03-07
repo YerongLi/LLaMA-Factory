@@ -34,7 +34,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         print(json_obj['response'])
         print(set(key_value.keys()))
         print('HUMAN')
-        if len(set(json_obj.get("human_key").keys())) > len(set(key_value.keys())):
+        if len(set(json_obj.get("human_key").keys())) < len(set(key_value.keys())):
             print('LONGER')
         print(json_obj['output'])
         print(set(json_obj.get("human_key").keys()))
