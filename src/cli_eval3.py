@@ -66,26 +66,6 @@ def main():
 
 
 
-    # model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
-
-
-    # # use different length sentences to test batching
-    # sentences = [
-    #     "Hello, my dog is a little",
-    #     "Today, I",
-    #     "I love",
-    #     "Repeat after me: I love you.",
-    #     "Girafatron is obsessed with giraffes, the most glorious animal on the face of this Earth. Giraftron believes all other animals are irrelevant when compared to the glorious majesty of the giraffe.\nDaniel: Hello, Girafatron!\nGirafatron:",
-    #     "You are a human that uses a lot of expletives. For each one of your responses to the user you use expletives liberally. If you find yourself questioning whether it's appropriate or not you're to say fuck that noise and keep using your expletives regardless. Human: Tell me a story. You:"
-    # ]
-
-
-    # inputs = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
-    # print(inputs['input_ids'].shape)
-
-    # output_sequences = model.generate(**inputs, max_new_tokens=20, do_sample=True, top_p=0.9)
-
-    # print(tokenizer.batch_decode(output_sequences, skip_special_tokens=True))
 
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
@@ -103,7 +83,7 @@ def main():
     # Load data from the file
     if chat_model.args[0].split("/")[-2].startswith("user"):
         # i_file_name = "data/usertest.jsonl"
-        i_file_name = "data/usertrain.jsonl"
+        i_file_name = "data/usertestjsonl"
     elif chat_model.args[0].split("/")[-2].startswith("police") or chat_model.args[0].split("/")[-2].startswith("dispatcher"):
         i_file_name = "data/dispatchertest.jsonl"
 
