@@ -22,6 +22,8 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
     for line in jsonl_file:
         print(' ==================== ')
         json_obj = json.loads(line)
+        if 'response' not in json_obj: continue
+        
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("key")
         print(event_id_key_dict[f'{event_id}_sum'])
@@ -93,6 +95,8 @@ event_id_key_dict_user = {}
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     for line in jsonl_file:
         json_obj = json.loads(line)
+        if 'response' not in json_obj: continue
+
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("human_key")
         if event_id not in event_id_key_dict_user:
