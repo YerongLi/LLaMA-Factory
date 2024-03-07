@@ -31,6 +31,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         print(event_id_key_dict[f'{event_id}_sum'])
         print(json_obj['response'])
         print(set(key_value.keys()))
+        print('HUMAN')
         print(json_obj['output'])
         print(set(json_obj.get("human_key").keys()))
         if event_id not in event_id_key_dict_user:
