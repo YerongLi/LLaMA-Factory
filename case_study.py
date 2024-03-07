@@ -22,4 +22,5 @@ random.shuffle(filtered_data)
 
 # Print the ['o'] and ['r'] values for each entry
 for entry in filtered_data:
+    print(entry['prompt'])
     print("['output']: {}, ['response']: {}".format(entry['output'], entry['response']))
