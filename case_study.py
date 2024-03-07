@@ -11,6 +11,7 @@ parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
 parser = argparse.ArgumentParser(description='Your program description')
 file_name = args.filename
+print(file_name)
 with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
