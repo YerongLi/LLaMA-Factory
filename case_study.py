@@ -5,7 +5,7 @@ from tqdm import tqdm
 import random
 import hashlib
 import argparse
-
+TARGET = -1
 parser = argparse.ArgumentParser(description='Your program description')
 parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
@@ -15,7 +15,7 @@ with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
 # Filter entries where entry['o'] == 0 and entry['r'] == 1
-filtered_data = [entry for entry in data if entry.get('o') != 1 and entry.get('r') == 1]
+filtered_data = [entry for entry in data if entry.get('o') != TARGET and entry.get('r') == TARGET]
 
 # Shuffle the filtered data
 random.shuffle(filtered_data)
