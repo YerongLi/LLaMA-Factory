@@ -30,4 +30,4 @@ for event_type, stats in type_history_lengths.items():
 total_history_length = sum(stats['total'] for stats in type_history_lengths.values())
 total_count = sum(stats['count'] for stats in type_history_lengths.values())
 overall_average = total_history_length / total_count
-print(f"Overall average history length: {overall_average}")
+print(f"Overall average history length: {overall_average:.2f}")
