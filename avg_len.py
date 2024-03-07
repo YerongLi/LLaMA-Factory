@@ -24,7 +24,7 @@ for entry in data:
 for event_type, stats in type_history_lengths.items():
     if stats['count'] > 0:
         average = stats['total'] / stats['count']
-        print(f"Average history length for {event_type}: {average}")
+        print(f"Average history length for {event_type}: {average:.2f}")
 
 # Calculating overall average history length
 total_history_length = sum(stats['total'] for stats in type_history_lengths.values())
