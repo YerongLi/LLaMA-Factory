@@ -41,7 +41,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
             
             # Perform Named Entity Recognition (NER) using sNLP
             if 'response' in json_obj:
-                if len(json_obj['response'].split(' ')) > 100: continue
+                if len(json_obj['response'].split(' ')) > 200: continue
                 # Extract positive and negative keywords from the response
                 response_keywords = extract_keywords(json_obj['response'])
                 
