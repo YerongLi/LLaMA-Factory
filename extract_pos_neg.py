@@ -32,7 +32,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
     # Open the output file
     with open('user4_w_key1.jsonl', 'a') as output_file:
         # Iterate through each line in the input file
-        for line in tqdm.tqdm(jsonl_file):
+        for line in tqdm.tqdm(jsonl_file, total=total_lines):
             # Parse JSON from the line
             json_obj = json.loads(line)
             
@@ -51,4 +51,42 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 json_obj['output_negative_keywords'] = output_keywords[1]
                 
                 output_file.write(json.dumps(json_obj) + '\n')
+
 os.rename("user4_w_key1.jsonl", "user4_w_key.jsonl")
+
+
+output_positive_counts = []
+output_negative_counts = []
+response_positive_counts = []
+response_negative_counts = []
+history_lengths = []
+
+# Open the JSON file
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    # Iterate through each line in the input file
+    for line in tqdm.tqdm(jsonl_file, total=total_lines):
+        # Parse JSON from the line
+        json_obj = json.loads(line)
+        
+        # Calculate the length of 'history'
+        history_length = len(json_obj['history'])
+        history_lengths.append(history_length)
+        
+        # Count occurrences of each keyword type
+        output_positive_counts.append(len(json_obj['output_positive_keywords']))
+        output_negative_counts.append(len(json_obj['output_negative_keywords']))
+        response_positive_counts.append(len(json_obj['response_positive_keywords']))
+        response_negative_counts.append(len(json_obj['response_negative_keywords']))
+
+# Plot the distributions
+plt.figure(figsize=(10, 6))
+plt.plot(history_lengths, output_positive_counts, label='Output Positive Keywords')
+plt.plot(history_lengths, output_negative_counts, label='Output Negative Keywords')
+plt.plot(history_lengths, response_positive_counts, label='Response Positive Keywords')
+plt.plot(history_lengths, response_negative_counts, label='Response Negative Keywords')
+plt.xlabel('Length of history')
+plt.ylabel('Count')
+plt.title('Distribution of Keywords over Length of History')
+plt.legend()
+plt.grid(True)
+plt.savefig('emotionalwords.png')
