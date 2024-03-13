@@ -130,8 +130,8 @@ axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha
 axes[1].set_ylabel('Emotional Word Counts')
 axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response')
 axes[1].legend()
-axes[1].set_xticks(range(len(response_interval_labels)))
-axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center',labeltop=True)
+axes[1].xaxis.set_label_position('top')  # Set x-axis label position to top
+axes[1].tick_params(axis='x', labelrotation=45, labeltop=True)  # Set x-axis ticks and labels to be at the top
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
@@ -144,6 +144,7 @@ plt.tight_layout()
 
 # Save the figure
 plt.savefig('emotionalwords.png')
+
 
 
 
