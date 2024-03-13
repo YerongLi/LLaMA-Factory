@@ -117,7 +117,7 @@ axes[0].set_ylabel('Sum')
 axes[0].set_title('Sum of Positive and Negative Counts over Intervals for Output')
 axes[0].legend()
 axes[0].set_xticks(range(len(output_interval_labels)))
-axes[0].set_xticklabels(output_interval_labels, rotation=45)
+axes[0].set_xticklabels(output_interval_labels, rotation=45, ha='center')
 
 # Plot histogram of sum of positive and negative values for each interval for response
 response_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in response_interval_counts.keys()]
@@ -130,10 +130,10 @@ axes[1].set_ylabel('Sum')
 axes[1].set_title('Sum of Positive and Negative Counts over Intervals for Response')
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
-axes[1].set_xticklabels(response_interval_labels, rotation=45)
+axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
 
-# Invert y-axis for the second subplot
-axes[1].invert_yaxis()
+# Position second caption at the bottom
+fig.text(0.5, 0.05, 'Interval', ha='center')
 
 # Adjust layout
 plt.tight_layout()
@@ -141,5 +141,3 @@ plt.tight_layout()
 # Save the figure
 plt.savefig('emotionalwords.png')
 
-# Save the figure
-plt.savefig('emotionalwords.png')
