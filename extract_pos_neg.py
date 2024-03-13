@@ -26,12 +26,13 @@ def extract_keywords(sentence):
             negative_keywords.append(word)
     
     return positive_keywords, negative_keywords
-
+with open('user4.jsonl', 'r') as count_file:
+    total_lines = sum(1 for _ in count_file)
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     # Open the output file
     with open('user4_w_key.jsonl', 'a') as output_file:
         # Iterate through each line in the input file
-        for line in tqdm.tqdm(jsonl_file, total=total_lines):
+        for line in tqdm.tqdm(jsonl_file):
             # Parse JSON from the line
             json_obj = json.loads(line)
             
