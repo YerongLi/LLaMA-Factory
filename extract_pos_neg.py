@@ -2,7 +2,7 @@ import json
 import tqdm
 from nltk.tokenize import word_tokenize
 from nltk.sentiment import SentimentIntensityAnalyzer
-
+import os
 # Initialize Sentiment Intensity Analyzer
 sia = SentimentIntensityAnalyzer()
 
