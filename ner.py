@@ -66,7 +66,9 @@ if __name__ == '__main__':
                 # Perform Named Entity Recognition (NER) using sNLP
                 NER = sNLP.ner(json_obj['response'])
                 print(json_obj['response'])
-                print(NER)
+                for item in NER:
+                    if item[1] == 'O': continue
+                    print(f'{item[1]} : {item[0]}')
                 # Extract non-'O' labeled items
                 non_O_items = {item[0]:'' for item in NER if item[1] != 'O'}  # Convert to set
                 
