@@ -58,11 +58,13 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 os.rename("user4_w_key1.jsonl", "user4_w_key.jsonl")
 
 
+# Initialize lists to store data
 output_positive_counts = []
 output_negative_counts = []
 response_positive_counts = []
 response_negative_counts = []
-history_lengths = []
+output_lengths = []
+response_lengths = []
 
 # Open the JSON file
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
@@ -71,25 +73,47 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         # Parse JSON from the line
         json_obj = json.loads(line)
         
-        # Calculate the length of 'history'
-        history_length = len(json_obj['history'][-1][1])
-        history_lengths.append(history_length)
-        
-        # Count occurrences of each keyword type
+        # Count occurrences of each keyword type in 'output' and 'response'
         output_positive_counts.extend([len(words) for words in json_obj['output_positive_keywords']])
         output_negative_counts.extend([len(words) for words in json_obj['output_negative_keywords']])
         response_positive_counts.extend([len(words) for words in json_obj['response_positive_keywords']])
         response_negative_counts.extend([len(words) for words in json_obj['response_negative_keywords']])
+        
+        # Append lengths of 'output' and 'response'
+        output_lengths.append(len(json_obj['output'].split(' ')))
+        response_lengths.append(len(json_obj['response'].split(' ')))
 
-# Plot the histograms
-plt.figure(figsize=(10, 6))
-plt.hist(output_positive_counts, bins=20, alpha=0.5, label='Output Positive Keywords')
-plt.hist(output_negative_counts, bins=20, alpha=0.5, label='Output Negative Keywords')
-plt.hist(response_positive_counts, bins=20, alpha=0.5, label='Response Positive Keywords')
-plt.hist(response_negative_counts, bins=20, alpha=0.5, label='Response Negative Keywords')
-plt.xlabel('Count of Keywords')
-plt.ylabel('Frequency')
-plt.title('Histogram of Keywords Count')
-plt.legend()
-plt.grid(True)
+# Create subplots for histograms
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+
+# Plot histograms for 'output' positive and negative counts
+axes[0, 0].hist(output_positive_counts, bins=20, alpha=0.5, color='blue', label='Output Positive Keywords')
+axes[0, 0].hist(output_negative_counts, bins=20, alpha=0.5, color='red', label='Output Negative Keywords')
+axes[0, 0].set_xlabel('Count of Keywords')
+axes[0, 0].set_ylabel('Frequency')
+axes[0, 0].set_title('Histogram of Output Keywords Count')
+axes[0, 0].legend()
+
+# Plot histograms for 'response' positive and negative counts
+axes[0, 1].hist(response_positive_counts, bins=20, alpha=0.5, color='blue', label='Response Positive Keywords')
+axes[0, 1].hist(response_negative_counts, bins=20, alpha=0.5, color='red', label='Response Negative Keywords')
+axes[0, 1].set_xlabel('Count of Keywords')
+axes[0, 1].set_ylabel('Frequency')
+axes[0, 1].set_title('Histogram of Response Keywords Count')
+axes[0, 1].legend()
+
+# Plot histograms for 'output' and 'response' lengths
+axes[1, 0].hist(output_lengths, bins=20, alpha=0.5, color='green', label='Output Length')
+axes[1, 0].set_xlabel('Length of Output')
+axes[1, 0].set_ylabel('Frequency')
+axes[1, 0].set_title('Histogram of Output Length')
+axes[1, 0].legend()
+
+axes[1, 1].hist(response_lengths, bins=20, alpha=0.5, color='green', label='Response Length')
+axes[1, 1].set_xlabel('Length of Response')
+axes[1, 1].set_ylabel('Frequency')
+axes[1, 1].set_title('Histogram of Response Length')
+axes[1, 1].legend()
+
+plt.tight_layout()
 plt.savefig('emotionalwords.png')
