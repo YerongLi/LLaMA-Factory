@@ -133,7 +133,7 @@ axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Respon
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
 axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
-axes[1].xaxis.set_label_coords(0.5, -0.15)  # Adjust x-axis label position
+axes[1].xaxis.set_label_coords(0.5, -0.5)  # Adjust x-axis label position
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
