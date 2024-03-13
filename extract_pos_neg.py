@@ -26,9 +26,9 @@ def extract_keywords(sentence):
             negative_keywords.append(word)
     
     return positive_keywords, negative_keywords
-with open('user4.jsonl', 'r') as count_file:
+with open('user4_w_key.jsonl', 'r') as count_file:
     total_lines = sum(1 for _ in count_file)
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('user4_w_key1.jsonl', 'r') as jsonl_file:
     # Open the output file
     with open('user4_w_key.jsonl', 'a') as output_file:
         # Iterate through each line in the input file
@@ -50,4 +50,5 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 json_obj['output_positive_keywords'] = output_keywords[0]
                 json_obj['output_negative_keywords'] = output_keywords[1]
                 
-                # output_file.write(json.dumps(json_obj) + '\n')
+                output_file.write(json.dumps(json_obj) + '\n')
+os.rename("user4_w_key1.jsonl", "user4_w_key.jsonl")
