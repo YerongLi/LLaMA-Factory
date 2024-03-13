@@ -130,7 +130,7 @@ response_negative_sums = [np.sum(value['negative']) for value in response_interv
 axes[1].bar(response_interval_labels, response_positive_sums, color='blue', alpha=0.5, label='LLM Positive Words')
 axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha=0.5, label='LLM Negative Words')
 axes[1].set_ylabel('Emotional Word Counts')
-axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response', y=0.05)  # Adjust title position
+axes[1].set_title('LLM Positive and Negative Counts over Lengths of Response', y=0.05)  # Adjust title position
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
 axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
