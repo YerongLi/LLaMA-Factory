@@ -118,7 +118,7 @@ axes[0].set_title('Human Positive and Negative Counts over Lengths of Response')
 
 axes[0].legend()
 axes[0].set_xticks(range(len(output_interval_labels)))
-axes[0].set_xticklabels(output_interval_labels, rotation=45, ha='center')
+axes[0].set_xticklabels(output_interval_labels, rotation=45,fontsize=8,  ha='center')
 axes[0].xaxis.set_label_coords(0.5, -0.1)  # Adjust x-axis label position
 axes[0].set_title('Human Positive and Negative Counts over Lengths of Response')  # Set title inside subplot
 
@@ -133,14 +133,13 @@ axes[1].set_ylabel('Emotional Word Counts')
 axes[1].set_title('LLM Positive and Negative Counts over Lengths of Response', y=0.05)  # Adjust title position
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
-axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
+axes[1].set_xticklabels(response_interval_labels, rotation=45,fontsize=8, ha='center')
 axes[1].xaxis.set_label_coords(0.5, -0.15)  # Adjust x-axis label position
 axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response')  # Set title inside subplot
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
-for ax in axes:
-    ax.tick_params(axis='x', labelsize=8,rotation=45, ha='center')
+fontsize=8,
 # Position text below the subplots
 fig.text(0.5, 0.01, 'Length of User\'s Response', ha='center')
 
