@@ -100,18 +100,25 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 value['negative'].append(response_negative_counts)
 
 # Plot the results
-fig, axes = plt.subplots(2, 1, figsize=(10, 20), sharex=True)
+fig, axes = plt.subplots(2, 1, figsize=(12, 10))
 
 # Plot histogram of sum of positive and negative values for each interval for output
 output_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in output_interval_counts.keys()]
 output_positive_sums = [np.sum(value['positive']) for value in output_interval_counts.values()]
 output_negative_sums = [np.sum(value['negative']) for value in output_interval_counts.values()]
 
+# Adjust interval markings
+interval_ticks = range(0, 201, 10)
+interval_tick_labels = [str(i) for i in interval_ticks]
+
 axes[0].bar(output_interval_labels, output_positive_sums, color='blue', alpha=0.5, label='Output Positive Sum')
 axes[0].bar(output_interval_labels, output_negative_sums, color='red', alpha=0.5, label='Output Negative Sum')
+axes[0].set_xlabel('Interval')
 axes[0].set_ylabel('Sum')
 axes[0].set_title('Sum of Positive and Negative Counts over Intervals for Output')
 axes[0].legend()
+axes[0].set_xticks(range(len(output_interval_labels)))
+axes[0].set_xticklabels(output_interval_labels, rotation=45)
 
 # Plot histogram of sum of positive and negative values for each interval for response
 response_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in response_interval_counts.keys()]
@@ -124,11 +131,11 @@ axes[1].set_xlabel('Interval')
 axes[1].set_ylabel('Sum')
 axes[1].set_title('Sum of Positive and Negative Counts over Intervals for Response')
 axes[1].legend()
+axes[1].set_xticks(range(len(response_interval_labels)))
+axes[1].set_xticklabels(response_interval_labels, rotation=45)
 
-# Adjust x-axis ticks to represent intervals
-axes[1].set_xticks(np.arange(0, len(response_interval_labels)*2, 2))
-axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='right')
-
+# Adjust layout
 plt.tight_layout()
-plt.subplots_adjust(hspace=0.4)  # Adjust vertical space between subplots
+
+# Save the figure
 plt.savefig('emotionalwords.png')
