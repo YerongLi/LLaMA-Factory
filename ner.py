@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     # Remove the 'summary_w_key.jsonl' file if it exists
     if os.path.exists('summary_w_key.jsonl'):
-        os.remove('summary_w_key.json')
+        os.remove('summary_w_key.jsonl')
 
     with open('summary.jsonl', 'r') as count_file:
         total_lines = sum(1 for _ in count_file)
