@@ -133,10 +133,13 @@ axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Respon
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
 axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
-axes[1].xaxis.set_label_coords(0.5, -0.1)  # Adjust x-axis label position
+axes[1].xaxis.set_label_coords(0.5, -0.15)  # Adjust x-axis label position
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
+
+# Position second caption a bit below the x-ticks
+axes[1].title.set_position([.5, 0.1])
 
 # Position second caption at the bottom
 fig.text(0.5, 0.05, 'Length of User\'s Response', ha='center')
@@ -146,5 +149,6 @@ plt.tight_layout()
 
 # Save the figure
 plt.savefig('emotionalwords.png')
+
 
 
