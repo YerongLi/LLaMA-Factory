@@ -99,7 +99,8 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 value['positive'].append(response_positive_counts)
                 value['negative'].append(response_negative_counts)
 
-fig, axes = plt.subplots(2, 1, figsize=(12, 10))
+# Plot the results
+fig, axes = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
 
 # Plot histogram of sum of positive and negative values for each interval for output
 output_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in output_interval_counts.keys()]
@@ -118,6 +119,7 @@ axes[0].set_title('Human Positive and Negative Counts over Lengths of Response')
 axes[0].legend()
 axes[0].set_xticks(range(len(output_interval_labels)))
 axes[0].set_xticklabels(output_interval_labels, rotation=45, ha='center')
+axes[0].xaxis.set_label_coords(0.5, -0.1)  # Adjust x-axis label position
 
 # Plot histogram of sum of positive and negative values for each interval for response
 response_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in response_interval_counts.keys()]
@@ -129,8 +131,9 @@ axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha
 axes[1].set_ylabel('Emotional Word Counts')
 axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response')
 axes[1].legend()
-# axes[1].set_xticks(range(len(output_interval_labels)))  # Set x-ticks same as the first subplot
-# axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
+axes[1].set_xticks(range(len(response_interval_labels)))
+axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
+axes[1].xaxis.set_label_coords(0.5, -0.1)  # Adjust x-axis label position
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
@@ -143,7 +146,5 @@ plt.tight_layout()
 
 # Save the figure
 plt.savefig('emotionalwords.png')
-
-
 
 
