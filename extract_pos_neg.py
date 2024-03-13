@@ -111,10 +111,11 @@ output_negative_sums = [np.sum(value['negative']) for value in output_interval_c
 interval_ticks = range(0, 201, 10)
 interval_tick_labels = [str(i) for i in interval_ticks]
 
-axes[0].bar(output_interval_labels, output_positive_sums, color='blue', alpha=0.5, label='Output Positive Sum')
-axes[0].bar(output_interval_labels, output_negative_sums, color='red', alpha=0.5, label='Output Negative Sum')
-axes[0].set_ylabel('Sum')
-axes[0].set_title('Sum of Positive and Negative Counts over Intervals for Output')
+axes[0].bar(output_interval_labels, output_positive_sums, color='blue', alpha=0.5, label='Human Positive Sum')
+axes[0].bar(output_interval_labels, output_negative_sums, color='red', alpha=0.5, label='Human Negative Sum')
+axes[0].set_ylabel('Emotional Word Counts')
+axes[0].set_title('Human Positive and Negative Counts over Lengths of Response')
+
 axes[0].legend()
 axes[0].set_xticks(range(len(output_interval_labels)))
 axes[0].set_xticklabels(output_interval_labels, rotation=45, ha='center')
@@ -125,10 +126,10 @@ response_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in response_
 response_positive_sums = [np.sum(value['positive']) for value in response_interval_counts.values()]
 response_negative_sums = [np.sum(value['negative']) for value in response_interval_counts.values()]
 
-axes[1].bar(response_interval_labels, response_positive_sums, color='blue', alpha=0.5, label='Response Positive Sum')
-axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha=0.5, label='Response Negative Sum')
-axes[1].set_ylabel('Sum')
-axes[1].set_title('Sum of Positive and Negative Counts over Intervals for Response')
+axes[1].bar(response_interval_labels, response_positive_sums, color='blue', alpha=0.5, label='LLM Positive Words')
+axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha=0.5, label='LLM Negative Words')
+axes[1].set_ylabel('Emotional Word Counts')
+axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response')
 axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
 axes[1].set_xticklabels(response_interval_labels, rotation=45, ha='center')
@@ -138,7 +139,7 @@ axes[1].xaxis.set_label_coords(0.5, -0.1)  # Adjust x-axis label position
 axes[1].invert_yaxis()
 
 # Position second caption at the bottom
-fig.text(0.5, 0.05, 'Interval', ha='center')
+fig.text(0.5, 0.05, 'Length of User\'s Response', ha='center')
 
 # Adjust layout
 plt.tight_layout()
