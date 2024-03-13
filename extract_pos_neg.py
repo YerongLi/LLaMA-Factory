@@ -75,20 +75,20 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         history_lengths.append(history_length)
         
         # Count occurrences of each keyword type
-        output_positive_counts.append(len(json_obj['output_positive_keywords']))
-        output_negative_counts.append(len(json_obj['output_negative_keywords']))
-        response_positive_counts.append(len(json_obj['response_positive_keywords']))
-        response_negative_counts.append(len(json_obj['response_negative_keywords']))
+        output_positive_counts.extend([len(words) for words in json_obj['output_positive_keywords']])
+        output_negative_counts.extend([len(words) for words in json_obj['output_negative_keywords']])
+        response_positive_counts.extend([len(words) for words in json_obj['response_positive_keywords']])
+        response_negative_counts.extend([len(words) for words in json_obj['response_negative_keywords']])
 
-# Plot the distributions
+# Plot the histograms
 plt.figure(figsize=(10, 6))
-plt.plot(history_lengths, output_positive_counts, label='Output Positive Keywords')
-plt.plot(history_lengths, output_negative_counts, label='Output Negative Keywords')
-plt.plot(history_lengths, response_positive_counts, label='Response Positive Keywords')
-plt.plot(history_lengths, response_negative_counts, label='Response Negative Keywords')
-plt.xlabel('Length of history')
-plt.ylabel('Count')
-plt.title('Distribution of Keywords over Length of History')
+plt.hist(output_positive_counts, bins=20, alpha=0.5, label='Output Positive Keywords')
+plt.hist(output_negative_counts, bins=20, alpha=0.5, label='Output Negative Keywords')
+plt.hist(response_positive_counts, bins=20, alpha=0.5, label='Response Positive Keywords')
+plt.hist(response_negative_counts, bins=20, alpha=0.5, label='Response Negative Keywords')
+plt.xlabel('Count of Keywords')
+plt.ylabel('Frequency')
+plt.title('Histogram of Keywords Count')
 plt.legend()
 plt.grid(True)
 plt.savefig('emotionalwords.png')
