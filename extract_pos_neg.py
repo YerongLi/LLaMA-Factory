@@ -3,6 +3,8 @@ import tqdm
 from nltk.tokenize import word_tokenize
 from nltk.sentiment import SentimentIntensityAnalyzer
 import os
+import matplotlib.pyplot as plt
+
 # Initialize Sentiment Intensity Analyzer
 sia = SentimentIntensityAnalyzer()
 
