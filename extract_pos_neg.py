@@ -72,7 +72,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         json_obj = json.loads(line)
         
         # Calculate the length of 'history'
-        history_length = len(json_obj['history'])
+        history_length = len(json_obj['history'][-1][1])
         history_lengths.append(history_length)
         
         # Count occurrences of each keyword type
