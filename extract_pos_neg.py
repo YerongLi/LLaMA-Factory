@@ -141,7 +141,7 @@ axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Respon
 axes[1].invert_yaxis()
 
 # Position text below the subplots
-fig.text(0.5, 0.03, 'Length of User\'s Response', ha='center')
+fig.text(0.5, -0.03, 'Length of User\'s Response', ha='center')
 
 # Adjust layout
 plt.tight_layout()
