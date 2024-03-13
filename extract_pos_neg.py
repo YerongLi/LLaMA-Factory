@@ -135,12 +135,12 @@ axes[1].legend()
 axes[1].set_xticks(range(len(response_interval_labels)))
 axes[1].set_xticklabels(response_interval_labels, rotation=45,fontsize=8, ha='center')
 axes[1].xaxis.set_label_coords(0.5, -0.15)  # Adjust x-axis label position
-axes[1].set_title('LLM Human Positive and Negative Counts over Lengths of Response')  # Set title inside subplot
+axes[1].set_title('LLM Positive and Negative Counts over Lengths of Response')  # Set title inside subplot
 
 # Invert y-axis for the second subplot
 axes[1].invert_yaxis()
 # Position text below the subplots
-fig.text(0.5, 0.01, 'Length of User\'s Response', ha='center')
+fig.text(0.5, 0.001, 'Length of User\'s Response', ha='center')
 
 # Adjust layout
 plt.tight_layout()
