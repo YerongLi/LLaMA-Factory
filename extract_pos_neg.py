@@ -57,14 +57,17 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 
 os.rename("user4_w_key1.jsonl", "user4_w_key.jsonl")
 
+# Initialize dictionaries to store keyword counts for each interval for output and response separately
+output_interval_counts = {}
+response_interval_counts = {}
 
-# Initialize lists to store data
-output_positive_counts = []
-output_negative_counts = []
-response_positive_counts = []
-response_negative_counts = []
-output_lengths = []
-response_lengths = []
+# Define interval size
+interval_size = 10
+
+# Initialize intervals
+for i in range(0, 201, interval_size):
+    output_interval_counts[(i, i + interval_size)] = {'positive': [], 'negative': []}
+    response_interval_counts[(i, i + interval_size)] = {'positive': [], 'negative': []}
 
 # Open the JSON file
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
@@ -73,47 +76,61 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         # Parse JSON from the line
         json_obj = json.loads(line)
         
-        # Count occurrences of each keyword type in 'output' and 'response'
-        output_positive_counts.extend([len(words) for words in json_obj['output_positive_keywords']])
-        output_negative_counts.extend([len(words) for words in json_obj['output_negative_keywords']])
-        response_positive_counts.extend([len(words) for words in json_obj['response_positive_keywords']])
-        response_negative_counts.extend([len(words) for words in json_obj['response_negative_keywords']])
+        # Get the length of 'output' and 'response'
+        output_length = len(json_obj['output'].split())
+        response_length = len(json_obj['response'].split())
         
-        # Append lengths of 'output' and 'response'
-        output_lengths.append(len(json_obj['output'].split(' ')))
-        response_lengths.append(len(json_obj['response'].split(' ')))
+        # Get the positive and negative keyword counts for 'output' and 'response'
+        output_positive_counts = len(json_obj['output_positive_keywords'])
+        output_negative_counts = len(json_obj['output_negative_keywords'])
+        response_positive_counts = len(json_obj['response_positive_keywords'])
+        response_negative_counts = len(json_obj['response_negative_keywords'])
+        
+        # Update output_interval_counts with output positive and negative keyword counts
+        for key, value in output_interval_counts.items():
+            if key[0] <= output_length < key[1]:
+                value['positive'].append(output_positive_counts)
+                value['negative'].append(output_negative_counts)
+        
+        # Update response_interval_counts with response positive and negative keyword counts
+        for key, value in response_interval_counts.items():
+            if key[0] <= response_length < key[1]:
+                value['positive'].append(response_positive_counts)
+                value['negative'].append(response_negative_counts)
 
-# Create subplots for histograms
-fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+# Plot the results
+fig, axes = plt.subplots(4, 1, figsize=(10, 20))
 
-# Plot histograms for 'output' positive and negative counts
-axes[0, 0].hist(output_positive_counts, bins=20, alpha=0.5, color='blue', label='Output Positive Keywords')
-axes[0, 0].hist(output_negative_counts, bins=20, alpha=0.5, color='red', label='Output Negative Keywords')
-axes[0, 0].set_xlabel('Count of Keywords')
-axes[0, 0].set_ylabel('Frequency')
-axes[0, 0].set_title('Histogram of Output Keywords Count')
-axes[0, 0].legend()
+# Plot histogram of sum of positive and negative values for each interval for output
+output_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in output_interval_counts.keys()]
+output_positive_sums = [np.sum(value['positive']) for value in output_interval_counts.values()]
+output_negative_sums = [np.sum(value['negative']) for value in output_interval_counts.values()]
 
-# Plot histograms for 'response' positive and negative counts
-axes[0, 1].hist(response_positive_counts, bins=20, alpha=0.5, color='blue', label='Response Positive Keywords')
-axes[0, 1].hist(response_negative_counts, bins=20, alpha=0.5, color='red', label='Response Negative Keywords')
-axes[0, 1].set_xlabel('Count of Keywords')
-axes[0, 1].set_ylabel('Frequency')
-axes[0, 1].set_title('Histogram of Response Keywords Count')
-axes[0, 1].legend()
+axes[0].bar(output_interval_labels, output_positive_sums, color='blue', alpha=0.5, label='Output Positive Sum')
+axes[0].bar(output_interval_labels, output_negative_sums, color='red', alpha=0.5, label='Output Negative Sum')
+axes[0].set_xlabel('Interval')
+axes[0].set_ylabel('Sum')
+axes[0].set_title('Sum of Positive and Negative Counts over Intervals for Output')
+axes[0].legend()
 
-# Plot histograms for 'output' and 'response' lengths
-axes[1, 0].hist(output_lengths, bins=20, alpha=0.5, color='green', label='Output Length')
-axes[1, 0].set_xlabel('Length of Output')
-axes[1, 0].set_ylabel('Frequency')
-axes[1, 0].set_title('Histogram of Output Length')
-axes[1, 0].legend()
+# Plot histogram of sum of positive and negative values for each interval for response
+response_interval_labels = [str(key[0]) + '-' + str(key[1]) for key in response_interval_counts.keys()]
+response_positive_sums = [np.sum(value['positive']) for value in response_interval_counts.values()]
+response_negative_sums = [np.sum(value['negative']) for value in response_interval_counts.values()]
 
-axes[1, 1].hist(response_lengths, bins=20, alpha=0.5, color='green', label='Response Length')
-axes[1, 1].set_xlabel('Length of Response')
-axes[1, 1].set_ylabel('Frequency')
-axes[1, 1].set_title('Histogram of Response Length')
-axes[1, 1].legend()
+axes[1].bar(response_interval_labels, response_positive_sums, color='blue', alpha=0.5, label='Response Positive Sum')
+axes[1].bar(response_interval_labels, response_negative_sums, color='red', alpha=0.5, label='Response Negative Sum')
+axes[1].set_xlabel('Interval')
+axes[1].set_ylabel('Sum')
+axes[1].set_title('Sum of Positive and Negative Counts over Intervals for Response')
+axes[1].legend()
 
-plt.tight_layout()
+# Plot the lengths of positive value lists for each interval for output
+output_positive_lengths = [len(value['positive']) for value in output_interval_counts.values()]
+
+axes[2].bar(output_interval_labels, output_positive_lengths, color='green', alpha=0.5, label='Output Positive Length')
+axes[2].set_xlabel('Interval')
+axes[2].set_ylabel('Length')
+axes[2].set_title('Length of Positive Value Lists over Intervals for Output')
+axes[2].legend()
 plt.savefig('emotionalwords.png')
