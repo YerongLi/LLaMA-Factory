@@ -54,13 +54,23 @@ def _verify_model_args(model_args: "ModelArguments", finetuning_args: "Finetunin
 
 def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     additional_choices = ['gan']
-    print(additional_choices)
-    # Create the argument parser with the existing choices plus the additional choice
-    parser = HfArgumentParser(_TRAIN_ARGS)
-    parser.add_argument('--stage', choices=['pt', 'sft', 'rm', 'ppo', 'dpo', 'gan'],
-                        help="Choose the stage.", default='pt')
-    print(parser.parse_known_args()[0].stage.choices)
-    print(parse_args(parser, args))
+    # Parse the arguments to initialize the parser's state
+    _ = parser.parse_known_args()
+
+    # Retrieve the current choices for the --stage argument
+    current_choices = parser._action_groups[1].choices['stage'].choices
+
+    # Add 'gan' to the current choices
+    additional_choices = ['gan']
+    modified_choices = current_choices + additional_choices
+
+    # Create a new parser with the modified choices
+    modified_parser = argparse.ArgumentParser(parents=[parser])
+    modified_parser._action_groups[1].choices['stage'].choices = modified_choices
+    
+    # Parse the arguments again using the modified parser
+    args = modified_parser.parse_args()
+
     return parse_args(parser, args)
 
 
