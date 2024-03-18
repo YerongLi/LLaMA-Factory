@@ -100,7 +100,7 @@ def run_gan(
             ## training the discriminator here
             print(batch)
             logging.info(batch)
-            pass
+            continue
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
