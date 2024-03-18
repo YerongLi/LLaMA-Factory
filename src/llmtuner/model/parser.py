@@ -5,7 +5,7 @@ import transformers
 from typing import Any, Dict, Optional, Tuple
 from transformers import HfArgumentParser, Seq2SeqTrainingArguments
 from transformers.trainer_utils import get_last_checkpoint
-import argparse
+
 from llmtuner.extras.logging import get_logger
 from llmtuner.extras.misc import parse_args
 from llmtuner.hparams import (
@@ -53,21 +53,9 @@ def _verify_model_args(model_args: "ModelArguments", finetuning_args: "Finetunin
 
 
 def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
-    additional_choices = ['gan']
-    print(additional_choices)
-    # Create the argument parser with the existing choices plus the additional choice
     parser = HfArgumentParser(_TRAIN_ARGS)
+    return parse_args(parser, args)
 
-    current_choices = parser._action_groups[1]._group_actions[0].choices
-
-    # Add 'gan' to the current choices
-    additional_choices = ['gan']
-    modified_choices = current_choices + additional_choices
-
-    # Recreate the parser with the modified choices
-    parser = HfArgumentParser((HfArgumentParser.DEFAULT_ARGS))
-    parser.add_argument('--stage', choices=modified_choices,
-                        help="Choose the stage.", default='pt')
 
 
 def parse_infer_args(args: Optional[Dict[str, Any]] = None) -> _INFER_CLS:
