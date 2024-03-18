@@ -5,6 +5,7 @@ from llmtuner.extras.logging import get_logger
 from llmtuner.model import get_train_args, get_infer_args, load_model_and_tokenizer
 from llmtuner.train.pt import run_pt
 from llmtuner.train.sft import run_sft
+from llmtuner.train.gan import run_gan
 from llmtuner.train.rm import run_rm
 from llmtuner.train.ppo import run_ppo
 from llmtuner.train.dpo import run_dpo
@@ -30,6 +31,8 @@ def run_exp(args: Optional[Dict[str, Any]] = None, callbacks: Optional[List["Tra
         run_ppo(model_args, data_args, training_args, finetuning_args, generating_args, callbacks)
     elif finetuning_args.stage == "dpo":
         run_dpo(model_args, data_args, training_args, finetuning_args, callbacks)
+    elif finetuning_args.stage == "gan":
+        run_gan(model_args, data_args, training_args, finetuning_args, generating_args, callbacks)
     else:
         raise ValueError("Unknown task.")
 
