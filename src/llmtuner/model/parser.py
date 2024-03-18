@@ -72,8 +72,7 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     modified_parser._action_groups[1].choices['stage'].choices = modified_choices
     
     # Parse the arguments again using the modified parser
-    args = modified_parser.parse_args()
-
+    print(modified_parser)
     return parse_args(modified_parser, args)
 
 
