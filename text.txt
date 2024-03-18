@@ -1,0 +1,9 @@
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a group of males attempting to steal a bike from John Smith. The group was described as at least one Asian and one very very African American individual in a hoodie. The user expressed frustration with the police department and shared their own experience with bike theft.
+
+
+ 
+ User:  Group of males just attempted to steal a bike from John Smith. Headed towards convocation on foot, 123 Main St. At least one Asian, one very very African American individual in a hoodie. They spoke loudly about finding one without a bike lock, trying to pick them up and pull them off. Obviously attempted theft 
+ Dispatcher:  Ok, I will let officers know right away. 
+ User: 
+['output']: I hope they all get busted majorly., ['response']: Yeah, I appreciate that. But I have to say, I'm really frustrated with the police department. I've had my bike stolen twice now and they never do anything about it. 
