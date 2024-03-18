@@ -59,6 +59,8 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     parser = HfArgumentParser(_TRAIN_ARGS)
     parser.add_argument('--stage', choices=parser.parse_known_args()[0].stage.choices + additional_choices,
                         help="Choose the stage.", default='pt')
+    print(parser.parse_known_args()[0].stage.choices)
+    print(parse_args(parser, args))
     return parse_args(parser, args)
 
 
