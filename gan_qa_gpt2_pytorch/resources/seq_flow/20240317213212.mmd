@@ -1,0 +1,13 @@
+
+sequenceDiagram
+    participant G as GAN
+    participant D as GPT2Model (Discriminator)
+    participant GPT2 as GPT2Model (Generator)
+    G->>D: train()
+    D-->>G: loss
+    G->>GPT2: train()
+    GPT2-->>G: loss
+    G->>GPT2: generate_question_answer()
+    GPT2-->>G: question_answer_pairs
+    G->>D: evaluate()
+    D-->>G: performance_metrics
