@@ -1,8 +1,7 @@
 # deepspeed --num_gpus 3 --master_port=9901 src/train_bash.py \
     # --deepspeed ds.json \
 python src/train_bash.py \
-    --stage sft \
-    --mode gan \
+    --stage gan \
     --model_name_or_path $CHATLM \
     --do_train \
     --dataset user \

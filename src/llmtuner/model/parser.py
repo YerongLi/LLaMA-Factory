@@ -54,8 +54,6 @@ def _verify_model_args(model_args: "ModelArguments", finetuning_args: "Finetunin
 
 def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     parser = HfArgumentParser(_TRAIN_ARGS)
-    print('Enter parse_train_args')
-    print(parse_args(parser, args))
     return parse_args(parser, args)
 
 
