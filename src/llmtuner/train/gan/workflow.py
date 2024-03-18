@@ -97,7 +97,9 @@ def run_gan(
     for epoch in range(int(training_args.num_train_epochs)):
 
         for idx, (batch,real) in enumerate(dataloader):
-
+            print(batch)
+            print('real')
+            print(real)
             ## training the discriminator here
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
