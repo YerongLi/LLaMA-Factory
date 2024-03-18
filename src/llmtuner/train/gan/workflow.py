@@ -87,13 +87,13 @@ def run_gan(
 
     discriminator = TextDiscriminatorWithTransformer("gpt2", 1)
     generator = model
+    lr = training_args.learning_rate
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), lr)
     optGen = AdamW(model.parameters(), lr)  # Use the loaded model as the generator
     lossFunc = torch.nn.BCELoss()
     dataloader = DataLoader(dataset=dataset, batch_size=training_args.per_device_train_batch_size, shuffle=True)
-    lr = training_args.learning_rate
     for epoch in range(int(training_args.num_train_epochs)):
 
         for idx, (batch,real) in enumerate(dataloader):
