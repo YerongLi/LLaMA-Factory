@@ -1,1 +1,1 @@
-from llmtuner.train.sft.workflow import run_gan
+from llmtuner.train.gan.workflow import run_gan
