@@ -66,11 +66,10 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     modified_choices = ['pt', 'sft', 'rm', 'ppo', 'dpo', 'gan']
 
     # Create a new parser with the modified choices
-    modified_parser = argparse.ArgumentParser(parents=[parser])
-    modified_parser._action_groups[1].choices['stage'].choices = modified_choices
+    parser._action_groups[1].choices['stage'].choices = modified_choices
     
     # Parse the arguments again using the modified parser
-    return parse_args(modified_parser, args)
+    return parse_args(parser, args)
 
 
 def parse_infer_args(args: Optional[Dict[str, Any]] = None) -> _INFER_CLS:
