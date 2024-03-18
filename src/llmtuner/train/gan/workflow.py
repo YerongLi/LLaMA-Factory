@@ -16,7 +16,7 @@ from llmtuner.train.utils import create_modelcard_and_push
 import torch
 import torch.nn as nn
 from transformers import GPT2Model, GPT2Tokenizer
-lr = 3e-3
+
 class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, transformer_model_name, num_classes):
         super(TextDiscriminatorWithTransformer, self).__init__()
@@ -93,8 +93,8 @@ def run_gan(
     optGen = AdamW(model.parameters(), lr)  # Use the loaded model as the generator
     lossFunc = torch.nn.BCELoss()
     dataloader = DataLoader(dataset=dataset, batch_size=training_args.per_device_train_batch_size, shuffle=True)
-
-    for epoch in range(training_args.num_train_epochs):
+    lr = training_args.learning_rate
+    for epoch in range(int(training_args.num_train_epochs)):
 
         for idx, (batch,real) in enumerate(dataloader):
 
