@@ -92,7 +92,7 @@ def run_gan(
     optDisc = AdamW(discriminator.parameters(), lr)
     optGen = AdamW(model.parameters(), lr)  # Use the loaded model as the generator
     lossFunc = torch.nn.BCELoss()
-    dataloader = DataLoader(dataset=dataset, batch_size=16, shuffle=True)
+    dataloader = DataLoader(dataset=dataset, batch_size=training_args.per_device_train_batch_size, shuffle=True)
 
     for epoch in range(training_args.num_train_epochs):
 
