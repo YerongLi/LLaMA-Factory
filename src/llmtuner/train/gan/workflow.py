@@ -70,7 +70,7 @@ def run_gan(
         tokenizer.padding_side = "left" # use left-padding in generation
 
     discriminator = TextDiscriminatorWithTransformer("gpt2", 1)
-    generator = GANGenerator()
+    generator = model
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), lr)
