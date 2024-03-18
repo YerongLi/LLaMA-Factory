@@ -62,8 +62,8 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     # Retrieve the current choices for the --stage argument
 
     # Add 'gan' to the current choices
-    additional_choices = ['pt', 'sft', 'rm', 'ppo', 'dpo', 'gan']
-    modified_choices = current_choices + additional_choices
+
+    modified_choices = ['pt', 'sft', 'rm', 'ppo', 'dpo', 'gan']
 
     # Create a new parser with the modified choices
     modified_parser = argparse.ArgumentParser(parents=[parser])
