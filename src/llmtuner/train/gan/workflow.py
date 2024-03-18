@@ -98,8 +98,8 @@ def run_gan(
 
         for idx, batch in enumerate(dataloader):
             ## training the discriminator here
-            print(tokenizer.decode(batch['input_ids']))
-            print(tokenizer.decode(batch['labels']))
+            print(tokenizer.batch_decode(batch['input_ids'], skip_special_tokens=True))
+            print(tokenizer.batch_decode(batch['labels'], skip_special_tokens=True))
             pass
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
