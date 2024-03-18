@@ -54,7 +54,7 @@ def _verify_model_args(model_args: "ModelArguments", finetuning_args: "Finetunin
 
 def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     additional_choices = ['gan']
-    
+    print(additional_choices)
     # Create the argument parser with the existing choices plus the additional choice
     parser = HfArgumentParser(_TRAIN_ARGS)
     parser.add_argument('--stage', choices=parser.parse_known_args()[0].stage.choices + additional_choices,
