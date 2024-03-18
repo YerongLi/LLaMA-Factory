@@ -58,18 +58,16 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     # Create the argument parser with the existing choices plus the additional choice
     parser = HfArgumentParser(_TRAIN_ARGS)
 
-
-    # Retrieve the current choices for the --stage argument
+    current_choices = parser._action_groups[1]._group_actions[0].choices
 
     # Add 'gan' to the current choices
+    additional_choices = ['gan']
+    modified_choices = current_choices + additional_choices
 
-    modified_choices = ['pt', 'sft', 'rm', 'ppo', 'dpo', 'gan']
-
-    # Create a new parser with the modified choices
-    parser._action_groups[1].choices['stage'].choices = modified_choices
-    
-    # Parse the arguments again using the modified parser
-    return parse_args(parser, args)
+    # Recreate the parser with the modified choices
+    parser = HfArgumentParser((HfArgumentParser.DEFAULT_ARGS))
+    parser.add_argument('--stage', choices=modified_choices,
+                        help="Choose the stage.", default='pt')
 
 
 def parse_infer_args(args: Optional[Dict[str, Any]] = None) -> _INFER_CLS:
