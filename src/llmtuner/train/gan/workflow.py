@@ -97,12 +97,14 @@ def run_gan(
     for epoch in range(int(training_args.num_train_epochs)):
 
         for idx, batch in enumerate(dataloader):
-            print(batch)
             ## training the discriminator here
+            print(tokenizer.decode(batch['input_ids']))
+            print(tokenizer.decode(batch['labels']))
+            pass
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
-            batch["input_ids"] =  batch["input_ids"].squeeze(1)[:,:truncation] # truncating the input
-            batch["attention_mask"] = batch["attention_mask"].squeeze(1)[:,:truncation]
+            batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
+            batch["attention_mask"] = batch["attention_mask"].squeeze(1)
             discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
             fake = generator.generateText(batch, dataset.maxLength) #tensor like, shaped (batchSize, maxLength)
             fakeData["input_ids"] = fake
