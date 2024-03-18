@@ -5,7 +5,7 @@ import transformers
 from typing import Any, Dict, Optional, Tuple
 from transformers import HfArgumentParser, Seq2SeqTrainingArguments
 from transformers.trainer_utils import get_last_checkpoint
-
+import argparse
 from llmtuner.extras.logging import get_logger
 from llmtuner.extras.misc import parse_args
 from llmtuner.hparams import (
@@ -70,7 +70,6 @@ def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     modified_parser._action_groups[1].choices['stage'].choices = modified_choices
     
     # Parse the arguments again using the modified parser
-    print(modified_parser)
     return parse_args(modified_parser, args)
 
 
