@@ -71,6 +71,20 @@ def run_gan(
     if training_args.predict_with_generate:
         tokenizer.padding_side = "left" # use left-padding in generation
 
+    data_collator = DataCollatorForSeq2Seq(
+        tokenizer=tokenizer,
+        pad_to_multiple_of=8 if tokenizer.padding_side == "right" else None, # for shift short attention
+        label_pad_token_id=IGNORE_INDEX if data_args.ignore_pad_token_for_loss else tokenizer.pad_token_id
+    )
+
+    # Override the decoding parameters of Seq2SeqTrainer
+    training_args_dict = training_args.to_dict()
+    training_args_dict.update(dict(
+        generation_max_length=training_args.generation_max_length or data_args.cutoff_len,
+        generation_num_beams=data_args.eval_num_beams or training_args.generation_num_beams
+    ))
+    training_args = Seq2SeqTrainingArguments(**training_args_dict)
+
     discriminator = TextDiscriminatorWithTransformer("gpt2", 1)
     generator = model
     
@@ -80,7 +94,7 @@ def run_gan(
     lossFunc = torch.nn.BCELoss()
     dataloader = DataLoader(dataset=dataset, batch_size=16, shuffle=True)
 
-    for epoch in range(numEpochs):
+    for epoch in range(training_args.num_train_epochs):
 
         for idx, (batch,real) in enumerate(dataloader):
 
