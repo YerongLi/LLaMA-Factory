@@ -16,7 +16,7 @@ from llmtuner.train.utils import create_modelcard_and_push
 import torch
 import torch.nn as nn
 from transformers import GPT2Model, GPT2Tokenizer
-
+lr = 3e-3
 class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, transformer_model_name, num_classes):
         super(TextDiscriminatorWithTransformer, self).__init__()
