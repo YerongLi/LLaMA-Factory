@@ -54,6 +54,8 @@ def _verify_model_args(model_args: "ModelArguments", finetuning_args: "Finetunin
 
 def parse_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     parser = HfArgumentParser(_TRAIN_ARGS)
+    print('Enter parse_train_args')
+    print(parse_args(parser, args))
     return parse_args(parser, args)
 
 
@@ -87,7 +89,7 @@ def get_train_args(args: Optional[Dict[str, Any]] = None) -> _TRAIN_CLS:
     if finetuning_args.stage != "pt" and data_args.template is None:
         raise ValueError("Please specify which `template` to use.")
 
-    if finetuning_args.stage != "sft" and training_args.predict_with_generate:
+    if finetuning_args.stage not in ["sft", "gan"] and training_args.predict_with_generate:
         raise ValueError("`predict_with_generate` cannot be set as True except SFT.")
 
     if finetuning_args.stage == "sft" and training_args.do_predict and not training_args.predict_with_generate:
