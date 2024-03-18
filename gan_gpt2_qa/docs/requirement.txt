@@ -1,0 +1,11 @@
+Craft a GAN network utilizing a GPT-2 discriminator and a GPT-2-based generator trained on a QA dataset Squad of your choice. Explore how this architecture generates realistic question-answer pairs, and delve into the nuances of training, evaluation, and potential applications of such a model.
+	Dataset should be this
+		from datasets import load_dataset
+		squad = load_dataset("squad", split="train[:5000]")
+    The discriminator should look at this, Use pytorch
+        self.transformer = GPT2Model.from_pretrained(transformer_model_name)
+        # Modify architecture as needed (e.g., adding classification layers)
+        self.classifier = nn.Sequential(
+            nn.Linear(768, num_classes),  # Modify input size based on the transformer's output dimension
+            nn.Sigmoid()  # Sigmoid activation for binary classification
+        )
