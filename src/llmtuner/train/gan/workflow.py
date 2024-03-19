@@ -24,6 +24,8 @@ class TextDiscriminatorWithTransformer(nn.Module):
         # Load pre-trained transformer model and tokenizer
         self.transformer = AutoModel.from_pretrained(transformer_model_name)
         self.tokenizer = AutoTokenizer.from_pretrained(transformer_model_name, padding_side='left')
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+
         # Modify architecture as needed (e.g., adding classification layers)
         self.classifier = nn.Sequential(
             nn.Linear(768, num_classes),  # Modify input size based on the transformer's output dimension
