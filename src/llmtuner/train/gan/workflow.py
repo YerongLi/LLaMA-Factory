@@ -87,7 +87,7 @@ def run_gan(
     ))
     training_args = Seq2SeqTrainingArguments(**training_args_dict)
 
-    discriminator = TextDiscriminatorWithTransformer("gpt2", 1)
+    discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
     generator = model
     lr = training_args.learning_rate
     
@@ -119,27 +119,27 @@ def run_gan(
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
             lossDiscriminatorFake = lossFunc(discOutsFake, torch.zeros_like(discOutsFake))
-            finalLoss = (lossDiscriminatorReal + lossDiscriminatorFake) / 2
-            if finalLoss > 0.5:
+            discLoss = (lossDiscriminatorReal + lossDiscriminatorFake) / 2
+            if discLoss > 0.5:
                 discriminator.zero_grad()
-                finalLoss.backward(retain_graph = True) # adding the retain parameter we ensure that we can use the fake text also for the generator
+                discLoss.backward(retain_graph = True) # adding the retain parameter we ensure that we can use the fake text also for the generator
                 optDisc.step()
             
             ## training the generator
             # print("Loss of Discriminator (Real): {:.2f}".format(lossDiscriminatorReal))
             # print("Loss of Discriminator (Fake): {:.2f}".format(lossDiscriminatorFake))
-            # print("Final Loss: {:.2f}".format(finalLoss))
+            # print("Final Loss: {:.2f}".format(discLoss))
             output = discriminator(fakeData) # here the discriminator has been trained once, so this value is different from discOutsFake
             lossGenerator = lossFunc(output, torch.ones_like(output))
             generator.zero_grad()
             lossGenerator.backward()
             optGen.step()
-            print("discriminator Loss: {:.2f}".format(finalLoss))
+            print("discriminator Loss: {:.2f}".format(discLoss))
             print("generator Loss: {:.2f}".format(lossGenerator))
             generator.zero_grad()
             
             if idx == 0:
-                print("Epoch number ", epoch, " loss Gen: ", lossGenerator, " loss Disc: ", finalLoss)
+                print("Epoch number ", epoch, " loss Gen: ", lossGenerator, " loss Disc: ", discLoss)
         
         # once we trained the model for a single epoch, were going to save both models to a local dir
 
