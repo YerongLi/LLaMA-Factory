@@ -104,7 +104,13 @@ def run_gan(
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
             batch["attention_mask"] = batch["attention_mask"].squeeze(1)
             discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
-            fake = generator.generateText(batch, dataset.maxLength) #tensor like, shaped (batchSize, maxLength)
+            fake = generator.generate(**batch,
+                       do_sample=True,
+                        top_k=0,
+                        top_p=0.95,
+                        eos_token_id = [13],
+                       num_return_sequences=1,  # Number of generated sequences
+                        #tensor like, shaped (batchSize, maxLength)
             fakeData["input_ids"] = fake
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
