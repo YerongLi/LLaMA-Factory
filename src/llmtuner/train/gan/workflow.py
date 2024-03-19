@@ -109,8 +109,7 @@ def run_gan(
                         top_k=0,
                         top_p=0.95,
                         eos_token_id = [13],
-                       num_return_sequences=1,  # Number of generated sequences
-                        #tensor like, shaped (batchSize, maxLength)
+                       num_return_sequences=1,)  # Number of generated 
             fakeData["input_ids"] = fake
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
