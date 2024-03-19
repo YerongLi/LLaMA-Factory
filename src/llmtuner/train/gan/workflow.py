@@ -15,14 +15,15 @@ from llmtuner.train.sft.trainer import CustomSeq2SeqTrainer
 from llmtuner.train.utils import create_modelcard_and_push
 import torch
 import torch.nn as nn
-from transformers import GPT2Model
+from transformers import AutoTokenizer, AutoModel
 
 class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, transformer_model_name, num_classes):
         super(TextDiscriminatorWithTransformer, self).__init__()
         
         # Load pre-trained transformer model and tokenizer
-        self.transformer = GPT2Model.from_pretrained(transformer_model_name)
+        self.transformer = AutoModel.from_pretrained(transformer_model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(transformer_model_name)
         # Modify architecture as needed (e.g., adding classification layers)
         self.classifier = nn.Sequential(
             nn.Linear(768, num_classes),  # Modify input size based on the transformer's output dimension
@@ -110,7 +111,7 @@ def run_gan(
                         top_p=0.95,
                         eos_token_id = [13],
                        num_return_sequences=1,)  # Number of generated 
-            fake = tokenizer.batch_decode(fake, skip_special_tokens=True)
+            fakeData["input_ids"] = fake
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
             lossDiscriminatorFake = lossFunc(discOutsFake, torch.zeros_like(discOutsFake))
