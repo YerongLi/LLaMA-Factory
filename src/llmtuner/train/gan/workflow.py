@@ -52,7 +52,7 @@ from transformers import AutoTokenizer, AutoModel
 
 class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, flan_model_name, num_classes):
-        super(TextDiscriminatorWithFLANT5, self).__init__()
+        super(TextDiscriminatorWithTransformer, self).__init__()
         
         # Load pre-trained FLAN-T5 model and tokenizer
         self.flan_model = AutoModel.from_pretrained(flan_model_name)
