@@ -68,7 +68,7 @@ class TextDiscriminatorWithTransformer(nn.Module):
         # Tokenize input text
         
         # Obtain transformer embeddings
-        outputs = self.transformer(input_ids=x['input_ids'])
+        outputs = self.transformer(input_ids=x)
         
         # Use pooled output or hidden states as input to the classifier
         # Here, we're using the pooled output (CLS token)
