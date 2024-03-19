@@ -17,6 +17,6 @@ python src/train_bash.py \
     --logging_steps 10 \
     --save_steps 10 \
     --save_total_limit 5 \
-    --learning_rate 5e-5 \
+    --learning_rate 4e-5 \
     --num_train_epochs 1000.0 \
     --checkpoint_dir user4/checkpoint-4150
