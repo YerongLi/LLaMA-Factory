@@ -15,7 +15,7 @@ from llmtuner.train.sft.trainer import CustomSeq2SeqTrainer
 from llmtuner.train.utils import create_modelcard_and_push
 import torch
 import torch.nn as nn
-from transformers import GPT2Model, GPT2Tokenizer
+from transformers import GPT2Model
 
 class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, transformer_model_name, num_classes):
@@ -97,7 +97,7 @@ def run_gan(
 
         for idx, batch in enumerate(dataloader):
             ## training the discriminator here
-            real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens)
+            real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
