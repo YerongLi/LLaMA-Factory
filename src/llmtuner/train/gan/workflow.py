@@ -106,6 +106,7 @@ def run_gan(
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
             batch["attention_mask"] = batch["attention_mask"].squeeze(1)
+            # discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
             discOutsReal = discriminator(batch['input_ids'])  #tensor like, shaped (batchsize, 1)
             fake_ids = generator.generate(**batch,
                        do_sample=True,
@@ -116,6 +117,7 @@ def run_gan(
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
             fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
 
+            # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
             lossDiscriminatorFake = lossFunc(discOutsFake, torch.zeros_like(discOutsFake))
