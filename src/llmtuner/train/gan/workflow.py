@@ -49,10 +49,8 @@ from transformers import AutoTokenizer, AutoModel
 #         out = self.classifier(aggregated_hidden_state)      
 #         return out
 
-import torch.nn as nn
-from transformers import FlanForConditionalGeneration, FlanTokenizer
 
-class TextDiscriminatorWithFLANT5(nn.Module):
+class TextDiscriminatorWithTransformer(nn.Module):
     def __init__(self, flan_model_name, num_classes):
         super(TextDiscriminatorWithFLANT5, self).__init__()
         
