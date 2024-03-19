@@ -49,37 +49,36 @@ from transformers import AutoTokenizer, AutoModel
 #         out = self.classifier(aggregated_hidden_state)      
 #         return out
 
-class TextDiscriminatorWithTransformer(nn.Module):
-    def __init__(self, transformer_model_name, num_classes):
-        super(TextDiscriminatorWithTransformer, self).__init__()
+import torch.nn as nn
+from transformers import FlanForConditionalGeneration, FlanTokenizer
+
+class TextDiscriminatorWithFLANT5(nn.Module):
+    def __init__(self, flan_model_name, num_classes):
+        super(TextDiscriminatorWithFLANT5, self).__init__()
         
-        # Load pre-trained transformer model and tokenizer
-        self.transformer = AutoModel.from_pretrained(transformer_model_name)
-        self.tokenizer = AutoTokenizer.from_pretrained(transformer_model_name, padding_side='left')
-        self.tokenizer.pad_token = self.tokenizer.eos_token
-        self.model_name = transformer_model_name
+        # Load pre-trained FLAN-T5 model and tokenizer
+        self.flan_model = FlanForConditionalGeneration.from_pretrained(flan_model_name)
+        self.tokenizer = FlanTokenizer.from_pretrained(flan_model_name)
+        
         # Modify architecture as needed (e.g., adding classification layers)
         self.classifier = nn.Sequential(
-            nn.Linear(768, num_classes),  # Modify input size based on the transformer's output dimension
+            nn.Linear(self.flan_model.config.hidden_size, num_classes),
             nn.Sigmoid()  # Sigmoid activation for binary classification
         )
         
-    def forward(self, x):
+    def forward(self, input_text):
         # Tokenize input text
+        input_ids = self.tokenizer(input_text, return_tensors='pt', padding=True, truncation=True)['input_ids']
         
-        # Obtain transformer embeddings
-        outputs = self.transformer(input_ids=x)
+        # Pass input_ids to FLAN-T5 model
+        outputs = self.flan_model(input_ids=input_ids)
+        hidden_state = outputs.last_hidden_state
         
-        # Use pooled output or hidden states as input to the classifier
-        # Here, we're using the pooled output (CLS token)
-        
-        last_hidden_state = outputs['last_hidden_state']
-        
-        # Aggregate the hidden states to a single representation for the whole sentence
-        aggregated_hidden_state = last_hidden_state.mean(dim=1)  # You can use other aggregation methods as well
         # Apply classification layers
-        out = self.classifier(aggregated_hidden_state)      
+        out = self.classifier(hidden_state[:, 0])  # Using the CLS token
+        
         return out
+
 
 if TYPE_CHECKING:
     from transformers import TrainerCallback
@@ -135,7 +134,8 @@ def run_gan(
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
             batch["attention_mask"] = batch["attention_mask"].squeeze(1)
             # discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
-            discOutsReal = discriminator(batch['input_ids'])  #tensor like, shaped (batchsize, 1)
+
+            discOutsReal = discriminator(real)  #tensor like, shaped (batchsize, 1)
             fake_ids = generator.generate(**batch,
                        do_sample=True,
                         top_k=0,
@@ -143,10 +143,10 @@ def run_gan(
                         eos_token_id = [13],
                        num_return_sequences=1,)  # Number of generated 
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
-            fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
+            # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
 
             # discOutsFake = discriminator(fakeData)
-            discOutsFake = discriminator(fakeData)
+            discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
             lossDiscriminatorFake = lossFunc(discOutsFake, torch.zeros_like(discOutsFake))
             discLoss = (lossDiscriminatorReal + lossDiscriminatorFake) / 2
