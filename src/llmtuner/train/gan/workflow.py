@@ -23,7 +23,7 @@ class TextDiscriminatorWithTransformer(nn.Module):
         
         # Load pre-trained transformer model and tokenizer
         self.transformer = AutoModel.from_pretrained(transformer_model_name)
-        self.tokenizer = AutoTokenizer.from_pretrained(transformer_model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(transformer_model_name, padding_side='left')
         # Modify architecture as needed (e.g., adding classification layers)
         self.classifier = nn.Sequential(
             nn.Linear(768, num_classes),  # Modify input size based on the transformer's output dimension
@@ -100,18 +100,20 @@ def run_gan(
             ## training the discriminator here
             del batch['labels']
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
-            fakeData = {} # we construct the fake data, and were going to use it twice
-            fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
+            # fakeData = {} # we construct the fake data, and were going to use it twice
+            # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
             batch["attention_mask"] = batch["attention_mask"].squeeze(1)
             discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
-            fake = generator.generate(**batch,
+            fake_ids = generator.generate(**batch,
                        do_sample=True,
                         top_k=0,
                         top_p=0.95,
                         eos_token_id = [13],
                        num_return_sequences=1,)  # Number of generated 
-            fakeData["input_ids"] = fake
+            fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
+            fakeData = tokenizer(sentences, return_tensors="pt", padding=True).to(model.device)
+
             discOutsFake = discriminator(fakeData)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
             lossDiscriminatorFake = lossFunc(discOutsFake, torch.zeros_like(discOutsFake))
