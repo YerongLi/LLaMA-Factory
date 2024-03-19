@@ -57,8 +57,8 @@ class TextDiscriminatorWithFLANT5(nn.Module):
         super(TextDiscriminatorWithFLANT5, self).__init__()
         
         # Load pre-trained FLAN-T5 model and tokenizer
-        self.flan_model = FlanForConditionalGeneration.from_pretrained(flan_model_name)
-        self.tokenizer = FlanTokenizer.from_pretrained(flan_model_name)
+        self.flan_model = AutoModel.from_pretrained(flan_model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(flan_model_name)
         
         # Modify architecture as needed (e.g., adding classification layers)
         self.classifier = nn.Sequential(
