@@ -100,6 +100,7 @@ def run_gan(
             ## training the discriminator here
             print(batch)
             logging.info(batch)
+            logging.info(tokenizer.batch_decode(batch))
             continue
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
@@ -118,7 +119,6 @@ def run_gan(
                 optDisc.step()
             
             ## training the generator
-            finalLoss = (lossDiscriminatorReal + lossDiscriminatorFake) / 2
             # print("Loss of Discriminator (Real): {:.2f}".format(lossDiscriminatorReal))
             # print("Loss of Discriminator (Fake): {:.2f}".format(lossDiscriminatorFake))
             # print("Final Loss: {:.2f}".format(finalLoss))
