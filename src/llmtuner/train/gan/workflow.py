@@ -31,7 +31,6 @@ class TextDiscriminatorWithTransformer(nn.Module):
         
     def forward(self, x):
         # Tokenize input text
-     #   inputs = self.tokenizer(x, return_tensors="pt", padding=True, truncation=True)
         
         # Obtain transformer embeddings
         outputs = self.transformer(**x)
@@ -41,7 +40,7 @@ class TextDiscriminatorWithTransformer(nn.Module):
         
         last_hidden_state = outputs['last_hidden_state']
         
-                # Aggregate the hidden states to a single representation for the whole sentence
+        # Aggregate the hidden states to a single representation for the whole sentence
         aggregated_hidden_state = last_hidden_state.mean(dim=1)  # You can use other aggregation methods as well
         # Apply classification layers
         out = self.classifier(aggregated_hidden_state)      
@@ -100,7 +99,7 @@ def run_gan(
             ## training the discriminator here
             print(batch)
             logging.info(batch)
-            logging.info(tokenizer.batch_decode(batch))
+            logging.info(tokenizer.batch_decode(batch["input_ids"]))
             continue
             fakeData = {} # we construct the fake data, and were going to use it twice
             fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
