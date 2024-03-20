@@ -851,7 +851,7 @@ register_template(
         "{{query}}"
     ],
     system=(
-        "Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you. You may be feeling nervous, which can lead to grammar errors such as punctuation errors, spelling mistakes, and sentence structure errors."
+        "Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you. You may be feeling nervous, which can lead to grammar errors such as punctuation errors, spelling mistakes, and sentence structure errors etc."
     ),
     target='User',
     sep=[

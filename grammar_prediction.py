@@ -148,6 +148,11 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
     texts = []
     response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
+with open('usergan.jsonl', 'r') as jsonl_file:
+    gan_error_counts, total_gan_texts = process_data(jsonl_file, 'GAN')
+
+gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
+
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 # Print error type frequencies
@@ -160,8 +165,12 @@ print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
     percentage = (count / total_output_texts) * 100
     print(f"{error_type}: {percentage:.2f}% ")
-    
+ print("\nGAN Error Type Frequencies:")
+for error_type, count in gan_error_counts.items():
+    percentage = (count / total_gan_texts) * 100
+    print(f"{error_type}: {percentage:.2f}% ")   
 # Plot histogram
+# Determine the bar width
 # Determine the bar width
 bar_width = 0.4
 
@@ -176,13 +185,15 @@ plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='
 # Plot the blue bars (output)
 plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='LLM', alpha=0.5, height=bar_width)
 
+# Plot the green bars (GAN)
+plt.barh(y_pos + 3*bar_width/2, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
+
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 plt.legend()
 
 # Adjust font size
-print(index_to_error_type.keys())
 plt.yticks(y_pos, [index_to_error_type[i] for i in range(len(index_to_error_type))], fontsize='small')  
 
 plt.savefig("Grammar.png")
