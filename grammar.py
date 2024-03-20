@@ -115,10 +115,18 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
 
 # Training loop
-epochs = 3  # Number of training epochs
+epochs = 3 # Number of training epochs
+save_dir = './robertagrammar'
+
+# Create the directory if it doesn't exist
+os.makedirs(save_dir, exist_ok=True)
+
+# Save the model
+
 for epoch in range(epochs):
     model.train()
     with tqdm(total=len(train_loader), desc=f'Epoch {epoch + 1}/{epochs}', unit='batch') as pbar:
+        
         for input_ids, attention_mask, labels in train_loader:
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
 
@@ -130,7 +138,8 @@ for epoch in range(epochs):
             
             pbar.update(1)  # Update progress bar
             pbar.set_postfix({'loss': loss.item()})
-
+        model_path = os.path.join(save_dir, 'roberta_classifier.pt')
+        torch.save(model.state_dict(), model_path)
 # Evaluation
 model.eval()
 predictions = []
