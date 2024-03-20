@@ -139,7 +139,7 @@ def run_gan(
             print("Masked Portion:")
             print(masked_text)
 
-            labels_text = tokenizer.decode(labels, skip_special_tokens=True)
+            labels_text = tokenizer.decode(batch["labels"][0], skip_special_tokens=True)
             print("Masked Portion:")
             print(labels_text)
             # fakeData = {} # we construct the fake data, and were going to use it twice
