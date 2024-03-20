@@ -148,7 +148,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
 with open('usergan.jsonl', 'r') as jsonl_file:
-	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'GAN')
+	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
