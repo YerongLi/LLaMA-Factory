@@ -48,7 +48,7 @@ error_type_to_index = {
     'Word Choice/Usage': 32,
     'Sentence Fragments': 33,
     'Capitalization Errors': 34,
-    'Redundancy/Repetition': 35
+    'Redundancy/Repetition': 35,
     'No Error': 36
 }
 
@@ -87,6 +87,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 df = pd.read_csv('Grammar Correction.csv', sep=',')
 
 df['label'] = df['Error Type'].map(error_type_to_index)
+df = df[['Ungrammatical Statement', 'label']]
 
 new_df = pd.read_csv('grammar-correction.csv')
 
