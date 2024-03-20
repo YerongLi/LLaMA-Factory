@@ -168,7 +168,7 @@ bar_width = 0.4
 # Define the y-coordinates for the bars
 y_pos = np.arange(len(index_to_error_type))
 
-plt.figure(figsize=(16, 8))  # Larger and wider figure
+plt.figure(figsize=(16, 10))  # Larger and wider figure
 
 # Plot the red bars (response)
 plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Response', height=bar_width)
