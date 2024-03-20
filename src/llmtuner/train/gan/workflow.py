@@ -142,6 +142,7 @@ def run_gan(
                         eos_token_id = [13],
                        num_return_sequences=1,)  # Number of generated 
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
+            fake = [f.rstrip('\n') for f in fake]
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
             print(' === ====')
             print(real[0])
