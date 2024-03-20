@@ -3,14 +3,6 @@ import json
 from tqdm import tqdm
 import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.load_state_dict(torch.load('robertagrammar/roberta_classifier.pt', map_location=device))
-model.to(device)
-model.eval()
-
-tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
-max_length = 256
 error_type_to_index = {
     'Sentence Structure Errors': 0,
     'Verb Tense Errors': 1,
@@ -51,7 +43,14 @@ error_type_to_index = {
     'No Error': 36
 }
 index_to_error_type = {value: key for key, value in error_type_to_index.items()}
-model = RobertaClassifier(num_classes=len(error_type_to_index))
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.load_state_dict(torch.load('robertagrammar/roberta_classifier.pt', map_location=device))
+model.to(device)
+model.eval()
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+max_length = 256
+
 
 def tokenize_texts(texts, tokenizer, max_length):
     tokenized = tokenizer.batch_encode_plus(
