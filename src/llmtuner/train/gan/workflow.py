@@ -127,7 +127,16 @@ def run_gan(
             ## training the discriminator here
             del batch['labels']
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
-
+            unmasked_input_ids = batch["input_ids"][batch["attention_mask"] == 1]
+            unmasked_text = tokenizer.decode(unmasked_input_ids, skip_special_tokens=True)
+            print("Unmasked Portion:")
+            print(unmasked_text)
+            
+            # Decode and print masked portion
+            masked_input_ids = batch["input_ids"][batch["attention_mask"] == 0]
+            masked_text = tokenizer.decode(masked_input_ids, skip_special_tokens=True)
+            print("Masked Portion:")
+            print(masked_text)
             # fakeData = {} # we construct the fake data, and were going to use it twice
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             # batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
