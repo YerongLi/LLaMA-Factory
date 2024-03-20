@@ -2,6 +2,8 @@ from grammar import RobertaClassifier
 import json
 from tqdm import tqdm
 import torch
+import matplotlib.pyplot as plt
+
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 error_type_to_index = {
     'Sentence Structure Errors': 0,
@@ -42,6 +44,8 @@ error_type_to_index = {
     'Redundancy/Repetition': 35,
     'No Error': 36
 }
+index_to_error_type = {value: key for key, value in error_type_to_index.items()}
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = RobertaClassifier(num_classes=len(error_type_to_index))
 model.load_state_dict(torch.load('robertagrammar/roberta_classifier.pt', map_location=device))
@@ -51,7 +55,6 @@ model.eval()
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 max_length = 256
 
-index_to_error_type = {value: key for key, value in error_type_to_index.items()}
 
 def tokenize_texts(texts, tokenizer, max_length):
     tokenized = tokenizer.batch_encode_plus(
@@ -149,8 +152,8 @@ for error_type, count in output_error_counts.items():
 # Plot histogram
 plt.figure(figsize=(10, 6))
 
-plt.barh(list(error_type_to_index.keys()), list(response_error_percentages.values()), color='blue', label='Response')
-plt.barh(list(error_type_to_index.keys()), list(output_error_percentages.values()), color='red', label='Output', alpha=0.5)
+plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(response_error_percentages.values()), color='blue', label='Response')
+plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(output_error_percentages.values()), color='red', label='Output', alpha=0.5)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
