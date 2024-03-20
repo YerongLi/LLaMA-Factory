@@ -129,6 +129,7 @@ def run_gan(
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
             unmasked_input_ids = batch["input_ids"][0][batch["attention_mask"][0] == 1]
             unmasked_text = tokenizer.decode(unmasked_input_ids, skip_special_tokens=True)
+            
             print("Unmasked Portion:")
             print(unmasked_text)
             
@@ -171,8 +172,8 @@ def run_gan(
             fake = [f.rstrip('\n') for f in fake]
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
             print(' === ====')
-            print(real[1][-80:])
-            print(fake[1][-80:])
+            print(real[0][-80:])
+            print(fake[0][-80:])
             # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
