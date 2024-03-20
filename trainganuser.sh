@@ -17,5 +17,5 @@ python src/train_bash.py \
     --logging_steps 10 \
     --save_steps 10 \
     --save_total_limit 5 \
-    --learning_rate 4e-4 \
-    --num_train_epochs 1000.0
+    --num_train_epochs 1000.0 \
+    # --learning_rate 4e-4
