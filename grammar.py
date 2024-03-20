@@ -97,7 +97,9 @@ training_args = TrainingArguments(
     num_train_epochs=3,
     logging_dir='./logs',
     logging_steps=10,
-    evaluation_strategy="epoch"
+    evaluation_strategy="epoch",
+    output_dir='./grammarroberta',  # Specify the directory to save the trained model
+
 )
 
 # Create Trainer instance
