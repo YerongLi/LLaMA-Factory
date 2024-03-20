@@ -840,6 +840,7 @@ register_template(
     sep=[
         "\n"
     ]
+)
 
 register_template(
     name="usergan",
