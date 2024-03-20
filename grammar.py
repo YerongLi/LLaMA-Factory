@@ -78,6 +78,7 @@ def tokenize_texts(texts, tokenizer, max_length):
         return_tensors='pt'
     )
     return tokenized
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Example data for demonstration
 # texts = ["I love coding!", "I hate bugs!"] * 100
@@ -107,7 +108,7 @@ test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
 # Initialize the model
 num_classes = len(error_type_to_index)  # Number of classes (positive and negative sentiment)
-model = RobertaClassifier(num_classes)
+model = RobertaClassifier(num_classes).to(device)
 
 # Define loss function and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -119,6 +120,8 @@ for epoch in range(epochs):
     model.train()
     with tqdm(total=len(train_loader), desc=f'Epoch {epoch + 1}/{epochs}', unit='batch') as pbar:
         for input_ids, attention_mask, labels in train_loader:
+            input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
+
             optimizer.zero_grad()
             logits = model(input_ids, attention_mask)
             loss = criterion(logits, labels)
