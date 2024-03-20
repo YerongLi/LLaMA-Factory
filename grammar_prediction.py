@@ -78,41 +78,14 @@ def classify_texts(texts, model, device):
 
     return predicted_error_types
 
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
-    texts = []
-    error_counts = {error_type: 0 for error_type in error_type_to_index}
-    total_texts = 0
+response_error_counts = {error_type: 0 for error_type in error_type_to_index}
+output_error_counts = {error_type: 0 for error_type in error_type_to_index}
 
-    for line in tqdm(jsonl_file):
-        json_obj = json.loads(line)
-        if 'response' not in json_obj:
-            continue
+# Total number of texts
+total_response_texts = 0
+total_output_texts = 0
 
-        text = json_obj['output']
-        texts.append(text)
-
-        if len(texts) == 64:
-            predicted_error_types = classify_texts(texts, model, device)
-            for error_type in predicted_error_types:
-                error_counts[error_type] += 1
-            total_texts += len(texts)
-            texts = []
-
-    # Process remaining texts
-    if texts:
-        predicted_error_types = classify_texts(texts, model, device)
-        for error_type in predicted_error_types:
-            error_counts[error_type] += 1
-        total_texts += len(texts)
-
-# Calculate and print error type frequencies
-print("output field Error Type Frequencies:")
-for error_type, count in error_counts.items():
-    percentage = (count / total_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ")
-    # print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
-
-
+# Open JSONL file
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     texts = []
 
@@ -123,29 +96,67 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         # Check if 'response' field exists in the JSON object
         if 'response' in json_obj:
             # Get the text from the 'response' field
-            text = json_obj['response']
-            texts.append(text)
+            response_text = json_obj['response']
+            texts.append(response_text)
 
             # If we reach the batch size, classify texts and update error counts
             if len(texts) == 64:
                 predicted_error_types = classify_texts(texts, model, device)
                 for error_type in predicted_error_types:
-                    error_counts[error_type] += 1
-                total_texts += len(texts)
+                    response_error_counts[error_type] += 1
+                total_response_texts += len(texts)
+                texts = []
+
+        # Check if 'output' field exists in the JSON object
+        if 'output' in json_obj:
+            # Get the text from the 'output' field
+            output_text = json_obj['output']
+            texts.append(output_text)
+
+            # If we reach the batch size, classify texts and update error counts
+            if len(texts) == 64:
+                predicted_error_types = classify_texts(texts, model, device)
+                for error_type in predicted_error_types:
+                    output_error_counts[error_type] += 1
+                total_output_texts += len(texts)
                 texts = []
 
     # Process remaining texts
     if texts:
         predicted_error_types = classify_texts(texts, model, device)
         for error_type in predicted_error_types:
-            error_counts[error_type] += 1
-        total_texts += len(texts)
+            if 'response' in json_obj:
+                response_error_counts[error_type] += 1
+                total_response_texts += 1
+            if 'output' in json_obj:
+                output_error_counts[error_type] += 1
+                total_output_texts += 1
 
-# Calculate and print error type frequencies
-print("output field Error Type Frequencies:")
-for error_type, count in error_counts.items():
-    percentage = (count / total_texts) * 100
-    # print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
+# Calculate percentages
+response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
+output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
+# Print error type frequencies
+print("Response Error Type Frequencies:")
+for error_type, count in response_error_counts.items():
+    percentage = (count / total_response_texts) * 100
+    print(f"{error_type}: {percentage:.2f}% ")
+
+print("\nOutput Error Type Frequencies:")
+for error_type, count in output_error_counts.items():
+    percentage = (count / total_output_texts) * 100
     print(f"{error_type}: {percentage:.2f}% ")
     
-    
+# Plot histogram
+plt.figure(figsize=(10, 6))
+
+plt.barh(list(error_type_to_index.keys()), list(response_error_percentages.values()), color='blue', label='Response')
+plt.barh(list(error_type_to_index.keys()), list(output_error_percentages.values()), color='red', label='Output', alpha=0.5)
+
+plt.xlabel('Percentage')
+plt.ylabel('Error Type')
+plt.title('Error Type Frequencies')
+plt.legend()
+
+plt.savefig("Grammar error")
+
+
