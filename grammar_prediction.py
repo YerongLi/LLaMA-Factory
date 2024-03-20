@@ -157,6 +157,6 @@ plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 plt.legend()
 
-plt.savefig("Grammar error")
+plt.savefig("Grammar.png")
 
 
