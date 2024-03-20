@@ -2,6 +2,7 @@ from grammar import RobertaClassifier, tokenize_texts, error_type_to_index
 import json
 from tqdm import tqdm
 import torch
+from transformers import RobertaTokenizer, RobertaForSequenceClassification
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = RobertaClassifier(num_classes=len(error_type_to_index))
