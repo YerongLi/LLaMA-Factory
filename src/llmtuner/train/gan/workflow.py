@@ -139,14 +139,17 @@ def run_gan(
             success = False
 
             while attempts < 3 and not success:
-                fake_ids = generator.generate(**batch,
+                try:
+                    fake_ids = generator.generate(**batch,
                                                do_sample=True,
                                                top_k=0,
                                                top_p=0.95,
                                                eos_token_id=[13],
                                                num_return_sequences=1)
+                except:
+                    fake_ids = None
                 # Check if fake_ids is generated successfully
-                if fake_ids:
+                if fake_ids is not None:
                     success = True
                     break
                 else:
