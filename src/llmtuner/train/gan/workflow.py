@@ -16,7 +16,7 @@ from llmtuner.train.utils import create_modelcard_and_push
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModel
-
+import os
 # class TextDiscriminatorWithTransformer(nn.Module):
 #     def __init__(self, transformer_model_name, num_classes):
 #         super(TextDiscriminatorWithTransformer, self).__init__()
@@ -111,7 +111,7 @@ def run_gan(
     ))
     training_args = Seq2SeqTrainingArguments(**training_args_dict)
 
-    discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
+    discriminator = TextDiscriminatorWithTransformer(os.environ.get('T5'), 1)
     generator = model
     dis_lr = training_args.learning_rate 
     gen_lr = training_args.learning_rate /20
@@ -125,7 +125,7 @@ def run_gan(
 
         for idx, batch in enumerate(dataloader):
             ## training the discriminator here
-            del batch['labels']
+            # del batch['labels']
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
             unmasked_input_ids = batch["input_ids"][0][batch["attention_mask"][0] == 1]
             unmasked_text = tokenizer.decode(unmasked_input_ids, skip_special_tokens=True)
@@ -138,6 +138,10 @@ def run_gan(
             masked_text = tokenizer.decode(masked_input_ids, skip_special_tokens=True)
             print("Masked Portion:")
             print(masked_text)
+
+            labels_text = tokenizer.decode(labels, skip_special_tokens=True)
+            print("Masked Portion:")
+            print(labels_text)
             # fakeData = {} # we construct the fake data, and were going to use it twice
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             # batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
