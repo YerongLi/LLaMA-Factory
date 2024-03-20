@@ -12,7 +12,7 @@ df['Ungrammatical Statement'] = df['Ungrammatical Statement'].str.strip()
 df['Standard English'] = df['Standard English'].str.strip()
 df['Ungrammatical Statement'] = df['Ungrammatical Statement'].str.replace(r'^\d+\.\s+', '', regex=True)
 df['Standard English'] = df['Standard English'].str.replace(r'^\d+\.\s+', '', regex=True)
-
+print(df)
 # Create labels
 df['label'] = df.apply(lambda row: 0 if row['Ungrammatical Statement'] == row['Standard English'] else 1, axis=1)
 
