@@ -10,6 +10,7 @@ from transformers import RobertaModel, RobertaTokenizer
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from tqdm import tqdm
 class RobertaClassifier(nn.Module):
     def __init__(self, num_classes):
         super(RobertaClassifier, self).__init__()
@@ -69,12 +70,16 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
 epochs = 3  # Number of training epochs
 for epoch in range(epochs):
     model.train()
-    for input_ids, attention_mask, labels in train_loader:
-        optimizer.zero_grad()
-        logits = model(input_ids, attention_mask)
-        loss = criterion(logits, labels)
-        loss.backward()
-        optimizer.step()
+    with tqdm(total=len(train_loader), desc=f'Epoch {epoch + 1}/{epochs}', unit='batch') as pbar:
+        for input_ids, attention_mask, labels in train_loader:
+            optimizer.zero_grad()
+            logits = model(input_ids, attention_mask)
+            loss = criterion(logits, labels)
+            loss.backward()
+            optimizer.step()
+            
+            pbar.update(1)  # Update progress bar
+            pbar.set_postfix({'loss': loss.item()})
 
 # Evaluation
 model.eval()
