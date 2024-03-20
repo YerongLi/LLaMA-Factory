@@ -5,7 +5,6 @@ import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = RobertaClassifier(num_classes=len(error_type_to_index))
 model.load_state_dict(torch.load('robertagrammar/roberta_classifier.pt', map_location=device))
 model.to(device)
 model.eval()
@@ -51,6 +50,9 @@ error_type_to_index = {
     'Redundancy/Repetition': 35,
     'No Error': 36
 }
+index_to_error_type = {value: key for key, value in error_type_to_index.items()}
+model = RobertaClassifier(num_classes=len(error_type_to_index))
+
 def tokenize_texts(texts, tokenizer, max_length):
     tokenized = tokenizer.batch_encode_plus(
         texts,
@@ -64,7 +66,7 @@ def tokenize_texts(texts, tokenizer, max_length):
 
 
 def classify_texts(texts):
-	global error_type_to_index
+
 	tokenized = tokenize_texts(texts, tokenizer, max_length)
 	input_ids = tokenized['input_ids'].to(device)
 	attention_mask = tokenized['attention_mask'].to(device)
@@ -73,7 +75,7 @@ def classify_texts(texts):
 		logits = model(input_ids, attention_mask)
 		_, predicted = torch.max(logits, 1)
 		predicted_labels = predicted.tolist()
-		predicted_error_types = [list(error_type_to_index.keys())[label] for label in predicted_labels]
+		predicted_error_types = [index_to_error_type[label] for label in predicted_labels]
 
 	return predicted_error_types
 
