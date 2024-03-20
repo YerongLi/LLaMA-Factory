@@ -154,15 +154,17 @@ gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_t
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 # Print error type frequencies
+print("\nOutput Error Type Frequencies:")
+for error_type, count in output_error_counts.items():
+	percentage = (count / total_output_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")
+	
 print("Response Error Type Frequencies:")
 for error_type, count in response_error_counts.items():
 	percentage = (count / total_response_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")
 
-print("\nOutput Error Type Frequencies:")
-for error_type, count in output_error_counts.items():
-	percentage = (count / total_output_texts) * 100
-	print(f"{error_type}: {percentage:.2f}% ")
+
 print("\nGAN Error Type Frequencies:")
 for error_type, count in gan_error_counts.items():
 	percentage = (count / total_gan_texts) * 100
