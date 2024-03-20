@@ -14,7 +14,7 @@ tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 max_length = 256
 
 def classify_texts(texts):
-	print(text)
+	print(texts)
 	tokenized = tokenize_texts(texts, tokenizer, max_length)
 	input_ids = tokenized['input_ids'].to(device)
 	attention_mask = tokenized['attention_mask'].to(device)
