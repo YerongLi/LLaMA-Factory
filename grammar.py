@@ -152,12 +152,13 @@ for epoch in range(epochs):
 
         # Calculate accuracy
         accuracy = accuracy_score(true_labels, predictions)
-        print("Accuracy:", accuracy, "best accuracy", best_accuracy)
         if accuracy > best_accuracy:
             best_accuracy = accuracy
             model_path = os.path.join(save_dir, 'roberta_classifier.pt')
 
             torch.save(model.state_dict(), model_path)
+        print("Accuracy:", accuracy, "best accuracy", best_accuracy)
+        
 # Evaluation
 model.eval()
 predictions = []
