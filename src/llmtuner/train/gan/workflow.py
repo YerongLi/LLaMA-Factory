@@ -135,7 +135,6 @@ def run_gan(
             # discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
 
             discOutsReal = discriminator(real)  #tensor like, shaped (batchsize, 1)
-            try:
             attempts = 0
             success = False
 
