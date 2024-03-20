@@ -81,6 +81,7 @@ def classify_texts(texts, model, device):
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     texts = []
     error_counts = {error_type: 0 for error_type in error_type_to_index}
+    total_texts = 0
 
     for line in tqdm(jsonl_file):
         json_obj = json.loads(line)
