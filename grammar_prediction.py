@@ -171,10 +171,10 @@ y_pos = np.arange(len(index_to_error_type))
 plt.figure(figsize=(16, 10))  # Larger and wider figure
 
 # Plot the red bars (response)
-plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Response', height=bar_width)
+plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Human', height=bar_width)
 
 # Plot the blue bars (output)
-plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='Output', alpha=0.5, height=bar_width)
+plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='LLM', alpha=0.5, height=bar_width)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
