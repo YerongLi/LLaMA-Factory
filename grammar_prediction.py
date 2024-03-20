@@ -113,7 +113,6 @@ def process_data(jsonl_file, field_name):
 					error_counts[error_type] += 1
 				total_texts += len(texts)
 				texts = []
-				break
 	# Process remaining texts
 	if texts:
 		predicted_error_types = classify_texts(texts, model, device)
