@@ -43,7 +43,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 		if 'response' not in json_obj:
 			continue
 
-		text = json_obj['o']
+		text = json_obj['output']
 		texts.append(text)
 
 		if len(texts) == 64:
