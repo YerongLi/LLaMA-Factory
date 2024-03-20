@@ -129,16 +129,17 @@ def run_gan(
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
             unmasked_input_ids = batch["input_ids"][0][batch["attention_mask"][0] == 1]
             unmasked_text = tokenizer.decode(unmasked_input_ids, skip_special_tokens=True)
+            for i in range
             print(batch["attention_mask"][0])
             print("Unmasked Portion:")
             print(unmasked_text)
-            
+            print(len(unmasked_input_ids))
             # Decode and print masked portion
             masked_input_ids = batch["input_ids"][0][batch["attention_mask"] [0]== 0]
             masked_text = tokenizer.decode(masked_input_ids, skip_special_tokens=True)
             print("Masked Portion:")
             print(masked_text)
-
+            print(len(masked_input_ids))
             # labels_text = tokenizer.decode(batch["labels"][0], skip_special_tokens=True)
             # print("Masked Portion:")
             # print(labels_text)
