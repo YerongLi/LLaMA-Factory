@@ -98,7 +98,6 @@ def process_data(jsonl_file, field_name):
     texts = []
     # Iterate over each line in the file
     for line in tqdm(jsonl_file):
-    	break
         json_obj = json.loads(line)
         
         # Check if the specified field exists in the JSON object
@@ -114,7 +113,7 @@ def process_data(jsonl_file, field_name):
                     error_counts[error_type] += 1
                 total_texts += len(texts)
                 texts = []
-
+               	break
     # Process remaining texts
     if texts:
         predicted_error_types = classify_texts(texts, model, device)
