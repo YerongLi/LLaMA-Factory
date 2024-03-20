@@ -75,63 +75,32 @@ def classify_texts(texts):
 
 	return predicted_error_types
 
-with open('user4_w_key.jsonl', 'r') as jsonl_file_output:
-    texts_output = []
-    all_output_errors = Counter()
-
-    for line in tqdm(jsonl_file_output):
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+    for line in tqdm(jsonl_file):
         json_obj = json.loads(line)
-        if 'output' in json_obj:
-            text = json_obj['output']
-            texts_output.append(text)
+        if 'response' not in json_obj:
+            continue
 
-            # Collect statistics on 'output' errors
-            output_errors = classify_texts([text])
-            all_output_errors.update(output_errors)
+        text = json_obj['output']
+        texts.append(text)
 
-            if len(texts_output) == 64:
-                predicted_error_types = classify_texts(texts_output)
-                for text, error_type in zip(texts_output, predicted_error_types):
-                    print(f"Output: {text}")
-                    print(f"Predicted Error Type: {error_type}")
-                    print("-" * 50)
-                texts_output = []
+        if len(texts) == 64:
+            predicted_error_types = classify_texts(texts, model, device)
+            for error_type in predicted_error_types:
+                error_counts[error_type] += 1
+            total_texts += len(texts)
+            texts = []
 
-# Calculate percentages of error types for 'output'
-total_output_errors = sum(all_output_errors.values())
+    # Process remaining texts
+    if texts:
+        predicted_error_types = classify_texts(texts, model, device)
+        for error_type in predicted_error_types:
+            error_counts[error_type] += 1
+        total_texts += len(texts)
 
-print("Output Error Types:")
-for error_type, count in all_output_errors.items():
-    percentage = (count / total_output_errors) * 100
-    print(f"{error_type}: {percentage:.2f}%")
-
-# Load data from 'user4_w_key.jsonl' for response
-with open('user4_w_key.jsonl', 'r') as jsonl_file_response:
-    texts_response = []
-    all_response_errors = Counter()
-
-    for line in tqdm(jsonl_file_response):
-        json_obj = json.loads(line)
-        if 'response' in json_obj:
-            response = json_obj['response']
-            texts_response.append(response)
-
-            # Collect statistics on 'response' errors
-            response_errors = classify_texts([response])
-            all_response_errors.update(response_errors)
-
-            if len(texts_response) == 64:
-                predicted_error_types = classify_texts(texts_response)
-                for text, error_type in zip(texts_response, predicted_error_types):
-                    print(f"Response: {text}")
-                    print(f"Predicted Error Type: {error_type}")
-                    print("-" * 50)
-                texts_response = []
-
-# Calculate percentages of error types for 'response'
-total_response_errors = sum(all_response_errors.values())
-
-print("\nResponse Error Types:")
-for error_type, count in all_response_errors.items():
-    percentage = (count / total_response_errors) * 100
-    print(f"{error_type}: {percentage:.2f}%")
+# Calculate and print error type frequencies
+print("Error Type Frequencies:")
+for error_type, count in error_counts.items():
+    percentage = (count / total_texts) * 100
+    print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
