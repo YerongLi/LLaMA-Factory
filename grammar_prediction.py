@@ -98,6 +98,7 @@ def process_data(jsonl_file, field_name):
     texts = []
     # Iterate over each line in the file
     for line in tqdm(jsonl_file):
+    	break
         json_obj = json.loads(line)
         
         # Check if the specified field exists in the JSON object
@@ -182,6 +183,7 @@ plt.title('Error Type Frequencies')
 plt.legend()
 
 # Adjust font size
+print(index_to_error_type.keys())
 plt.yticks(y_pos, [index_to_error_type[i] for i in range(len(index_to_error_type))], fontsize='small')  
 
 plt.savefig("Grammar.png")
