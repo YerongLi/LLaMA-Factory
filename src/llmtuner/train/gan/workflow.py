@@ -113,8 +113,8 @@ def run_gan(
 
     discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
     generator = model
-    dis_lr = training_args.learning_rate
-    gen_lr = training_args.learning_rate * 3
+    dis_lr = training_args.learning_rate 
+    gen_lr = training_args.learning_rate /5
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), dis_lr)
