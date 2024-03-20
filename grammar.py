@@ -117,7 +117,7 @@ test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
 train_dataset = TensorDataset(train_tokenized['input_ids'], train_tokenized['attention_mask'], torch.tensor(train_labels))
 test_dataset = TensorDataset(test_tokenized['input_ids'], test_tokenized['attention_mask'], torch.tensor(test_labels))
 
-batch_size = 48  # Define batch size
+batch_size = 64  # Define batch size
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
