@@ -115,7 +115,7 @@ def run_gan(
     discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
     generator = model
     dis_lr = training_args.learning_rate
-    gen_lr = training_args.learning_rate * 5
+    gen_lr = training_args.learning_rate * 3
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), dis_lr)
@@ -128,6 +128,7 @@ def run_gan(
             ## training the discriminator here
             del batch['labels']
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
+
             # fakeData = {} # we construct the fake data, and were going to use it twice
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
@@ -143,7 +144,9 @@ def run_gan(
                        num_return_sequences=1,)  # Number of generated 
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
-
+            print(' === ====')
+            print(real)
+            print(fake)
             # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
