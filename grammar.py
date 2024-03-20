@@ -57,10 +57,12 @@ error_type_to_index = {
 # Map error types to numerical indices
 df['label'] = df['Error Type'].map(error_type_to_index)
 
+# Convert DataFrame columns to lists
+statements = df['Ungrammatical Statement'].tolist()
+labels = df['label'].tolist()
+
 # Split the data into training and testing sets
-train_texts, test_texts, train_labels, test_labels = train_test_split(df['Ungrammatical Statement'], df['label'], test_size=0.2, random_state=42)
-# Split the data into training and testing sets
-train_texts, test_texts, train_labels, test_labels = train_test_split(df['Ungrammatical Statement'], df['label'], test_size=0.2, random_state=42)
+train_texts, test_texts, train_labels, test_labels = train_test_split(statements, labels, test_size=0.2, random_state=42)
 
 # Load the RoBERTa tokenizer and model
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
