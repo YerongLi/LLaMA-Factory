@@ -71,7 +71,6 @@ class TextDiscriminatorWithTransformer(nn.Module):
         # Pass input_ids to FLAN-T5 model
         outputs = self.flan_model.encoder(input_ids=input_ids['input_ids'],attention_mask=input_ids['attention_mask'], return_dict=True)
         hidden_state = outputs.last_hidden_state
-        print(hidden_state.shape)
         # Apply classification layers
         out = self.classifier(hidden_state[:, 0])  # Using the CLS token
         
