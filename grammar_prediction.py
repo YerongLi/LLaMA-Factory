@@ -45,9 +45,9 @@ error_type_to_index = {
     'No Error': 36
 }
 index_to_error_type = {value: key for key, value in error_type_to_index.items()}
-index_to_error_type = {24: 'Superlative Forms'}
-index_to_error_type = {15: 'Parallelism in Lists'}
-index_to_error_type = {10: 'Slang, Jargon'}
+index_to_error_type[24] = 'Superlative Forms'
+index_to_error_type[15] ='Parallelism in Lists'
+index_to_error_type[10] =  'Slang, Jargon'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = RobertaClassifier(num_classes=len(error_type_to_index))
