@@ -92,7 +92,7 @@ total_output_texts = 0
 def process_data(jsonl_file, field_name):
     error_counts = {error_type: 0 for error_type in error_type_to_index}
     total_texts = 0
-
+    texts = []
     # Iterate over each line in the file
     for line in tqdm(jsonl_file):
         json_obj = json.loads(line)
