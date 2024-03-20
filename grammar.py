@@ -13,43 +13,44 @@ from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 
 error_type_to_index = {
-    'Sentence Structure Errors': 1,
-    'Verb Tense Errors': 2,
-    'Subject-Verb Agreement': 3,
-    'Article Usage': 4,
-    'Spelling Mistakes': 5,
-    'Preposition Usage': 6,
-    'Punctuation Errors': 7,
-    'Relative Clause Errors': 8,
-    'Gerund and Participle Errors': 9,
-    'Abbreviation Errors': 10,
-    'Slang, Jargon, and Colloquialisms': 11,
-    'Negation Errors': 12,
-    'Incorrect Auxiliaries': 13,
-    'Ambiguity': 14,
-    'Tautology': 15,
-    'Lack of Parallelism in Lists or Series': 16,
-    'Mixed Metaphors/Idioms': 17,
-    'Parallelism Errors': 18,
-    'Contractions Errors': 19,
-    'Conjunction Misuse': 20,
-    'Inappropriate Register': 21,
-    'Passive Voice Overuse': 22,
-    'Mixed Conditionals': 23,
-    'Faulty Comparisons': 24,
-    'Agreement in Comparative and Superlative Forms': 25,
-    'Ellipsis Errors': 26,
-    'Infinitive Errors': 27,
-    'Quantifier Errors': 28,
-    'Clichés': 29,
-    'Pronoun Errors': 30,
-    'Modifiers Misplacement': 31,
-    'Run-on Sentences': 32,
-    'Word Choice/Usage': 33,
-    'Sentence Fragments': 34,
-    'Capitalization Errors': 35,
-    'Redundancy/Repetition': 36
+    'Sentence Structure Errors': 0,
+    'Verb Tense Errors': 1,
+    'Subject-Verb Agreement': 2,
+    'Article Usage': 3,
+    'Spelling Mistakes': 4,
+    'Preposition Usage': 5,
+    'Punctuation Errors': 6,
+    'Relative Clause Errors': 7,
+    'Gerund and Participle Errors': 8,
+    'Abbreviation Errors': 9,
+    'Slang, Jargon, and Colloquialisms': 10,
+    'Negation Errors': 11,
+    'Incorrect Auxiliaries': 12,
+    'Ambiguity': 13,
+    'Tautology': 14,
+    'Lack of Parallelism in Lists or Series': 15,
+    'Mixed Metaphors/Idioms': 16,
+    'Parallelism Errors': 17,
+    'Contractions Errors': 18,
+    'Conjunction Misuse': 19,
+    'Inappropriate Register': 20,
+    'Passive Voice Overuse': 21,
+    'Mixed Conditionals': 22,
+    'Faulty Comparisons': 23,
+    'Agreement in Comparative and Superlative Forms': 24,
+    'Ellipsis Errors': 25,
+    'Infinitive Errors': 26,
+    'Quantifier Errors': 27,
+    'Clichés': 28,
+    'Pronoun Errors': 29,
+    'Modifiers Misplacement': 30,
+    'Run-on Sentences': 31,
+    'Word Choice/Usage': 32,
+    'Sentence Fragments': 33,
+    'Capitalization Errors': 34,
+    'Redundancy/Repetition': 35
 }
+
 
 # Map error types to numerical indices
 class RobertaClassifier(nn.Module):
@@ -81,6 +82,8 @@ def tokenize_texts(texts, tokenizer, max_length):
 # Example data for demonstration
 # texts = ["I love coding!", "I hate bugs!"] * 100
 # labels = [1, 0] * 100 # Example labels: 1 for positive sentiment, 0 for negative sentiment
+df = pd.read_csv('Grammar Correction.csv', sep=',')
+
 df['label'] = df['Error Type'].map(error_type_to_index)
 
 texts = df['Ungrammatical Statement'].tolist()[:50]
