@@ -109,4 +109,43 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 print("output field Error Type Frequencies:")
 for error_type, count in error_counts.items():
     percentage = (count / total_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
+    print(f"{error_type}: {percentage:.2f}% ")
+    # print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
+
+
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+
+    # Iterate over each line in the file
+    for line in tqdm(jsonl_file):
+        json_obj = json.loads(line)
+        
+        # Check if 'response' field exists in the JSON object
+        if 'response' in json_obj:
+            # Get the text from the 'response' field
+            text = json_obj['response']
+            texts.append(text)
+
+            # If we reach the batch size, classify texts and update error counts
+            if len(texts) == 64:
+                predicted_error_types = classify_texts(texts, model, device)
+                for error_type in predicted_error_types:
+                    error_counts[error_type] += 1
+                total_texts += len(texts)
+                texts = []
+
+    # Process remaining texts
+    if texts:
+        predicted_error_types = classify_texts(texts, model, device)
+        for error_type in predicted_error_types:
+            error_counts[error_type] += 1
+        total_texts += len(texts)
+
+# Calculate and print error type frequencies
+print("output field Error Type Frequencies:")
+for error_type, count in error_counts.items():
+    percentage = (count / total_texts) * 100
+    # print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
+    print(f"{error_type}: {percentage:.2f}% ")
+    
+    
