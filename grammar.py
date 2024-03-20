@@ -130,7 +130,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
 
 # Training loop
-epochs = 30 # Number of training epochs
+epochs = 300 # Number of training epochs
 save_dir = './robertagrammar'
 
 # Create the directory if it doesn't exist
