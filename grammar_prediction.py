@@ -125,7 +125,7 @@ def process_data(jsonl_file, field_name):
 	# for error_type, count in error_counts.items():
 	#     percentage = (count / total_texts) * 100
 	#     print(f"{error_type}: {percentage:.2f}% ")
-
+	print(total_texts)
 	return error_counts, total_texts
 
 
