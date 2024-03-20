@@ -125,7 +125,6 @@ def process_data(jsonl_file, field_name):
 	# for error_type, count in error_counts.items():
 	#     percentage = (count / total_texts) * 100
 	#     print(f"{error_type}: {percentage:.2f}% ")
-	print(total_texts)
 	return error_counts, total_texts
 
 
@@ -178,11 +177,13 @@ y_pos = np.arange(len(index_to_error_type))
 
 plt.figure(figsize=(16, 10))  # Larger and wider figure
 
-# Plot the red bars (response)
-plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Human', height=bar_width)
 
 # Plot the blue bars (output)
-plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='LLM', alpha=0.5, height=bar_width)
+plt.barh(y_pos - bar_width/2, list(output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
+
+# Plot the red bars (response)
+plt.barh(y_pos + bar_width/2, list(response_error_percentages.values()), color='red', label='LLM', height=bar_width)
+
 
 # Plot the green bars (GAN)
 plt.barh(y_pos + 3*bar_width/2, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
