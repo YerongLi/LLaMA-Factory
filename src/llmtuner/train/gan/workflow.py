@@ -139,9 +139,9 @@ def run_gan(
             print("Masked Portion:")
             print(masked_text)
 
-            labels_text = tokenizer.decode(batch["labels"][0], skip_special_tokens=True)
-            print("Masked Portion:")
-            print(labels_text)
+            # labels_text = tokenizer.decode(batch["labels"][0], skip_special_tokens=True)
+            # print("Masked Portion:")
+            # print(labels_text)
             # fakeData = {} # we construct the fake data, and were going to use it twice
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
             # batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
@@ -154,7 +154,7 @@ def run_gan(
 
             while attempts < 3 and not success:
                 try:
-                    fake_ids = generator.generate(**batch,
+                    fake_ids = generator.generate(**{'input_ids': batch['input_ids'], "attention_mask" : batch["attention_mask"]},
                                                do_sample=True,
                                                top_k=0,
                                                top_p=0.95,
