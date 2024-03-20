@@ -90,7 +90,7 @@ with torch.no_grad():
 # Calculate accuracy
 accuracy = accuracy_score(true_labels, predictions)
 print("Accuracy:", accuracy)
-
+exit()
 
 # Load the dataset
 df = pd.read_csv('Grammar Correction.csv', sep=',')
