@@ -80,6 +80,8 @@ def classify_texts(texts, model, device):
 
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     texts = []
+    error_counts = {error_type: 0 for error_type in error_type_to_index}
+
     for line in tqdm(jsonl_file):
         json_obj = json.loads(line)
         if 'response' not in json_obj:
@@ -103,7 +105,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         total_texts += len(texts)
 
 # Calculate and print error type frequencies
-print("Error Type Frequencies:")
+print("output field Error Type Frequencies:")
 for error_type, count in error_counts.items():
     percentage = (count / total_texts) * 100
     print(f"{error_type}: {percentage:.2f}% ({count} occurrences)")
