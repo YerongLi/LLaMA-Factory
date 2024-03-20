@@ -65,19 +65,18 @@ def tokenize_texts(texts, tokenizer, max_length):
     return tokenized
 
 
-def classify_texts(texts):
+def classify_texts(texts, model, device):
+    tokenized = tokenize_texts(texts, tokenizer, max_length)
+    input_ids = tokenized['input_ids'].to(device)
+    attention_mask = tokenized['attention_mask'].to(device)
 
-	tokenized = tokenize_texts(texts, tokenizer, max_length)
-	input_ids = tokenized['input_ids'].to(device)
-	attention_mask = tokenized['attention_mask'].to(device)
+    with torch.no_grad():
+        logits = model(input_ids, attention_mask)
+        _, predicted = torch.max(logits, 1)
+        predicted_labels = predicted.tolist()
+        predicted_error_types = [list(error_type_to_index.keys())[label] for label in predicted_labels]
 
-	with torch.no_grad():
-		logits = model(input_ids, attention_mask)
-		_, predicted = torch.max(logits, 1)
-		predicted_labels = predicted.tolist()
-		predicted_error_types = [index_to_error_type[label] for label in predicted_labels]
-
-	return predicted_error_types
+    return predicted_error_types
 
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     texts = []
