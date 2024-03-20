@@ -14,9 +14,51 @@ df['Standard English'] = df['Standard English'].str.strip()
 df['Ungrammatical Statement'] = df['Ungrammatical Statement'].str.replace(r'^\d+\.\s+', '', regex=True)
 df['Standard English'] = df['Standard English'].str.replace(r'^\d+\.\s+', '', regex=True)
 
-# Create labels
-df['label'] = df.apply(lambda row: 0 if row['Ungrammatical Statement'] == row['Standard English'] else 1, axis=1)
+# Hardcoded dictionary mapping error types to numerical indices
+error_type_to_index = {
+    'Sentence Structure Errors': 1,
+    'Verb Tense Errors': 2,
+    'Subject-Verb Agreement': 3,
+    'Article Usage': 4,
+    'Spelling Mistakes': 5,
+    'Preposition Usage': 6,
+    'Punctuation Errors': 7,
+    'Relative Clause Errors': 8,
+    'Gerund and Participle Errors': 9,
+    'Abbreviation Errors': 10,
+    'Slang, Jargon, and Colloquialisms': 11,
+    'Negation Errors': 12,
+    'Incorrect Auxiliaries': 13,
+    'Ambiguity': 14,
+    'Tautology': 15,
+    'Lack of Parallelism in Lists or Series': 16,
+    'Mixed Metaphors/Idioms': 17,
+    'Parallelism Errors': 18,
+    'Contractions Errors': 19,
+    'Conjunction Misuse': 20,
+    'Inappropriate Register': 21,
+    'Passive Voice Overuse': 22,
+    'Mixed Conditionals': 23,
+    'Faulty Comparisons': 24,
+    'Agreement in Comparative and Superlative Forms': 25,
+    'Ellipsis Errors': 26,
+    'Infinitive Errors': 27,
+    'Quantifier Errors': 28,
+    'Clichés': 29,
+    'Pronoun Errors': 30,
+    'Modifiers Misplacement': 31,
+    'Run-on Sentences': 32,
+    'Word Choice/Usage': 33,
+    'Sentence Fragments': 34,
+    'Capitalization Errors': 35,
+    'Redundancy/Repetition': 36
+}
 
+# Map error types to numerical indices
+df['label'] = df['Error Type'].map(error_type_to_index)
+
+# Split the data into training and testing sets
+train_texts, test_texts, train_labels, test_labels = train_test_split(df['Ungrammatical Statement'], df['label'], test_size=0.2, random_state=42)
 # Split the data into training and testing sets
 train_texts, test_texts, train_labels, test_labels = train_test_split(df['Ungrammatical Statement'], df['label'], test_size=0.2, random_state=42)
 
