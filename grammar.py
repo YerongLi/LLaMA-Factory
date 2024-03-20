@@ -102,7 +102,7 @@ test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
 train_dataset = TensorDataset(train_tokenized['input_ids'], train_tokenized['attention_mask'], torch.tensor(train_labels))
 test_dataset = TensorDataset(test_tokenized['input_ids'], test_tokenized['attention_mask'], torch.tensor(test_labels))
 
-batch_size = 32  # Define batch size
+batch_size = 48  # Define batch size
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
@@ -137,6 +137,8 @@ predictions = []
 true_labels = []
 with torch.no_grad():
     for input_ids, attention_mask, labels in test_loader:
+        input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
+
         logits = model(input_ids, attention_mask)
         _, predicted = torch.max(logits, 1)
         predictions.extend(predicted.tolist())
