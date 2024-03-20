@@ -158,7 +158,7 @@ print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")
-	
+
 print("Response Error Type Frequencies:")
 for error_type, count in response_error_counts.items():
 	percentage = (count / total_response_texts) * 100
@@ -181,14 +181,14 @@ plt.figure(figsize=(16, 10))  # Larger and wider figure
 
 
 # Plot the blue bars (output)
-plt.barh(y_pos - bar_width/2, list(output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
+plt.barh(y_pos - bar_width, list(output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
 
 # Plot the red bars (response)
-plt.barh(y_pos + bar_width/2, list(response_error_percentages.values()), color='red', label='LLM', height=bar_width)
+plt.barh(y_pos , list(response_error_percentages.values()), color='red', label='LLM', height=bar_width)
 
 
 # Plot the green bars (GAN)
-plt.barh(y_pos + 3*bar_width/2, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
+plt.barh(y_pos + bar_width, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
