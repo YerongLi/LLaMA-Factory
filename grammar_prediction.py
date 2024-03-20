@@ -118,11 +118,11 @@ def process_data(jsonl_file, field_name):
             error_counts[error_type] += 1
         total_texts += len(texts)
 
-    # Calculate and print error type frequencies
-    print(f"{field_name.capitalize()} Error Type Frequencies:")
-    for error_type, count in error_counts.items():
-        percentage = (count / total_texts) * 100
-        print(f"{error_type}: {percentage:.2f}% ")
+    # # Calculate and print error type frequencies
+    # print(f"{field_name.capitalize()} Error Type Frequencies:")
+    # for error_type, count in error_counts.items():
+    #     percentage = (count / total_texts) * 100
+    #     print(f"{error_type}: {percentage:.2f}% ")
 
     return error_counts, total_texts
 
