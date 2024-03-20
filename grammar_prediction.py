@@ -45,6 +45,9 @@ error_type_to_index = {
     'No Error': 36
 }
 index_to_error_type = {value: key for key, value in error_type_to_index.items()}
+index_to_error_type = {24: 'Superlative Forms'}
+index_to_error_type = {15: 'Parallelism in Lists'}
+index_to_error_type = {10: 'Slang, Jargon'}
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = RobertaClassifier(num_classes=len(error_type_to_index))
@@ -159,10 +162,19 @@ for error_type, count in output_error_counts.items():
     print(f"{error_type}: {percentage:.2f}% ")
     
 # Plot histogram
-plt.figure(figsize=(14, 8))  # Larger and wider figure
+# Determine the bar width
+bar_width = 0.4
 
-plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(response_error_percentages.values()), color='blue', label='Response')
-plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(output_error_percentages.values()), color='red', label='Output', alpha=0.5)
+# Define the y-coordinates for the bars
+y_pos = np.arange(len(index_to_error_type))
+
+plt.figure(figsize=(16, 8))  # Larger and wider figure
+
+# Plot the red bars (response)
+plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Response', height=bar_width)
+
+# Plot the blue bars (output)
+plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='Output', alpha=0.5, height=bar_width)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
@@ -170,8 +182,6 @@ plt.title('Error Type Frequencies')
 plt.legend()
 
 # Adjust font size
-plt.yticks(fontsize='small')  
+plt.yticks(y_pos, [index_to_error_type[i] for i in range(len(index_to_error_type))], fontsize='small')  
 
 plt.savefig("Grammar.png")
-plt.show()
-
