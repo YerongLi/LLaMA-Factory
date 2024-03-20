@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from tqdm import tqdm
-
+import os
 error_type_to_index = {
     'Sentence Structure Errors': 0,
     'Verb Tense Errors': 1,
@@ -122,11 +122,10 @@ save_dir = './robertagrammar'
 os.makedirs(save_dir, exist_ok=True)
 
 # Save the model
-
+best_accuracy = -1.0
 for epoch in range(epochs):
-    model.train()
     with tqdm(total=len(train_loader), desc=f'Epoch {epoch + 1}/{epochs}', unit='batch') as pbar:
-        
+        model.train()    
         for input_ids, attention_mask, labels in train_loader:
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
 
@@ -138,8 +137,27 @@ for epoch in range(epochs):
             
             pbar.update(1)  # Update progress bar
             pbar.set_postfix({'loss': loss.item()})
-        model_path = os.path.join(save_dir, 'roberta_classifier.pt')
-        torch.save(model.state_dict(), model_path)
+        
+        model.eval()
+        predictions = []
+        true_labels = []
+        with torch.no_grad():
+            for input_ids, attention_mask, labels in test_loader:
+                input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
+
+                logits = model(input_ids, attention_mask)
+                _, predicted = torch.max(logits, 1)
+                predictions.extend(predicted.tolist())
+                true_labels.extend(labels.tolist())
+
+        # Calculate accuracy
+        accuracy = accuracy_score(true_labels, predictions)
+        print("Accuracy:", accuracy, "best accuracy", best_accuracy)
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            model_path = os.path.join(save_dir, 'roberta_classifier.pt')
+
+            torch.save(model.state_dict(), model_path)
 # Evaluation
 model.eval()
 predictions = []
@@ -155,7 +173,7 @@ with torch.no_grad():
 
 # Calculate accuracy
 accuracy = accuracy_score(true_labels, predictions)
-print("Accuracy:", accuracy)
+print("Final Accuracy:", accuracy)
 exit()
 
 # Load the dataset
