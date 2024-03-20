@@ -1,6 +1,7 @@
 import pandas as pd
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from sklearn.model_selection import train_test_split
+import torch
 from sklearn.metrics import accuracy_score, classification_report
 
 # Load the dataset
@@ -12,7 +13,7 @@ df['Ungrammatical Statement'] = df['Ungrammatical Statement'].str.strip()
 df['Standard English'] = df['Standard English'].str.strip()
 df['Ungrammatical Statement'] = df['Ungrammatical Statement'].str.replace(r'^\d+\.\s+', '', regex=True)
 df['Standard English'] = df['Standard English'].str.replace(r'^\d+\.\s+', '', regex=True)
-print(df)
+
 # Create labels
 df['label'] = df.apply(lambda row: 0 if row['Ungrammatical Statement'] == row['Standard English'] else 1, axis=1)
 
@@ -28,7 +29,7 @@ train_encodings = tokenizer(list(train_texts), truncation=True, padding=True, ma
 test_encodings = tokenizer(list(test_texts), truncation=True, padding=True, max_length=512)
 
 # Convert the data to PyTorch tensors
-import torch
+print(train_labels)
 train_dataset = torch.utils.data.TensorDataset(torch.tensor(train_encodings['input_ids']),
                                                torch.tensor(train_encodings['attention_mask']),
                                                torch.tensor(train_labels))
