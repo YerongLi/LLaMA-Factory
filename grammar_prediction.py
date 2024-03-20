@@ -159,7 +159,7 @@ for error_type, count in output_error_counts.items():
     print(f"{error_type}: {percentage:.2f}% ")
     
 # Plot histogram
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(14, 8))  # Larger and wider figure
 
 plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(response_error_percentages.values()), color='blue', label='Response')
 plt.barh([index_to_error_type[i] for i in range(len(index_to_error_type))], list(output_error_percentages.values()), color='red', label='Output', alpha=0.5)
@@ -169,9 +169,9 @@ plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 plt.legend()
 
-# Rotate y-tick labels
-plt.yticks(rotation=45, fontsize='small')  # Adjust font size to 'small'
+# Adjust font size
+plt.yticks(fontsize='small')  
 
 plt.savefig("Grammar.png")
-
+plt.show()
 
