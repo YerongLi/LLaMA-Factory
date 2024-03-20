@@ -49,6 +49,7 @@ error_type_to_index = {
     'Sentence Fragments': 33,
     'Capitalization Errors': 34,
     'Redundancy/Repetition': 35
+    'No Error': 36
 }
 
 
@@ -86,6 +87,16 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 df = pd.read_csv('Grammar Correction.csv', sep=',')
 
 df['label'] = df['Error Type'].map(error_type_to_index)
+
+new_df = pd.read_csv('grammar-correction.csv')
+
+# Rename the 'target' column to 'Ungrammatical Statement'
+new_df.rename(columns={'target': 'Ungrammatical Statement'}, inplace=True)
+
+# Assign the index corresponding to 'No error' to the 'label' column
+new_df['label'] = error_type_to_index['No error']
+new_df = new_df[['Ungrammatical Statement', 'label']]
+print(new_df)
 
 texts = df['Ungrammatical Statement'].tolist()
 labels = df['label'].tolist()
@@ -158,7 +169,7 @@ for epoch in range(epochs):
 
             torch.save(model.state_dict(), model_path)
         print("Accuracy:", accuracy, "best accuracy", best_accuracy)
-        
+
 # Evaluation
 model.eval()
 predictions = []
