@@ -3,7 +3,6 @@ from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from sklearn.model_selection import train_test_split
 import torch
 from sklearn.metrics import accuracy_score, classification_report
-from transformers import Trainer, TrainingArguments
 
 # Load the dataset
 df = pd.read_csv('Grammar Correction.csv', sep=',')
@@ -91,31 +90,27 @@ test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
-training_args = TrainingArguments(
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
-    num_train_epochs=3,
-    logging_dir='./logs',
-    logging_steps=10,
-    evaluation_strategy="epoch",
-    output_dir='./grammarroberta',  # Specify the directory to save the trained model
-
-)
-
-# Create Trainer instance
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_dataset,
-    eval_dataset=test_dataset,
-    compute_metrics=lambda p: {"accuracy": accuracy_score(p.predictions, p.label_ids)}
-)
-
 # Train the model
-trainer.train()
+from tqdm import tqdm
+import torch.nn.functional as F
+
+epochs = 3
+optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
+
+for epoch in range(epochs):
+    model.train()
+    train_loss = 0
+    for batch in tqdm(train_loader, desc=f'Training Epoch {epoch + 1}'):
+        input_ids, attention_mask, labels = batch[0].to(device), batch[1].to(device), batch[2].to(device)
+        optimizer.zero_grad()
+        outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
+        loss = outputs.loss
+        loss.backward()
+        optimizer.step()
+        train_loss += loss.item()
+    print(f'Epoch {epoch + 1} Train Loss: {train_loss / len(train_loader)}')
 
 # Evaluate the model
-trainer.evaluate()
 model.eval()
 test_preds = []
 test_labels_list = []
