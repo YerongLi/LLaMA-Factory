@@ -1,4 +1,4 @@
-from grammar import RobertaClassifier, tokenize_texts, error_type_to_index
+from grammar import RobertaClassifier, error_type_to_index
 import json
 from tqdm import tqdm
 import torch
@@ -12,7 +12,16 @@ model.eval()
 
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 max_length = 256
-
+def tokenize_texts(texts, tokenizer, max_length):
+    tokenized = tokenizer.batch_encode_plus(
+        texts,
+        max_length=max_length,
+        padding='max_length',
+        truncation=True,
+        return_attention_mask=True,
+        return_tensors='pt'
+    )
+    return tokenized
 def classify_texts(texts):
 	print(texts)
 	tokenized = tokenize_texts(texts, tokenizer, max_length)
