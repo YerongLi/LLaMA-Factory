@@ -89,53 +89,62 @@ total_response_texts = 0
 total_output_texts = 0
 
 # Open JSONL file
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
-    texts = []
+def process_data(jsonl_file, field_name):
+    error_counts = {error_type: 0 for error_type in error_type_to_index}
+    total_texts = 0
 
     # Iterate over each line in the file
     for line in tqdm(jsonl_file):
         json_obj = json.loads(line)
         
-        # Check if 'response' field exists in the JSON object
-        if 'response' in json_obj:
-            # Get the text from the 'response' field
-            response_text = json_obj['response']
-            texts.append(response_text)
+        # Check if the specified field exists in the JSON object
+        if field_name in json_obj:
+            # Get the text from the specified field
+            text = json_obj[field_name]
+            texts.append(text)
 
             # If we reach the batch size, classify texts and update error counts
             if len(texts) == 64:
                 predicted_error_types = classify_texts(texts, model, device)
                 for error_type in predicted_error_types:
-                    response_error_counts[error_type] += 1
-                total_response_texts += len(texts)
-                texts = []
-
-        # Check if 'output' field exists in the JSON object
-        if 'output' in json_obj:
-            # Get the text from the 'output' field
-            output_text = json_obj['output']
-            texts.append(output_text)
-
-            # If we reach the batch size, classify texts and update error counts
-            if len(texts) == 64:
-                predicted_error_types = classify_texts(texts, model, device)
-                for error_type in predicted_error_types:
-                    output_error_counts[error_type] += 1
-                total_output_texts += len(texts)
+                    error_counts[error_type] += 1
+                total_texts += len(texts)
                 texts = []
 
     # Process remaining texts
     if texts:
         predicted_error_types = classify_texts(texts, model, device)
         for error_type in predicted_error_types:
-            if 'response' in json_obj:
-                response_error_counts[error_type] += 1
-                total_response_texts += 1
-            if 'output' in json_obj:
-                output_error_counts[error_type] += 1
-                total_output_texts += 1
+            error_counts[error_type] += 1
+        total_texts += len(texts)
 
-# Calculate percentages
+    # Calculate and print error type frequencies
+    print(f"{field_name.capitalize()} Error Type Frequencies:")
+    for error_type, count in error_counts.items():
+        percentage = (count / total_texts) * 100
+        print(f"{error_type}: {percentage:.2f}% ")
+
+    return error_counts, total_texts
+
+
+# Initialize dictionaries to store error counts
+response_error_counts = {error_type: 0 for error_type in error_type_to_index}
+output_error_counts = {error_type: 0 for error_type in error_type_to_index}
+
+# Total number of texts
+total_response_texts = 0
+total_output_texts = 0
+
+# Open JSONL file for 'output' field
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+    output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
+
+# Open JSONL file for 'response' field
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+    response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
+
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 # Print error type frequencies
