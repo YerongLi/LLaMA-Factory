@@ -130,8 +130,8 @@ def run_gan(
 
             # fakeData = {} # we construct the fake data, and were going to use it twice
             # fakeData["attention_mask"] = batch["attention_mask"].squeeze(1)  #The discriminator will know the right attention mask
-            batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
-            batch["attention_mask"] = batch["attention_mask"].squeeze(1)
+            # batch["input_ids"] =  batch["input_ids"].squeeze(1) # truncating the input
+            # batch["attention_mask"] = batch["attention_mask"].squeeze(1)
             # discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
 
             discOutsReal = discriminator(real)  #tensor like, shaped (batchsize, 1)
