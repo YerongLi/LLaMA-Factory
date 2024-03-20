@@ -3,7 +3,7 @@ import json
 from tqdm import tqdm
 import torch
 import matplotlib.pyplot as plt
-
+import numpy as np
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 error_type_to_index = {
     'Sentence Structure Errors': 0,
