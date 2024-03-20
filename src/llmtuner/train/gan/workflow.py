@@ -114,7 +114,7 @@ def run_gan(
     discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
     generator = model
     dis_lr = training_args.learning_rate 
-    gen_lr = training_args.learning_rate /5
+    gen_lr = training_args.learning_rate /10
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), dis_lr)
@@ -158,9 +158,8 @@ def run_gan(
                 optDisc.step()
             
             ## training the generator
-            # print("Loss of Discriminator (Real): {:.2f}".format(lossDiscriminatorReal))
-            # print("Loss of Discriminator (Fake): {:.2f}".format(lossDiscriminatorFake))
-            # print("Final Loss: {:.2f}".format(discLoss))
+            
+
             output = discriminator(fake) # here the discriminator has been trained once, so this value is different from discOutsFake
             lossGenerator = lossFunc(output, torch.ones_like(output))
             generator.zero_grad()
