@@ -37,8 +37,8 @@ def tokenize_texts(texts, tokenizer, max_length):
     return tokenized
 
 # Example data for demonstration
-texts = ["I love coding!", "I hate bugs!"]
-labels = [1, 0]  # Example labels: 1 for positive sentiment, 0 for negative sentiment
+texts = ["I love coding!", "I hate bugs!"] * 1000
+labels = [1, 0] * 1000 # Example labels: 1 for positive sentiment, 0 for negative sentiment
 
 # Split data into training and testing sets
 train_texts, test_texts, train_labels, test_labels = train_test_split(texts, labels, test_size=0.2, random_state=42)
