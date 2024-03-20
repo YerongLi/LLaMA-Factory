@@ -90,27 +90,47 @@ test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
+training_args = TrainingArguments(
+    output_dir="./results",
+    num_train_epochs=3,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    logging_dir="./logs",
+)
+
+# Define Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=test_dataset,
+)
+
 # Train the model
-from tqdm import tqdm
-import torch.nn.functional as F
-
-epochs = 3
-optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
-
-for epoch in range(epochs):
-    model.train()
-    train_loss = 0
-    for batch in tqdm(train_loader, desc=f'Training Epoch {epoch + 1}'):
-        input_ids, attention_mask, labels = batch[0].to(device), batch[1].to(device), batch[2].to(device)
-        optimizer.zero_grad()
-        outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
-        loss = outputs.loss
-        loss.backward()
-        optimizer.step()
-        train_loss += loss.item()
-    print(f'Epoch {epoch + 1} Train Loss: {train_loss / len(train_loader)}')
+trainer.train()
 
 # Evaluate the model
+eval_results = trainer.evaluate()
+
+# Print evaluation metrics
+print("Evaluation Results:")
+for key, value in eval_results.items():
+    print(f"{key}: {value}")
+
+# Get predictions
+preds = trainer.predict(test_dataset)
+pred_labels = preds.predictions.argmax(axis=1)
+
+# Convert labels to CPU
+test_labels_list = test_labels.cpu().tolist()
+
+# Calculate accuracy
+accuracy = accuracy_score(test_labels_list, pred_labels)
+print(f"Accuracy: {accuracy}")
+
+# Print classification report
+print("Classification Report:")
+print(classification_report(test_labels_list, pred_labels))
 model.eval()
 test_preds = []
 test_labels_list = []
