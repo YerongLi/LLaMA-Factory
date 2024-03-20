@@ -42,8 +42,8 @@ error_type_to_index = {
     'Redundancy/Repetition': 35,
     'No Error': 36
 }
-index_to_error_type = {value: key for key, value in error_type_to_index.items()}
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = RobertaClassifier(num_classes=len(error_type_to_index))
 model.load_state_dict(torch.load('robertagrammar/roberta_classifier.pt', map_location=device))
 model.to(device)
 model.eval()
@@ -51,6 +51,7 @@ model.eval()
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 max_length = 256
 
+index_to_error_type = {value: key for key, value in error_type_to_index.items()}
 
 def tokenize_texts(texts, tokenizer, max_length):
     tokenized = tokenizer.batch_encode_plus(
