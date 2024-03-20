@@ -149,6 +149,7 @@ def run_gan(
                 # Check if fake_ids is generated successfully
                 if fake_ids:
                     success = True
+                    break
                 else:
                     attempts += 1
 
