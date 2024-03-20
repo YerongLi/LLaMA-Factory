@@ -66,10 +66,10 @@ class TextDiscriminatorWithTransformer(nn.Module):
         
     def forward(self, input_text):
         # Tokenize input text
-        input_ids = self.tokenizer(input_text, return_tensors='pt', padding=True, truncation=True)['input_ids']
+        input_ids = self.tokenizer(input_text, return_tensors='pt', padding=True, truncation=True)
         
         # Pass input_ids to FLAN-T5 model
-        outputs = self.flan_model(input_ids=input_ids)
+        outputs = self.flan_model.encoder(input_ids=input_ids['input_ids'],attention_mask=input_ids['attention_mask'], return_dict=True)
         hidden_state = outputs.last_hidden_state
         
         # Apply classification layers
