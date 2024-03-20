@@ -129,7 +129,7 @@ def run_gan(
             real = tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True)
             unmasked_input_ids = batch["input_ids"][0][batch["attention_mask"][0] == 1]
             unmasked_text = tokenizer.decode(unmasked_input_ids, skip_special_tokens=True)
-            
+            print(batch["attention_mask"][0])
             print("Unmasked Portion:")
             print(unmasked_text)
             
