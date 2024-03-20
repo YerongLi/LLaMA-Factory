@@ -114,7 +114,7 @@ def run_gan(
     discriminator = TextDiscriminatorWithTransformer("/scratch/bbrz/yirenl2/models/distill-flan-t5-base", 1)
     generator = model
     dis_lr = training_args.learning_rate 
-    gen_lr = training_args.learning_rate /10
+    gen_lr = training_args.learning_rate /20
     
     # Set up optimizers, loss function, and data loader
     optDisc = AdamW(discriminator.parameters(), dis_lr)
@@ -155,13 +155,15 @@ def run_gan(
                 else:
                     attempts += 1
 
-            if not success: continue
+            if not success: 
+                print('fail')
+                continue
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
             fake = [f.rstrip('\n') for f in fake]
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
             print(' === ====')
-            print(real[0][-80:])
-            print(fake[0][-80:])
+            print(real[1][-80:])
+            print(fake[1][-80:])
             # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
