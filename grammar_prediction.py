@@ -12,16 +12,6 @@ model.eval()
 
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 max_length = 256
-def tokenize_texts(texts, tokenizer, max_length):
-    tokenized = tokenizer.batch_encode_plus(
-        texts,
-        max_length=max_length,
-        padding='max_length',
-        truncation=True,
-        return_attention_mask=True,
-        return_tensors='pt'
-    )
-    return tokenized
 error_type_to_index = {
     'Sentence Structure Errors': 0,
     'Verb Tense Errors': 1,
@@ -61,8 +51,20 @@ error_type_to_index = {
     'Redundancy/Repetition': 35,
     'No Error': 36
 }
+def tokenize_texts(texts, tokenizer, max_length):
+    tokenized = tokenizer.batch_encode_plus(
+        texts,
+        max_length=max_length,
+        padding='max_length',
+        truncation=True,
+        return_attention_mask=True,
+        return_tensors='pt'
+    )
+    return tokenized
+
 
 def classify_texts(texts):
+	global error_type_to_index
 	tokenized = tokenize_texts(texts, tokenizer, max_length)
 	input_ids = tokenized['input_ids'].to(device)
 	attention_mask = tokenized['attention_mask'].to(device)
