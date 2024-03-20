@@ -135,18 +135,30 @@ def run_gan(
             # discOutsReal = discriminator(batch)  #tensor like, shaped (batchsize, 1)
 
             discOutsReal = discriminator(real)  #tensor like, shaped (batchsize, 1)
-            fake_ids = generator.generate(**batch,
-                       do_sample=True,
-                        top_k=0,
-                        top_p=0.95,
-                        eos_token_id = [13],
-                       num_return_sequences=1,)  # Number of generated 
+            try:
+            attempts = 0
+            success = False
+
+            while attempts < 3 and not success:
+                fake_ids = generator.generate(**batch,
+                                               do_sample=True,
+                                               top_k=0,
+                                               top_p=0.95,
+                                               eos_token_id=[13],
+                                               num_return_sequences=1)
+                # Check if fake_ids is generated successfully
+                if fake_ids:
+                    success = True
+                else:
+                    attempts += 1
+
+            if not success: continue
             fake = tokenizer.batch_decode(fake_ids, skip_special_tokens=True)
             fake = [f.rstrip('\n') for f in fake]
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
-            # print(' === ====')
-            print(real[0][:-40])
-            print(fake[0][:-50])
+            print(' === ====')
+            print(real[0][:-30])
+            print(fake[0][:-30])
             # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
