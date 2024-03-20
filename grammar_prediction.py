@@ -160,6 +160,11 @@ plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 plt.legend()
 
+# Rotate y-tick labels
+plt.yticks(rotation=45)
+
+
+
 plt.savefig("Grammar.png")
 
 
