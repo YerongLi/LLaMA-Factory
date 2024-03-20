@@ -86,14 +86,14 @@ df = pd.read_csv('Grammar Correction.csv', sep=',')
 
 df['label'] = df['Error Type'].map(error_type_to_index)
 
-texts = df['Ungrammatical Statement'].tolist()[:50]
-labels = df['label'].tolist()[:50]
+texts = df['Ungrammatical Statement'].tolist()
+labels = df['label'].tolist()
 # Split data into training and testing sets
 train_texts, test_texts, train_labels, test_labels = train_test_split(texts, labels, test_size=0.2, random_state=42)
 
 # Tokenize texts
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
-max_length = 20  # Define maximum length of input
+max_length = 256  # Define maximum length of input
 train_tokenized = tokenize_texts(train_texts, tokenizer, max_length)
 test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
 
@@ -101,7 +101,7 @@ test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
 train_dataset = TensorDataset(train_tokenized['input_ids'], train_tokenized['attention_mask'], torch.tensor(train_labels))
 test_dataset = TensorDataset(test_tokenized['input_ids'], test_tokenized['attention_mask'], torch.tensor(test_labels))
 
-batch_size = 2  # Define batch size
+batch_size = 32  # Define batch size
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
