@@ -161,9 +161,7 @@ plt.title('Error Type Frequencies')
 plt.legend()
 
 # Rotate y-tick labels
-plt.yticks(rotation=45)
-
-
+plt.yticks(rotation=45, fontsize='small')  # Adjust font size to 'small'
 
 plt.savefig("Grammar.png")
 
