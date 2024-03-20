@@ -145,8 +145,8 @@ def run_gan(
             fake = [f.rstrip('\n') for f in fake]
             # fakeData = discriminator.tokenizer(fake, return_tensors="pt", padding=True)
             # print(' === ====')
-            # print(real[0])
-            # print(fake[0])
+            print(real[0][:-40])
+            print(fake[0][:-50])
             # discOutsFake = discriminator(fakeData)
             discOutsFake = discriminator(fake)
             lossDiscriminatorReal = lossFunc(discOutsReal, torch.ones_like(discOutsReal))   # lossFunc(disc(real), torch.oneslike(disc(real)))
