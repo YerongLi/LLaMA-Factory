@@ -95,7 +95,7 @@ new_df = pd.read_csv('grammar-correction.csv')
 new_df.rename(columns={'target': 'Ungrammatical Statement'}, inplace=True)
 
 # Assign the index corresponding to 'No error' to the 'label' column
-new_df['label'] = error_type_to_index['No error']
+new_df['label'] = error_type_to_index['No Error']
 new_df = new_df[['Ungrammatical Statement', 'label']]
 print(new_df)
 
