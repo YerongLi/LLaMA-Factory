@@ -6,43 +6,43 @@ import matplotlib.pyplot as plt
 import numpy as np
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 error_type_to_index = {
-    'Sentence Structure Errors': 0,
-    'Verb Tense Errors': 1,
-    'Subject-Verb Agreement': 2,
-    'Article Usage': 3,
-    'Spelling Mistakes': 4,
-    'Preposition Usage': 5,
-    'Punctuation Errors': 6,
-    'Relative Clause Errors': 7,
-    'Gerund and Participle Errors': 8,
-    'Abbreviation Errors': 9,
-    'Slang, Jargon, and Colloquialisms': 10,
-    'Negation Errors': 11,
-    'Incorrect Auxiliaries': 12,
-    'Ambiguity': 13,
-    'Tautology': 14,
-    'Lack of Parallelism in Lists or Series': 15,
-    'Mixed Metaphors/Idioms': 16,
-    'Parallelism Errors': 17,
-    'Contractions Errors': 18,
-    'Conjunction Misuse': 19,
-    'Inappropriate Register': 20,
-    'Passive Voice Overuse': 21,
-    'Mixed Conditionals': 22,
-    'Faulty Comparisons': 23,
-    'Agreement in Comparative and Superlative Forms': 24,
-    'Ellipsis Errors': 25,
-    'Infinitive Errors': 26,
-    'Quantifier Errors': 27,
-    'Clichés': 28,
-    'Pronoun Errors': 29,
-    'Modifiers Misplacement': 30,
-    'Run-on Sentences': 31,
-    'Word Choice/Usage': 32,
-    'Sentence Fragments': 33,
-    'Capitalization Errors': 34,
-    'Redundancy/Repetition': 35,
-    'No Error': 36
+	'Sentence Structure Errors': 0,
+	'Verb Tense Errors': 1,
+	'Subject-Verb Agreement': 2,
+	'Article Usage': 3,
+	'Spelling Mistakes': 4,
+	'Preposition Usage': 5,
+	'Punctuation Errors': 6,
+	'Relative Clause Errors': 7,
+	'Gerund and Participle Errors': 8,
+	'Abbreviation Errors': 9,
+	'Slang, Jargon, and Colloquialisms': 10,
+	'Negation Errors': 11,
+	'Incorrect Auxiliaries': 12,
+	'Ambiguity': 13,
+	'Tautology': 14,
+	'Lack of Parallelism in Lists or Series': 15,
+	'Mixed Metaphors/Idioms': 16,
+	'Parallelism Errors': 17,
+	'Contractions Errors': 18,
+	'Conjunction Misuse': 19,
+	'Inappropriate Register': 20,
+	'Passive Voice Overuse': 21,
+	'Mixed Conditionals': 22,
+	'Faulty Comparisons': 23,
+	'Agreement in Comparative and Superlative Forms': 24,
+	'Ellipsis Errors': 25,
+	'Infinitive Errors': 26,
+	'Quantifier Errors': 27,
+	'Clichés': 28,
+	'Pronoun Errors': 29,
+	'Modifiers Misplacement': 30,
+	'Run-on Sentences': 31,
+	'Word Choice/Usage': 32,
+	'Sentence Fragments': 33,
+	'Capitalization Errors': 34,
+	'Redundancy/Repetition': 35,
+	'No Error': 36
 }
 index_to_error_type = {value: key for key, value in error_type_to_index.items()}
 index_to_error_type[24] = 'Superlative Forms'
@@ -60,29 +60,29 @@ max_length = 256
 
 
 def tokenize_texts(texts, tokenizer, max_length):
-    tokenized = tokenizer.batch_encode_plus(
-        texts,
-        max_length=max_length,
-        padding='max_length',
-        truncation=True,
-        return_attention_mask=True,
-        return_tensors='pt'
-    )
-    return tokenized
+	tokenized = tokenizer.batch_encode_plus(
+		texts,
+		max_length=max_length,
+		padding='max_length',
+		truncation=True,
+		return_attention_mask=True,
+		return_tensors='pt'
+	)
+	return tokenized
 
 
 def classify_texts(texts, model, device):
-    tokenized = tokenize_texts(texts, tokenizer, max_length)
-    input_ids = tokenized['input_ids'].to(device)
-    attention_mask = tokenized['attention_mask'].to(device)
+	tokenized = tokenize_texts(texts, tokenizer, max_length)
+	input_ids = tokenized['input_ids'].to(device)
+	attention_mask = tokenized['attention_mask'].to(device)
 
-    with torch.no_grad():
-        logits = model(input_ids, attention_mask)
-        _, predicted = torch.max(logits, 1)
-        predicted_labels = predicted.tolist()
-        predicted_error_types = [list(error_type_to_index.keys())[label] for label in predicted_labels]
+	with torch.no_grad():
+		logits = model(input_ids, attention_mask)
+		_, predicted = torch.max(logits, 1)
+		predicted_labels = predicted.tolist()
+		predicted_error_types = [list(error_type_to_index.keys())[label] for label in predicted_labels]
 
-    return predicted_error_types
+	return predicted_error_types
 
 response_error_counts = {error_type: 0 for error_type in error_type_to_index}
 output_error_counts = {error_type: 0 for error_type in error_type_to_index}
@@ -93,41 +93,41 @@ total_output_texts = 0
 
 # Open JSONL file
 def process_data(jsonl_file, field_name):
-    error_counts = {error_type: 0 for error_type in error_type_to_index}
-    total_texts = 0
-    texts = []
-    # Iterate over each line in the file
-    for line in tqdm(jsonl_file):
-        json_obj = json.loads(line)
-        
-        # Check if the specified field exists in the JSON object
-        if field_name in json_obj:
-            # Get the text from the specified field
-            text = json_obj[field_name]
-            texts.append(text)
+	error_counts = {error_type: 0 for error_type in error_type_to_index}
+	total_texts = 0
+	texts = []
+	# Iterate over each line in the file
+	for line in tqdm(jsonl_file):
+		json_obj = json.loads(line)
+		
+		# Check if the specified field exists in the JSON object
+		if field_name in json_obj:
+			# Get the text from the specified field
+			text = json_obj[field_name]
+			texts.append(text)
 
-            # If we reach the batch size, classify texts and update error counts
-            if len(texts) == 64:
-                predicted_error_types = classify_texts(texts, model, device)
-                for error_type in predicted_error_types:
-                    error_counts[error_type] += 1
-                total_texts += len(texts)
-                texts = []
-               	break
-    # Process remaining texts
-    if texts:
-        predicted_error_types = classify_texts(texts, model, device)
-        for error_type in predicted_error_types:
-            error_counts[error_type] += 1
-        total_texts += len(texts)
+			# If we reach the batch size, classify texts and update error counts
+			if len(texts) == 64:
+				predicted_error_types = classify_texts(texts, model, device)
+				for error_type in predicted_error_types:
+					error_counts[error_type] += 1
+				total_texts += len(texts)
+				texts = []
+				break
+	# Process remaining texts
+	if texts:
+		predicted_error_types = classify_texts(texts, model, device)
+		for error_type in predicted_error_types:
+			error_counts[error_type] += 1
+		total_texts += len(texts)
 
-    # # Calculate and print error type frequencies
-    # print(f"{field_name.capitalize()} Error Type Frequencies:")
-    # for error_type, count in error_counts.items():
-    #     percentage = (count / total_texts) * 100
-    #     print(f"{error_type}: {percentage:.2f}% ")
+	# # Calculate and print error type frequencies
+	# print(f"{field_name.capitalize()} Error Type Frequencies:")
+	# for error_type, count in error_counts.items():
+	#     percentage = (count / total_texts) * 100
+	#     print(f"{error_type}: {percentage:.2f}% ")
 
-    return error_counts, total_texts
+	return error_counts, total_texts
 
 
 # Initialize dictionaries to store error counts
@@ -140,16 +140,16 @@ total_output_texts = 0
 
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
-    texts = []
-    output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
+	texts = []
+	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 
 # Open JSONL file for 'response' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
-    texts = []
-    response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
+	texts = []
+	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
 with open('usergan.jsonl', 'r') as jsonl_file:
-    gan_error_counts, total_gan_texts = process_data(jsonl_file, 'GAN')
+	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'GAN')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
@@ -158,17 +158,17 @@ output_error_percentages = {error_type: (count / total_output_texts) * 100 for e
 # Print error type frequencies
 print("Response Error Type Frequencies:")
 for error_type, count in response_error_counts.items():
-    percentage = (count / total_response_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ")
+	percentage = (count / total_response_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")
 
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
-    percentage = (count / total_output_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ")
+	percentage = (count / total_output_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")
  print("\nGAN Error Type Frequencies:")
 for error_type, count in gan_error_counts.items():
-    percentage = (count / total_gan_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ")   
+	percentage = (count / total_gan_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")   
 # Plot histogram
 # Determine the bar width
 # Determine the bar width
