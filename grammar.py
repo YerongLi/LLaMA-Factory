@@ -5,6 +5,88 @@ import torch
 from sklearn.metrics import accuracy_score, classification_report
 from transformers import Trainer, TrainingArguments
 
+class RobertaClassifier(nn.Module):
+    def __init__(self, num_classes):
+        super(RobertaClassifier, self).__init__()
+        self.roberta = RobertaModel.from_pretrained('roberta-base')
+        self.dropout = nn.Dropout(0.1)
+        self.linear = nn.Linear(self.roberta.config.hidden_size, num_classes)
+
+    def forward(self, input_ids, attention_mask):
+        outputs = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
+        pooled_output = outputs.pooler_output
+        pooled_output = self.dropout(pooled_output)
+        logits = self.linear(pooled_output)
+        return logits
+
+# Function to tokenize text data
+def tokenize_texts(texts, tokenizer, max_length):
+    tokenized = tokenizer.batch_encode_plus(
+        texts,
+        max_length=max_length,
+        padding='max_length',
+        truncation=True,
+        return_attention_mask=True,
+        return_tensors='pt'
+    )
+    return tokenized
+
+# Example data for demonstration
+texts = ["I love coding!", "I hate bugs!"]
+labels = [1, 0]  # Example labels: 1 for positive sentiment, 0 for negative sentiment
+
+# Split data into training and testing sets
+train_texts, test_texts, train_labels, test_labels = train_test_split(texts, labels, test_size=0.2, random_state=42)
+
+# Tokenize texts
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+max_length = 20  # Define maximum length of input
+train_tokenized = tokenize_texts(train_texts, tokenizer, max_length)
+test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
+
+# Create DataLoader for training and testing sets
+train_dataset = TensorDataset(train_tokenized['input_ids'], train_tokenized['attention_mask'], torch.tensor(train_labels))
+test_dataset = TensorDataset(test_tokenized['input_ids'], test_tokenized['attention_mask'], torch.tensor(test_labels))
+
+batch_size = 2  # Define batch size
+train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=batch_size)
+
+# Initialize the model
+num_classes = 2  # Number of classes (positive and negative sentiment)
+model = RobertaClassifier(num_classes)
+
+# Define loss function and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
+
+# Training loop
+epochs = 3  # Number of training epochs
+for epoch in range(epochs):
+    model.train()
+    for input_ids, attention_mask, labels in train_loader:
+        optimizer.zero_grad()
+        logits = model(input_ids, attention_mask)
+        loss = criterion(logits, labels)
+        loss.backward()
+        optimizer.step()
+
+# Evaluation
+model.eval()
+predictions = []
+true_labels = []
+with torch.no_grad():
+    for input_ids, attention_mask, labels in test_loader:
+        logits = model(input_ids, attention_mask)
+        _, predicted = torch.max(logits, 1)
+        predictions.extend(predicted.tolist())
+        true_labels.extend(labels.tolist())
+
+# Calculate accuracy
+accuracy = accuracy_score(true_labels, predictions)
+print("Accuracy:", accuracy)
+
+
 # Load the dataset
 df = pd.read_csv('Grammar Correction.csv', sep=',')
 
@@ -102,83 +184,3 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Define the Roberta-based model with a linear head for classification
-class RobertaClassifier(nn.Module):
-    def __init__(self, num_classes):
-        super(RobertaClassifier, self).__init__()
-        self.roberta = RobertaModel.from_pretrained('roberta-base')
-        self.dropout = nn.Dropout(0.1)
-        self.linear = nn.Linear(self.roberta.config.hidden_size, num_classes)
-
-    def forward(self, input_ids, attention_mask):
-        outputs = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
-        pooled_output = outputs.pooler_output
-        pooled_output = self.dropout(pooled_output)
-        logits = self.linear(pooled_output)
-        return logits
-
-# Function to tokenize text data
-def tokenize_texts(texts, tokenizer, max_length):
-    tokenized = tokenizer.batch_encode_plus(
-        texts,
-        max_length=max_length,
-        padding='max_length',
-        truncation=True,
-        return_attention_mask=True,
-        return_tensors='pt'
-    )
-    return tokenized
-
-# Example data for demonstration
-texts = ["I love coding!", "I hate bugs!"]
-labels = [1, 0]  # Example labels: 1 for positive sentiment, 0 for negative sentiment
-
-# Split data into training and testing sets
-train_texts, test_texts, train_labels, test_labels = train_test_split(texts, labels, test_size=0.2, random_state=42)
-
-# Tokenize texts
-tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
-max_length = 20  # Define maximum length of input
-train_tokenized = tokenize_texts(train_texts, tokenizer, max_length)
-test_tokenized = tokenize_texts(test_texts, tokenizer, max_length)
-
-# Create DataLoader for training and testing sets
-train_dataset = TensorDataset(train_tokenized['input_ids'], train_tokenized['attention_mask'], torch.tensor(train_labels))
-test_dataset = TensorDataset(test_tokenized['input_ids'], test_tokenized['attention_mask'], torch.tensor(test_labels))
-
-batch_size = 2  # Define batch size
-train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=batch_size)
-
-# Initialize the model
-num_classes = 2  # Number of classes (positive and negative sentiment)
-model = RobertaClassifier(num_classes)
-
-# Define loss function and optimizer
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
-
-# Training loop
-epochs = 3  # Number of training epochs
-for epoch in range(epochs):
-    model.train()
-    for input_ids, attention_mask, labels in train_loader:
-        optimizer.zero_grad()
-        logits = model(input_ids, attention_mask)
-        loss = criterion(logits, labels)
-        loss.backward()
-        optimizer.step()
-
-# Evaluation
-model.eval()
-predictions = []
-true_labels = []
-with torch.no_grad():
-    for input_ids, attention_mask, labels in test_loader:
-        logits = model(input_ids, attention_mask)
-        _, predicted = torch.max(logits, 1)
-        predictions.extend(predicted.tolist())
-        true_labels.extend(labels.tolist())
-
-# Calculate accuracy
-accuracy = accuracy_score(true_labels, predictions)
-print("Accuracy:", accuracy)
