@@ -165,7 +165,7 @@ print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")
- print("\nGAN Error Type Frequencies:")
+print("\nGAN Error Type Frequencies:")
 for error_type, count in gan_error_counts.items():
 	percentage = (count / total_gan_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")   
