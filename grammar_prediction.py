@@ -113,7 +113,6 @@ def process_data(jsonl_file, field_name):
 					error_counts[error_type] += 1
 				total_texts += len(texts)
 				texts = []
-				break
 	# Process remaining texts
 	if texts:
 		predicted_error_types = classify_texts(texts, model, device)
@@ -126,7 +125,6 @@ def process_data(jsonl_file, field_name):
 	# for error_type, count in error_counts.items():
 	#     percentage = (count / total_texts) * 100
 	#     print(f"{error_type}: {percentage:.2f}% ")
-
 	return error_counts, total_texts
 
 
@@ -149,22 +147,24 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
 with open('usergan.jsonl', 'r') as jsonl_file:
-	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'GAN')
+	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 # Print error type frequencies
+print("\nOutput Error Type Frequencies:")
+for error_type, count in output_error_counts.items():
+	percentage = (count / total_output_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")
+
 print("Response Error Type Frequencies:")
 for error_type, count in response_error_counts.items():
 	percentage = (count / total_response_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")
 
-print("\nOutput Error Type Frequencies:")
-for error_type, count in output_error_counts.items():
-	percentage = (count / total_output_texts) * 100
-	print(f"{error_type}: {percentage:.2f}% ")
+
 print("\nGAN Error Type Frequencies:")
 for error_type, count in gan_error_counts.items():
 	percentage = (count / total_gan_texts) * 100
@@ -179,14 +179,16 @@ y_pos = np.arange(len(index_to_error_type))
 
 plt.figure(figsize=(16, 10))  # Larger and wider figure
 
-# Plot the red bars (response)
-plt.barh(y_pos - bar_width/2, list(response_error_percentages.values()), color='red', label='Human', height=bar_width)
 
 # Plot the blue bars (output)
-plt.barh(y_pos + bar_width/2, list(output_error_percentages.values()), color='blue', label='LLM', alpha=0.5, height=bar_width)
+plt.barh(y_pos - bar_width, list(output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
+
+# Plot the red bars (response)
+plt.barh(y_pos , list(response_error_percentages.values()), color='red', label='LLM', height=bar_width)
+
 
 # Plot the green bars (GAN)
-plt.barh(y_pos + 3*bar_width/2, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
+plt.barh(y_pos + bar_width, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
