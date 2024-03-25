@@ -19,9 +19,9 @@ with open(file_name, "r") as file:
 
 # Plot histogram
 plt.hist(history_lengths, bins=20, color='blue', alpha=0.7)
-plt.title('Length of History Lists')
-plt.xlabel('Length')
-plt.ylabel('Frequency')
+plt.title('Users\' Utterances at Different Turns of the Dialogue')
+plt.xlabel('Conversation Turn')
+plt.ylabel('Count')
 plt.grid(True)
 # Save the figure as 'length_dist.png'
 plt.savefig('length_dist.png')
