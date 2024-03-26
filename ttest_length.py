@@ -54,6 +54,10 @@ print(f"Response Positive Keywords Count vs Response Length: {response_positive_
 print(f"Output Negative Keywords Count vs Output Length: {output_negative_correlation:.2f}")
 print(f"Response Negative Keywords Count vs Response Length: {response_negative_correlation:.2f}")
 
+# Calculate average length
+avg_output_length = np.mean(output_lengths)
+avg_response_length = np.mean(response_lengths)
+
 # Perform T-test
 t_stat, p_value = stats.ttest_ind(output_lengths, response_lengths)
 
@@ -63,5 +67,7 @@ formatted_t_stat = "{:.2f}".format(t_stat)
 
 # Output results
 print("\nT-test Results:")
+print(f"Average Output Length: {avg_output_length:.2f}")
+print(f"Average Response Length: {avg_response_length:.2f}")
 print(f"T-statistic: {formatted_t_stat}")
 print(f"P-value: {formatted_p_value}")
