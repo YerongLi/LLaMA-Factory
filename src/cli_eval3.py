@@ -40,7 +40,10 @@ def main():
     logging.info('chat_model')
 
     logging.info(chat_model.args)
-    output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
+    if chat_model.args:
+        output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
+    else:
+        output_file_path = f'original.jsonl'
     logging.info(output_file_path)
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
@@ -62,10 +65,6 @@ def main():
     # Iterate through each record in the 'data' list
 
     ans = {}
-
-
-
-
 
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
