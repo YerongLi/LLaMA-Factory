@@ -3,7 +3,7 @@ import logging
 import json
 import tqdm
 import os
-
+import sys
 class StanfordNLP:
     def __init__(self, host='http://localhost', port=13000):
         self.nlp = StanfordCoreNLP(host, port=port,
@@ -47,18 +47,40 @@ class StanfordNLP:
 if __name__ == '__main__':
     sNLP = StanfordNLP()
 
-    # Remove the 'user4_w_key.jsonl' file if it exists
-    if os.path.exists('user4_w_key.jsonl'):
-        os.remove('user4_w_key.jsonl')
+    # # Remove the 'user4_w_key.jsonl' file if it exists
+    # if os.path.exists('user4_w_key.jsonl'):
+    #     os.remove('user4_w_key.jsonl')
 
-    with open('user4.jsonl', 'r') as count_file:
+    # with open('user4.jsonl', 'r') as count_file:
+    #     total_lines = sum(1 for _ in count_file)
+
+
+    # Check if the correct number of arguments is provided
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <input_filename>")
+        sys.exit(1)
+
+    # Get the input filename from the command line arguments
+    input_filename = sys.argv[1]
+    output_filename = input_filename.rsplit('.', 1)[0] + '_w_key.jsonl'
+    with open(input_filename, 'r') as count_file:
         total_lines = sum(1 for _ in count_file)
+    # Remove the output file if it exists
+    if os.path.exists(output_filename):
+        os.remove(output_filename)
+
+    # Process the input file
+    with open(input_filename, 'r') as input_file, open(output_filename, 'w') as output_file:
+        # Your processing logic here
+        pass
+
+    #   Rest of your code
 
     # Open the input file
     cnt = 0
-    with open('user4.jsonl', 'r') as jsonl_file:
+    with open(input_filename, 'r') as jsonl_file:
         # Open the output file
-        with open('user4_w_key.jsonl', 'a') as output_file:
+        with open(output_filename, 'a') as output_file:
             # Iterate through each line in the input file
             for line in tqdm.tqdm(jsonl_file, total=total_lines):
                 # Parse JSON from the line

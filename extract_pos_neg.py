@@ -5,7 +5,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-
+import sys
 # Initialize Sentiment Intensity Analyzer
 sia = SentimentIntensityAnalyzer()
 
@@ -29,11 +29,17 @@ def extract_keywords(sentence):
             negative_keywords.append(word)
     
     return positive_keywords, negative_keywords
-with open('user4_w_key.jsonl', 'r') as count_file:
+if len(sys.argv) != 2:
+    print("Usage: python script.py <input_filename>")
+    sys.exit(1)
+
+# Get the input filename from the command line arguments
+input_filename = sys.argv[1]
+with open(input_filename, 'r') as count_file:
     total_lines = sum(1 for _ in count_file)
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open(input_filename, 'r') as jsonl_file:
     # Open the output file
-    with open('user4_w_key1.jsonl', 'a') as output_file:
+    with open(input_filename+'bak', 'a') as output_file:
         # Iterate through each line in the input file
         for line in tqdm.tqdm(jsonl_file, total=total_lines):
             # Parse JSON from the line
@@ -56,7 +62,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
                 
                 output_file.write(json.dumps(json_obj) + '\n')
 
-os.rename("user4_w_key1.jsonl", "user4_w_key.jsonl")
+os.rename(input_filename+'bak', input_filename)
 
 # Initialize dictionaries to store keyword counts for each interval for output and response separately
 output_interval_counts = {}

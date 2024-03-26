@@ -40,7 +40,10 @@ def main():
     logging.info('chat_model')
 
     logging.info(chat_model.args)
-    output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
+    if chat_model.args:
+        output_file_path = f'{chat_model.args[0].split("/")[-2]}.jsonl'
+    else:
+        output_file_path = f'original.jsonl'
     logging.info(output_file_path)
     tokens = chat_model.tokenizer.encode(text_with_newline)
 
@@ -63,10 +66,6 @@ def main():
 
     ans = {}
 
-
-
-
-
     chat_model.tokenizer.pad_token = "[PAD]"
     chat_model.tokenizer.padding_side = "left"
     progress = {}
@@ -81,7 +80,8 @@ def main():
             # print(progress.keys())
 
     # Load data from the file
-    if chat_model.args[0].split("/")[-2].startswith("user"):
+
+    if chat_model.args is None or chat_model.args[0].split("/")[-2].startswith("user"):
         i_file_name = "data/usertest.jsonl"
         # i_file_name = "data/usertrain.jsonl"
     elif chat_model.args[0].split("/")[-2].startswith("police") or chat_model.args[0].split("/")[-2].startswith("dispatcher"):
