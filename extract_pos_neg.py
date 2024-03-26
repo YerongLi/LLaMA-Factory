@@ -5,7 +5,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-
+import sys
 # Initialize Sentiment Intensity Analyzer
 sia = SentimentIntensityAnalyzer()
 
