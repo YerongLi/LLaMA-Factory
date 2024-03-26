@@ -13,6 +13,8 @@ input_filename = sys.argv[1]
 # Lists to store data
 output_positive_counts = []
 response_positive_counts = []
+output_negative_counts = []
+response_negative_counts = []
 output_lengths = []
 response_lengths = []
 
@@ -26,23 +28,31 @@ with open(input_filename, 'r') as jsonl_file:
         # Extract fields
         output_positive_keywords = json_obj.get('output_positive_keywords', [])
         response_positive_keywords = json_obj.get('response_positive_keywords', [])
+        output_negative_keywords = json_obj.get('output_negative_keywords', [])
+        response_negative_keywords = json_obj.get('response_negative_keywords', [])
         output = json_obj.get('output', '')
         response = json_obj.get('response', '')
         
         # Append counts and lengths to lists
         output_positive_counts.append(len(output_positive_keywords))
         response_positive_counts.append(len(response_positive_keywords))
+        output_negative_counts.append(len(output_negative_keywords))
+        response_negative_counts.append(len(response_negative_keywords))
         output_lengths.append(len(output.split()))
         response_lengths.append(len(response.split()))
 
 # Calculate Pearson correlation
 output_positive_correlation, _ = stats.pearsonr(output_positive_counts, output_lengths)
 response_positive_correlation, _ = stats.pearsonr(response_positive_counts, response_lengths)
+output_negative_correlation, _ = stats.pearsonr(output_negative_counts, output_lengths)
+response_negative_correlation, _ = stats.pearsonr(response_negative_counts, response_lengths)
 
 # Print Pearson correlation
 print("Pearson Correlation:")
 print(f"Output Positive Keywords Count vs Output Length: {output_positive_correlation:.2f}")
 print(f"Response Positive Keywords Count vs Response Length: {response_positive_correlation:.2f}")
+print(f"Output Negative Keywords Count vs Output Length: {output_negative_correlation:.2f}")
+print(f"Response Negative Keywords Count vs Response Length: {response_negative_correlation:.2f}")
 
 # Perform T-test
 t_stat, p_value = stats.ttest_ind(output_lengths, response_lengths)
