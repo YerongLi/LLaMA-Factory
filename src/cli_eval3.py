@@ -80,7 +80,8 @@ def main():
             # print(progress.keys())
 
     # Load data from the file
-    if chat_model.args[0].split("/")[-2].startswith("user"):
+
+    if chat_model.args is None or chat_model.args[0].split("/")[-2].startswith("user"):
         i_file_name = "data/usertest.jsonl"
         # i_file_name = "data/usertrain.jsonl"
     elif chat_model.args[0].split("/")[-2].startswith("police") or chat_model.args[0].split("/")[-2].startswith("dispatcher"):
