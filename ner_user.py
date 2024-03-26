@@ -63,7 +63,8 @@ if __name__ == '__main__':
     # Get the input filename from the command line arguments
     input_filename = sys.argv[1]
     output_filename = input_filename.rsplit('.', 1)[0] + '_w_key.jsonl'
-
+    with open(input_filename, 'r') as count_file:
+        total_lines = sum(1 for _ in count_file)
     # Remove the output file if it exists
     if os.path.exists(output_filename):
         os.remove(output_filename)
