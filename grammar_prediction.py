@@ -144,7 +144,8 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
 	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 
 # Open JSONL file for 'response' field
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+# with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('useroriginal_w_key.jsonl', 'r') as jsonl_file:
 	texts = []
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
