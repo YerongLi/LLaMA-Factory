@@ -203,9 +203,9 @@ for error_type, count in gan_error_counts.items():
 # Select error types where at least one of the error percentages is greater than 1%
 specific_error_types = [
     error_type for error_type in error_type_to_index.keys()
-    if (output_error_percentages.get(error_type, 0) > 1) or
-       (response_error_percentages.get(error_type, 0) > 1) or
-       (gan_error_percentages.get(error_type, 0) > 1)
+    if (output_error_percentages.get(error_type, 0) > 2) or
+       (response_error_percentages.get(error_type, 0) > 2) or
+       (gan_error_percentages.get(error_type, 0) > 2)
 ]
 
 
