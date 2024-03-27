@@ -248,9 +248,9 @@ plt.figure(figsize=(12, 8))  # Larger figure size
 # Create a DataFrame for error percentages
 error_df = pd.DataFrame({
     'Error Type': specific_error_types,
-    'Output': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'Response': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types]
+    'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'Llama': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'Llama with GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types]
 })
 
 # Melt the DataFrame
