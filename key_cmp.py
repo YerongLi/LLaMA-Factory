@@ -94,7 +94,12 @@ print ('=======output =======')
 # print(event_id_key_dict)
 del event_id_key_dict_user
 event_id_key_dict_user = {}
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+if len(sys.argv) != 2:
+    print("Usage: python script.py <input_filename>")
+    sys.exit(1)
+input_filename = sys.argv[1]
+
+with open(input_filename, 'r') as jsonl_file:
     for line in jsonl_file:
         json_obj = json.loads(line)
         if 'response' not in json_obj: continue
