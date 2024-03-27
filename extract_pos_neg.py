@@ -34,7 +34,6 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 # Get the input filename from the command line arguments
-input_filename = sys.argv[1]
 with open(input_filename, 'r') as count_file:
     total_lines = sum(1 for _ in count_file)
 with open(input_filename, 'r') as jsonl_file:

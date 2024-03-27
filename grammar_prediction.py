@@ -174,28 +174,45 @@ for error_type, count in gan_error_counts.items():
 # Determine the bar width
 bar_width = 0.4
 
-# Define the y-coordinates for the bars
-y_pos = np.arange(len(index_to_error_type))
+# Extracting error types to include in the plot
+error_types_to_plot = {
+    'Sentence Structure Errors': 0,
+    'Spelling Mistakes': 4,
+    'Passive Voice Overuse': 21,
+    'Redundancy/Repetition': 35,
+    'No Error': 36
+}
 
-plt.figure(figsize=(16, 10))  # Larger and wider figure
+# Filter error counts and percentages to include only the selected error types
+output_error_counts_filtered = {error_type: output_error_counts[error_type] for error_type in error_types_to_plot.values()}
+response_error_counts_filtered = {error_type: response_error_counts[error_type] for error_type in error_types_to_plot.values()}
+gan_error_counts_filtered = {error_type: gan_error_counts[error_type] for error_type in error_types_to_plot.values()}
 
+output_error_percentages_filtered = {error_type: output_error_percentages[error_type] for error_type in error_types_to_plot.values()}
+response_error_percentages_filtered = {error_type: response_error_percentages[error_type] for error_type in error_types_to_plot.values()}
+gan_error_percentages_filtered = {error_type: gan_error_percentages[error_type] for error_type in error_types_to_plot.values()}
+
+# Define error types and their corresponding indices
+error_types = list(error_types_to_plot.keys())
+y_pos = np.arange(len(error_types))
+
+plt.figure(figsize=(10, 6))  # Adjust figure size
 
 # Plot the blue bars (output)
-plt.barh(y_pos - bar_width, list(output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
+plt.barh(y_pos - bar_width, list(output_error_percentages_filtered.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
 
 # Plot the red bars (response)
-plt.barh(y_pos , list(response_error_percentages.values()), color='red', label='LLM', height=bar_width)
-
+plt.barh(y_pos , list(response_error_percentages_filtered.values()), color='red', label='LLM', height=bar_width)
 
 # Plot the green bars (GAN)
-plt.barh(y_pos + bar_width, list(gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
+plt.barh(y_pos + bar_width, list(gan_error_percentages_filtered.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
-plt.title('Error Type Frequencies')
+plt.title('Selected Error Type Frequencies')
 plt.legend()
 
 # Adjust font size
-plt.yticks(y_pos, [index_to_error_type[i] for i in range(len(index_to_error_type))], fontsize='small')  
+plt.yticks(y_pos, error_types, fontsize='small')
 
 plt.savefig("Grammar.png")
