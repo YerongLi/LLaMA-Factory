@@ -200,13 +200,14 @@ for error_type, count in gan_error_counts.items():
 
 # plt.savefig("Grammar.png")
 
+# Select error types where at least one of the error percentages is greater than 1%
 specific_error_types = [
-    'Sentence Structure Errors',
-    'Subject-Verb Agreement',
-    'Spelling Mistakes',
-    'Redundancy/Repetition',
-    'No Error'
+    error_type for error_type in error_type_to_index.keys()
+    if (output_error_percentages.get(error_type, 0) > 1) or
+       (response_error_percentages.get(error_type, 0) > 1) or
+       (gan_error_percentages.get(error_type, 0) > 1)
 ]
+
 
 # Plot histogram
 # Determine the bar width
