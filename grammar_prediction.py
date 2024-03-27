@@ -5,6 +5,7 @@ import torch
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 error_type_to_index = {
 	'Sentence Structure Errors': 0,
