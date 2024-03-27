@@ -2,6 +2,7 @@ from grammar import RobertaClassifier
 import json
 from tqdm import tqdm
 import torch
+import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
@@ -210,32 +211,59 @@ specific_error_types = [
 
 
 # Plot histogram
-# Determine the bar width
-bar_width = 0.4
+# # Determine the bar width
+# bar_width = 0.4
 
-# Define the y-coordinates for the bars
-y_pos = np.arange(len(specific_error_types))
+# # Define the y-coordinates for the bars
+# y_pos = np.arange(len(specific_error_types))
 
-plt.figure(figsize=(16, 10))  # Larger and wider figure
+# plt.figure(figsize=(16, 10))  # Larger and wider figure
 
-# Plot the blue bars (output)
-output_specific_errors = [output_error_percentages[error_type] for error_type in specific_error_types]
-plt.barh(y_pos - bar_width, output_specific_errors, color='blue', label='Human', alpha=0.5, height=bar_width)
+# # Plot the blue bars (output)
+# output_specific_errors = [output_error_percentages[error_type] for error_type in specific_error_types]
+# plt.barh(y_pos - bar_width, output_specific_errors, color='blue', label='Human', alpha=0.5, height=bar_width)
 
-# Plot the red bars (response)
-response_specific_errors = [response_error_percentages[error_type] for error_type in specific_error_types]
-plt.barh(y_pos , response_specific_errors, color='red', label='LLM', height=bar_width)
+# # Plot the red bars (response)
+# response_specific_errors = [response_error_percentages[error_type] for error_type in specific_error_types]
+# plt.barh(y_pos , response_specific_errors, color='red', label='LLM', height=bar_width)
 
-# Plot the green bars (GAN)
-gan_specific_errors = [gan_error_percentages[error_type] for error_type in specific_error_types]
-plt.barh(y_pos + bar_width, gan_specific_errors, color='green', label='GAN', alpha=0.5, height=bar_width)
+# # Plot the green bars (GAN)
+# gan_specific_errors = [gan_error_percentages[error_type] for error_type in specific_error_types]
+# plt.barh(y_pos + bar_width, gan_specific_errors, color='green', label='GAN', alpha=0.5, height=bar_width)
+
+# plt.xlabel('Percentage')
+# plt.ylabel('Error Type')
+# plt.title('Error Type Frequencies')
+# plt.legend()
+
+# # Adjust font size
+# plt.yticks(y_pos, specific_error_types, fontsize='small')  
+
+# plt.savefig("Grammar.png")
+
+# Plot histogram
+plt.figure(figsize=(12, 8))  # Larger figure size
+
+# Create a DataFrame for error percentages
+error_df = pd.DataFrame({
+    'Error Type': specific_error_types,
+    'Output': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'Response': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types]
+})
+
+# Melt the DataFrame
+error_df_melted = error_df.melt('Error Type', var_name='Source', value_name='Percentage')
+
+# Plot using Seaborn
+sns.set(style="whitegrid")
+sns.barplot(x="Percentage", y="Error Type", hue="Source", data=error_df_melted, palette="muted")
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
-plt.legend()
 
-# Adjust font size
-plt.yticks(y_pos, specific_error_types, fontsize='small')  
+plt.legend(title='Source')
+plt.tight_layout()
 
 plt.savefig("Grammar.png")
