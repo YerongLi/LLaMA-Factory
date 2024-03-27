@@ -40,67 +40,32 @@ error_type_to_index = {
 	'Redundancy/Repetition': 35,
 	'No Error': 36
 }
-from tqdm import tqdm
-import torch
-import matplotlib.pyplot as plt
-import numpy as np
+# Define dictionaries to store error counts for each type
+output_error_counts = {error_type: 0 for error_type in error_type_to_index}
+response_error_counts = {error_type: 0 for error_type in error_type_to_index}
+gan_error_counts = {error_type: 0 for error_type in error_type_to_index}
 
-# Selected error types to be plotted
-selected_error_types = {
-    'Sentence Structure Errors': 0,
-    'Spelling Mistakes': 4,
-    'Passive Voice Overuse': 21,
-    'Redundancy/Repetition': 35,
-    'No Error': 36
-}
+# Total number of texts
+total_output_texts = 0
+total_response_texts = 0
+total_gan_texts = 0
 
-# Define index_to_error_type for selected error types
-index_to_error_type = {value: key for key, value in selected_error_types.items()}
+# Open JSONL file for 'output' field
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+    output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 
-# Plot only selected error types
-selected_index_to_error_type = {key: index_to_error_type[key] for key in sorted(selected_error_types.values())}
+# Open JSONL file for 'response' field
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    texts = []
+    response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 
-# Create new dictionaries to store error counts and percentages for selected error types
-selected_output_error_counts = {}
-selected_response_error_counts = {}
-selected_gan_error_counts = {}
-selected_output_error_percentages = {}
-selected_response_error_percentages = {}
-selected_gan_error_percentages = {}
+# Open JSONL file for 'response' field in GAN
+with open('usergan.jsonl', 'r') as jsonl_file:
+    texts = []
+    gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
-# Update selected dictionaries with counts and percentages for selected error types
-for error_type, index in selected_error_types.items():
-    selected_output_error_counts[error_type] = output_error_counts[error_type]
-    selected_response_error_counts[error_type] = response_error_counts[error_type]
-    selected_gan_error_counts[error_type] = gan_error_counts[error_type]
-    selected_output_error_percentages[error_type] = output_error_percentages[error_type]
-    selected_response_error_percentages[error_type] = response_error_percentages[error_type]
-    selected_gan_error_percentages[error_type] = gan_error_percentages[error_type]
-
-# Determine the bar width
-bar_width = 0.4
-
-# Define the y-coordinates for the bars
-y_pos = np.arange(len(selected_index_to_error_type))
-
-plt.figure(figsize=(12, 8))  # Larger and wider figure
-
-# Plot the blue bars (output)
-plt.barh(y_pos - bar_width, list(selected_output_error_percentages.values()), color='blue', label='Human', alpha=0.5, height=bar_width)
-
-# Plot the red bars (response)
-plt.barh(y_pos, list(selected_response_error_percentages.values()), color='red', label='LLM', height=bar_width)
-
-# Plot the green bars (GAN)
-plt.barh(y_pos + bar_width, list(selected_gan_error_percentages.values()), color='green', label='GAN', alpha=0.5, height=bar_width)
-
-plt.xlabel('Percentage')
-plt.ylabel('Error Type')
-plt.title('Error Type Frequencies')
-plt.legend()
-
-# Adjust font size
-plt.yticks(y_pos, list(selected_index_to_error_type.values()), fontsize='small')
-
-
-plt.savefig("Grammar.png")
+# Calculate error percentages
+output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
+response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
+gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
