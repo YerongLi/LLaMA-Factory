@@ -255,17 +255,17 @@ error_df = pd.DataFrame({
 })
 
 # Melt the DataFrame
-error_df_melted = error_df.melt('Error Type', var_name='Source', value_name='Percentage')
+error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
 sns.set(style="whitegrid")
-sns.barplot(x="Percentage", y="Error Type", hue="Source", data=error_df_melted, palette="muted")
+sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette="muted")
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 
-plt.legend(title='Source')
+plt.legend(title='Victim')
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
