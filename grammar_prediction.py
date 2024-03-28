@@ -233,7 +233,9 @@ def save_error_instances(errors, folder):
     
     # Save error instances in text files
     for error_type, instances in errors.items():
-        file_path = os.path.join(folder, f"{error_type}.txt")
+        # Replace invalid characters in error type for file name
+        file_name = error_type.replace("/", "_") + ".txt"
+        file_path = os.path.join(folder, file_name)
         with open(file_path, 'w') as file:
             file.write("\n".join(instances))
 
