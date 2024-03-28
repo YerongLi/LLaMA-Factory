@@ -35,20 +35,20 @@ with open("answer_gpt35.jsonl", "r") as jsonl_file:
 # Extract data for plotting from "answer_gpt35.jsonl"
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
-# Determine the positions of the bars for each group
-ratio_value = 0.2
-bar_width = 0.05
-positions = [ratio_value - bar_width, ratio_value, ratio_value + bar_width]
+# Plotting
+plt.figure(figsize=(10, 6))
 
-# Plotting using Seaborn
-plt.figure(figsize=(12, 8))
+# Concatenate data for Seaborn plotting
+data_concatenated = zero_ratio + r_ratio + r_ratio_gpt35
+labels = ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
+hue_colors = {'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}
 
-sns.histplot(zero_ratio, bins=30, color='blue', alpha=0.7, label='Human neg', stat='density', kde=True, position=positions[0])
-sns.histplot(r_ratio, bins=30, color='red', alpha=0.7, label='LM neg', stat='density', kde=True, position=positions[1])
-sns.histplot(r_ratio_gpt35, bins=30, color='brown', alpha=0.7, label='LM GPT-3.5 neg', stat='density', kde=True, position=positions[2])
+# Plot histogram using Seaborn
+sns.histplot(data=data_concatenated, bins=30, hue=labels, multiple="dodge", shrink=.8, palette=hue_colors)
 
 plt.xlabel('Ratio')
-plt.ylabel('Density')
+plt.ylabel('Count')
 plt.title('Distribution of human and LLAMA responses')
 plt.legend(loc='upper right')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
+# plt.show()
