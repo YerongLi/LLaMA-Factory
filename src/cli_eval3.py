@@ -80,6 +80,7 @@ def main():
             # print(progress.keys())
 
     # Load data from the file
+    i_file_name = "data/usertest.jsonl"
 
     if chat_model.args is None or chat_model.args[0].split("/")[-2].startswith("user"):
         i_file_name = "data/usertest.jsonl"
@@ -88,16 +89,15 @@ def main():
         i_file_name = "data/dispatchertest.jsonl"
 
     # Read the JSONL file
-    if os.path.exists(i_file_name):
 
-        with open(i_file_name, "r") as file:
-            data = [json.loads(line) for line in file]
-            for i, item in enumerate(data):
-                ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
-                # if ky not in progress: print(ky)
+    with open(i_file_name, "r") as file:
+        data = [json.loads(line) for line in file]
+        for i, item in enumerate(data):
+            ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
+            # if ky not in progress: print(ky)
 
-                if ky in progress:
-                    data[i]['response'] = progress[ky]
+            if ky in progress:
+                data[i]['response'] = progress[ky]
 
     data_empty = [item for item in data if 'response' not in item]
     data_fill= [item for item in data if 'response' in item]
