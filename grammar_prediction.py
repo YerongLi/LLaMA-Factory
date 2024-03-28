@@ -224,17 +224,6 @@ error_df = pd.DataFrame({
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
-# Plot using Seaborn
-sns.set(style="whitegrid")
-
-# Create a mask to color the background gray for the specified range
-mask = (error_df_melted['Percentage'] >= 60) & (error_df_melted['Percentage'] <= 90)
-colors = np.where(mask, 'gray', 'blue')
-
-# Plot the barplot
-ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
-ax.set_xticks(np.arange(0, 101, 10))  # Set xticks every 10 percentage points
-ax.set_xticklabels([str(i) if i not in range(60, 101) else '' for i in range(0, 101, 10)])  # Skip labels for the range 60-100
 
 # Customize labels and title
 plt.xlabel('Percentage')
