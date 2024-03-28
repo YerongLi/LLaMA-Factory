@@ -44,7 +44,7 @@ labels = ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GPT-
 hue_colors = {'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}
 
 # Plot histogram using Seaborn
-sns.histplot(data=data_concatenated, bins=30, hue=labels, multiple="dodge", shrink=.8, palette=hue_colors)
+sns.histplot(data=data_concatenated, bins=30, multiple="dodge", shrink=.8, palette=hue_colors)
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
