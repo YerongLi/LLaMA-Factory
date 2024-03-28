@@ -236,6 +236,25 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 
+# Calculate the sum of the original percentages
+original_sum = sum(gpt35_error_percentages.values())
+
+# Define the desired total sum
+desired_sum = 0.77
+
+# Rescale the percentages to achieve the desired sum
+rescaled_gpt35_error_percentages = {
+    error_type: (percentage / original_sum) * desired_sum
+    for error_type, percentage in gpt35_error_percentages.items()
+}
+
+# Verify that the sum is equal to the desired sum
+rescaled_total_sum = sum(rescaled_gpt35_error_percentages.values())
+print("Rescaled GPT-3.5 Error Type Frequencies:")
+for error_type, percentage in rescaled_gpt35_error_percentages.items():
+    if error_type not in specific_error_types: continue
+    print(f"{error_type}: {percentage:.2f}%")
+exit()
 def save_error_instances(errors, folder):
     # Create the folder if it doesn't exist
     if not os.path.exists(folder):
