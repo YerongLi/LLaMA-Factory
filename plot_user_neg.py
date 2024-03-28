@@ -35,9 +35,8 @@ with open("answer_gpt35.jsonl", "r") as jsonl_file:
 # Extract data for plotting from "answer_gpt35.jsonl"
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
-# Define bins for the histogram with three bars around 0.2 ratio
-bins = [i / 10 for i in range(16)]
-bins.extend([0.21, 0.22])
+# Determine the bins for the histogram
+bins = [i / 10 for i in range(16, 26)]
 
 # Plotting using Seaborn
 plt.figure(figsize=(12, 8))
@@ -47,11 +46,11 @@ sns.histplot(r_ratio, bins=bins, color='red', alpha=0.7, label='LM neg', stat='d
 sns.histplot(r_ratio_gpt35, bins=bins, color='brown', alpha=0.7, label='LM GPT-3.5 neg', stat='density', kde=True)
 
 # Set x-axis tick labels
-plt.xticks([i / 10 for i in range(16)], [f'{i / 10:.1f}' for i in range(16)])
+plt.xticks([i / 10 for i in range(16, 26)], [f'{i / 10:.1f}' for i in range(16, 26)])
 
 plt.xlabel('Ratio')
 plt.ylabel('Density')
 plt.title('Distribution of human and LLAMA responses')
 plt.legend(loc='upper right')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
-plt.show()
+# plt.show()
