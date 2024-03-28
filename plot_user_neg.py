@@ -35,20 +35,12 @@ with open("answer_gpt35.jsonl", "r") as jsonl_file:
 # Extract data for plotting from "answer_gpt35.jsonl"
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
-# Plotting
-plt.figure(figsize=(10, 6))
-
-# Concatenate data for Seaborn plotting
-data_concatenated = zero_ratio + r_ratio + r_ratio_gpt35
-labels = ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
-hue_colors = {'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}
-
-# Plot histogram using Seaborn
-sns.histplot(data=data_concatenated, bins=30, multiple="dodge", shrink=.8, palette=hue_colors)
+# Plotting using seaborn.displot
+sns.set(style="whitegrid")
+sns.displot(data=[zero_ratio, r_ratio, r_ratio_gpt35], kind='hist', bins=30, palette=['blue', 'red', 'brown'], legend=True)
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
 plt.title('Distribution of human and LLAMA responses')
-plt.legend(loc='upper right')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
-# plt.show()
+plt.show()
