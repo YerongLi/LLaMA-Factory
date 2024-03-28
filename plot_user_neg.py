@@ -2,6 +2,7 @@ import json
 import argparse
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Your program description')
@@ -35,12 +36,18 @@ with open("answer_gpt35.jsonl", "r") as jsonl_file:
 # Extract data for plotting from "answer_gpt35.jsonl"
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
-# Plotting using seaborn.displot
+# Combine the data into a DataFrame
+df = pd.DataFrame({
+    'Ratio': zero_ratio + r_ratio + r_ratio_gpt35,
+    'Source': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
+})
+
+# Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.displot(data=[zero_ratio, r_ratio, r_ratio_gpt35], kind='hist', bins=30, palette=['blue', 'red', 'brown'], legend=True)
+sns.displot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}, multiple="stack", height=6, aspect=1.5)
 
 plt.xlabel('Ratio')
-plt.ylabel('Count')
+plt.ylabel('Density')
 plt.title('Distribution of human and LLAMA responses')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
 plt.show()
