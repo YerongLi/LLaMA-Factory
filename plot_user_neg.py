@@ -30,7 +30,7 @@ zero_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for lin
 r_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line in data if line['r'] == -1]
 
 # Read data from "answer_gpt35.jsonl"
-with open("answer_gpt35.jsonl", "r") as jsonl_file:
+with open("gpt35.jsonl", "r") as jsonl_file:
     answer_gpt35_data = [json.loads(line) for line in jsonl_file]
 
 # Extract data for plotting from "answer_gpt35.jsonl"
