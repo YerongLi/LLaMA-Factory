@@ -6,6 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import os
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 error_type_to_index = {
 	'Sentence Structure Errors': 0,
@@ -142,21 +143,27 @@ total_output_texts = 0
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
 	texts = []
 	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
+output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 
 # Open JSONL file for 'response' field
 # with open('user4_w_key.jsonl', 'r') as jsonl_file:
 with open('useroriginal_w_key.jsonl', 'r') as jsonl_file:
 	texts = []
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
+response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 
 with open('usergan.jsonl', 'r') as jsonl_file:
 	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
-response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
-output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 # Print error type frequencies
+with open('gpt35.jsonl', 'r') as jsonl_file:
+    gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
+
+# Calculate error percentages for GPT-3.5 responses
+gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
+
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
@@ -173,11 +180,6 @@ for error_type, count in gan_error_counts.items():
 	percentage = (count / total_gan_texts) * 100
 	print(f"{error_type}: {percentage:.2f}% ")   
 
-with open('gpt35.jsonl', 'r') as jsonl_file:
-    gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
-
-# Calculate error percentages for GPT-3.5 responses
-gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
 
 # Print error type frequencies for GPT-3.5
 print("\nGPT-3.5 Error Type Frequencies:")
@@ -224,39 +226,47 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 
+def save_error_instances(errors, folder):
+    # Create the folder if it doesn't exist
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    
+    # Save error instances in text files
+    for error_type, instances in errors.items():
+        file_path = os.path.join(folder, f"{error_type}.txt")
+        with open(file_path, 'w') as file:
+            file.write("\n".join(instances))
 
-# # Select error types where at least one of the error percentages is greater than 1%
-# specific_error_types = [
-#     error_type for error_type in error_type_to_index.keys()
-#     if (output_error_percentages.get(error_type, 0) > 2) or
-#        (response_error_percentages.get(error_type, 0) > 2) or
-#        (gan_error_percentages.get(error_type, 0) > 2)
-# ]
+# Function to process data and extract error instances
+def extract_error_instances(jsonl_file, field_name):
+    error_instances = {error_type: [] for error_type in error_type_to_index}
+    for line in tqdm(jsonl_file):
+        json_obj = json.loads(line)
+        if field_name in json_obj:
+            text = json_obj[field_name]
+            error_types = classify_texts([text], model, device)
+            for error_type in error_types:
+                error_instances[error_type].append(text)
+    return error_instances
 
+# Open JSONL file for 'output' field
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
+    output_errors = extract_error_instances(jsonl_file, 'output')
 
+# Open JSONL file for 'response' field
+with open('useroriginal_w_key.jsonl', 'r') as jsonl_file:
+    response_errors = extract_error_instances(jsonl_file, 'response')
 
-# plt.figure(figsize=(12, 8))  # Larger figure size
+# Open JSONL file for GAN-generated responses
+with open('usergan.jsonl', 'r') as jsonl_file:
+    gan_errors = extract_error_instances(jsonl_file, 'response')
 
-# # Create a DataFrame for error percentages
-# error_df = pd.DataFrame({
-#     'Error Type': specific_error_types,
-#     'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-#     'Llama': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-#     'Llama with GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types]
-# })
+# Open JSONL file for GPT-3.5 responses
+with open('gpt35.jsonl', 'r') as jsonl_file:
+    gpt35_errors = extract_error_instances(jsonl_file, 'response')
 
-# # Melt the DataFrame
-# error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
-
-# # Plot using Seaborn
-# sns.set(style="whitegrid")
-# sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette="muted")
-
-# plt.xlabel('Percentage')
-# plt.ylabel('Error Type')
-# plt.title('Error Type Frequencies')
-
-# plt.legend(title='Victim')
-# plt.tight_layout()
-
-# plt.savefig("Grammar.png")
+# Save error instances in text files
+save_error_instances(output_errors, 'output')
+save_error_instances(response_errors, 'response')
+save_error_instances(gan_errors, 'gan')
+save_error_instances(gpt35_errors, 'gpt35')
