@@ -37,7 +37,7 @@ with open("answer_gpt35.jsonl", "r") as jsonl_file:
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
 # Read data from "usergan.jsonl"
-with open("usergan.jsonl", "r") as jsonl_file:
+with open("user4.jsonl", "r") as jsonl_file:
     usergan_data = [json.loads(line) for line in jsonl_file]
 
 # Extract data for plotting from "usergan.jsonl"
@@ -51,13 +51,10 @@ df = pd.DataFrame({
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.histplot(data=df, y="Ratio", hue="Source", multiple="stack", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'})
+# sns.displot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="layer", height=6, aspect=1.5)
+sns.histplot(data=df, x="Ratio", hue="Source", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge")
 
-plt.xlabel('Count')
-plt.ylabel('Ratio')
+plt.xlabel('Ratio')
+plt.ylabel('Density')
 plt.title('Distribution of human, LLAMA, and GAN responses')
-
-plt.legend(title='Source')
-plt.tight_layout()
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
-plt.show()
