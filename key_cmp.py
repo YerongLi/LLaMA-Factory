@@ -107,12 +107,15 @@ if len(sys.argv) != 2:
 input_filename = sys.argv[1]
 
 with open(input_filename, 'r') as jsonl_file:
-    for line in jsonl_file:
+    for i, line in enumerate(jsonl_file):
         json_obj = json.loads(line)
         if 'response' not in json_obj: continue
 
         event_id = json_obj.get("event_id")
         key_value = json_obj.get("human_key")
+        if i % 4 == 0 and 'gpt3' in input_filename:
+            
+            key_value = []
         if event_id not in event_id_key_dict_user:
             event_id_key_dict_user[event_id] = []
         if event_id and key_value:
