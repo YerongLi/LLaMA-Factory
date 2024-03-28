@@ -82,9 +82,16 @@ recall = sum_true_positives / (sum_true_positives + sum_false_negatives) if sum_
 f1_score_avg = 2 * (precision * recall) / (precision + recall) if precision + recall > 0 else 0
 
 # Print precision, recall, and F1 score on average
-print(f"Average Precision: {precision:.4f}")
-print(f"Average Recall: {recall:.4f}")
-print(f"Average F1 Score: {f1_score_avg:.4f}")
+# Assuming precision, recall, f1_score_avg are already calculated
+
+precision = precision * 100
+recall = recall * 100
+f1_score_avg = f1_score_avg * 100
+
+# Print with specified format
+print(f"Average Precision: {precision:.2f}")
+print(f"Average Recall: {recall:.2f}")
+print(f"Average F1 Score: {f1_score_avg:.2f}")
 
 
 
@@ -150,6 +157,13 @@ recall = sum_true_positives / (sum_true_positives + sum_false_negatives) if sum_
 f1_score_avg = 2 * (precision * recall) / (precision + recall) if precision + recall > 0 else 0
 
 # Print precision, recall, and F1 score on average
-print(f"Average Precision: {precision:.4f}")
-print(f"Average Recall: {recall:.4f}")
-print(f"Average F1 Score: {f1_score_avg:.4f}")
+# Assuming precision, recall, f1_score_avg are already calculated
+
+precision = precision * 100
+recall = recall * 100
+f1_score_avg = f1_score_avg * 100
+
+# Print with specified format
+print(f"Average Precision: {precision:.2f}")
+print(f"Average Recall: {recall:.2f}")
+print(f"Average F1 Score: {f1_score_avg:.2f}")
