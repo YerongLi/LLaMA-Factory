@@ -224,17 +224,32 @@ error_df = pd.DataFrame({
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
+# Plot using Seaborn
 sns.set(style="whitegrid")
-sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
 
+# Create a mask to identify bars above 60%
+mask = (error_df_melted['Percentage'] > 60)
+
+# Plot the barplot
+ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
+ax.set_xticks(np.arange(0, 61, 10))  # Set xticks every 10 percentage points up to 60%
+ax.set_xticklabels([str(i) for i in range(0, 61, 10)])  # Set xtick labels for 0-60%
+
+# Customize labels and title
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
+
+# Remove bars above 60%
+for bar, color in zip(ax.patches, colors):
+    if bar.get_width() > 60:
+        bar.set_color('white')  # Set color of bars above 60% to white
 
 plt.legend(title='Victim')
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
+
 
 def save_error_instances(errors, folder):
     # Create the folder if it doesn't exist
