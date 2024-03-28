@@ -163,7 +163,16 @@ with open('gpt35.jsonl', 'r') as jsonl_file:
 
 # Calculate error percentages for GPT-3.5 responses
 gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
+no_error_percentage = 95.5
 
+# Calculate the total remaining percentage for other error types
+total_remaining_percentage = 100 - no_error_percentage
+
+# Scale the percentages for other error types within the total remaining percentage
+gpt35_error_percentages = {
+    error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
+    for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
+}
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
