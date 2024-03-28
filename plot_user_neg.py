@@ -56,7 +56,8 @@ def adjust_ratio(x):
     return x
 
 # Apply the adjustment function to the 'Ratio' column
-df['Ratio'] = df['Ratio'].apply(adjust_ratio)
+# df['Ratio'] = df['Ratio'].apply(adjust_ratio)
+df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT-3.5 neg' else row['Ratio'], axis=1)
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
