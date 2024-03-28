@@ -51,13 +51,9 @@ df = pd.DataFrame({
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", binwidth=0.01, element="step")
-
-# Set x-axis ticks to group ratios
-plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
+sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=[0, 0.2, 0.4, 0.6, 0.8, 1.0], element="bars")
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
 plt.title('Distribution of human, Llama, and Llama+GAN responses')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
-plt.show()
