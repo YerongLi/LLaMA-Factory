@@ -44,7 +44,7 @@ df = pd.DataFrame({
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.displot(data=df, x="Ratio", hue="Source", kind="kde",stat='probability', palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}, multiple="stack", height=6, aspect=1.5)
+sns.displot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", height=6, aspect=1.5)
 
 plt.xlabel('Ratio')
 plt.ylabel('Density')
