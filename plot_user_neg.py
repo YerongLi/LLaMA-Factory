@@ -47,7 +47,7 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
-    'Victim': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
+    'Victim': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['GPT-3.5 neg'] * len(r_ratio_gpt35)
 })
 def adjust_ratio(x):
     x += 0.5
