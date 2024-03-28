@@ -13,7 +13,7 @@ from llmtuner.extras.misc import torch_gc
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 LOGFILE='./evaloutput.log'
-BATCH_SIZE=10
+BATCH_SIZE=30
 
 if os.path.exists(LOGFILE):
     # Remove the file
