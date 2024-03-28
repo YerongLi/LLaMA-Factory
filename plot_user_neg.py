@@ -44,14 +44,23 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
+
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Victim': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
 })
+def adjust_ratio(x):
+    x += 0.3
+    if x > 1:
+        x -= 1
+    return x
+
+# Apply the adjustment function to the 'Ratio' column
+df['Ratio'] = df['Ratio'].apply(adjust_ratio)
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=5, element="bars", shrink=0.7)
+sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 
