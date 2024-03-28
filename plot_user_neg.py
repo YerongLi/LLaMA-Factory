@@ -39,7 +39,7 @@ plt.figure(figsize=(10, 6))
 
 plt.hist(zero_ratio, bins=30, alpha=0.5, color='blue', label='Human neg')
 plt.hist(r_ratio, bins=30, alpha=0.5, color='red', label='LM neg')
-plt.hist(r_ratio_gpt35, bins=30, alpha=0.5, color='green', label='LM GPT-3.5 neg')
+plt.hist(r_ratio_gpt35, bins=30, alpha=0.5, color='pink', label='GPT-3.5 neg')
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
