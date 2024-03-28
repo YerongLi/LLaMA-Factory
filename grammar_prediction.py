@@ -234,17 +234,16 @@ error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Per
 # plt.legend(title='Victim')
 # plt.tight_layout()
 
-# plt.savefig("Grammar.png")
 sns.set(style="whitegrid")
 
-# Create a mask to color the background gray for the specified range
-mask = (error_df_melted['Percentage'] >= 50) & (error_df_melted['Percentage'] <= 90)
-colors = np.where(mask, 'gray', 'blue')
+# Create a mask to color the background and adjust bar lengths
+mask = (error_df_melted['Percentage'] >= 60) & (error_df_melted['Percentage'] <= 90)
+colors = np.where(mask, '//', '')  # Patterned background for the specified range
 
 # Plot the barplot
-ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
+ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'}, hatch=colors)
 ax.set_xticks(np.arange(0, 101, 10))  # Set xticks every 10 percentage points
-ax.set_xticklabels([str(i) if i not in range(50, 91) else '' for i in range(0, 101, 10)])  # Skip labels for the specified range
+ax.set_xticklabels([str(i) if i not in range(60, 91) else '' for i in range(0, 101, 10)])  # Skip labels for the specified range
 
 # Customize labels and title
 plt.xlabel('Percentage')
