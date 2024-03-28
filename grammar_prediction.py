@@ -169,11 +169,11 @@ no_error_percentage = 92.4
 total_remaining_percentage = 100 - no_error_percentage
 
 # Scale the percentages for other error types within the total remaining percentage
-gpt35_error_percentages = {
+rec_gpt35_error_percentages = {
     error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
     for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
 }
-gpt35_error_percentages['No Error'] = no_error_percentage
+rec_gpt35_error_percentages['No Error'] = no_error_percentage
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
@@ -202,7 +202,7 @@ error_percentages = {
     'Human': output_error_percentages,
     'Llama': response_error_percentages,
     'Llama with GAN': gan_error_percentages,
-    'GPT-3.5': gpt35_error_percentages
+    'GPT-3.5': rec_gpt35_error_percentages
 }
 
 # Select error types where at least one of the error percentages is greater than 2%
@@ -224,9 +224,29 @@ error_df = pd.DataFrame({
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
-sns.set(style="whitegrid")
-sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
+# sns.set(style="whitegrid")
+# sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
 
+# plt.xlabel('Percentage')
+# plt.ylabel('Error Type')
+# plt.title('Error Type Frequencies')
+
+# plt.legend(title='Victim')
+# plt.tight_layout()
+
+# plt.savefig("Grammar.png")
+sns.set(style="whitegrid")
+
+# Create a mask to color the background gray for the specified range
+mask = (error_df_melted['Percentage'] >= 50) & (error_df_melted['Percentage'] <= 90)
+colors = np.where(mask, 'gray', 'blue')
+
+# Plot the barplot
+ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
+ax.set_xticks(np.arange(0, 101, 10))  # Set xticks every 10 percentage points
+ax.set_xticklabels([str(i) if i not in range(50, 91) else '' for i in range(0, 101, 10)])  # Skip labels for the specified range
+
+# Customize labels and title
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
@@ -235,7 +255,6 @@ plt.legend(title='Victim')
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
-
 def save_error_instances(errors, folder):
     # Create the folder if it doesn't exist
     if not os.path.exists(folder):
