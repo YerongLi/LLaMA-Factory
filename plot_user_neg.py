@@ -52,7 +52,7 @@ df = pd.DataFrame({
 # Plotting with Seaborn
 sns.set(style="whitegrid")
 # sns.displot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="layer", height=6, aspect=1.5)
-sns.histplot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge")
+sns.histplot(data=df, x="Ratio", hue="Source", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge")
 
 plt.xlabel('Ratio')
 plt.ylabel('Density')
