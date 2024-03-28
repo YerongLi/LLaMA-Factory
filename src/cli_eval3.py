@@ -88,14 +88,16 @@ def main():
         i_file_name = "data/dispatchertest.jsonl"
 
     # Read the JSONL file
-    with open(i_file_name, "r") as file:
-        data = [json.loads(line) for line in file]
-        for i, item in enumerate(data):
-            ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
-            # if ky not in progress: print(ky)
+    if os.path.exists(i_file_name):
 
-            if ky in progress:
-                data[i]['response'] = progress[ky]
+        with open(i_file_name, "r") as file:
+            data = [json.loads(line) for line in file]
+            for i, item in enumerate(data):
+                ky = f"{item['event_id']}==={item['instruction']}==={item['output']}"
+                # if ky not in progress: print(ky)
+
+                if ky in progress:
+                    data[i]['response'] = progress[ky]
 
     data_empty = [item for item in data if 'response' not in item]
     data_fill= [item for item in data if 'response' in item]
