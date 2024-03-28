@@ -171,8 +171,9 @@ total_remaining_percentage = 100 - no_error_percentage
 # Scale the percentages for other error types within the total remaining percentage
 gpt35_error_percentages = {
     error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
-    for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error" else no_error_percentage
+    for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
 }
+gpt35_error_percentages['No Error'] = no_error_percentage
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
