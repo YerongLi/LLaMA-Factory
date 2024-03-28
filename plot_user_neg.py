@@ -51,7 +51,7 @@ df = pd.DataFrame({
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=5, element="bars", binwidth=0.02)
+sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=5, element="bars")
 
 plt.xlabel('Ratio')
 plt.ylabel('Count')
