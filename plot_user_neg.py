@@ -46,15 +46,15 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
-    'Source': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
+    'Victim': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
 })
 
 # Plotting with Seaborn
 sns.set(style="whitegrid")
-# sns.displot(data=df, x="Ratio", hue="Source", kind="kde", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="layer", height=6, aspect=1.5)
-sns.histplot(data=df, x="Ratio", hue="Source", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge")
+sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", binwidth=0.02, element="step")
 
 plt.xlabel('Ratio')
 plt.ylabel('Density')
 plt.title('Distribution of human, LLAMA, and GAN responses')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
+plt.show()
