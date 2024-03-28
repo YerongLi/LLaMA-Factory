@@ -174,7 +174,7 @@ for error_type, count in gan_error_counts.items():
 	print(f"{error_type}: {percentage:.2f}% ")   
 
 with open('gpt35.jsonl', 'r') as jsonl_file:
-    gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'output')
+    gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
 
 # Calculate error percentages for GPT-3.5 responses
 gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
