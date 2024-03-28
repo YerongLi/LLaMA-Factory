@@ -43,10 +43,10 @@ with open("user4.jsonl", "r") as jsonl_file:
 # Extract data for plotting from "usergan.jsonl"
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
 
-# Combine the data into a DataFrame
+# Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
 df = pd.DataFrame({
-    'Ratio': zero_ratio + r_ratio + r_ratio_gpt35 + r_ratio_usergan,
-    'Source': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35) + ['LM GAN neg'] * len(r_ratio_usergan)
+    'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
+    'Source': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
 })
 
 # Plotting with Seaborn
