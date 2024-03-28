@@ -227,27 +227,31 @@ error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Per
 # Plot using Seaborn
 sns.set(style="whitegrid")
 
-# Create a mask to identify bars above 60%
-mask = (error_df_melted['Percentage'] > 60)
+# Create a mask to color the background gray for the specified range
+mask = (error_df_melted['Percentage'] >= 60) & (error_df_melted['Percentage'] <= 90)
+colors = np.where(mask, 'gray', 'blue')
 
 # Plot the barplot
 ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
-ax.set_xticks(np.arange(0, 61, 10))  # Set xticks every 10 percentage points up to 60%
-ax.set_xticklabels([str(i) for i in range(0, 61, 10)])  # Set xtick labels for 0-60%
+ax.set_xticks(np.arange(0, 101, 10))  # Set xticks every 10 percentage points
+ax.set_xticklabels([str(i) if i not in range(60, 101) else '' for i in range(0, 101, 10)])  # Skip labels for the range 60-100
 
 # Customize labels and title
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 
-# Remove bars above 60%
-for bar, color in zip(ax.patches, colors):
+# Remove the legend if it's not necessary
+plt.legend(title='Victim', loc='upper right')
+
+# Remove long bars above 60 and show only the part above 90
+for bar in ax.patches:
     if bar.get_width() > 60:
-        bar.set_color('white')  # Set color of bars above 60% to white
+        bar.set_width(60)  # Set the width to 60
+    if bar.get_x() > 90:
+        bar.set_visible(False)  # Hide the bar if it's below 90
 
-plt.legend(title='Victim')
 plt.tight_layout()
-
 plt.savefig("Grammar.png")
 
 
