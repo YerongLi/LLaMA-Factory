@@ -53,6 +53,8 @@ df = pd.DataFrame({
 sns.set(style="whitegrid")
 sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", bins=5, element="bars", shrink=0.7)
 
+plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
+
 plt.xlabel('Ratio')
 plt.ylabel('Count')
 plt.title('Distribution of human, Llama, and Llama+GAN responses')
