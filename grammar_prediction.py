@@ -217,7 +217,7 @@ error_df = pd.DataFrame({
     'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
     'Llama': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
     'Llama with GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'GPT-3.5': [gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
+    'GPT-3.5': [rec_gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
 })
 
 # Melt the DataFrame
