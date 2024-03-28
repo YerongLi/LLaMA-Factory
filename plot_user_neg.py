@@ -54,7 +54,7 @@ sns.set(style="whitegrid")
 sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human neg': 'blue', 'LM neg': 'red', 'LM GAN neg': 'green', 'LM GPT-3.5 neg': 'brown'}, multiple="dodge", binwidth=0.02, element="step")
 
 plt.xlabel('Ratio')
-plt.ylabel('Density')
-plt.title('Distribution of human, LLAMA, and GAN responses')
+plt.ylabel('Count')
+plt.title('Distribution of human, Llama, and Llama+GAN responses')
 plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
 plt.show()
