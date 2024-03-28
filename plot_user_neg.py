@@ -50,7 +50,7 @@ df = pd.DataFrame({
     'Victim': ['Human neg'] * len(zero_ratio) + ['LM neg'] * len(r_ratio) + ['LM GAN neg'] * len(r_ratio_usergan) + ['LM GPT-3.5 neg'] * len(r_ratio_gpt35)
 })
 def adjust_ratio(x):
-    x += 0.3
+    x += 0.6
     if x > 1:
         x -= 1
     return x
