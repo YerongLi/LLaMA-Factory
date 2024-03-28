@@ -26,22 +26,22 @@ with open(file_name, "r") as file:
     data = [json.loads(line) for line in file]
 
 # Extract data for plotting from the provided file
-zero_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line in data if line['o'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
-r_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line in data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
+zero_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line in data if line['o'] == -1]
+r_ratio = [len(line['history']) / event_id_key_dict[line['event_id']] for line in data if line['r'] == -1]
 
 # Read data from "answer_gpt35.jsonl"
 with open("answer_gpt35.jsonl", "r") as jsonl_file:
     answer_gpt35_data = [json.loads(line) for line in jsonl_file]
 
 # Extract data for plotting from "answer_gpt35.jsonl"
-r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
+r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1]
 
 # Read data from "usergan.jsonl"
 with open("user4.jsonl", "r") as jsonl_file:
     usergan_data = [json.loads(line) for line in jsonl_file]
 
 # Extract data for plotting from "usergan.jsonl"
-r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1 and len(line['history']) / event_id_key_dict[line['event_id']] < 1.0+2e-9]
+r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
 df = pd.DataFrame({
