@@ -208,7 +208,7 @@ error_percentages = {
 # Select error types where at least one of the error percentages is greater than 2%
 specific_error_types = [
     error_type for error_type in error_type_to_index.keys()
-    if any(error_percentages[victim].get(error_type, 0) > 2 for victim in error_percentages)
+    if any(error_percentages[victim].get(error_type, 0) > 2 and error_type != 'No Error' for victim in error_percentages)
 ]
 
 # Create a DataFrame for error percentages including GPT-3.5
@@ -224,25 +224,17 @@ error_df = pd.DataFrame({
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
+sns.set(style="whitegrid")
+sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
 
-# Customize labels and title
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 
-# Remove the legend if it's not necessary
-plt.legend(title='Victim', loc='upper right')
-
-# Remove long bars above 60 and show only the part above 90
-for bar in ax.patches:
-    if bar.get_width() > 60:
-        bar.set_width(60)  # Set the width to 60
-    if bar.get_x() > 90:
-        bar.set_visible(False)  # Hide the bar if it's below 90
-
+plt.legend(title='Victim')
 plt.tight_layout()
-plt.savefig("Grammar.png")
 
+plt.savefig("Grammar.png")
 
 def save_error_instances(errors, folder):
     # Create the folder if it doesn't exist
