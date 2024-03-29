@@ -224,9 +224,24 @@ error_df = pd.DataFrame({
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
 
 # Plot using Seaborn
-sns.set(style="whitegrid")
+# sns.set(style="whitegrid")
 sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'})
+hatches = itertools.cycle(['/', '\\', 'o', '.'])
+# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+# Customize x-axis and y-axis
+plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
+plt.gca().spines['left'].set_color('black')    # Darken y-axis
 
+# Darken tick marks and lines on the x-axis and y-axis
+plt.tick_params(axis='x', colors='black', which='both')
+plt.tick_params(axis='y', colors='black', which='both')
+
+hatch = next(hatches)
+for i, bar in enumerate(ax.patches):
+    if i % 4 == 3:
+        hatch = next(hatches)
+
+    bar.set_hatch(hatch)
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
