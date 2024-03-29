@@ -3,6 +3,7 @@ import argparse
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import itertools
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Your program description')
