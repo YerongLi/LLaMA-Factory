@@ -215,8 +215,8 @@ specific_error_types = [
 error_df = pd.DataFrame({
     'Error Type': specific_error_types,
     'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'Llama': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'Llama with GAN': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'Vicsim': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+    'Vicsim w/o GAN': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
     'GPT-3.5': [rec_gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
 })
 
@@ -225,7 +225,7 @@ error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Per
 
 # Plot using Seaborn
 sns.set(style="whitegrid")
-sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Llama': 'red', 'Llama with GAN': 'green', 'GPT-3.5': 'brown'})
+sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Vicsim': 'red', 'Vicsim w/o GAN with GAN': 'green', 'GPT-3.5': 'brown'})
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')

@@ -48,7 +48,7 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
-    'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio) + ['Llama'] * len(r_ratio_usergan) + ['GPT3.5'] * len(r_ratio_gpt35)
+    'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35)
 })
 
 def adjust_ratio(x):
@@ -60,7 +60,7 @@ def adjust_ratio(x):
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
 # sns.set(style="whitegrid")
-ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
