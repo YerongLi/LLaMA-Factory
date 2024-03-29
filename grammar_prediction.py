@@ -228,7 +228,7 @@ error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Per
 # Plot using Seaborn
 # sns.set(style="whitegrid")
 ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'})
-hatches = itertools.cycle(['/', '-', 'o', 'x'])
+hatches = itertools.cycle(['/', '-', 'o', '*'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
