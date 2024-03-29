@@ -45,9 +45,7 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
-sns.set_style('whitegrid')
 
-# Your data setup
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio) + ['Llama'] * len(r_ratio_usergan) + ['GPT3.5'] * len(r_ratio_gpt35)
@@ -61,24 +59,20 @@ def adjust_ratio(x):
 
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-# Set up seaborn
 sns.set(style="whitegrid")
-ax = sns.barplot(x="Ratio", y="Victim", data=df, palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'})
-
-# Apply hatch patterns
-num_categories = len(df['Victim'].unique())
-hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+hatches = itertools.cycle(['/', '\\', 'o', '.'])
+# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
-    if i % num_categories == 0:
+    if i % 4 == 3:
         hatch = next(hatches)
+
     bar.set_hatch(hatch)
 
-# Customizing the legend
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1), ncol=4, fancybox=True, shadow=True)
-
-# Set labels and title
+plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 plt.xlabel('Stages of Dialogue')
-plt.ylabel('Victim')
+plt.ylabel('Number of Negative Expressions')
 plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
 
 plt.savefig('distribution.png')
