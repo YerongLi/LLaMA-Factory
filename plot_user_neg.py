@@ -59,7 +59,7 @@ def adjust_ratio(x):
 
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-sns.set(style="whitegrid")
+# sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
