@@ -77,7 +77,10 @@ for i, bar in enumerate(ax.patches):
         hatch = next(hatches)
 
     bar.set_hatch(hatch)
-
+for hues, hatch in zip(ax.containers, hatches):
+    # set a different hatch for each time
+    for hue in hues:
+        hue.set_hatch(hatch)
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
