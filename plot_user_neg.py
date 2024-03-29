@@ -66,8 +66,8 @@ colors = {'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen'
 hatches = {'Human': '/', 'VicSim': '//', 'VicSim w/o GAN': 'o', 'GPT3.5': '*'}
 
 for victim, hatch in hatches.items():
-    # sns.kdeplot(data=df[df['Victim'] == victim]['Ratio'], fill=True, color=colors[victim], ax=ax, label=victim, alpha=0.5, linewidth=0, hatch=hatch)
-    sns.displot(data=df[df['Victim'] == victim]['Ratio'], fill=True, color=colors[victim], ax=ax, label=victim, alpha=0.5, linewidth=0, hatch=hatch)
+    sns.kdeplot(data=df[df['Victim'] == victim]['Ratio'], fill=True, color=colors[victim], ax=ax, label=victim, alpha=0.5, linewidth=0.1, hatch=hatch)
+    # sns.displot(data=df[df['Victim'] == victim]['Ratio'], fill=True, color=colors[victim], ax=ax, label=victim, alpha=0.5, linewidth=0, hatch=hatch)
 
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
