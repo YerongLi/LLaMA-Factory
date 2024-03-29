@@ -63,10 +63,13 @@ sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+# Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
 plt.gca().spines['left'].set_color('black')    # Darken y-axis
-plt.tick_params(axis='x', colors='black')
-plt.tick_params(axis='y', colors='black')
+
+# Darken tick marks and lines on the x-axis and y-axis
+plt.tick_params(axis='x', colors='black', which='both')
+plt.tick_params(axis='y', colors='black', which='both')
 
 hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
