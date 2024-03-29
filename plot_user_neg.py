@@ -63,8 +63,8 @@ sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 for i, bar in enumerate(ax.patches):
-    if i % num_locations == 0:
-        hatch = next(hatches)
+    # if i % num_locations == 0:
+    hatch = next(hatches)
     bar.set_hatch(hatch)
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
