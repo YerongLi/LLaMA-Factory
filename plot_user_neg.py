@@ -66,9 +66,10 @@ hatches = itertools.cycle(['/', '//', 'o', '.'])
 
 for i, bar in enumerate(ax.patches):
     # if i % num_locations == 0:
-    print(i, hatch)
 
     hatch = next(hatches)
+    print(i, hatch)
+    
     bar.set_hatch(hatch)
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
