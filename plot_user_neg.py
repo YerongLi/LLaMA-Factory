@@ -63,12 +63,10 @@ sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
-
+hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
     if i % 4 == 3:
-
         hatch = next(hatches)
-    print(i, hatch)
 
     bar.set_hatch(hatch)
 
