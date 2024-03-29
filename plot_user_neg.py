@@ -70,7 +70,12 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 # Darken tick marks and lines on the x-axis and y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
+legend_handles = []
+for victim, hatch in zip(df['Victim'].unique(), itertools.cycle(['/', '-', 'o', 'x'])):
+    legend_handles.append(plt.Line2D([0], [0], color='white', marker='o', markersize=10, label=victim, markerfacecolor='black', linestyle='', hatch=hatch))
 
+# Place legend with handles
+plt.legend(handles=legend_handles)
 hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
     if i % 4 == 3:
