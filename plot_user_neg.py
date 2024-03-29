@@ -79,7 +79,7 @@ plt.tick_params(axis='y', colors='black', which='both')
 # Customize legend
 handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles=handles, labels=labels, loc='upper right')
-
+plt.xlim(0.0, 1.0)
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Density')
 plt.title('Density Plot of Ratio by Victim')
