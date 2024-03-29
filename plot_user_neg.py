@@ -59,10 +59,23 @@ def adjust_ratio(x):
 
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-# sns.set(style="whitegrid")
+sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+
 hatches = itertools.cycle(['/', '-', 'o', 'x'])
-# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+
+hatch_dict = {}
+for bar, hatch in zip(ax.patches, hatches):
+    hatch_dict[bar] = hatch
+
+# Set hatches for bars and create legend handles
+legend_handles = []
+for victim in df['Victim'].unique():
+    legend_handles.append(plt.Rectangle((0, 0), 1, 1, color='black', edgecolor='black', hatch=hatch_dict[victim]))
+
+# Place legend with handles
+plt.legend(handles=legend_handles, labels=df['Victim'].unique())
+
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
 plt.gca().spines['left'].set_color('black')    # Darken y-axis
@@ -70,18 +83,11 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 # Darken tick marks and lines on the x-axis and y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
-legend_handles = []
-for victim, hatch in zip(df['Victim'].unique(), itertools.cycle(['/', '-', 'o', 'x'])):
-    legend_handles.append(plt.Line2D([0], [0], color='white', marker='o', markersize=10, label=victim, markerfacecolor='black', linestyle='', hatch=hatch))
 
-# Place legend with handles
-plt.legend(handles=legend_handles)
-hatch = next(hatches)
-for i, bar in enumerate(ax.patches):
-    if i % 4 == 3:
-        hatch = next(hatches)
+# Assign hatches to bars
+for bar in ax.patches:
+    bar.set_hatch(hatch_dict[bar])
 
-    bar.set_hatch(hatch)
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 plt.xlabel('Stages of Dialogue')

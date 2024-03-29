@@ -245,7 +245,12 @@ for i, bar in enumerate(ax.patches):
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
+legend_handles = []
+for victim, hatch in zip(df['Victim'].unique(), itertools.cycle(['/', '-', 'o', 'x'])):
+    legend_handles.append(plt.Line2D([0], [0], color='white', marker='o', markersize=10, label=victim, markerfacecolor='black', linestyle='', hatch=hatch))
 
+# Place legend with handles
+plt.legend(handles=legend_handles)
 plt.legend(title='Victim')
 plt.tight_layout()
 
