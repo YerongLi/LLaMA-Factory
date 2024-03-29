@@ -84,4 +84,4 @@ plt.xlabel('Stages of Dialogue')
 plt.ylabel('Density')
 plt.title('Density Plot of Ratio by Victim')
 
-plt.savefig('density_plot.png')
+plt.savefig('distribution.png')
