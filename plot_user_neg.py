@@ -47,25 +47,23 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
-    'Victim': ['Human neg'] * len(zero_ratio)+ ['LM GAN neg'] * len(r_ratio_usergan) + ['LM neg'] * len(r_ratio)  + ['GPT-3.5 neg'] * len(r_ratio_gpt35)
+    'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio) + ['Llama'] * len(r_ratio_usergan) + ['GPT3.5'] * len(r_ratio_gpt35)
 })
+
 def adjust_ratio(x):
     x += 0.5
     if x > 1:
         x -= 1
     return x
 
-# Apply the adjustment function to the 'Ratio' column
-# df['Ratio'] = df['Ratio'].apply(adjust_ratio)
-df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT-3.5 neg' else row['Ratio'], axis=1)
+df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-# Plotting with Seaborn
 sns.set(style="whitegrid")
-sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue',  'VicSim': 'grey', 'Llama': 'red', 'GPT-3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'red', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
-plt.title('Distribution of human, Llama, VicSim, and GPT-3.5 responses')
+plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
 
-plt.savefig('distribution.png')  # Save the plot as 'distribution.png'
+plt.savefig('distribution.png')
