@@ -65,6 +65,8 @@ hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
 plt.gca().spines['left'].set_color('black')    # Darken y-axis
+plt.tick_params(axis='x', colors='black')
+plt.tick_params(axis='y', colors='black')
 
 hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
