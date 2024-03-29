@@ -77,11 +77,16 @@ for i, bar in enumerate(ax.patches):
         hatch = next(hatches)
 
     bar.set_hatch(hatch)
-for hues, hatch in zip(ax.containers, hatches):
-    # set a different hatch for each time
-    for hue in hues:
-        hue.set_hatch(hatch)
+legend_handles = []
+for victim, hatch in zip(error_df_melted['Victim'].unique(), hatches):
+    legend_handles.append(plt.Line2D([0], [0], color='white', marker='o', markersize=10, label=victim, markerfacecolor='black', linestyle='', hatch=hatch))
+
+# # Place legend with handles
+plt.legend(handles=legend_handles)
+plt.legend(handles=legend_handles)
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
+plt.legend(title='Model')
+
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
 # plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
