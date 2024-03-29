@@ -82,6 +82,6 @@ ax.legend(handles=handles, labels=labels, loc='upper right')
 plt.xlim(0.0, 1.0)
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Density')
-plt.title('Density Plot of Ratio by Victim')
+# plt.title('Density Plot of Ratio by Victim')
 
 plt.savefig('distribution.png')
