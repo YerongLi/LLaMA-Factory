@@ -225,7 +225,7 @@ error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Per
 
 # Plot using Seaborn
 sns.set(style="whitegrid")
-sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'blue', 'Vicsim': 'red', 'Vicsim w/o GAN with GAN': 'green', 'GPT-3.5': 'brown'})
+sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'})
 
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
