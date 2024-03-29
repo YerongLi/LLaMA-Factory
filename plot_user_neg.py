@@ -63,6 +63,9 @@ sns.set(style="whitegrid")
 ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'Llama': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
+plt.gca().spines['left'].set_color('black')    # Darken y-axis
+
 hatch = next(hatches)
 for i, bar in enumerate(ax.patches):
     if i % 4 == 3:
@@ -73,6 +76,6 @@ for i, bar in enumerate(ax.patches):
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
-plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
+# plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
 
 plt.savefig('distribution.png')
