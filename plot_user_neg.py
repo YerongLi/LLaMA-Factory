@@ -78,7 +78,7 @@ for i, bar in enumerate(ax.patches):
 
     bar.set_hatch(hatch)
 legend_handles = []
-for victim, hatch in zip(error_df_melted['Victim'].unique(), hatches):
+for victim, hatch in zip(df['Victim'].unique(), hatches):
     legend_handles.append(plt.Line2D([0], [0], color='white', marker='o', markersize=10, label=victim, markerfacecolor='black', linestyle='', hatch=hatch))
 
 # # Place legend with handles
