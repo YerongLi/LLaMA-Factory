@@ -65,6 +65,7 @@ hatches = itertools.cycle(['/', '//', 'o', '.'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 
 for i, bar in enumerate(ax.patches):
+    print(i)
     # if i % num_locations == 0:
     hatch = next(hatches)
     bar.set_hatch(hatch)
