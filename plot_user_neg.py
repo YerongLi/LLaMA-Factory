@@ -60,9 +60,14 @@ def adjust_ratio(x):
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
 # sns.set(style="whitegrid")
-ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
-hatches = itertools.cycle(['/', '\\', 'o', '*'])
-# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+fig, ax = plt.subplots(figsize=(8, 6))
+
+colors = {'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}
+hatches = {'Human': '/', 'VicSim': '//', 'VicSim w/o GAN': 'o', 'GPT3.5': '*'}
+
+for victim, hatch in hatches.items():
+    sns.kdeplot(data=df[df['Victim'] == victim]['Ratio'], shade=True, color=colors[victim], ax=ax, label=victim, alpha=0.5, linewidth=0, hatch=hatch)
+
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
 plt.gca().spines['left'].set_color('black')    # Darken y-axis
@@ -71,17 +76,12 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
-hatch = next(hatches)
-for i, bar in enumerate(ax.patches):
-    if i % 4 == 3:
-        hatch = next(hatches)
-
-    bar.set_hatch(hatch)
-plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
-# plt.legend(title='Model')
+# Customize legend
+handles, labels = ax.get_legend_handles_labels()
+ax.legend(handles=handles, labels=labels, loc='upper right')
 
 plt.xlabel('Stages of Dialogue')
-plt.ylabel('Number of Negative Expressions')
-# plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
+plt.ylabel('Density')
+plt.title('Density Plot of Ratio by Victim')
 
-plt.savefig('distribution.png')
+plt.savefig('density_plot.png')
