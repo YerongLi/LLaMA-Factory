@@ -59,10 +59,18 @@ def adjust_ratio(x):
 
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
+# Rearrange the DataFrame
+df = df.pivot_table(index='Victim', columns='Ratio', aggfunc='size', fill_value=0)
+
+# Reset index for plotting
+df = df.reset_index()
+
 # sns.set(style="whitegrid")
-ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
-hatches = itertools.cycle(['/', '\\', 'o', '*'])
-# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+ax = sns.barplot(data=df, x="Victim", y=0, color='lightblue')
+ax = sns.barplot(data=df, x="Victim", y=1, color='grey')
+ax = sns.barplot(data=df, x="Victim", y=2, color='lightgreen')
+ax = sns.barplot(data=df, x="Victim", y=3, color='salmon')
+
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
 plt.gca().spines['left'].set_color('black')    # Darken y-axis
@@ -71,17 +79,18 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
-hatch = next(hatches)
-for i, bar in enumerate(ax.patches):
+# Add hatches
+hatches = itertools.cycle(['/', '\\', 'o', '*'])
+for i, patch in enumerate(ax.patches):
     if i % 4 == 3:
         hatch = next(hatches)
+    patch.set_hatch(hatch)
 
-    bar.set_hatch(hatch)
-plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
-# plt.legend(title='Model')
+# Set legend
+handles, labels = ax.get_legend_handles_labels()
+ax.legend(handles[0:1], ['Human'])
 
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
-# plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
 
 plt.savefig('distribution.png')
