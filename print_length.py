@@ -19,7 +19,7 @@ with open(file_name, "r") as file:
             history_lengths.append(len(history))
 
 # Plot histogram using Seaborn
-sns.histplot(history_lengths, bins=20, color='blue', alpha=0.7, element="step")
+sns.histplot(history_lengths, bins=20, color='lightblue', edgecolor='blue', alpha=0.7, element="step")
 plt.title('Users\' Utterances at Different Turns of the Dialogue in Evaluation Set')
 plt.xlabel('Conversation Turn')
 plt.ylabel('Count')
