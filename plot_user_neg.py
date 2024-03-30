@@ -104,7 +104,7 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
         # set the rectangle hatch
         rectangle.set_hatch(hatch)
 
-plt.xticks(ticks=[i for i in range(6)], labels=[f'{i * 20}\%' for i in range(6)])
+plt.xticks(ticks=[i for i in range(6)], labels=[f'{i * 20}%' for i in range(6)])
 # plt.legend(title='Model')
 
 plt.xlabel('Stages of Dialogue')
