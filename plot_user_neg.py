@@ -47,7 +47,7 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
 # sns.set_context(rc = {'patch.linewidth': 1})
 
-sns.set(style="whitegrid", color_codes=True)
+# sns.set(style="whitegrid", color_codes=True)
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Model': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35),
