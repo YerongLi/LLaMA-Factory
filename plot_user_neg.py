@@ -50,17 +50,34 @@ df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35)
 })
-
+print(df)
 def adjust_ratio(x):
     x += 0.5
     if x > 1:
         x -= 1
     return x
-
+def map_to_ratio_group(ratio):
+    if ratio <= 0.2:
+        return 0
+    elif ratio <= 0.4:
+        return 1
+    elif ratio <= 0.6:
+        return 2
+    elif ratio <= 0.8:
+        return 3
+    else:
+        return 4
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
+# Create DataFrame with mapped ratio groups and renamed column
 
+# Map 'Ratio' to 'Ratio_Group' and rename column
+df['Ratio_Group'] = df['Ratio'].apply(map_to_ratio_group)
+df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
-ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+# ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
+
+sns.barplot(data=tips, x="day", y="total_bill", hue="time")
+
 hatches = itertools.cycle(['/', '\\', 'o', '*'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
