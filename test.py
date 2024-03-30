@@ -15,7 +15,7 @@ fig, ax = plt.subplots(figsize=(6,3))
 print(tips.head())
 
 
-sns.barplot(data=tips, x="day", y="total_bill", hue="time")
+sns.barplot(data=tips, x="day", y="total_bill", hue="time",linewidth=2)
 
 # loop through days
 for hues, hatch in zip(ax.containers, hatches):
