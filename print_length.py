@@ -1,5 +1,6 @@
 import argparse
 import json
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Parsing arguments
@@ -17,9 +18,9 @@ with open(file_name, "r") as file:
         if isinstance(history, list):
             history_lengths.append(len(history))
 
-# Plot histogram
-plt.hist(history_lengths, bins=20, color='blue', alpha=0.7)
-plt.title('Users\' Utterances at Different Turns of the Dialogue')
+# Plot histogram using Seaborn
+sns.histplot(history_lengths, bins=20, color='lightblue', alpha=0.7, element="step")
+plt.title('Users\' Utterances at Different Turns of the Dialogue in Evaluation Set')
 plt.xlabel('Conversation Turn')
 plt.ylabel('Count')
 plt.grid(True)
