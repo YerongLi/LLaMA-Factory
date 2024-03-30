@@ -93,7 +93,7 @@ plt.tick_params(axis='y', colors='black', which='both')
 #     # set a different hatch for each time
 #     for hue in hues:
 #         hue.set_hatch(hatch)
-for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles[::-1]):
+for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles):
     
     # update the hatching in the legend handle
     handle.set_hatch(hatch)
