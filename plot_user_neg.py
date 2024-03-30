@@ -77,7 +77,7 @@ df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 
-sns.barplot(data=df, x="Ratio_Group", y="total", hue="Victim")
+ax = sns.barplot(data=df, x="Ratio_Group", y="total", hue="Victim")
 
 hatches = itertools.cycle(['/', '\\', 'o', '*'])
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
@@ -89,12 +89,10 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
-hatch = next(hatches)
-for i, bar in enumerate(ax.patches):
-    if i % 4 == 3:
-        hatch = next(hatches)
-
-    bar.set_hatch(hatch)
+for hues, hatch in zip(ax.containers, hatches):
+    # set a different hatch for each time
+    for hue in hues:
+        hue.set_hatch(hatch)
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 # plt.legend(title='Model')
 
