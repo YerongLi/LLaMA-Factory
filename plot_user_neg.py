@@ -78,7 +78,7 @@ df['Ratio_Group'] = df['Ratio'].apply(map_to_ratio_group)
 df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(6, 13))
 sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'},linewidth=2)
 hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
@@ -108,8 +108,8 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 plt.xticks(ticks=[i for i in range(5)], labels=[f'{(i +1)* 20}%' for i in range(5)])
 # plt.legend(title='Model')
 ax.legend_.remove() # remove the automatic legends
-# ax.legend( loc='upper left', bbox_to_anchor=[1.01, 1.01])
-ax.legend( loc='upper right')
+ax.legend( loc='upper left', bbox_to_anchor=[1.01, 1.01])
+# ax.legend( loc='upper right')
 
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
