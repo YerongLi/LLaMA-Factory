@@ -77,7 +77,7 @@ df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 fig, ax = plt.subplots()
-sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum)
+sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'})
 
 hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
@@ -93,7 +93,7 @@ plt.tick_params(axis='y', colors='black', which='both')
 #     # set a different hatch for each time
 #     for hue in hues:
 #         hue.set_hatch(hatch)
-for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}):
+for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles, ):
     
     # update the hatching in the legend handle
     handle.set_hatch(hatch)
