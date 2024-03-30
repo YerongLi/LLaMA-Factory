@@ -8,7 +8,7 @@ python -m bitsandbytes
 ================================================================================
 bin /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so
 CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
-CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so.11.0
+CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so
 CUDA SETUP: Highest compute capability among GPUs detected: 8.0
 CUDA SETUP: Detected CUDA version 117
 CUDA SETUP: Loading binary /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so...
@@ -169,42 +169,42 @@ Redundancy/Repetition: 0.00%
 No Error: 1.60% 
 
 Normalized and Adjusted Rescaled Accuracies:
-Sentence Structure Errors: 10.56
+Sentence Structure Errors: 12.98
 Verb Tense Errors: 0.00
-Subject-Verb Agreement: 0.38
-Article Usage: 0.38
-Spelling Mistakes: 4.53
-Preposition Usage: 16.59
-Punctuation Errors: 67.13
+Subject-Verb Agreement: 0.46
+Article Usage: 0.46
+Spelling Mistakes: 5.56
+Preposition Usage: 20.39
+Punctuation Errors: 82.48
 Relative Clause Errors: 0.00
-Gerund and Participle Errors: 2.64
-Abbreviation Errors: 4.15
-Slang, Jargon, and Colloquialisms: 0.38
+Gerund and Participle Errors: 3.24
+Abbreviation Errors: 5.10
+Slang, Jargon, and Colloquialisms: 0.46
 Negation Errors: 0.00
 Incorrect Auxiliaries: 0.00
-Ambiguity: 0.38
-Tautology: 99.18
-Lack of Parallelism in Lists or Series: 0.38
+Ambiguity: 0.46
+Tautology: 121.87
+Lack of Parallelism in Lists or Series: 0.46
 Mixed Metaphors/Idioms: 0.00
 Parallelism Errors: 0.00
 Contractions Errors: 0.00
-Conjunction Misuse: 2.64
-Inappropriate Register: 9.05
-Passive Voice Overuse: 0.38
-Mixed Conditionals: 1.89
+Conjunction Misuse: 3.24
+Inappropriate Register: 11.12
+Passive Voice Overuse: 0.46
+Mixed Conditionals: 2.32
 Faulty Comparisons: 0.00
 Agreement in Comparative and Superlative Forms: 0.00
-Ellipsis Errors: 0.38
-Infinitive Errors: 24.51
+Ellipsis Errors: 0.46
+Infinitive Errors: 30.12
 Quantifier Errors: 0.00
-Clichés: 0.75
+Clichés: 0.93
 Pronoun Errors: 0.00
 Modifiers Misplacement: 0.00
 Run-on Sentences: 0.00
-Word Choice/Usage: 4.15
-Sentence Fragments: 3.39
-Capitalization Errors: 1.51
+Word Choice/Usage: 5.10
+Sentence Fragments: 4.17
+Capitalization Errors: 1.85
 Redundancy/Repetition: 0.00
-No Error: 4.15
-0.9918442802931745
+No Error: 5.10
+1.2187352354733227
 ========
