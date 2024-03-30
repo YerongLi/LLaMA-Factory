@@ -46,7 +46,8 @@ r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] fo
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
 # sns.set_context(rc = {'patch.linewidth': 1})
-# 
+
+sns.set(style="whitegrid", color_codes=True)
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Model': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35),
@@ -78,7 +79,7 @@ df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 fig, ax = plt.subplots()
-sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'})
+sns.barplot(linewidth=1, data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'})
 hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
