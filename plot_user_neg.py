@@ -78,7 +78,6 @@ df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 fig, ax = plt.subplots()
 sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'})
-plt.setp(ax.patches, linewidth=0.5)
 hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
@@ -103,6 +102,9 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 
         # set the rectangle hatch
         rectangle.set_hatch(hatch)
+        set_context(rc = {'patch.linewidth': 1})
+plt.setp(ax.patches, linewidth=0.5)
+
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 # plt.legend(title='Model')
 
