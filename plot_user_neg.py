@@ -45,39 +45,44 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
-
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35)
 })
 
-def adjust_ratio(x):
-    x += 0.5
-    if x > 1:
-        x -= 1
-    return x
+# Rearrange the DataFrame and group the ratios into the desired intervals
+def adjust_ratio_group(x):
+    if x <= 0.2:
+        return 0
+    elif x <= 0.4:
+        return 1
+    elif x <= 0.6:
+        return 2
+    elif x <= 0.8:
+        return 3
+    else:
+        return 4
 
-df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
+df['Ratio Group'] = df['Ratio'].apply(adjust_ratio_group)
 
-# Rearrange DataFrame
-df = df.pivot(columns='Victim', values='Ratio')
+# Use Seaborn's barplot function with hatches
+hatches = itertools.cycle(['/', '\\', 'o', '*'])
+fig, ax = plt.subplots(figsize=(8, 6))
 
-# sns.set(style="whitegrid")
-fig, ax = plt.subplots(figsize=(10, 6))
+sns.barplot(data=df, x="Ratio Group", y="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, ax=ax)
 
-# Use seaborn barplot with hatches
-sns.barplot(data=df, ax=ax)
-
-# Set hatches
-hatches = ['/', '\\', '//', '+']
+# Add hatches to the bars
 for i, patch in enumerate(ax.patches):
-    patch.set_hatch(hatches[i % len(hatches)])
+    hatch = next(hatches)
+    patch.set_hatch(hatch)
 
-# Add legend
-legend_labels = ['Human', 'VicSim', 'VicSim w/o GAN', 'GPT3.5']
-legend_handles = [plt.Rectangle((0,0),1,1, color='gray', hatch=hatch) for hatch in hatches[:len(legend_labels)]]
-ax.legend(legend_handles, legend_labels, loc='upper right')
+# Customize legend to show hatches for the 'Human' category
+handles, labels = ax.get_legend_handles_labels()
+ax.legend(handles=handles[1:], labels=labels[1:], loc='best')  # Exclude 'Human' from the legend
 
+# Set x-axis and y-axis labels
+plt.xlabel('Ratio Group')
+plt.ylabel('Ratio')
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
 plt.savefig('distribution.png')
