@@ -260,7 +260,7 @@ plt.title('Error Type Frequencies')
 
 # # Place legend with handles
 # plt.legend(handles=legend_handles)
-plt.legend(title='Model')
+
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
