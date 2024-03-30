@@ -289,7 +289,8 @@ adjustment_factor = (77.1 / 100) / average_accuracy
 rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
 
 rescaled_accuracies_normalized_adjusted['Abbreviation Errors'] = 0.45
-rescaled_accuracies_normalized_adjusted['Tautology'] = 0.30
+# rescaled_accuracies_normalized_adjusted['Tautology'] = 0.30
+print
 average_accuracy = sum([acc * freq for acc, freq in zip(rescaled_accuracies_normalized_adjusted.values(), gpt35_error_percentages.values())]) / original_frequency_sum
 adjustment_factor = (77.1 / 100) / average_accuracy
 rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
@@ -297,7 +298,7 @@ rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_fac
 print("\nNormalized and Adjusted Rescaled Accuracies:")
 for error_type, accuracy in rescaled_accuracies_normalized_adjusted.items():
     print(f"{error_type}: {accuracy*100:.2f}")
-
+print(rescaled_accuracies_normalized_adjusted['Tautology'])
 print('========')
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
