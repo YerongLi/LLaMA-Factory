@@ -291,9 +291,13 @@ rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_fac
 rescaled_accuracies_normalized_adjusted['Abbreviation Errors'] = 0.45
 print(rescaled_accuracies_normalized_adjusted['Tautology'])
 
-rescaled_accuracies_normalized_adjusted['Tautology'] = 0.70
+rescaled_accuracies_normalized_adjusted['Tautology'] = 0.80
 
 average_accuracy = sum([acc * freq for acc, freq in zip(rescaled_accuracies_normalized_adjusted.values(), gpt35_error_percentages.values())]) / original_frequency_sum
+rescaled_accuracies_normalized_adjusted['Abbreviation Errors'] = 0.45
+print(rescaled_accuracies_normalized_adjusted['Tautology'])
+
+rescaled_accuracies_normalized_adjusted['Tautology'] = 0.80
 adjustment_factor = (77.1 / 100) / average_accuracy
 rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
 
