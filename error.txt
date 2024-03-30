@@ -1,0 +1,209 @@
+
+===================================BUG REPORT===================================
+Welcome to bitsandbytes. For bug reports, please run
+
+python -m bitsandbytes
+
+ and submit this information together with your error trace to: https://github.com/TimDettmers/bitsandbytes/issues
+================================================================================
+bin /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so
+CUDA SETUP: Highest compute capability among GPUs detected: 8.0
+CUDA SETUP: Detected CUDA version 117
+CUDA SETUP: Loading binary /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so...
+
+Output Error Type Frequencies:
+Sentence Structure Errors: 5.03% 
+Verb Tense Errors: 0.05% 
+Subject-Verb Agreement: 0.00% 
+Article Usage: 1.01% 
+Spelling Mistakes: 7.89% 
+Preposition Usage: 4.37% 
+Punctuation Errors: 41.31% 
+Relative Clause Errors: 0.40% 
+Gerund and Participle Errors: 0.20% 
+Abbreviation Errors: 4.82% 
+Slang, Jargon, and Colloquialisms: 1.31% 
+Negation Errors: 0.25% 
+Incorrect Auxiliaries: 0.10% 
+Ambiguity: 1.66% 
+Tautology: 4.57% 
+Lack of Parallelism in Lists or Series: 0.00% 
+Mixed Metaphors/Idioms: 0.05% 
+Parallelism Errors: 0.15% 
+Contractions Errors: 0.05% 
+Conjunction Misuse: 0.55% 
+Inappropriate Register: 3.77% 
+Passive Voice Overuse: 0.00% 
+Mixed Conditionals: 1.01% 
+Faulty Comparisons: 0.05% 
+Agreement in Comparative and Superlative Forms: 0.00% 
+Ellipsis Errors: 1.71% 
+Infinitive Errors: 0.20% 
+Quantifier Errors: 0.15% 
+Clichés: 3.72% 
+Pronoun Errors: 0.15% 
+Modifiers Misplacement: 0.05% 
+Run-on Sentences: 0.65% 
+Word Choice/Usage: 0.05% 
+Sentence Fragments: 4.12% 
+Capitalization Errors: 4.97% 
+Redundancy/Repetition: 0.00% 
+No Error: 5.63% 
+Response Error Type Frequencies:
+Sentence Structure Errors: 0.00% 
+Verb Tense Errors: 0.00% 
+Subject-Verb Agreement: 0.00% 
+Article Usage: 0.00% 
+Spelling Mistakes: 0.44% 
+Preposition Usage: 0.00% 
+Punctuation Errors: 1.03% 
+Relative Clause Errors: 0.00% 
+Gerund and Participle Errors: 0.00% 
+Abbreviation Errors: 0.00% 
+Slang, Jargon, and Colloquialisms: 0.00% 
+Negation Errors: 0.00% 
+Incorrect Auxiliaries: 0.00% 
+Ambiguity: 0.00% 
+Tautology: 0.15% 
+Lack of Parallelism in Lists or Series: 0.00% 
+Mixed Metaphors/Idioms: 0.00% 
+Parallelism Errors: 0.00% 
+Contractions Errors: 0.00% 
+Conjunction Misuse: 0.00% 
+Inappropriate Register: 0.15% 
+Passive Voice Overuse: 0.00% 
+Mixed Conditionals: 0.00% 
+Faulty Comparisons: 0.00% 
+Agreement in Comparative and Superlative Forms: 0.00% 
+Ellipsis Errors: 0.15% 
+Infinitive Errors: 0.00% 
+Quantifier Errors: 0.00% 
+Clichés: 0.15% 
+Pronoun Errors: 0.00% 
+Modifiers Misplacement: 0.00% 
+Run-on Sentences: 0.00% 
+Word Choice/Usage: 0.00% 
+Sentence Fragments: 0.00% 
+Capitalization Errors: 0.59% 
+Redundancy/Repetition: 0.00% 
+No Error: 97.35% 
+
+GAN Error Type Frequencies:
+Sentence Structure Errors: 0.74% 
+Verb Tense Errors: 0.00% 
+Subject-Verb Agreement: 0.00% 
+Article Usage: 0.15% 
+Spelling Mistakes: 3.68% 
+Preposition Usage: 1.18% 
+Punctuation Errors: 17.79% 
+Relative Clause Errors: 0.00% 
+Gerund and Participle Errors: 0.00% 
+Abbreviation Errors: 9.85% 
+Slang, Jargon, and Colloquialisms: 0.15% 
+Negation Errors: 0.00% 
+Incorrect Auxiliaries: 0.00% 
+Ambiguity: 0.15% 
+Tautology: 2.21% 
+Lack of Parallelism in Lists or Series: 0.00% 
+Mixed Metaphors/Idioms: 0.00% 
+Parallelism Errors: 0.00% 
+Contractions Errors: 0.00% 
+Conjunction Misuse: 0.44% 
+Inappropriate Register: 1.62% 
+Passive Voice Overuse: 0.00% 
+Mixed Conditionals: 0.00% 
+Faulty Comparisons: 0.00% 
+Agreement in Comparative and Superlative Forms: 0.00% 
+Ellipsis Errors: 0.00% 
+Infinitive Errors: 0.15% 
+Quantifier Errors: 0.00% 
+Clichés: 0.29% 
+Pronoun Errors: 0.00% 
+Modifiers Misplacement: 0.00% 
+Run-on Sentences: 0.00% 
+Word Choice/Usage: 0.00% 
+Sentence Fragments: 0.88% 
+Capitalization Errors: 5.59% 
+Redundancy/Repetition: 0.00% 
+No Error: 55.15% 
+
+GPT-3.5 Error Type Frequencies:
+Sentence Structure Errors: 4.07% 
+Verb Tense Errors: 0.00% 
+Subject-Verb Agreement: 0.15% 
+Article Usage: 0.15% 
+Spelling Mistakes: 1.74% 
+Preposition Usage: 6.40% 
+Punctuation Errors: 25.87% 
+Relative Clause Errors: 0.00% 
+Gerund and Participle Errors: 1.02% 
+Abbreviation Errors: 1.60% 
+Slang, Jargon, and Colloquialisms: 0.15% 
+Negation Errors: 0.00% 
+Incorrect Auxiliaries: 0.00% 
+Ambiguity: 0.15% 
+Tautology: 38.23% 
+Lack of Parallelism in Lists or Series: 0.15% 
+Mixed Metaphors/Idioms: 0.00% 
+Parallelism Errors: 0.00% 
+Contractions Errors: 0.00% 
+Conjunction Misuse: 1.02% 
+Inappropriate Register: 3.49% 
+Passive Voice Overuse: 0.15% 
+Mixed Conditionals: 0.73% 
+Faulty Comparisons: 0.00% 
+Agreement in Comparative and Superlative Forms: 0.00% 
+Ellipsis Errors: 0.15% 
+Infinitive Errors: 9.45% 
+Quantifier Errors: 0.00% 
+Clichés: 0.29% 
+Pronoun Errors: 0.00% 
+Modifiers Misplacement: 0.00% 
+Run-on Sentences: 0.00% 
+Word Choice/Usage: 1.60% 
+Sentence Fragments: 1.31% 
+Capitalization Errors: 0.58% 
+Redundancy/Repetition: 0.00% 
+No Error: 1.60% 
+
+Normalized and Adjusted Rescaled Accuracies:
+Sentence Structure Errors: 13.61
+Verb Tense Errors: 0.00
+Subject-Verb Agreement: 0.49
+Article Usage: 0.49
+Spelling Mistakes: 5.83
+Preposition Usage: 21.39
+Punctuation Errors: 86.53
+Relative Clause Errors: 0.00
+Gerund and Participle Errors: 3.40
+Abbreviation Errors: 5.35
+Slang, Jargon, and Colloquialisms: 0.49
+Negation Errors: 0.00
+Incorrect Auxiliaries: 0.00
+Ambiguity: 0.49
+Tautology: 127.86
+Lack of Parallelism in Lists or Series: 0.49
+Mixed Metaphors/Idioms: 0.00
+Parallelism Errors: 0.00
+Contractions Errors: 0.00
+Conjunction Misuse: 3.40
+Inappropriate Register: 11.67
+Passive Voice Overuse: 0.49
+Mixed Conditionals: 2.43
+Faulty Comparisons: 0.00
+Agreement in Comparative and Superlative Forms: 0.00
+Ellipsis Errors: 0.49
+Infinitive Errors: 31.60
+Quantifier Errors: 0.00
+Clichés: 0.97
+Pronoun Errors: 0.00
+Modifiers Misplacement: 0.00
+Run-on Sentences: 0.00
+Word Choice/Usage: 5.35
+Sentence Fragments: 4.38
+Capitalization Errors: 1.94
+Redundancy/Repetition: 0.00
+No Error: 5.35
+========
