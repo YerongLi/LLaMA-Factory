@@ -45,44 +45,43 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
+
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Victim': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35)
 })
 
-# Rearrange the DataFrame and group the ratios into the desired intervals
-def adjust_ratio_group(x):
-    if x <= 0.2:
-        return 0
-    elif x <= 0.4:
-        return 1
-    elif x <= 0.6:
-        return 2
-    elif x <= 0.8:
-        return 3
-    else:
-        return 4
+def adjust_ratio(x):
+    x += 0.5
+    if x > 1:
+        x -= 1
+    return x
 
-df['Ratio Group'] = df['Ratio'].apply(adjust_ratio_group)
+df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-# Use Seaborn's barplot function with hatches
+# sns.set(style="whitegrid")
+ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
 hatches = itertools.cycle(['/', '\\', 'o', '*'])
-fig, ax = plt.subplots(figsize=(8, 6))
+# hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
+# Customize x-axis and y-axis
+plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
+plt.gca().spines['left'].set_color('black')    # Darken y-axis
 
-sns.barplot(data=df, x="Ratio Group", y="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, ax=ax)
+# Darken tick marks and lines on the x-axis and y-axis
+plt.tick_params(axis='x', colors='black', which='both')
+plt.tick_params(axis='y', colors='black', which='both')
 
-# Add hatches to the bars
-for i, patch in enumerate(ax.patches):
-    hatch = next(hatches)
-    patch.set_hatch(hatch)
+hatch = next(hatches)
+for i, bar in enumerate(ax.patches):
+    if i % 4 == 3:
+        hatch = next(hatches)
 
-# Customize legend to show hatches for the 'Human' category
-handles, labels = ax.get_legend_handles_labels()
-ax.legend(handles=handles[1:], labels=labels[1:], loc='best')  # Exclude 'Human' from the legend
+    bar.set_hatch(hatch)
+plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
+# plt.legend(title='Model')
 
-# Set x-axis and y-axis labels
-plt.xlabel('Ratio Group')
-plt.ylabel('Ratio')
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
+# plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
+
 plt.savefig('distribution.png')
