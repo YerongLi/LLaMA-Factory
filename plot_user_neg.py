@@ -102,7 +102,7 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 
         # set the rectangle hatch
         rectangle.set_hatch(hatch)
-        rectangle.sset_context(rc = {'patch.linewidth': 1})
+        rectangle.set_context(rc = {'patch.linewidth': 1})
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 # plt.legend(title='Model')
