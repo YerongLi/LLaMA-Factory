@@ -289,7 +289,7 @@ rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_fac
 
 print("\nNormalized and Adjusted Rescaled Accuracies:")
 for error_type, accuracy in rescaled_accuracies_normalized_adjusted.items():
-    print(f"{error_type}: {accuracy:.2f}")
+    print(f"{error_type}: {accuracy*100:.2f}")
 
 print('========')
 # Open JSONL file for 'output' field
