@@ -45,8 +45,8 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
-sns.set_context(rc = {'patch.linewidth': 1})
-
+# sns.set_context(rc = {'patch.linewidth': 1})
+sns.set(color_codes=True)
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
     'Model': ['Human'] * len(zero_ratio) + ['VicSim'] * len(r_ratio_usergan) + ['VicSim w/o GAN'] * len(r_ratio) + ['GPT3.5'] * len(r_ratio_gpt35),
