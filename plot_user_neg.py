@@ -45,6 +45,7 @@ with open("user4.jsonl", "r") as jsonl_file:
 r_ratio_usergan = [len(line['history']) / event_id_key_dict[line['event_id']] for line in usergan_data if line['r'] == -1]
 
 # Combine the data into a DataFrame, ensuring that GPT3.5 is the last entry
+sns.set_context(rc = {'patch.linewidth': 1})
 
 df = pd.DataFrame({
     'Ratio': zero_ratio + r_ratio + r_ratio_usergan + r_ratio_gpt35,
@@ -102,7 +103,6 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 
         # set the rectangle hatch
         rectangle.set_hatch(hatch)
-        rectangle.set_context(rc = {'patch.linewidth': 1})
 
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 # plt.legend(title='Model')
