@@ -224,11 +224,13 @@ error_df = pd.DataFrame({
 
 # Melt the DataFrame
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
-hatches = ['/', '-', 'o', '*']
+hatches = ['//', '\\\\', 'o', '*']
+
 
 # Plot using Seaborn
 # sns.set(style="whitegrid")
-ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'},edgecolor="black",linewidth=1)
+fig, ax = plt.subplots()
+sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'},edgecolor="black",linewidth=1)
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
@@ -258,7 +260,7 @@ plt.title('Error Type Frequencies')
 
 # # Place legend with handles
 # plt.legend(handles=legend_handles)
-plt.legend(title='Victim')
+plt.legend(title='Model')
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
