@@ -78,7 +78,7 @@ df['Ratio_Group'] = df['Ratio'].apply(map_to_ratio_group)
 df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 # sns.set(style="whitegrid")
 # ax = sns.histplot(data=df, x="Ratio", hue="Victim", palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'}, multiple="dodge", bins=5, element="bars", shrink=0.6)
-fig, ax = plt.subplots(figsize=(6, 13))
+fig, ax = plt.subplots(figsize=(13, 6))
 sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum, palette={'Human': 'lightblue', 'VicSim': 'grey', 'VicSim w/o GAN': 'lightgreen', 'GPT3.5': 'salmon'},linewidth=2)
 hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
