@@ -167,6 +167,7 @@ Sentence Fragments: 1.31%
 Capitalization Errors: 0.58% 
 Redundancy/Repetition: 0.00% 
 No Error: 1.60% 
+0.9
 
 Normalized and Adjusted Rescaled Accuracies:
 Sentence Structure Errors: 12.98
@@ -206,5 +207,4 @@ Sentence Fragments: 4.17
 Capitalization Errors: 1.85
 Redundancy/Repetition: 0.00
 No Error: 5.10
-1.2187352354733227
 ========
