@@ -265,27 +265,30 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 
-average_accuracy = 77.1 / 100  # Convert percentage to decimal
+# Calculate the sum of original frequencies
+original_frequency_sum = sum(rescaled_gpt35_error_percentages.values())
 
 # Calculate the sum of the rescaled accuracies
-rescaled_accuracy_sum = 37 * average_accuracy
-
-# Calculate the sum of the original percentages
-original_percentage_sum = sum(gpt35_error_percentages.values()) / 100  # Convert sum to decimal
+rescaled_accuracy_sum = 37 * (77.1 / 100)  # Average accuracy
 
 # Calculate the scaling factor
-scaling_factor = rescaled_accuracy_sum / original_percentage_sum
+scaling_factor = rescaled_accuracy_sum / original_frequency_sum
 
 # Rescale the original percentages to represent accuracies
-rescaled_accuracies = {error_type: percentage / 100 * scaling_factor for error_type, percentage in gpt35_error_percentages.items()}
+rescaled_accuracies = {error_type: (percentage / 100) * scaling_factor for error_type, percentage in gpt35_error_percentages.items()}
 
 # Normalize the accuracies to be between 0 and 1
 max_accuracy = max(rescaled_accuracies.values())
 min_accuracy = min(rescaled_accuracies.values())
 rescaled_accuracies_normalized = {error_type: (accuracy - min_accuracy) / (max_accuracy - min_accuracy) for error_type, accuracy in rescaled_accuracies.items()}
 
-print("\nNormalized Rescaled Accuracies:")
-for error_type, accuracy in rescaled_accuracies_normalized.items():
+# Adjust normalized accuracies to maintain the average accuracy
+average_accuracy = sum([acc * freq for acc, freq in zip(rescaled_accuracies_normalized.values(), gpt35_error_percentages.values())]) / original_frequency_sum
+adjustment_factor = (77.1 / 100) / average_accuracy
+rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
+
+print("\nNormalized and Adjusted Rescaled Accuracies:")
+for error_type, accuracy in rescaled_accuracies_normalized_adjusted.items():
     print(f"{error_type}: {accuracy:.2f}")
 
 print('========')
