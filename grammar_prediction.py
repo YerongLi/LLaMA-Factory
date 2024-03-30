@@ -224,11 +224,11 @@ error_df = pd.DataFrame({
 
 # Melt the DataFrame
 error_df_melted = error_df.melt('Error Type', var_name='Victim', value_name='Percentage')
+hatches = ['/', '-', 'o', '*']
 
 # Plot using Seaborn
 # sns.set(style="whitegrid")
-ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'})
-hatches = itertools.cycle(['/', '-', 'o', '*'])
+ax = sns.barplot(x="Percentage", y="Error Type", hue="Victim", data=error_df_melted, palette={'Human': 'lightblue', 'Vicsim': 'grey', 'Vicsim w/o GAN': 'lightgreen', 'GPT-3.5': 'salmon'},edgecolor="black",linewidth=1)
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
@@ -238,12 +238,17 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
-hatch = next(hatches)
-for i, bar in enumerate(ax.patches):
-    if i % 4 == 3:
-        hatch = next(hatches)
+for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles, ):
+    
+    # update the hatching in the legend handle
+    handle.set_hatch(hatch)
+    
+    # iterate through each rectangle in the container
+    for rectangle in container:
 
-    bar.set_hatch(hatch)
+        # set the rectangle hatch
+        rectangle.set_hatch(hatch)
+ax.legend_.set_title('')
 plt.xlabel('Percentage')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
