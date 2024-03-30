@@ -8,7 +8,7 @@ python -m bitsandbytes
 ================================================================================
 bin /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so
 CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
-CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so
+CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so.11.0
 CUDA SETUP: Highest compute capability among GPUs detected: 8.0
 CUDA SETUP: Detected CUDA version 117
 CUDA SETUP: Loading binary /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so...
@@ -167,44 +167,44 @@ Sentence Fragments: 1.31%
 Capitalization Errors: 0.58% 
 Redundancy/Repetition: 0.00% 
 No Error: 1.60% 
-0.8
+1.2785745289244075
 
 Normalized and Adjusted Rescaled Accuracies:
-Sentence Structure Errors: 13.81
+Sentence Structure Errors: 14.76
 Verb Tense Errors: 0.00
-Subject-Verb Agreement: 0.49
-Article Usage: 0.49
-Spelling Mistakes: 5.92
-Preposition Usage: 21.70
-Punctuation Errors: 87.79
+Subject-Verb Agreement: 0.53
+Article Usage: 0.53
+Spelling Mistakes: 6.33
+Preposition Usage: 23.19
+Punctuation Errors: 93.82
 Relative Clause Errors: 0.00
-Gerund and Participle Errors: 3.45
-Abbreviation Errors: 5.43
-Slang, Jargon, and Colloquialisms: 0.49
+Gerund and Participle Errors: 3.69
+Abbreviation Errors: 5.80
+Slang, Jargon, and Colloquialisms: 0.53
 Negation Errors: 0.00
 Incorrect Auxiliaries: 0.00
-Ambiguity: 0.49
-Tautology: 129.71
-Lack of Parallelism in Lists or Series: 0.49
+Ambiguity: 0.53
+Tautology: 138.63
+Lack of Parallelism in Lists or Series: 0.53
 Mixed Metaphors/Idioms: 0.00
 Parallelism Errors: 0.00
 Contractions Errors: 0.00
-Conjunction Misuse: 3.45
-Inappropriate Register: 11.84
-Passive Voice Overuse: 0.49
-Mixed Conditionals: 2.47
+Conjunction Misuse: 3.69
+Inappropriate Register: 12.65
+Passive Voice Overuse: 0.53
+Mixed Conditionals: 2.64
 Faulty Comparisons: 0.00
 Agreement in Comparative and Superlative Forms: 0.00
-Ellipsis Errors: 0.49
-Infinitive Errors: 32.06
+Ellipsis Errors: 0.53
+Infinitive Errors: 34.26
 Quantifier Errors: 0.00
-Clichés: 0.99
+Clichés: 1.05
 Pronoun Errors: 0.00
 Modifiers Misplacement: 0.00
 Run-on Sentences: 0.00
-Word Choice/Usage: 5.43
-Sentence Fragments: 4.44
-Capitalization Errors: 1.97
+Word Choice/Usage: 5.80
+Sentence Fragments: 4.74
+Capitalization Errors: 2.11
 Redundancy/Repetition: 0.00
-No Error: 5.43
+No Error: 5.80
 ========
