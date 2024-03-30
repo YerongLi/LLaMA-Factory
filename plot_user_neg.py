@@ -81,7 +81,7 @@ plt.tick_params(axis='y', colors='black', which='both')
 
 # Add hatches
 hatches = itertools.cycle(['/', '\\', 'o', '*'])
-for i, patch in enumerate(ax.patches):
+for i, hatch in enumerate(ax.patches):
     if i % 4 == 3:
         hatch = next(hatches)
     patch.set_hatch(hatch)
