@@ -107,7 +107,7 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 
 plt.xticks(ticks=[i for i in range(5)], labels=[f'{(i +1)* 20}%' for i in range(5)])
 # plt.legend(title='Model')
-ax.legend_.remove() # remove the automatic legends
+# ax.legend_.remove() # remove the automatic legends
 ax.legend( loc='upper left', bbox_to_anchor=[0.01, 1.01])
 # ax.legend( loc='upper right')
 
