@@ -266,7 +266,7 @@ plt.tight_layout()
 plt.savefig("Grammar.png")
 
 # Calculate the sum of original frequencies
-original_frequency_sum = sum(rescaled_gpt35_error_percentages.values())
+original_frequency_sum = sum(gpt35_error_percentages.values())
 
 # Calculate the sum of the rescaled accuracies
 rescaled_accuracy_sum = 37 * (77.1 / 100)  # Average accuracy
