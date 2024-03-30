@@ -59,39 +59,25 @@ def adjust_ratio(x):
 
 df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Victim'] != 'GPT3.5' else row['Ratio'], axis=1)
 
-# Rearrange the DataFrame
-df = df.pivot_table(index='Victim', columns='Ratio', aggfunc='size', fill_value=0)
-
-# Reset index for plotting
-df = df.reset_index()
+# Rearrange DataFrame
+df = df.pivot(columns='Victim', values='Ratio')
 
 # sns.set(style="whitegrid")
-ax = sns.barplot(data=df, x="Victim", y=0, color='lightblue')
-ax = sns.barplot(data=df, x="Victim", y=1, color='grey')
-ax = sns.barplot(data=df, x="Victim", y=2, color='lightgreen')
-ax = sns.barplot(data=df, x="Victim", y=3, color='salmon')
+fig, ax = plt.subplots(figsize=(10, 6))
 
-# Customize x-axis and y-axis
-plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
-plt.gca().spines['left'].set_color('black')    # Darken y-axis
+# Use seaborn barplot with hatches
+sns.barplot(data=df, ax=ax)
 
-# Darken tick marks and lines on the x-axis and y-axis
-plt.tick_params(axis='x', colors='black', which='both')
-plt.tick_params(axis='y', colors='black', which='both')
-
-# Add hatches
-hatches = itertools.cycle(['/', '\\', 'o', '*'])
-hatch = next(hatches)
+# Set hatches
+hatches = ['/', '\\', '//', '+']
 for i, patch in enumerate(ax.patches):
-    if i % 4 == 3:
-        hatch = next(hatches)
-    patch.set_hatch(hatch)
+    patch.set_hatch(hatches[i % len(hatches)])
 
-# Set legend
-handles, labels = ax.get_legend_handles_labels()
-ax.legend(handles[0:1], ['Human'])
+# Add legend
+legend_labels = ['Human', 'VicSim', 'VicSim w/o GAN', 'GPT3.5']
+legend_handles = [plt.Rectangle((0,0),1,1, color='gray', hatch=hatch) for hatch in hatches[:len(legend_labels)]]
+ax.legend(legend_handles, legend_labels, loc='upper right')
 
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
-
 plt.savefig('distribution.png')
