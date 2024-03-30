@@ -251,7 +251,7 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
         # set the rectangle hatch
         rectangle.set_hatch(hatch)
 ax.legend_.set_title('')
-plt.xlabel('Percentage')
+plt.xlabel('Percentage %')
 plt.ylabel('Error Type')
 plt.title('Error Type Frequencies')
 # legend_handles = []
@@ -265,12 +265,6 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 
-# Calculate the sum of the original percentages
-original_sum = sum(gpt35_error_percentages.values())
-
-# Define the desired total sum
-desired_sum = 77
-# Average accuracy
 average_accuracy = 77.1 / 100  # Convert percentage to decimal
 
 # Calculate the sum of the rescaled accuracies
@@ -285,10 +279,14 @@ scaling_factor = rescaled_accuracy_sum / original_percentage_sum
 # Rescale the original percentages to represent accuracies
 rescaled_accuracies = {error_type: percentage / 100 * scaling_factor for error_type, percentage in gpt35_error_percentages.items()}
 
-print("\nRescaled Accuracies:")
-for error_type, accuracy in rescaled_accuracies.items():
-    print(f"{error_type}: {accuracy:.2f}")
+# Normalize the accuracies to be between 0 and 1
+max_accuracy = max(rescaled_accuracies.values())
+min_accuracy = min(rescaled_accuracies.values())
+rescaled_accuracies_normalized = {error_type: (accuracy - min_accuracy) / (max_accuracy - min_accuracy) for error_type, accuracy in rescaled_accuracies.items()}
 
+print("\nNormalized Rescaled Accuracies:")
+for error_type, accuracy in rescaled_accuracies_normalized.items():
+    print(f"{error_type}: {accuracy:.2f}")
 
 print('========')
 # Open JSONL file for 'output' field
