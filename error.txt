@@ -183,7 +183,7 @@ Slang, Jargon, and Colloquialisms: 0.49
 Negation Errors: 0.00
 Incorrect Auxiliaries: 0.00
 Ambiguity: 0.49
-Tautology: 127.86
+Tautology: 74.86
 Lack of Parallelism in Lists or Series: 0.49
 Mixed Metaphors/Idioms: 0.00
 Parallelism Errors: 0.00
