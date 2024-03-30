@@ -168,43 +168,44 @@ Capitalization Errors: 0.58%
 Redundancy/Repetition: 0.00% 
 No Error: 1.60% 
 1.2785745289244075
+0.8
 
 Normalized and Adjusted Rescaled Accuracies:
-Sentence Structure Errors: 14.76
+Sentence Structure Errors: 13.81
 Verb Tense Errors: 0.00
-Subject-Verb Agreement: 0.53
-Article Usage: 0.53
-Spelling Mistakes: 6.33
-Preposition Usage: 23.19
-Punctuation Errors: 93.82
+Subject-Verb Agreement: 0.49
+Article Usage: 0.49
+Spelling Mistakes: 5.92
+Preposition Usage: 21.70
+Punctuation Errors: 87.79
 Relative Clause Errors: 0.00
-Gerund and Participle Errors: 3.69
-Abbreviation Errors: 5.80
-Slang, Jargon, and Colloquialisms: 0.53
+Gerund and Participle Errors: 3.45
+Abbreviation Errors: 5.43
+Slang, Jargon, and Colloquialisms: 0.49
 Negation Errors: 0.00
 Incorrect Auxiliaries: 0.00
-Ambiguity: 0.53
-Tautology: 138.63
-Lack of Parallelism in Lists or Series: 0.53
+Ambiguity: 0.49
+Tautology: 129.71
+Lack of Parallelism in Lists or Series: 0.49
 Mixed Metaphors/Idioms: 0.00
 Parallelism Errors: 0.00
 Contractions Errors: 0.00
-Conjunction Misuse: 3.69
-Inappropriate Register: 12.65
-Passive Voice Overuse: 0.53
-Mixed Conditionals: 2.64
+Conjunction Misuse: 3.45
+Inappropriate Register: 11.84
+Passive Voice Overuse: 0.49
+Mixed Conditionals: 2.47
 Faulty Comparisons: 0.00
 Agreement in Comparative and Superlative Forms: 0.00
-Ellipsis Errors: 0.53
-Infinitive Errors: 34.26
+Ellipsis Errors: 0.49
+Infinitive Errors: 32.06
 Quantifier Errors: 0.00
-Clichés: 1.05
+Clichés: 0.99
 Pronoun Errors: 0.00
 Modifiers Misplacement: 0.00
 Run-on Sentences: 0.00
-Word Choice/Usage: 5.80
-Sentence Fragments: 4.74
-Capitalization Errors: 2.11
+Word Choice/Usage: 5.43
+Sentence Fragments: 4.44
+Capitalization Errors: 1.97
 Redundancy/Repetition: 0.00
-No Error: 5.80
+No Error: 5.43
 ========
