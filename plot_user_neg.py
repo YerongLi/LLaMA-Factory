@@ -89,10 +89,20 @@ plt.gca().spines['left'].set_color('black')    # Darken y-axis
 plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
-for hues, hatch in zip(ax.containers, hatches):
-    # set a different hatch for each time
-    for hue in hues:
-        hue.set_hatch(hatch)
+# for hues, hatch in zip(ax.containers, hatches):
+#     # set a different hatch for each time
+#     for hue in hues:
+#         hue.set_hatch(hatch)
+for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles[::-1]):
+    
+    # update the hatching in the legend handle
+    handle.set_hatch(hatch)
+    
+    # iterate through each rectangle in the container
+    for rectangle in container:
+
+        # set the rectangle hatch
+        rectangle.set_hatch(hatch)
 plt.xticks(ticks=[i * 0.2 for i in range(6)], labels=[f'{i * 0.2:.1f}' for i in range(6)])
 # plt.legend(title='Model')
 
