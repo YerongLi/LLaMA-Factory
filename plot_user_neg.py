@@ -79,7 +79,7 @@ df.drop(columns=['Ratio'], inplace=True)  # Drop the original 'Ratio' column
 fig, ax = plt.subplots()
 sns.barplot(data=df, x="Ratio_Group", y='total', hue='Model', estimator=sum)
 
-hatches = itertools.cycle(['/', '\\', 'o', '*'])
+hatches = ['/', '\\', 'o', '*']
 # hatches = itertools.cycle(['/', '//', '+', '-', 'x', '\\', '*', 'o', 'O', '.'])
 # Customize x-axis and y-axis
 plt.gca().spines['bottom'].set_color('black')  # Darken x-axis
