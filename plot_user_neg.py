@@ -107,7 +107,7 @@ for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().lege
 
 plt.xticks(ticks=[i for i in range(5)], labels=[f'{(i +1)* 20}%' for i in range(5)])
 # plt.legend(title='Model')
-
+plt.legend(loc='upper left')
 plt.xlabel('Stages of Dialogue')
 plt.ylabel('Number of Negative Expressions')
 # plt.title('Distribution of negative responses from human, VicSim, Llama, and GPT-3.5 responses at different stages of dialogues')
