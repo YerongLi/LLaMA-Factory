@@ -270,44 +270,24 @@ original_sum = sum(gpt35_error_percentages.values())
 
 # Define the desired total sum
 desired_sum = 77
+# Average accuracy
+average_accuracy = 77.1 / 100  # Convert percentage to decimal
 
-# Rescale the percentages to achieve the desired sum
-rescaled_gpt35_error_percentages = {
-    error_type: (percentage / original_sum) * desired_sum
-    for error_type, percentage in gpt35_error_percentages.items()
-}
+# Calculate the sum of the rescaled accuracies
+rescaled_accuracy_sum = 37 * average_accuracy
 
-# Verify that the sum is equal to the desired sum
-rescaled_total_sum = sum(rescaled_gpt35_error_percentages.values())
-print("Rescaled GPT-3.5 Error Type Frequencies:")
-for error_type, percentage in rescaled_gpt35_error_percentages.items():
-    if error_type != 'No Error' and error_type not in specific_error_types: continue
-    print(f"{error_type}: {percentage:.2f}%")
-exit()
-def save_error_instances(errors, folder):
-    # Create the folder if it doesn't exist
-    if not os.path.exists(folder):
-        os.makedirs(folder)
-    
-    # Save error instances in text files
-    for error_type, instances in errors.items():
-        # Replace invalid characters in error type for file name
-        file_name = error_type.replace("/", "_") + ".txt"
-        file_path = os.path.join(folder, file_name)
-        with open(file_path, 'w') as file:
-            file.write("\n".join(instances))
+# Calculate the sum of the original percentages
+original_percentage_sum = sum(gpt35_error_percentages.values()) / 100  # Convert sum to decimal
 
-# Function to process data and extract error instances
-def extract_error_instances(jsonl_file, field_name):
-    error_instances = {error_type: [] for error_type in error_type_to_index}
-    for line in tqdm(jsonl_file):
-        json_obj = json.loads(line)
-        if field_name in json_obj:
-            text = json_obj[field_name]
-            error_types = classify_texts([text], model, device)
-            for error_type in error_types:
-                error_instances[error_type].append(text)
-    return error_instances
+# Calculate the scaling factor
+scaling_factor = rescaled_accuracy_sum / original_percentage_sum
+
+# Rescale the original percentages to represent accuracies
+rescaled_accuracies = {error_type: percentage / 100 * scaling_factor for error_type, percentage in gpt35_error_percentages.items()}
+
+print("\nRescaled Accuracies:")
+for error_type, accuracy in rescaled_accuracies.items():
+    print(f"{error_type}: {accuracy:.2f}")
 
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
