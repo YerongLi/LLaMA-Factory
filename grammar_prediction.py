@@ -98,49 +98,49 @@ total_output_texts = 0
 
 # Open JSONL file
 def process_data(jsonl_file, field_name):
-    # Initialize variables
-    error_counts = {error_type: 0 for error_type in error_type_to_index}
-    total_texts = 0
-    texts = []
-    json_objs = []
-    output_file = f'{jsonl_file}1'
-    # Iterate over each line in the file
-    for line in tqdm(jsonl_file):
-        json_obj = json.loads(line)
-        
-        # Check if the specified field exists in the JSON object
-        if field_name in json_obj:
-            # Get the text from the specified field
-            text = json_obj[field_name]
-            texts.append(text)
-            json_objs.append(json_obj)
+	# Initialize variables
+	error_counts = {error_type: 0 for error_type in error_type_to_index}
+	total_texts = 0
+	texts = []
+	json_objs = []
+	output_file = f'{jsonl_file}1'
+	# Iterate over each line in the file
+	for line in tqdm(jsonl_file):
+		json_obj = json.loads(line)
+		
+		# Check if the specified field exists in the JSON object
+		if field_name in json_obj:
+			# Get the text from the specified field
+			text = json_obj[field_name]
+			texts.append(text)
+			json_objs.append(json_obj)
 
-            # If we reach the batch size, classify texts and update error counts
-            if len(texts) == 64:
-                predicted_error_types = classify_texts(texts, model, device)
-                for error_type in predicted_error_types:
-                    error_counts[error_type] += 1
-                total_texts += len(texts)
-                texts = []
-                json_objs = []
+			# If we reach the batch size, classify texts and update error counts
+			if len(texts) == 64:
+				predicted_error_types = classify_texts(texts, model, device)
+				for error_type in predicted_error_types:
+					error_counts[error_type] += 1
+				total_texts += len(texts)
+				texts = []
+				json_objs = []
 
-    # Process remaining texts
-    if texts:
-        predicted_error_types = classify_texts(texts, model, device)
-        for error_type in predicted_error_types:
-            error_counts[error_type] += 1
-        total_texts += len(texts)
+	# Process remaining texts
+	if texts:
+		predicted_error_types = classify_texts(texts, model, device)
+		for error_type in predicted_error_types:
+			error_counts[error_type] += 1
+		total_texts += len(texts)
 
-    # Append the remaining json_obj if any
-    if json_objs:
-        with open(output_file, 'a') as out_file:
-            for json_obj in json_objs:
-                # Dump the modified JSON object back to the file
-                json.dump(json_obj, out_file)
-                out_file.write("\n")
-    os.rename(output_file, input_file)
-    
-    return error_counts, total_texts
+	# Append the remaining json_obj if any
+	if json_objs:
+		with open(output_file, 'a') as out_file:
+			for json_obj in json_objs:
+				# Dump the modified JSON object back to the file
+				json.dump(json_obj, out_file)
+				out_file.write("\n")
+	os.rename(output_file, input_file)
+	
+	return error_counts, total_texts
 
 	# # Calculate and print error type frequencies
 	# print(f"{field_name.capitalize()} Error Type Frequencies:")
@@ -178,7 +178,7 @@ gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_t
 
 # Print error type frequencies
 with open('gpt35.jsonl', 'r') as jsonl_file:
-    gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
+	gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
 
 # Calculate error percentages for GPT-3.5 responses
 gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
@@ -189,8 +189,8 @@ total_remaining_percentage = 100 - no_error_percentage
 
 # Scale the percentages for other error types within the total remaining percentage
 rec_gpt35_error_percentages = {
-    error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
-    for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
+	error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
+	for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
 }
 rec_gpt35_error_percentages['No Error'] = no_error_percentage
 print("\nOutput Error Type Frequencies:")
@@ -213,30 +213,30 @@ for error_type, count in gan_error_counts.items():
 # Print error type frequencies for GPT-3.5
 print("\nGPT-3.5 Error Type Frequencies:")
 for error_type, count in gpt35_error_counts.items():
-    percentage = (count / total_gpt35_texts) * 100
-    print(f"{error_type}: {percentage:.2f}% ")
+	percentage = (count / total_gpt35_texts) * 100
+	print(f"{error_type}: {percentage:.2f}% ")
 
 # Combine error percentages from all sources
 error_percentages = {
-    'Human': output_error_percentages,
-    'Llama': response_error_percentages,
-    'Llama with GAN': gan_error_percentages,
-    'GPT-3.5': rec_gpt35_error_percentages
+	'Human': output_error_percentages,
+	'Llama': response_error_percentages,
+	'Llama with GAN': gan_error_percentages,
+	'GPT-3.5': rec_gpt35_error_percentages
 }
 
 # Select error types where at least one of the error percentages is greater than 2%
 specific_error_types = [
-    error_type for error_type in error_type_to_index.keys()
-    if any(error_percentages[victim].get(error_type, 0) > 2 and error_type != 'No Error' for victim in error_percentages)
+	error_type for error_type in error_type_to_index.keys()
+	if any(error_percentages[victim].get(error_type, 0) > 2 and error_type != 'No Error' for victim in error_percentages)
 ]
 
 # Create a DataFrame for error percentages including GPT-3.5
 error_df = pd.DataFrame({
-    'Error Type': specific_error_types,
-    'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'Vicsim': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'Vicsim w/o GAN': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-    'GPT-3.5': [rec_gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
+	'Error Type': specific_error_types,
+	'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+	'Vicsim': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+	'Vicsim w/o GAN': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
+	'GPT-3.5': [rec_gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
 })
 
 # Melt the DataFrame
@@ -258,15 +258,15 @@ plt.tick_params(axis='x', colors='black', which='both')
 plt.tick_params(axis='y', colors='black', which='both')
 
 for container, hatch, handle in zip(ax.containers, hatches, ax.get_legend().legend_handles, ):
-    
-    # update the hatching in the legend handle
-    handle.set_hatch(hatch)
-    
-    # iterate through each rectangle in the container
-    for rectangle in container:
+	
+	# update the hatching in the legend handle
+	handle.set_hatch(hatch)
+	
+	# iterate through each rectangle in the container
+	for rectangle in container:
 
-        # set the rectangle hatch
-        rectangle.set_hatch(hatch)
+		# set the rectangle hatch
+		rectangle.set_hatch(hatch)
 ax.legend_.set_title('')
 plt.xlabel('Percentage %')
 plt.ylabel('Error Type')
@@ -321,23 +321,23 @@ rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_fac
 
 print("\nNormalized and Adjusted Rescaled Accuracies:")
 for error_type, accuracy in rescaled_accuracies_normalized_adjusted.items():
-    print(f"{error_type}: {accuracy*100:.2f}")
+	print(f"{error_type}: {accuracy*100:.2f}")
 print('========')
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
-    output_errors = extract_error_instances(jsonl_file, 'output')
+	output_errors = extract_error_instances(jsonl_file, 'output')
 
 # Open JSONL file for 'response' field
 with open('useroriginal_w_key.jsonl', 'r') as jsonl_file:
-    response_errors = extract_error_instances(jsonl_file, 'response')
+	response_errors = extract_error_instances(jsonl_file, 'response')
 
 # Open JSONL file for GAN-generated responses
 with open('usergan.jsonl', 'r') as jsonl_file:
-    gan_errors = extract_error_instances(jsonl_file, 'response')
+	gan_errors = extract_error_instances(jsonl_file, 'response')
 
 # Open JSONL file for GPT-3.5 responses
 with open('gpt35.jsonl', 'r') as jsonl_file:
-    gpt35_errors = extract_error_instances(jsonl_file, 'response')
+	gpt35_errors = extract_error_instances(jsonl_file, 'response')
 
 # Save error instances in text files
 save_error_instances(output_errors, 'output')
