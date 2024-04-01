@@ -182,7 +182,7 @@ with 'usergan.jsonl' as jsonl_file:
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
 # Print error type frequencies
-with o'gpt35.jsonl' as jsonl_file:
+with 'gpt35.jsonl' as jsonl_file:
 	gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
 
 # Calculate error percentages for GPT-3.5 responses
