@@ -221,7 +221,7 @@ error_percentages = {
 	'Human': output_error_percentages,
 	'Llama': response_error_percentages,
 	'Llama with GAN': gan_error_percentages,
-	'GPT-3.5': rec_gpt35_error_percentages
+	'GPT-3.5': gpt35_error_percentages
 }
 
 # Select error types where at least one of the error percentages is greater than 2%
