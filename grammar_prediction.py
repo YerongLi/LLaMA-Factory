@@ -124,7 +124,11 @@ def process_data(input_file, field_name):
 					for i, error_type in enumerate(predicted_error_types):
 						error_counts[error_type] += 1
 						json_objs[i]['f{field}_error'] = error_type 
-
+						with open(output_file, 'a') as out_file:
+							for json_obj in json_objs:
+								# Dump the modified JSON object back to the file
+								json.dump(json_obj, out_file)
+								out_file.write("\n")
 					total_texts += len(texts)
 					texts = []
 					json_objs = []
