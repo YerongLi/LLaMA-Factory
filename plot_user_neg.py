@@ -55,11 +55,7 @@ df = pd.DataFrame({
     'total': [1] * len(zero_ratio) + [1] * len(r_ratio_usergan) + [1] * len(r_ratio) + [1] * len(r_ratio_gpt35)
 })
 # print(df)
-def adjust_ratio(x):
-    x += 0.5
-    if x > 1:
-        x -= 1
-    return x
+
 def map_to_ratio_group(ratio):
     if ratio <= 0.2:
         return 0
@@ -71,7 +67,7 @@ def map_to_ratio_group(ratio):
         return 3
     else:
         return 4
-df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Model'] != 'GPT3.5' else row['Ratio'], axis=1)
+# df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Model'] != 'GPT3.5' else row['Ratio'], axis=1)
 # Create DataFrame with mapped ratio groups and renamed column
 
 # Map 'Ratio' to 'Ratio_Group' and rename column
