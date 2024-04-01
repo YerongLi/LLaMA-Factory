@@ -142,14 +142,14 @@ total_response_texts = 0
 total_output_texts = 0
 
 # Open JSONL file for 'output' field
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('user4.jsonl', 'r') as jsonl_file:
 	texts = []
 	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 
 # Open JSONL file for 'response' field
 # with open('user4_w_key.jsonl', 'r') as jsonl_file:
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('user4.jsonl', 'r') as jsonl_file:
 	texts = []
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
