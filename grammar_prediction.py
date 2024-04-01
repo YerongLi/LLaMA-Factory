@@ -104,6 +104,7 @@ def process_data(jsonl_file, field_name):
 	total_texts = 0
 	texts = []
 	json_objs = []
+	input_file='gpt35.jsonl'
 	output_file = f'{input_file}1'
 	
 	# Open the input file
