@@ -120,8 +120,9 @@ def process_data(input_file, field_name):
 
 				# If we reach the batch size, classify texts and update error counts
 				print(len(texts))
-				if len(texts) == 64:
+				if len(texts) == 30:
 					predicted_error_types = classify_texts(texts, model, device)
+					
 					for i, error_type in enumerate(predicted_error_types):
 						error_counts[error_type] += 1
 						json_objs[i]['f{field}_error'] = error_type 
