@@ -138,7 +138,7 @@ def process_data(jsonl_file, field_name):
 				# Dump the modified JSON object back to the file
 				json.dump(json_obj, out_file)
 				out_file.write("\n")
-	os.rename(output_file, input_file)
+	os.rename(output_file, jsonl_file)
 	
 	return error_counts, total_texts
 
