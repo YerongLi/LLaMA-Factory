@@ -106,6 +106,7 @@ def process_data(jsonl_file, field_name):
 	json_objs = []
 	input_file='gpt35.jsonl'
 	output_file = f'{input_file}1'
+	jsonl_file = open('user4.jsonl', 'r')
 	print(type(jsonl_file))
 	# Open the input file
 	with open(input_file, 'r') as jsonl_file1:
@@ -167,7 +168,7 @@ total_output_texts = 0
 
 # Open JSONL file for 'output' field
 
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('user4.jsonl', 'r') as jsonl_file:
 	texts = []
 	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
