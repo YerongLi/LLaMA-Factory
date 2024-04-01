@@ -105,9 +105,8 @@ def process_data(input_file, field_name):
 	texts = []
 	json_objs = []
 	output_file = f'{input_file}1'
-	print(type(jsonl_file))
 	# Open the input file
-	with open(input_file, 'r') as jsonl_file1:
+	with open(input_file, 'r') as jsonl_file:
 		# Iterate over each line in the file
 		for line in tqdm(jsonl_file):
 			json_obj = json.loads(line)
