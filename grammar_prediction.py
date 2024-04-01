@@ -168,20 +168,22 @@ total_output_texts = 0
 
 # Open JSONL file for 'output' field
 
-with open('user4.jsonl', 'r') as jsonl_file:
-	texts = []
-	output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
+jsonl_file = 'user4_w_key.jsonl'
+
+texts = []
+output_error_counts, total_output_texts = process_data(jsonl_file, 'output')
 output_error_percentages = {error_type: (count / total_output_texts) * 100 for error_type, count in output_error_counts.items()}
 
 # Open JSONL file for 'response' field
 # with open('user4_w_key.jsonl', 'r') as jsonl_file:
-with 'useroriginal_w_key.jsonl' as jsonl_file:
-	texts = []
-	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
+jsonl_file =  'useroriginal_w_key.jsonl'
+texts = []
+response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
 
-with 'usergan.jsonl' as jsonl_file:
-	gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
+jsonl_file =  'usergan.jsonl'
+
+gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
 
