@@ -98,15 +98,13 @@ total_output_texts = 0
 
 # Open JSONL file
 # def process_data(input_file, field_name):
-def process_data(jsonl_file, field_name):
+def process_data(input_file, field_name):
 	# Initialize variables
 	error_counts = {error_type: 0 for error_type in error_type_to_index}
 	total_texts = 0
 	texts = []
 	json_objs = []
-	input_file='gpt35.jsonl'
 	output_file = f'{input_file}1'
-	jsonl_file = open('user4.jsonl', 'r')
 	print(type(jsonl_file))
 	# Open the input file
 	with open(input_file, 'r') as jsonl_file1:
@@ -186,10 +184,10 @@ jsonl_file =  'usergan.jsonl'
 gan_error_counts, total_gan_texts = process_data(jsonl_file, 'response')
 
 gan_error_percentages = {error_type: (count / total_gan_texts) * 100 for error_type, count in gan_error_counts.items()}
+jsonl_file =  'gpt35.jsonl'
 
 # Print error type frequencies
-with open('gpt35.jsonl', 'r') as jsonl_file:
-	gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
+gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
 
 # Calculate error percentages for GPT-3.5 responses
 gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
