@@ -98,32 +98,49 @@ total_output_texts = 0
 
 # Open JSONL file
 def process_data(jsonl_file, field_name):
-	error_counts = {error_type: 0 for error_type in error_type_to_index}
-	total_texts = 0
-	texts = []
-	# Iterate over each line in the file
-	for line in tqdm(jsonl_file):
-		json_obj = json.loads(line)
-		
-		# Check if the specified field exists in the JSON object
-		if field_name in json_obj:
-			# Get the text from the specified field
-			text = json_obj[field_name]
-			texts.append(text)
+    # Initialize variables
+    error_counts = {error_type: 0 for error_type in error_type_to_index}
+    total_texts = 0
+    texts = []
+    json_objs = []
+    output_file = f'{jsonl_file}1'
+    # Iterate over each line in the file
+    for line in tqdm(jsonl_file):
+        json_obj = json.loads(line)
+        
+        # Check if the specified field exists in the JSON object
+        if field_name in json_obj:
+            # Get the text from the specified field
+            text = json_obj[field_name]
+            texts.append(text)
+            json_objs.append(json_obj)
 
-			# If we reach the batch size, classify texts and update error counts
-			if len(texts) == 64:
-				predicted_error_types = classify_texts(texts, model, device)
-				for error_type in predicted_error_types:
-					error_counts[error_type] += 1
-				total_texts += len(texts)
-				texts = []
-	# Process remaining texts
-	if texts:
-		predicted_error_types = classify_texts(texts, model, device)
-		for error_type in predicted_error_types:
-			error_counts[error_type] += 1
-		total_texts += len(texts)
+            # If we reach the batch size, classify texts and update error counts
+            if len(texts) == 64:
+                predicted_error_types = classify_texts(texts, model, device)
+                for error_type in predicted_error_types:
+                    error_counts[error_type] += 1
+                total_texts += len(texts)
+                texts = []
+                json_objs = []
+
+    # Process remaining texts
+    if texts:
+        predicted_error_types = classify_texts(texts, model, device)
+        for error_type in predicted_error_types:
+            error_counts[error_type] += 1
+        total_texts += len(texts)
+
+    # Append the remaining json_obj if any
+    if json_objs:
+        with open(output_file, 'a') as out_file:
+            for json_obj in json_objs:
+                # Dump the modified JSON object back to the file
+                json.dump(json_obj, out_file)
+                out_file.write("\n")
+    os.rename(output_file, input_file)
+    
+    return error_counts, total_texts
 
 	# # Calculate and print error type frequencies
 	# print(f"{field_name.capitalize()} Error Type Frequencies:")
