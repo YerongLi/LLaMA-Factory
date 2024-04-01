@@ -97,7 +97,8 @@ total_response_texts = 0
 total_output_texts = 0
 
 # Open JSONL file
-def process_data(input_file, field_name):
+# def process_data(input_file, field_name):
+def process_data(jsonl_file, field_name):
 	# Initialize variables
 	error_counts = {error_type: 0 for error_type in error_type_to_index}
 	total_texts = 0
@@ -106,7 +107,7 @@ def process_data(input_file, field_name):
 	output_file = f'{input_file}1'
 	
 	# Open the input file
-	with open(input_file, 'r') as jsonl_file:
+	# with open(input_file, 'r') as jsonl_file:
 		# Iterate over each line in the file
 		for line in tqdm(jsonl_file):
 			json_obj = json.loads(line)
