@@ -281,7 +281,7 @@ plt.title('Error Type Frequencies')
 plt.tight_layout()
 
 plt.savefig("Grammar.png")
-
+exit()
 # Calculate the sum of original frequencies
 original_frequency_sum = sum(gpt35_error_percentages.values())
 
