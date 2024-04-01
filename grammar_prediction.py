@@ -106,7 +106,7 @@ def process_data(jsonl_file, field_name):
 	json_objs = []
 	input_file='gpt35.jsonl'
 	output_file = f'{input_file}1'
-	
+	print(type(jsonl_file))
 	# Open the input file
 	with open(input_file, 'r') as jsonl_file1:
 		# Iterate over each line in the file
