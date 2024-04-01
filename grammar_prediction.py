@@ -190,17 +190,7 @@ gpt35_error_counts, total_gpt35_texts = process_data(jsonl_file, 'response')
 
 # Calculate error percentages for GPT-3.5 responses
 gpt35_error_percentages = {error_type: (count / total_gpt35_texts) * 100 for error_type, count in gpt35_error_counts.items()}
-no_error_percentage = 92.4
 
-# Calculate the total remaining percentage for other error types
-total_remaining_percentage = 100 - no_error_percentage
-
-# Scale the percentages for other error types within the total remaining percentage
-rec_gpt35_error_percentages = {
-	error_type: (percentage / sum(gpt35_error_percentages.values())) * total_remaining_percentage
-	for error_type, percentage in gpt35_error_percentages.items() if error_type != "No Error"
-}
-rec_gpt35_error_percentages['No Error'] = no_error_percentage
 print("\nOutput Error Type Frequencies:")
 for error_type, count in output_error_counts.items():
 	percentage = (count / total_output_texts) * 100
@@ -244,7 +234,7 @@ error_df = pd.DataFrame({
 	'Human': [output_error_percentages.get(error_type, 0) for error_type in specific_error_types],
 	'Vicsim': [gan_error_percentages.get(error_type, 0) for error_type in specific_error_types],
 	'Vicsim w/o GAN': [response_error_percentages.get(error_type, 0) for error_type in specific_error_types],
-	'GPT-3.5': [rec_gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
+	'GPT-3.5': [gpt35_error_percentages.get(error_type, 0) for error_type in specific_error_types]
 })
 
 # Melt the DataFrame
@@ -290,46 +280,7 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 exit()
-# Calculate the sum of original frequencies
-original_frequency_sum = sum(gpt35_error_percentages.values())
 
-# Calculate the sum of the rescaled accuracies
-rescaled_accuracy_sum = 37 * (77.1 / 100)  # Average accuracy
-
-# Calculate the scaling factor
-scaling_factor = rescaled_accuracy_sum / original_frequency_sum
-
-# Rescale the original percentages to represent accuracies
-rescaled_accuracies = {error_type: (percentage / 100) * scaling_factor for error_type, percentage in gpt35_error_percentages.items()}
-
-# Normalize the accuracies to be between 0 and 1
-max_accuracy = max(rescaled_accuracies.values())
-min_accuracy = min(rescaled_accuracies.values())
-rescaled_accuracies_normalized = {error_type: (accuracy - min_accuracy) / (max_accuracy - min_accuracy) for error_type, accuracy in rescaled_accuracies.items()}
-
-# Adjust normalized accuracies to maintain the average accuracy
-average_accuracy = sum([acc * freq for acc, freq in zip(rescaled_accuracies_normalized.values(), gpt35_error_percentages.values())]) / original_frequency_sum
-
-adjustment_factor = (77.1 / 100) / average_accuracy
-rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
-
-rescaled_accuracies_normalized_adjusted['Abbreviation Errors'] = 0.45
-print(rescaled_accuracies_normalized_adjusted['Tautology'])
-
-rescaled_accuracies_normalized_adjusted['Tautology'] = 0.80
-
-average_accuracy = sum([acc * freq for acc, freq in zip(rescaled_accuracies_normalized_adjusted.values(), gpt35_error_percentages.values())]) / original_frequency_sum
-# rescaled_accuracies_normalized_adjusted['Abbreviation Errors'] = 0.45
-print(rescaled_accuracies_normalized_adjusted['Tautology'])
-
-rescaled_accuracies_normalized_adjusted['Tautology'] = 0.845
-rescaled_accuracies_normalized_adjusted['No Error'] = 0.284
-adjustment_factor = (77.1 / 100) / average_accuracy
-rescaled_accuracies_normalized_adjusted = {error_type: accuracy * adjustment_factor for error_type, accuracy in rescaled_accuracies_normalized.items()}
-
-print("\nNormalized and Adjusted Rescaled Accuracies:")
-for error_type, accuracy in rescaled_accuracies_normalized_adjusted.items():
-	print(f"{error_type}: {accuracy*100:.2f}")
 print('========')
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
