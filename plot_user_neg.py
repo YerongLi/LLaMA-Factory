@@ -67,7 +67,6 @@ def map_to_ratio_group(ratio):
         return 3
     else:
         return 4
-# df['Ratio'] = df.apply(lambda row: adjust_ratio(row['Ratio']) if row['Model'] != 'GPT3.5' else row['Ratio'], axis=1)
 # Create DataFrame with mapped ratio groups and renamed column
 
 # Map 'Ratio' to 'Ratio_Group' and rename column
