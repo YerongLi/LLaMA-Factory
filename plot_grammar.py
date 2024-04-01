@@ -149,7 +149,7 @@ output_error_percentages = {error_type: (count / total_output_texts) * 100 for e
 
 # Open JSONL file for 'response' field
 # with open('user4_w_key.jsonl', 'r') as jsonl_file:
-with open('useroriginal_w_key.jsonl', 'r') as jsonl_file:
+with open('user4_w_key.jsonl', 'r') as jsonl_file:
 	texts = []
 	response_error_counts, total_response_texts = process_data(jsonl_file, 'response')
 response_error_percentages = {error_type: (count / total_response_texts) * 100 for error_type, count in response_error_counts.items()}
