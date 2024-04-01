@@ -255,7 +255,7 @@ plt.tight_layout()
 
 plt.savefig("Grammar.png")
 
-
+exit()
 # Open JSONL file for 'output' field
 with open('user4_w_key.jsonl', 'r') as jsonl_file:
     output_errors = extract_error_instances(jsonl_file, 'output')
