@@ -7,9 +7,10 @@ import itertools
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Your program description')
-parser.add_argument('filename', type=argparse.FileType('r'))
+# parser.add_argument('filename', type=argparse.FileType('r'))
 args = parser.parse_args()
-file_name = args.filename.name
+# file_name = args.filename.nameargs.filename.name
+file_name = 'user4.jsonl'
 
 # Read data from "summary.jsonl"
 event_id_key_dict = {}
@@ -38,7 +39,7 @@ with open("gpt35.jsonl", "r") as jsonl_file:
 r_ratio_gpt35 = [len(line['history']) / event_id_key_dict[line['event_id']] for line in answer_gpt35_data if line['r'] == -1]
 
 # Read data from "usergan.jsonl"
-with open("user4.jsonl", "r") as jsonl_file:
+with open("usergan.jsonl", "r") as jsonl_file:
     usergan_data = [json.loads(line) for line in jsonl_file]
 
 # Extract data for plotting from "usergan.jsonl"
