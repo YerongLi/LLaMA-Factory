@@ -32,7 +32,7 @@ def extract_keywords(sentence):
 if len(sys.argv) != 2:
     print("Usage: python script.py <input_filename>")
     sys.exit(1)
-
+input_filename = sys.argv[1]
 # Get the input filename from the command line arguments
 with open(input_filename, 'r') as count_file:
     total_lines = sum(1 for _ in count_file)
