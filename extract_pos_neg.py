@@ -76,7 +76,7 @@ for i in range(0, 201, interval_size):
     response_interval_counts[(i, i + interval_size)] = {'positive': [], 'negative': []}
 
 # Open the JSON file
-with open('user4_w_key.jsonl', 'r') as jsonl_file:
+with open('user4.jsonl', 'r') as jsonl_file:
     # Iterate through each line in the input file
     for line in tqdm.tqdm(jsonl_file, total=total_lines):
         # Parse JSON from the line
