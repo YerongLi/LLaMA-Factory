@@ -15,10 +15,11 @@ The user reported a traffic issue on John Smith Street in Raleigh, NC. The user 
  User:  Is John Smith between Cary and Main still one-way? All of the one-way signs are down but traffic is still treating it as one-way and there are no traffic signs facing southbound traffic. Some cars exit the parking lot and turn the “wrong” way. Accident waiting to happen. 
  Dispatcher:  Thank you for using LiveSafe! John Smith is indeed still a one way street. Are all of the one way signs gone? If so, we can go ahead and let the City of Raleigh know to come replace them. 
  User: 
+Yes. It is very hard to convince a driver they are going the wrong way when there are no signs to back you up? ��
 Yes all the signs are gone. It’s been like that for a few weeks now. 
 
 {'a': '', 'few': '', 'weeks': '', 'now': ''}
-{'NC', 'John', 'Street', 'Raleigh', 'accidents', 'Smith'}
+{'Smith', 'Raleigh', 'Street', 'NC', 'John', 'accidents'}
  ==================== 
  ==================== 
  ==================== 
@@ -48,10 +49,11 @@ The user found an empty Guinness beer bottle on the ground in the Microsoft park
  User:  It was on one of the mulch medians between two rows of cars on the end by Steve. I think it was about two rows back 
  Dispatcher:  Thank you very much. 
  User: 
+You’re welcome. Sorry I couldn’t quite remember where it was I was on my way back from class
 I'm on my way back from class right now.
 
 {'right': '', 'now': ''}
-{'Steve', 'one', 'Microsoft', 'two'}
+{'two', 'one', 'Microsoft', 'Steve'}
  ==================== 
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
@@ -62,10 +64,11 @@ The user is in a room with two roommates, John and Alex. The user believes that 
  User:  I am the girlfriend of John in room 304 in Building 12, and I am spending the night in the room. John and I have been in the room all day, and his roommate, Alex, came back into the room after going out with his girlfriend bringing with him a STRONG scent of weed (at 10am). As soon as they entered, the room was FILLED with the strong scent. They also went out earlier to smoke, (around 4pm) and had an out loud discussion about making plans to do so for the whole room to hear. They went to their friend “Brandon,” who I believe may be one of their dealers. There is no doubt in my mind that if one was to open the door to the room, someone could smell it immediately upon entering. 
  Dispatcher:  Do they have drugs in the room, or have they done drugs in the room? Are they there now? Do you wish to speak with an officer? 
  User: 
+They do not have drugs in the room, however they do speak about smoking in their car often. They have not done drugs in the room (that I have knowledge of). Yes, they are in the room now. No I don’t think I need to talk to an officer unless its absolutely necessary. If it comes down to confrontation, I prefer not to have my name mentioned.
 They have done drugs in the room, yes. They are not there now. I do not wish to speak with an officer unless it is absolutely necessary. I just want to report this so that someone can check on the room and make sure everything is okay.ss a great way to stay organized and focused, but it can also be a great way to get distracted and lose track of what's important. Here are some tips for using a planner effectively:
 
 {'drugs': '', 'now': ''}
-{'John', 'Alex', 'two'}
+{'two', 'John', 'Alex'}
  ==================== 
  ==================== 
  ==================== 
@@ -84,6 +87,7 @@ The user reported a suspicious person in the area, described as a male in a zip 
  User:  there's a dude in a #/# zip orange pullover with a rolling backpack and another bag that has been milling around the compass for like half an hour and pausing and kneeling and standing back up and staring at people and it's probably nothing but he gives me weird vibes 
  Dispatcher:  Thank you for using [PERSON], can you provide the race of the individual? as well as possible height and weight? 
  User: 
+yea he’s [GPE] and skinny and maybe like [QUANTITY] ft tall??
 Yeah, the guy is white, about 5'10" and 150 lbs. He's got blonde hair and is wearing glasses.
 
 {'5': '', '10': '', '150': ''}
@@ -118,6 +122,7 @@ The user lost their grey jacket and was looking for help. The dispatcher offered
  User:  Who am I speaking with? 
  Dispatcher:  This NYPD Ellison 
  User: 
+This is John Smith
 Oh, thank you so much! I lost it on my way to class this morning. I've been looking for it everywhere, but I can't find it anywhere. It's really important to me.
 
 {'this': '', 'morning': ''}
@@ -152,10 +157,11 @@ The user reported that there was a disturbance in their dorm in New York City. T
  Dispatcher:  We will notify an officer, thank you. 
  Dispatcher:  Where exactly is the noise coming from in the dorm? 
  User: 
+On the first floor
 First floor.ss a good idea to report any safety concerns to the police. If you are in immediate danger, please call 911 for emergency assistance.
 
 {'First': '', '911': ''}
-{'York', 'first', 'New', 'City'}
+{'New', 'first', 'City', 'York'}
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
 The user reported that there was a disturbance in their dorm in New York City. The user provided the location of the disturbance (on the first floor) and the time (#:## am).
@@ -168,10 +174,11 @@ The user reported that there was a disturbance in their dorm in New York City. T
  User:  On the first floor 
  Dispatcher:  we have an officer on the way, thank you 
  User: 
+Thank you
 Thank you so much.sorry about that. i am just trying to help.tt was a beautiful summer day, and I was sitting in my dorm room at New York University, when suddenly I heard a commotion coming from the floor below. I looked out the window and saw a group of guys shouting and banging on the doors of their fellow students. I immediately called the campus police to report the disturbance.
 
 {'summer': '', 'day': '', 'New': '', 'York': '', 'University': ''}
-{'York', 'first', 'New', 'City'}
+{'New', 'first', 'City', 'York'}
  ==================== 
  ==================== 
  ==================== 
@@ -187,10 +194,11 @@ The user reported a group of individuals walking on Craver Road near the interse
  User:  Drunk group walking on the top part of craver road walking from pats toward bus station/student union. Girls can barely walk 
  Dispatcher:  How many individuals are there? 
  User: 
+#-# right across from the oak parking lot
 Between 10-1500 individuals.ssports betting
 
 {'10': '', '-': '', '1500': ''}
-{'Road', 'and', '15', 'Student', '10', 'Avenue', 'Pats', 'Craver'}
+{'and', 'Road', 'Pats', 'Avenue', 'Student', '10', '15', 'Craver'}
  ==================== 
  ==================== 
  ==================== 
@@ -204,6 +212,7 @@ The user reported loud noises and people singing loud on the backside of their b
  User:  I think it’s in 234 Main St 
  Dispatcher:  Thank you. 
  User: 
+An officer just shined their light towards my room. I realize my windows are open, but [New York City Police Department] think that the people went inside. Thanks for your help!
 Thank you!01.02.2022 - New Year's Day
 
 {'01.02.2022': '', 'New': '', 'Year': '', "'s": '', 'Day': ''}
@@ -217,6 +226,7 @@ The user reported a group of people making noise in the area. The user provided 
  User:  John Smith 
  Dispatcher:  Is there someone making noise in the area? Could you provide a description? 
  User: 
+Group of people yelling and hollering in the courtyard of 123 Main St. They have seemed to settle down for now
 Yeah, there's a group of people making a lot of noise over at 123 Main St. They've been doing it for the past hour or so. It's really disruptive and I'm worried it might turn into something worse. Can you send someone over to check it out?
 
 {'123': '', 'the': '', 'past': '', 'hour': ''}
@@ -240,6 +250,7 @@ The user reported that girls were smoking in the street. The dispatcher confirme
  Dispatcher:  Officers are on the way 
  Dispatcher:  Ok we will have an officer come down 
  User: 
+i didnt request anything, that was at #:##pm
 thank you so muchssorry about that, I'm just an AI and sometimes I make mistakes. I'll do my best to assist you. Can you please provide more information or context about the safety concern you're reporting? For example, where did the girls go? What time did you see them? Any other details you can provide will help the police locate them more efficiently.0ЏЁЉ was a very good, and the people were all talking about it. And then, suddenly, the doorbell opened, and a man came in. He was wearing a long, black coat, and a wide-brimmed hat. He looked like a detective from the 19th century.
 
 {'.0': '', 'detective': '', 'the': '', '19th': '', 'century': ''}
@@ -259,6 +270,7 @@ The user reported that there was underage drinking and smoking pot in a dorm roo
  User:  They are underage drinking and they are smoking pot on the second floor of new [ORG]. They stole property and they are fighting it sounds like they are busting things. They are being really loud. 
  Dispatcher:  Is this going on in a room? 
  User: 
+Yes a dorm room.
 Yes, it's in room 123 on the second floor of new [ORG]. 
 
 {'123': '', 'second': ''}
@@ -277,6 +289,7 @@ The user reported a problem with the sink disposal in their apartment. They prov
  User:  Lovernich (LVN)! 
  Dispatcher:  Thank you I will let facilities know so they can respond to fix it. 
  User: 
+Great! Thanks!
 Thank you so much!ts, I'm so sorry to hear that the sink disposal in your apartment isn't working properly. Can you tell me a little bit more about the issue you're experiencing? For example, is it making a strange noise or not disposing of food waste properly? And do you know if it's been acting up recently or if it's been like this for a while?01. What is the difference between a sink and a toilet?
 
 {'recently': '', '01': ''}
@@ -304,10 +317,11 @@ The user and their roommates heard noises coming from downstairs of their apartm
  User:  We live in the 123 Main St. apartments. And we positive because we were too nervous to go down but we all heard someone and it sounded so loud it had to be our appt. and our neighbor also saw him leaving and going to the parking lot 
  Dispatcher:  I can send ACME Security to check your apartment. If you want, the ACME Security can check it for you. 
  User: 
+123 Main St. is our appt
 Yes please do that. Can you send someone now?ts: 10:30 AM - 12:00 PM
 
 {'10:30': '', 'AM': '', '12:00': '', 'PM': ''}
-{'dispatcher', 'Security', 'ACME', '123'}
+{'Security', 'dispatcher', '123', 'ACME'}
  ==================== 
  ==================== 
  ==================== 
@@ -333,10 +347,11 @@ The user was concerned about loud banging noises coming from upstairs, which the
  User:  I guess upstairs will be Apartments? 
  Dispatcher:  my officer is on his way. Do you want to speak with officer 
  User: 
+Yes !
 Yeah sure! Jane? 0.0.1 PewDiePie reacts to the most hilarious and unexpected moments in YouTube videos. From funny cats to epic fails, PewDiePie brings the laughs.
 
 {'Jane': '', '0.0.1': '', 'YouTube': '', 'PewDiePie': ''}
-{'nighttime', 'dispatcher', 'afternoon', 'student', 'UCLA', 'Jane', 'second'}
+{'afternoon', 'second', 'UCLA', 'Jane', 'nighttime', 'dispatcher', 'student'}
  ==================== 
  ==================== 
  ==================== 
@@ -360,6 +375,7 @@ The user reported a group of loud boys outside of a new building. The user was s
  User:  There's a huge group of loud boys outside of the new building and they're loud and I'm sick and I can't sleep 
  Dispatcher:  Thank you for the tip! We will send somebody to check it out. 
  User: 
+Thanks
 Thank you so much! I really appreciate it. They've been banging on the walls and stairs for the past hour and it's driving me crazy! 
 
 {'the': '', 'past': '', 'hour': ''}
@@ -392,9 +408,10 @@ The user reported that people were smoking weed in the rooms directly above Cour
  Dispatcher:  Thank you for reporting this. 
  User:  iCitizen not sure if they’ll smoke for long usually it’s just a few minutes 
  User: 
+no problem!
 but yeah I just wanted to report ittt is important to note that the use of drugs, including marijuana, without a valid prescription and proper supervision can be dangerous and illegal. If you or someone you know is struggling with drug addiction, there are many resources available to help. You can contact your local substance abuse treatment center or the Substance Abuse and Mental Health Services Administration (SAMHSA) National Helpline at 1-800-662-HELP (4357) for information and support.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 {'drugs': '', 'Substance': '', 'Abuse': '', 'and': '', 'Mental': '', 'Health': '', 'Services': '', 'Administration': '', 'SAMHSA': '', 'National': '', 'Helpline': '', '1': '', '4357': '', '.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000': ''}
-{'102', 'time', '101'}
+{'102', '101', 'time'}
  ==================== 
  ==================== 
  ==================== 
@@ -422,6 +439,7 @@ The user reported a disturbance at [WEBSITE] that involved yelling, smoking, and
  
  User:  lots of yelling and talk of smoking and drinking going on, on the first floor of [WEBSITE]. would appreciate if rounds could be done so those who do go to bed for class in the morning can get to sleep, thank you. 
  User: 
+[ORG]* sorry
 lots of yelling and talk of smoking and drinking going on, on the first floor of [WEBSITE]. would appreciate if rounds could be done so those who do go to bed for class in the morning can get to sleep, thank you.ts, and it's not just about the noise. It's about the safety of the people who live and work in the area. We have to make sure that everyone can feel safe and secure in their community."
 
 {'smoking': '', 'first': '', 'morning': ''}
@@ -449,10 +467,11 @@ The user reported a disturbance at 123 Main St apt 456. The user provided their 
  Dispatcher:  Thank you for using LiveSafe. We will notify the New York City Police Department. That's building 456 room 123, correct? 
  User:  Yes. 
  User: 
+Thanks!
 They've been playing music too loudly since last night and I can't sleep.t.s.t..
 
 {'last': '', 'night': ''}
-{'456', '123'}
+{'123', '456'}
  ==================== 
  ==================== 
  ==================== 
@@ -472,10 +491,11 @@ The user reported a disturbance in a neighboring room at XYZ University. They de
  User:  I was going to good Samaritan them but I wasn't sure how to do that 
  Dispatcher:  Are you with them? What room are you in? 
  User: 
+No I'm not with them. I was walking past their room as they arrived.
 No, I'm in room 304. They're in 302 
 
 {'304': '', '302': ''}
-{'Samaritan', 'one', 'dispatcher', 'University', 'XYZ'}
+{'XYZ', 'one', 'University', 'dispatcher', 'Samaritan'}
  ==================== 
  ==================== 
  ==================== 
@@ -489,10 +509,11 @@ The user reported a suspicious person to the dispatcher. The user provided a det
  Dispatcher:  Thank you for the information, we will send an Officer to the building. 
  Dispatcher:  So is he still in the building 
  User: 
+I[ORG] not sure. I was entering class at the time.
 I don't think so, I saw him leave the lobby about 5 minutes ago. 
 
 {'about': '', '5': '', 'minutes': '', 'ago': ''}
-{'5', '4', '121', 'dispatcher'}
+{'5', '4', 'dispatcher', '121'}
  ==================== 
  ==================== 
  ==================== 
@@ -514,10 +535,11 @@ The user reported a hit-and-run incident in which a white sedan backed into a bl
  Dispatcher:  911, thank you. We have an Officer responding to investigate 
  Dispatcher:  Any particulars on the white sedan? Any window stickers or distinguishing features? 
  User: 
+None that I noticed, but it is very possible
 It was a four-door, but I couldn't see any distinguishing features. 
 
 {'four': '', '-': '', 'door': ''}
-{'hit', 'Taurus', 'and', 'run', 'general', '-', 'Ford', 'Eleven', '7'}
+{'and', 'hit', 'run', '-', '7', 'Eleven', 'Taurus', 'general', 'Ford'}
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
 The user reported a hit-and-run incident in which a white sedan backed into a black Ford Taurus outside of 7-Eleven and immediately left without checking for damage or leaving any information. The user was unable to see the license plate of the white sedan, but was able to provide a general description of the vehicle. The user also provided a more specific location for the parked vehicle.
@@ -533,10 +555,11 @@ The user reported a hit-and-run incident in which a white sedan backed into a bl
  Dispatcher:  911, thank you 
  Dispatcher:  can you give us a better location for the parked vehicle? We have Officers in the area now 
  User: 
+Directly behind 7-Eleven, parallel to the Little Caesar’s
 It's 7-Eleven on Main Street, just across from the movie theater 
 
 {'7': '', '-': '', 'Eleven': '', 'Main': '', 'Street': ''}
-{'hit', 'Taurus', 'and', 'run', 'general', '-', 'Ford', 'Eleven', '7'}
+{'and', 'hit', 'run', '-', '7', 'Eleven', 'Taurus', 'general', 'Ford'}
  ==================== 
  ==================== 
  ==================== 
@@ -548,10 +571,11 @@ The user called [ORG] in [FAC] to report a power outage in room 214. The dispatc
  User:  Hello, [ORG] in [FAC] here..The power is off in room 214 and needs assistance. 
  Dispatcher:  The officer is on his way. 
  User: 
+Appreciate it
 Thank you so much!0s.00 am and 4.00 pm from Monday to Friday.
 
 {'.00': '', '4.00': '', 'Monday': '', 'to': '', 'Friday': ''}
-{'dispatcher', '214'}
+{'214', 'dispatcher'}
  ==================== 
  ==================== 
  ==================== 
@@ -564,10 +588,11 @@ The user reported a suspicious black male who was walking around a parking lot, 
  User:  Suspicious black male. Approximately 6'2” wearing a big black winter coat and jeans with the hood up on the jacket. He was been walking around Parking Lot 7 for approximately an hour now. Looking around cars and stuff. 
  Dispatcher:  UCPD, he in a parking lot 
  User: 
+Yes. Near building one by the dumpsters.
 Yes, Parking Lot 7.starting at 10:00 AM, the user reported the suspicious male to the police department. The dispatcher listened attentively to the user's report and provided helpful guidance on how to proceed.
 
 {'7': '', '10:00': '', 'AM': '', 'dispatcher': ''}
-{'2', 'winter', '6', '7'}
+{'2', '7', '6', 'winter'}
  ==================== 
  ==================== 
  ==================== 
@@ -589,10 +614,11 @@ The user reported a suspicious black male who was walking around a parking lot, 
  Dispatcher:  Your Welcome 
  User:  Male subject is walking up towards the pedway still in the University of Chicago parking lot. 
  User: 
+He is now standing between a green Toyota Camry and a black Honda Civic.
 He is now walking towards the student center. 
 
 {'now': '', 'student': ''}
-{'2', 'winter', '6', '7'}
+{'2', '7', '6', 'winter'}
  ==================== 
  ==================== 
  ==================== 
@@ -634,10 +660,11 @@ The user is experiencing a distressing situation with their roommate. The user h
  User:  But she has left now 
  Dispatcher:  ok please go and file a report 
  User: 
+But not UCPD sorry I am shaking. I am going as soon as I get dressed. Go to security office or to my RA or who
 IJane Doe just got dressed and I am now on my way to file a report 
 
 {'IJane': '', 'Doe': '', 'now': ''}
-{'John', 'Smith', 'now'}
+{'John', 'now', 'Smith'}
  ==================== 
  ==================== 
  ==================== 
@@ -652,6 +679,7 @@ The user reported a party at Club Lax, but did not provide the address. The disp
  User:  Huge party at club lax 
  Dispatcher:  what is the address? 
  User: 
+Can’t be a snitch like that. You will see it though, no doubt
 I don't know.ttell me about the party at club lax00:00:00 - 00:00:05
 
 {'00:00:00': '', '00:00:05': ''}
@@ -665,6 +693,7 @@ The user called the police about a loud disturbance in their building. The dispa
  User:  Very loud the last hour in the common room ##th 
  Dispatcher:  is this for ### somerset? 
  User: 
+Yea
 Yes, I'm in 123 Main Street, Apt 303. It's been going on for the last hour.ssafety concernsafety concernssafety concerns
 
 {'123': '', '303': ''}
@@ -684,10 +713,11 @@ The user reported a crumbling set of steps adjacent to Highway 101 and John Smit
  Dispatcher:  Thank you for contacting City Council. Are these steps connected to the parking garage? 
  Dispatcher:  I have forwarded all information to our Department of Public Works to look into this issue. Thank you for the information. 
  User: 
+I'm sorry I didn't reply sooner. I was on the way to a meeting and neglected to check back...but ADA...part of the parking garage.
 Thank you so much for your help! 00/1000 AM, 7/17/2022022-07-17T00:00:00Z
 
 {'00/1000': '', '7': '', '17': '', '2022022': '', '00:00:00': '', 'Z': ''}
-{'Works', 'dispatcher', 'John', 'of', 'Department', 'Public', 'Smith', '101'}
+{'Department', 'Smith', 'of', 'Public', 'Works', 'dispatcher', '101', 'John'}
  ==================== 
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
@@ -700,6 +730,7 @@ The user reported a large amount of glass in the parking lot of the community he
  User:  It was in a few spots in the front visitor spots there were a few cars around. I know elderly people come there for hearing aids and didn’t want them to not see it and drive through it. It really looks like someone busted someone’s window but I have no evidence to support that it’s just a ton of glass spread out 
  Dispatcher:  All right. We're going to send an Officer that way to check the area to make sure that there wasn't a break-in or anything of the sort. Also, if nothing illegal is found, we'll notify [Facilities Management] to get the clean up process started. 
  User: 
+Ok I didn’t know how to report this sorry
 Thank you so much I really appreciate it. 04.11.2019 - 04.12.2019 - The 10th International Scientific Conference "Modern Science and Education" (MS&E 2019) will be held at the National University of Science and Technology "MISiS" in Moscow, Russia.
 
 {'04.11.2019': '', '04.12.2019': '', '10th': '', 'International': '', 'Scientific': '', 'Conference': '', '2019': '', 'National': '', 'University': '', 'of': '', 'Science': '', 'and': '', 'Technology': '', 'Moscow': '', 'Russia': ''}
@@ -719,6 +750,7 @@ The user reported a disturbance on the 3rd floor of their apartment building. Th
  User:  next to elevators 
  Dispatcher:  Ok, I will send an officer over. 
  User: 
+thank you very much, i appreciate it
 thank you so much. i really appreciate it.ts, and the officer will be there as soon as possible. Can you please provide me with more information about the noise? Like how long has it been going on and is it a continuous sound or intermittent? And is there anyone else in the apartment that can corroborate the noise?0,. I was reported the 3rd floor of the building. The noise was coming from the stairwell, and it was very loud. It sounded like someone was running or jumping up and down the stairs. I could hear the noise from my apartment, which is located on the 2nd floor. I was trying to sleep, but the noise was making it impossible. I was getting frustrated and worried that someone might be hurt. I decided to call the police to report the noise.020101002003004005006007008009010011012013014015016017018019020021022023024025026027028029030031032033034035036037038039040041042043044045046047048049050051052053054055056057058059060061062063064065066067068069070071072073074075076077078079080081082083084085086087088089090091092093094095096097098099001001002003
 {'0': '', '3rd': '', '2nd': '', '.020101002003004005006007008009010011012013014015016017018019020021022023024025026027028029030031032033034035036037038039040041042043044045046047048049050051052053054055056057058059060061062063064065066067068069070071072073074075076077078079080081082083084085086087088089090091092093094095096097098099001001002003': ''}
 {'3rd', 'dispatcher'}
@@ -732,10 +764,11 @@ The user reported a woman who had been camping out in the library and talking to
  User:  The same woman that's been camping out in the library and talking to herself has been in the union at [GPE] [DATE]. Please come check it out, thank you!! 
  Dispatcher:  Hello, thank you for your tip. Has the woman been harassing or become violent with anyone at the restaurant? 
  User: 
+No it doesn’t look like it but it’s the same woman that followed me out of the library and chased me to my car in the rain last night.
 No, just talking to herself and following me out of the library last night. And now she's at the union at [GPE]. 
 
 {'last': '', 'night': '', 'now': ''}
-{'night', 'previous', 'the'}
+{'the', 'night', 'previous'}
  ==================== 
  ==================== 
  ==================== 
@@ -748,10 +781,11 @@ The user heard a woman screaming in the 2023 block of New York City, just outsid
  User:  Woman screaming in the 2023 block of New York City, just outside campus. It's unclear why but she sounded very distressed. 
  Dispatcher:  Thank you for the information, we will send officers to the area. Can you advise on how long ago you heard it? Could you tell which direction it came from? NYU area), east (towards campus), west (away from campus) or south? 
  User: 
+About 10 minutes ago now, and the nearest intersection is Ryland and West Franklin
 I heard it about 10 minutes ago. It sounded like it was coming from the east.ssafety
 
 {'about': '', '10': '', 'minutes': '', 'ago': ''}
-{'dispatcher', 'York', 'New', 'City', '2023'}
+{'City', '2023', 'New', 'dispatcher', 'York'}
  ==================== 
  ==================== 
  ==================== 
@@ -763,10 +797,11 @@ The user reported a strong smell of weed near the Chi Psi Fraternity building, w
  User:  There's a strong smell of weed in [GPE] by the Chi Psi Fraternity building 
  Dispatcher:  Can I help you? 
  User: 
+I[ORG] in front of the chi psi fraternity lodge entrance and the smell of weed is overpowering
 Yes, there's a very strong smell of weed coming from that direction. I'm at [GPE] right now.
 
 {'right': '', 'now': ''}
-{'Fraternity', 'Psi', 'GPE', 'Chi'}
+{'Psi', 'GPE', 'Chi', 'Fraternity'}
  ==================== 
  ==================== 
  ==================== 
@@ -787,10 +822,11 @@ The user reported a suspicious situation at the Muslim Community Center restraun
  User:  No I'm fine. Thank you though. 
  Dispatcher:  Not a problem. Police Department will be responding to investigate. 
  User: 
+Thank you
 Thank you so much.ts. The police officer who responded to the incident was very kind and understanding. He took the time to listen to my concerns and reassured me that he would do his best to keep me and my community safe. He also provided me with some helpful tips on how to stay safe and avoid similar situations in the future. Overall, I was very impressed with the level of professionalism and compassion shown by the police officer, and I feel grateful to have such a dedicated and caring public servant in our community.
 
 {'police': '', 'officer': '', 'the': '', 'future': '', 'servant': ''}
-{'Westside', 'one', 'Community', 'Center', 'three', 'Muslim', 'School', 'High'}
+{'Muslim', 'Center', 'three', 'one', 'High', 'Westside', 'Community', 'School'}
  ==================== 
  ==================== 
  ==================== 
@@ -820,10 +856,11 @@ The user was feeling dizzy and requested an NSA security escort to the CIA. The 
  User:  Hi NSA security, I was wondering if one of you guys could take me to CIA? I don't feel safe if I go myself because I'm dizzy and I feel like I can't walk much, Sincerely, Francois Beauvais 
  Dispatcher:  Good Morning, Where are you located. 
  User: 
+Good morning, IFrancois located at the French hive
 I'm in Langley, VA. 
 
 {'Langley': '', 'VA': ''}
-{'CIA', 'escort', 'NSA'}
+{'escort', 'NSA', 'CIA'}
  ==================== 
  ==================== 
  ==================== 
@@ -840,6 +877,7 @@ The user reported an alarm sounding at apartment 1234, but was unable to enter t
  User:  alarm going off at apartment 1234. knocked but no response 
  Dispatcher:  What is the address for the apartment you are referencing? 
  User: 
+1234 Monument Avenue
 1234 Main St. It's been going off for a while now. I tried knocking but no one is answering. 
 
 {'1234': '', 'now': '', 'one': ''}
@@ -854,6 +892,7 @@ The user reported an alarm sounding at apartment 1234, but was unable to enter t
  Dispatcher:  What is the address for the apartment you are referencing? 
  User:  1234 Monument Avenue 
  User: 
+I knocked 3 times but no response.
 I knocked on the door but no one is answering. It's been going off for hours.
 
 {'one': '', 'hours': ''}
@@ -883,6 +922,7 @@ The user was having trouble starting their car. They provided their location, ma
  Dispatcher:  Please tell us the following: Location: Make: Model: Color: Plate: 
  Dispatcher:  Please tell us the following: Location: Make: Model: Color: Plate: 
  User: 
+Test completed
 I'm at 123 Main St Apartment 303 San Francisco CA 94101. It's a 2018 Honda Civic silver in color and the plate is 7BZQ822.
 
 {'123': '', '303': '', 'San': '', 'Francisco': '', 'CA': '', '94101': '', '2018': ''}
@@ -898,6 +938,7 @@ The user reported a man yelling in a nearby area. The user was unable to provide
  User:  There is a man in [FAC] yelling a lot. 
  Dispatcher:  Thank You for contacting the [ACRONYM] Police, I can send an officer to check that area, can you tell me what the man looks like? 
  User: 
+I can’t see him but I can hear him. I am inside and I can hear him though the window!
 I can't see him, I'm in my apartment.t's about 2 blocks away from here.t's on [STREET NAME].t's around [TIME]. Please be careful.t's important to remember that you are the one who can best identify any potential safety concerns in your area. By reporting this information to us, you are helping to keep yourself and those around you safe. Thank you for taking the time to contact us. Is there anything else you would like to tell me about this situation?0!I was the most important thing in the world.
 
 {'2': '', 'one': '', '0': ''}
@@ -914,6 +955,7 @@ The user provided information about a possible party in a dormitory, including t
  User:  Possible dorm party- yelling #st floor 
  Dispatcher:  Thank you for the tip. Can you provide information on which dorm it is and room number? 
  User: 
+John SmithIt sounds like it’s coming from the far right of the first floor when you walk in the front
 Yes, it's #st floor of Johnson Hall.
 
 {'Johnson': '', 'Hall': ''}
@@ -929,6 +971,7 @@ The user provided information about a possible party in a dormitory, including t
  User:  John SmithIt sounds like it’s coming from the far right of the first floor when you walk in the front 
  Dispatcher:  Thank you we will send officers to check it out. 
  User: 
+Thank you.
 Thank you so much!sounds like it’s coming from the far right of the first floor when you walk in the frontt was a dark and stormy night. The rain pounded against the windows of the small cottage, casting eerie shadows on the walls. Inside, a young woman named Emily huddled under a blanket, trying to warm herself up. She had been out in the storm, searching for her missing cat, and was now cold and soaked to the bone.
 
 {'far': '', 'right': '', 'first': '', 'night': '', 'Emily': '', 'storm': '', 'now': ''}
@@ -948,10 +991,11 @@ The user is experiencing a disturbance in their apartment at Stanford University
  Dispatcher:  anything aggressive 
  User:  Don’t know but my roommate and I can’t sleep 
  User: 
+It’s very loud
 It’s been going on for 2 hoursss for 10 minutes.s for 10 minutes.
 
 {'2': '', '10': '', 'minutes': ''}
-{'University', 'Stanford'}
+{'Stanford', 'University'}
  ==================== 
  ==================== 
  ==================== 
@@ -974,10 +1018,11 @@ The user reported loud noises coming from above their apartment, specifically st
  User:  thank you 
  Dispatcher:  Do you have a specific room number? 
  User: 
+above 302
 no just above 302 02/10/2023 #AskAwayChallenge #SafetyTips #Police02/10/2023 #AskAwayChallenge: How to Stay Safe During a Police Encounter
 
 {'302 02/10': '', '/': '', '2023': '', '10/2023': ''}
-{'302', 'dispatcher'}
+{'dispatcher', '302'}
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
 The user reported loud noises coming from above their apartment, specifically stomping music and screaming. The user was unsure of the exact room number, but indicated that it was above apartment 302. The dispatcher confirmed that an officer would be sent to investigate.
@@ -992,10 +1037,11 @@ The user reported loud noises coming from above their apartment, specifically st
  Dispatcher:  Do you have a specific room number? 
  User:  above 302 
  User: 
+i don’t know the exact room
 I don't know exactly ttt was a Friday evening and I was getting ready to head out to a friend's housewarming party. As I was putting on my makeup, I heard a loud banging sound coming from above my apartment. At first, I thought it was just someone moving furniture or doing some construction work, but then the banging continued and it started to get louder and more frequent. I could feel the vibrations through the floor, and I knew something was wrong.
 
 {'Friday': '', 'evening': '', 'first': ''}
-{'302', 'dispatcher'}
+{'dispatcher', '302'}
  ==================== 
  ==================== 
  ==================== 
@@ -1009,10 +1055,11 @@ The user reported that John Doe was acting crazy and loud, and that many people 
  User:  John Doe is crazy right now. So freaking loud and a lot of people in cars blaring their music 
  Dispatcher:  Thank you for the tip! We will send somebody to check it out. 
  User: 
+I just hope they have a SWAT team
 I think this might require a SWAT team.tt was a dark and stormy night. The rain pounded against the windows of the small cottage, casting eerie shadows on the walls. Inside, a young woman named Sarah huddled in her bed, trying to distract herself from the howling wind. She had just moved to this small town a few days ago, and already she felt a sense of unease. It was as if the town was hiding secrets from her, secrets that only the storm seemed to reveal.
 
 {'night': '', 'Sarah': '', 'a': '', 'few': '', 'days': '', 'ago': '', 'storm': ''}
-{'John', 'Doe', 'LAPD', 'dispatcher'}
+{'LAPD', 'John', 'Doe', 'dispatcher'}
  ==================== 
  ==================== 
  ==================== 
@@ -1025,6 +1072,7 @@ The user is concerned about a girl, [PERSON], who is harming herself in [ORG] in
  User:  there is a girl harming herself in [ORG] in the bathroom. Her name is [PERSON] and I'm worried about her 
  Dispatcher:  sending an officer... are you with the girl? 
  User: 
+There is a friend with her now. I went and got the [ACRONYM]
 yes, my friend and I are with her right now.
 
 {'right': '', 'now': ''}
@@ -1039,6 +1087,7 @@ The user reported a noise disturbance at the Sigma John Doe fraternity house. Th
  User:  Sigma John Doe fraternity house 
  Dispatcher:  hello thank you for contacting Smithville Police Department, what kind of disturbance are you reporting? 
  User: 
+Noise
 There's a loud party going on at 12345 Main Street, it's been going on for hours and it's really disruptive. I'm trying to study for my exam tomorrow but I can't concentrate because of the noise. 
 
 {'12345': '', 'hours': '', 'tomorrow': ''}
@@ -1064,10 +1113,11 @@ The user reported their bicycle stolen to the dispatcher, providing the serial n
  User:  Thanks! 
  Dispatcher:  do you have a good phone number for them to contact you 
  User: 
+Yes
 Sure, 555-1234 is my number. 01.02.2022 - 01.02.2022, Newark, New Jersey, USA
 
 {'555-1234': '', '01.02.2022': '', 'Newark': '', 'New': '', 'Jersey': '', 'USA': ''}
-{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+{'Department', 'model', 'dispatcher', 'Police', 'Newark'}
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
 The user reported their bicycle stolen to the dispatcher, providing the serial number, color, and model. The dispatcher contacted the Newark Police Department and transferred the case to them. The user provided their contact information and the dispatcher confirmed that Newark Police Department would be in touch.
@@ -1084,10 +1134,11 @@ The user reported their bicycle stolen to the dispatcher, providing the serial n
  Dispatcher:  do you have a good phone number for them to contact you 
  User:  Yes 
  User: 
+555-555-5555
 555-555-0199tell me your number and I will give it to them. 
 
 {'555': '', '-555-0199tell': ''}
-{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+{'Department', 'model', 'dispatcher', 'Police', 'Newark'}
  ==================== 
  ==================== 
  ==================== 
@@ -1116,10 +1167,11 @@ The user reported their bicycle stolen to the dispatcher, providing the serial n
  Dispatcher:  what apt number are you in 
  User:  Building #123 
  User: 
+Apt 456
 Street: Pinebrook Roadtt is important to note that the information provided in this response is for general informational purposes only and should not be construed as professional medical advice. If you have any concerns or questions about your health, please consult a licensed medical professional.
 
 {'Pinebrook': '', 'Roadtt': '', 'general': ''}
-{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+{'Department', 'model', 'dispatcher', 'Police', 'Newark'}
  ==================== 
  ==================== 
  ==================== 
@@ -1166,6 +1218,7 @@ The user reported a mentally ill man walking down John Smith away from campus, s
  User:  Mentally ill gentleman walking down John Smith away from campus headed towards the neighborhoods behind University Hospital and Student Housing apartments and is screaming randomly and using profanity. Wearing a black book bag with a checkered green jacket. John Smith but has a small beard. University Hospital. I'm assuming he could be dangerous should a student walk near him. 
  Dispatcher:  Thank you for using LiveSafe. Can you provide a description of the subject and perhaps what he is doing? 
  User: 
+White, Mid-30s, checkered green jacket. Bald but has a small beard. Yelling randomly and yelling profanity.
 Yes, he's walking away from campus towards the neighborhoods behind University Hospital and Student Housing apartments. He's screaming and using profanity. He's wearing a black book bag with a checkered green jacket, and he's bald but has a small beard. 
 
 {'University': '', 'Hospital': '', 'and': '', 'Student': '', 'Housing': ''}
@@ -1186,6 +1239,7 @@ The user reported a group of individuals who were smoking in a nearby apartment 
  User:  They just now left. They are going to the river to smoke 
  Dispatcher:  Do you have names or descriptions of these individuals? Vehicle description? 
  User: 
+[ORG] jump and [ORG] rice. Car is a Black # door
 Yeah, there's John, he's got blonde hair and blue eyes. Then there's Sarah, she's got brown hair and brown eyes. The vehicle is a silver Honda Civic. 
 
 {'John': '', 'Sarah': '', 'Honda': ''}
@@ -1207,6 +1261,7 @@ The user reported an accident on the intersection of Fig and Exposition. The use
  User:  Accident just happened on the intersection of fig and exposition 
  Dispatcher:  Thank you for using LiveSafe. Can you tell if anyone has been injured? 
  User: 
+The people in one car just walked out
 I'm not sure, I just saw the cars crash and now there's a big backup on the southbound traffic.ssports and physical fitness
 
 {'crash': '', 'now': ''}
@@ -1225,10 +1280,11 @@ The user reported a broken light in their apartment. The dispatcher informed the
  User:  The light in the bathroom of Bradford Apartment 101 is out. It's the bathroom close to the kitchen. Thanks. 
  Dispatcher:  We will send that in to Maintenance Inc. for it to be fixed in the morning. If it hasn't been fixed by early afternoon you can call the maintenance number for housing at 555-1234. 
  User: 
+Ok thank you
 Okay, thank you. 01/02/2022 · 10:30 AM
 
 {'01/02/2022': '', '10:30': '', 'AM': ''}
-{'early', '555-1234', 'dispatcher', 'afternoon', 'morning'}
+{'afternoon', 'morning', '555-1234', 'dispatcher', 'early'}
  ==================== 
  ==================== 
  ==================== 
@@ -1247,6 +1303,7 @@ The user was stuck in a parking lot across from the studio theatre, their car ba
  Dispatcher:  Yes - we will send someone right out. 
  Dispatcher:  What kind & color car? 
  User: 
+A ford explorer, bluish color
 Ford Explorer, bluish color 00:00:01,850 --> 00:00:03,543 and the trunk is open as i'm searching for jumper cables. 
 
 {'Ford': '', 'Explorer': '', '00:00:01,850': '', '00:00:03,543': ''}
@@ -1264,10 +1321,11 @@ The user reported a strong smell of Mexico on the first floor of Walmart, specif
  User:  it smells like straight Mexico on the first floor of Walmart first floor hallway. It's terrible! Please do something about this. 
  Dispatcher:  Thank you for using LiveSafe. We will send an officer to that location. Is there a particular room that it may be coming from and has the Hispanic community been notified? 
  User: 
+It is coming from room 1234
 I'm not sure, but it's really strong in the hallway right outside the electronics department. And yeah, I think they notified everyone earlier today. 
 
 {'earlier': '', 'today': ''}
-{'first', 'Mexico', 'Walmart', 'Hispanic'}
+{'Mexico', 'Walmart', 'first', 'Hispanic'}
  ==================== 
  ==================== 
  ==================== 
@@ -1286,6 +1344,7 @@ The user was experiencing a disturbance in their dormitory due to a neighbor pla
  Dispatcher:  Security is en route. 
  Dispatcher:  Could you say what are the closest dorm room numbers? 
  User: 
+She’s directly across from my room, ###
 Smithdeal, 306, 308, 310.tt was a dark and stormy night, and I was lying in my dorm room, trying to fall asleep. But I couldn't, because my neighbor was blasting music from her room. It was loud and obnoxious, and I couldn't take it anymore. So I decided to call the police.
 
 {'306': '', '308': '', '310': '', 'night': ''}
@@ -1299,10 +1358,11 @@ The user reported a disturbance coming from the middle of the building. They pro
  User:  Loud music in K 
  Dispatcher:  What part of [ORG] is the disturbance coming from? 
  User: 
+It sounds as though it is in the middle of the building. I usually wouldn’t complain if it was midterms
 Second floor apartment 204.00.0.1 User: I can hear loud music coming from apartment 204 on the second floor of the building.
 
 {'Second': '', '204.00.0.1': '', '204': '', 'second': ''}
-{'204', 'second'}
+{'second', '204'}
  ==================== 
  ==================== 
  ==================== 
@@ -1322,10 +1382,11 @@ The user is a student at the University of Texas and is trying to find a parking
  Dispatcher:  Any student lots, just be careful of UT spots. 
  Dispatcher:  Also, John, US and UT lots 
  User: 
+ok so why did a buy a parking pass r i cant park where iUS supposed to use it
 Thanks so much!0.0.1 The University of Texas at Austin Parking and Transportation Services offers several parking options for students, faculty, and staff. Here are some of the parking options available on campus:
 
 {'0.0.1': '', 'University': '', 'of': '', 'Texas': '', 'at': '', 'Austin': '', 'Parking': '', 'and': '', 'Transportation': '', 'Services': ''}
-{'Association', 'dispatcher', 'of', 'University', 'student', 'Muslim', 'Student', 'Texas', 'UT'}
+{'Muslim', 'Texas', 'Association', 'of', 'University', 'Student', 'dispatcher', 'student', 'UT'}
  ==================== 
  ==================== 
  ==================== 
@@ -1355,6 +1416,7 @@ The user reported a suspicious person who was wearing a neon sweatshirt and scre
  User:  I[ORG] not sure if he will still be on campus 
  Dispatcher:  Thank you for the updated information! Public Safety is on campus now looking for him. 
  User: 
+Got it
 Thank you so much! I appreciate your help. 01/03/2023 · 4 min read · 125
 
 {'01/03/2023': '', '4': '', 'min': '', '125': ''}
@@ -1403,10 +1465,11 @@ The user, a student, slipped and fell in the atrium of the CCE building. The use
  User:  Any type of stretcher? 
  Dispatcher:  Do you have proper name of the student? 
  User: 
+Jane Doe
 Jane Doesslip and fall accident lawyer near me
 
 {'Jane': '', 'Doesslip': '', 'accident': '', 'lawyer': ''}
-{'CCE', 'Doe', 'student', 'stretcher', 'UTSA', 'Jane'}
+{'UTSA', 'CCE', 'stretcher', 'Jane', 'Doe', 'student'}
  ==================== 
  ==================== 
  ==================== 
@@ -1430,10 +1493,11 @@ The user, John Forester, was looking for a jumpstart for their car. They provide
  Dispatcher:  I can send an officer to your location. What type of vehicle do you own? color, make, model? 
  User:  Thank you. Dark green Honda Civic. Parked in the spot closest to the building 
  User: 
+Forester
 I'd like to get a jumpstart for my car. It won't start this morning. t
 
 {'start': '', 'this': '', 'morning': ''}
-{'Honda', 'John', 'model', 'Forester', 'ADM', 'Civic'}
+{'model', 'Honda', 'ADM', 'John', 'Civic', 'Forester'}
  ==================== 
  ==================== 
  ==================== 
@@ -1463,10 +1527,11 @@ The user requested an Uber to pick them up from John and drop them off at the ga
  User:  Almost there, walking right now 
  Dispatcher:  Uber, Uber  
  User: 
+I’m here
 Almost there, walking right now 
 
 {'right': '', 'now': ''}
-{'dispatcher', 'John', 'Uber', 'Hall', 'Cameron', 'City'}
+{'City', 'Cameron', 'Hall', 'Uber', 'dispatcher', 'John'}
  ==================== 
  ==================== 
  ==================== 
@@ -1496,10 +1561,11 @@ The user reported a disturbing incident where three suspects in a car with a tas
  User:  On Manor St off of John Smith there was a car with 3 suspects in it. They had their window down and yelled to two girls walking “hey, have you ever been tased before?” the girls didn't respond so a suspect shocked his taser and began to laugh. Then the girls got in their car and drove away. Suspect w/ taser was African American male. Older car, four doors. 
  Dispatcher:  Do you have a description of the car and the direction it went in? 
  User: 
+it was parked on the left side of the street and stayed there. the car was a dark color, older, very rundown looking, and had four doors.
 Yes, it was a black Honda Civic with a sunroof. It turned left onto Manor St.
 
 {'Manor': '', 'St.': ''}
-{'three', 'one', 'model', 'two'}
+{'two', 'three', 'one', 'model'}
  ==================== 
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
@@ -1511,10 +1577,11 @@ The user observed a suspicious man on a red bike with a black backpack. The man 
  Dispatcher:  Can you give me a further description as to race and what he was wearing as well as possible age? 
  Dispatcher:  How long ago was this? 
  User: 
+White male early 30s a bit bald white hair
 About 20 minutes ago. 
 
 {'About': '', '20': '', 'minutes': '', 'ago': ''}
-{',', 'of', 'University', 'Berkeley', 'NSA', 'California'}
+{'Berkeley', 'of', ',', 'California', 'University', 'NSA'}
  ==================== 
 Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
 The user observed a suspicious man on a red bike with a black backpack. The man was seen trying to park his bike near the doors at the University of California, Berkeley base. An NSA truck drove by and the man got back on his bike and left. The user described the man as a white male in his early 30s with some balding white hair. The user also noted that they had just downloaded the app and found it very helpful.
@@ -1526,10 +1593,11 @@ The user observed a suspicious man on a red bike with a black backpack. The man 
  Dispatcher:  How long ago was this? 
  User:  White male early 30s a bit bald white hair 
  User: 
+15 minutes ago
 2 minutes agossuspicious man on red bike with black backpack. Saw him around University of California, Berkeley base trying to park his bike near doors And waiting. NSA truck drove by and he got back on his bike and left.
 
 {'2': '', 'minutes': '', 'University': '', 'of': '', 'California': '', ',': '', 'Berkeley': '', 'NSA': ''}
-{',', 'of', 'University', 'Berkeley', 'NSA', 'California'}
+{'Berkeley', 'of', ',', 'California', 'University', 'NSA'}
  ==================== 
  ==================== 
  ==================== 
@@ -1549,6 +1617,7 @@ The user reported a smell of marijuana coming from the south stack of the buildi
  User:  Thank you. 
  User:  Some of them left but the [NORP] on call noticed the smell too. 
  User: 
+i also just heard residents coming back in talking about marijuana and the smell. if that helps.
 It's really strong. 01.02.2022 18:40 Reported by: User
 
 {'01.02.2022': '', '18:40': ''}
@@ -1566,10 +1635,11 @@ The user called the police to report a party at 304 East White Street, a street-
  User:  ### W marshall (carriage house) ### blasting music, party 
  Dispatcher:  Thank you we will send officers to the area. 
  User: 
+The music stopped!
 Thank you, I'm glad someone is finally doing something about this. I've been calling the police nonstop for the past 2 hours.
 
 {'the': '', 'past': '', '2': '', 'hours': ''}
-{'304', 'Street', 'East', 'White'}
+{'White', 'East', '304', 'Street'}
  ==================== 
  ==================== 
  ==================== 
@@ -1588,10 +1658,11 @@ The user reported a disturbance at a house on Orchard behind #### Ellendale. The
  User:  Ok.. thank you! 
  Dispatcher:  You're welcome. Fight On! ✌️ 
  User: 
+Fight on!!
 Yeah, it's still going on. 0:00 - 0:03
 
 {'0:00': '', '0:03': ''}
-{'Orchard', 'a', 'present', 'dispatcher', 'Ellendale', 'second'}
+{'second', 'Orchard', 'present', 'dispatcher', 'Ellendale', 'a'}
  ==================== 
  ==================== 
  ==================== 
@@ -1612,6 +1683,7 @@ The user was awoken by the sound of someone rummaging through their trash cans. 
  User:  Hi. I was woken up just now from hearing bustling of cans and hearing a woman talk as well. My room is just above the garage and I heard the entrance into the garage through the door. 
  Dispatcher:  Thanks for [ORG]. We will send officers. Are you able to see the woman? 
  User: 
+No. I no longer see or hear them. However, they were being very loud, sounding like they were dropping a bunch of bottles/cans.
 I am unable to see her because it is dark in my room. I was able to hear her talking to someone else, but I can't make out what she's saying. I also heard footsteps around 10 pm, but I didn't think much of it until now because it's 2 am. 
 
 {'10': '', 'pm': '', 'now': '', '2': '', 'am': ''}
@@ -1631,6 +1703,7 @@ The user reported a smell of marijuana in their room, and the dispatcher asked f
  Dispatcher:  I understand. An officer will be sent to attempt to discern where the smell is directly coming from. 
  Dispatcher:  My officer is on scene, can you please confirm your room number? The [ABC Hotel] is designating no room 214 at this building 
  User: 
+I[ABC Hotel] in [New York City] house
 Oh, my apologies. My room number is 214 at the ABC Hotel. Thank you for letting me know.ttakes place in the United States, where the legal drinking age is 21.
 
 {'214': '', 'ABC': '', 'Hotel': '', 'United': '', 'States': '', '21': ''}
@@ -1655,10 +1728,11 @@ The user sent a message to security, but did not receive a response. The user th
  User:  I'm trying here 
  Dispatcher:  Thank you for the message. How can security help you today? 
  User: 
+Well #min##sec later, I bleed out
 I'm in a situation where I need to report a safety concern. There's a gunman in the building and people are in danger.ts are in danger.000 people in the area. The dispatcher acknowledged the message and asked for more information to help locate the shooter.
 
 {'.000': '', 'dispatcher': '', 'shooter': ''}
-{'dispatcher', 'a', 'second'}
+{'second', 'dispatcher', 'a'}
  ==================== 
  ==================== 
  ==================== 
@@ -1689,6 +1763,7 @@ The user reported a disturbance in their apartment complex, which they described
  User:  No it has quieted down. 
  Dispatcher:  Would like me to send an officer to speak with you? 
  User: 
+no. I think its fine now.
 No thank you. Im good.ss a dispatcher for the local police department, I have the training and resources to help you address your safety concern in a responsible and effective manner. Can you tell me more about the disturbance you're experiencing in your apartment complex? Where is it located and what time of day is it happening?01.03.2022:
 
 {'dispatcher': '', 'day': '', '01.03.2022': ''}
@@ -1716,10 +1791,11 @@ The user reported a party that was disturbing the peace and requested a police o
  User:  On the ground floor near 1234 Main St 
  Dispatcher:  Is this inside by the pool?? 
  User: 
+No
 Yes t was very helpful. I was able to get the information I needed and the dispatcher was very kind and understanding.0Љ (Ъ
 
 {'dispatcher': '', '.0': ''}
-{'officer', '1234', 'now', '302', 'police'}
+{'officer', 'police', '302', 'now', '1234'}
  ==================== 
  ==================== 
  ==================== 
@@ -1737,10 +1813,11 @@ The user was concerned about a friend, John Smith, who was tweeting about suicid
  Dispatcher:  Sorry for the delay, we had internet issues here. We are notifying 911 about this, thank you for your concern and the information 
  Dispatcher:  We are still trying to check on this subject but can you confirm for a fact his name is John Smith? And do you know his apartment number at The Edge? 
  User: 
+His name is that. I do not know his apartment number however. If you need a phone number, I can contact people who have his number.
 Yes, his name is John Smith and he lives at #203 at The Edge. 
 
 {'John': '', 'Smith': '', '#': '', '203': ''}
-{'John', 'one', 'Smith', 'dispatcher'}
+{'John', 'Smith', 'one', 'dispatcher'}
  ==================== 
  ==================== 
  ==================== 
@@ -1773,10 +1850,11 @@ The user was concerned about a friend, John Smith, who was tweeting about suicid
  User:  no problem 
  Dispatcher:  John Smith asked if you could call back and speak with him 
  User: 
+sure
 I can call back in 5 minutes 
 
 {'5': '', 'minutes': ''}
-{'John', 'one', 'Smith', 'dispatcher'}
+{'John', 'Smith', 'one', 'dispatcher'}
  ==================== 
  ==================== 
  ==================== 
@@ -1798,10 +1876,11 @@ The user witnessed a hit and run, and was able to provide some information about
  Dispatcher:  Thank you very much I have an officer enroute to you now 
  Dispatcher:  Where exactly in the lot are you? 
  User: 
+The best I can describe it as there is a massive tree in the center of the lot, that is where I am.
 I am standing by the truck right now.
 
 {'right': '', 'now': ''}
-{'run', 'and', 'hit'}
+{'and', 'run', 'hit'}
  ==================== 
  ==================== 
  ==================== 
@@ -1820,9 +1899,10 @@ The user reported a disturbance in their apartment building, [GPE] room 1234, wi
  User:  No I called but the line was busy 
  Dispatcher:  I will contact [ORG] on duty thanks for using live safe 
  User: 
+Thank you
 Thank you so much 01.02.2023: 18:30:00
 
 {'01.02.2023': '', '18:30:00': ''}
-{'1234', 'previously', 'GPE', 'dispatcher'}
+{'1234', 'dispatcher', 'previously', 'GPE'}
  ==================== 
  ==================== 
