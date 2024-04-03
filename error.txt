@@ -1,211 +1,1828 @@
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a traffic issue on John Smith Street in Raleigh, NC. The user was concerned that the lack of traffic signs was causing confusion for drivers and potentially leading to accidents. The user requested that the City of Raleigh be notified of the issue.
 
-===================================BUG REPORT===================================
-Welcome to bitsandbytes. For bug reports, please run
 
-python -m bitsandbytes
+ 
+ User:  Is John Smith between Cary and Main still one-way? All of the one-way signs are down but traffic is still treating it as one-way and there are no traffic signs facing southbound traffic. Some cars exit the parking lot and turn the “wrong” way. Accident waiting to happen. 
+ Dispatcher:  Thank you for using LiveSafe! John Smith is indeed still a one way street. Are all of the one way signs gone? If so, we can go ahead and let the City of Raleigh know to come replace them. 
+ User: 
+Yes all the signs are gone. It’s been like that for a few weeks now. 
 
- and submit this information together with your error trace to: https://github.com/TimDettmers/bitsandbytes/issues
-================================================================================
-bin /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so
-CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
-CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so.11.0
-CUDA SETUP: Highest compute capability among GPUs detected: 8.0
-CUDA SETUP: Detected CUDA version 117
-CUDA SETUP: Loading binary /root/miniconda3/envs/lla/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda117.so...
+{'a': '', 'few': '', 'weeks': '', 'now': ''}
+{'NC', 'John', 'Street', 'Raleigh', 'accidents', 'Smith'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user found an empty Guinness beer bottle on the ground in the Microsoft parking lot. They provided the location as one of the mulch medians between two rows of cars on the end by Steve. They also mentioned that they were on their way back from class.
 
-Output Error Type Frequencies:
-Sentence Structure Errors: 5.03% 
-Verb Tense Errors: 0.05% 
-Subject-Verb Agreement: 0.00% 
-Article Usage: 1.01% 
-Spelling Mistakes: 7.89% 
-Preposition Usage: 4.37% 
-Punctuation Errors: 41.31% 
-Relative Clause Errors: 0.40% 
-Gerund and Participle Errors: 0.20% 
-Abbreviation Errors: 4.82% 
-Slang, Jargon, and Colloquialisms: 1.31% 
-Negation Errors: 0.25% 
-Incorrect Auxiliaries: 0.10% 
-Ambiguity: 1.66% 
-Tautology: 4.57% 
-Lack of Parallelism in Lists or Series: 0.00% 
-Mixed Metaphors/Idioms: 0.05% 
-Parallelism Errors: 0.15% 
-Contractions Errors: 0.05% 
-Conjunction Misuse: 0.55% 
-Inappropriate Register: 3.77% 
-Passive Voice Overuse: 0.00% 
-Mixed Conditionals: 1.01% 
-Faulty Comparisons: 0.05% 
-Agreement in Comparative and Superlative Forms: 0.00% 
-Ellipsis Errors: 1.71% 
-Infinitive Errors: 0.20% 
-Quantifier Errors: 0.15% 
-Clichés: 3.72% 
-Pronoun Errors: 0.15% 
-Modifiers Misplacement: 0.05% 
-Run-on Sentences: 0.65% 
-Word Choice/Usage: 0.05% 
-Sentence Fragments: 4.12% 
-Capitalization Errors: 4.97% 
-Redundancy/Repetition: 0.00% 
-No Error: 5.63% 
-Response Error Type Frequencies:
-Sentence Structure Errors: 0.00% 
-Verb Tense Errors: 0.00% 
-Subject-Verb Agreement: 0.00% 
-Article Usage: 0.00% 
-Spelling Mistakes: 0.44% 
-Preposition Usage: 0.00% 
-Punctuation Errors: 1.03% 
-Relative Clause Errors: 0.00% 
-Gerund and Participle Errors: 0.00% 
-Abbreviation Errors: 0.00% 
-Slang, Jargon, and Colloquialisms: 0.00% 
-Negation Errors: 0.00% 
-Incorrect Auxiliaries: 0.00% 
-Ambiguity: 0.00% 
-Tautology: 0.15% 
-Lack of Parallelism in Lists or Series: 0.00% 
-Mixed Metaphors/Idioms: 0.00% 
-Parallelism Errors: 0.00% 
-Contractions Errors: 0.00% 
-Conjunction Misuse: 0.00% 
-Inappropriate Register: 0.15% 
-Passive Voice Overuse: 0.00% 
-Mixed Conditionals: 0.00% 
-Faulty Comparisons: 0.00% 
-Agreement in Comparative and Superlative Forms: 0.00% 
-Ellipsis Errors: 0.15% 
-Infinitive Errors: 0.00% 
-Quantifier Errors: 0.00% 
-Clichés: 0.15% 
-Pronoun Errors: 0.00% 
-Modifiers Misplacement: 0.00% 
-Run-on Sentences: 0.00% 
-Word Choice/Usage: 0.00% 
-Sentence Fragments: 0.00% 
-Capitalization Errors: 0.59% 
-Redundancy/Repetition: 0.00% 
-No Error: 97.35% 
 
-GAN Error Type Frequencies:
-Sentence Structure Errors: 0.74% 
-Verb Tense Errors: 0.00% 
-Subject-Verb Agreement: 0.00% 
-Article Usage: 0.15% 
-Spelling Mistakes: 3.68% 
-Preposition Usage: 1.18% 
-Punctuation Errors: 17.79% 
-Relative Clause Errors: 0.00% 
-Gerund and Participle Errors: 0.00% 
-Abbreviation Errors: 9.85% 
-Slang, Jargon, and Colloquialisms: 0.15% 
-Negation Errors: 0.00% 
-Incorrect Auxiliaries: 0.00% 
-Ambiguity: 0.15% 
-Tautology: 2.21% 
-Lack of Parallelism in Lists or Series: 0.00% 
-Mixed Metaphors/Idioms: 0.00% 
-Parallelism Errors: 0.00% 
-Contractions Errors: 0.00% 
-Conjunction Misuse: 0.44% 
-Inappropriate Register: 1.62% 
-Passive Voice Overuse: 0.00% 
-Mixed Conditionals: 0.00% 
-Faulty Comparisons: 0.00% 
-Agreement in Comparative and Superlative Forms: 0.00% 
-Ellipsis Errors: 0.00% 
-Infinitive Errors: 0.15% 
-Quantifier Errors: 0.00% 
-Clichés: 0.29% 
-Pronoun Errors: 0.00% 
-Modifiers Misplacement: 0.00% 
-Run-on Sentences: 0.00% 
-Word Choice/Usage: 0.00% 
-Sentence Fragments: 0.88% 
-Capitalization Errors: 5.59% 
-Redundancy/Repetition: 0.00% 
-No Error: 55.15% 
+ 
+ User:  Empty Guinness beer bottle found on ground in Microsoft parking lot 
+ Dispatcher:  Thank you for contacting Microsoft. I will dispatch an officer to address this issue. 
+ Dispatcher:  Can you please tell us exactly where in the Redmond lot? 
+ User:  It was on one of the mulch medians between two rows of cars on the end by Steve. I think it was about two rows back 
+ Dispatcher:  Thank you very much. 
+ User: 
+I'm on my way back from class right now.
 
-GPT-3.5 Error Type Frequencies:
-Sentence Structure Errors: 4.07% 
-Verb Tense Errors: 0.00% 
-Subject-Verb Agreement: 0.15% 
-Article Usage: 0.15% 
-Spelling Mistakes: 1.74% 
-Preposition Usage: 6.40% 
-Punctuation Errors: 25.87% 
-Relative Clause Errors: 0.00% 
-Gerund and Participle Errors: 1.02% 
-Abbreviation Errors: 1.60% 
-Slang, Jargon, and Colloquialisms: 0.15% 
-Negation Errors: 0.00% 
-Incorrect Auxiliaries: 0.00% 
-Ambiguity: 0.15% 
-Tautology: 38.23% 
-Lack of Parallelism in Lists or Series: 0.15% 
-Mixed Metaphors/Idioms: 0.00% 
-Parallelism Errors: 0.00% 
-Contractions Errors: 0.00% 
-Conjunction Misuse: 1.02% 
-Inappropriate Register: 3.49% 
-Passive Voice Overuse: 0.15% 
-Mixed Conditionals: 0.73% 
-Faulty Comparisons: 0.00% 
-Agreement in Comparative and Superlative Forms: 0.00% 
-Ellipsis Errors: 0.15% 
-Infinitive Errors: 9.45% 
-Quantifier Errors: 0.00% 
-Clichés: 0.29% 
-Pronoun Errors: 0.00% 
-Modifiers Misplacement: 0.00% 
-Run-on Sentences: 0.00% 
-Word Choice/Usage: 1.60% 
-Sentence Fragments: 1.31% 
-Capitalization Errors: 0.58% 
-Redundancy/Repetition: 0.00% 
-No Error: 1.60% 
-1.2785745289244075
-0.8
+{'right': '', 'now': ''}
+{'Steve', 'one', 'Microsoft', 'two'}
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user is in a room with two roommates, John and Alex. The user believes that John and Alex have been smoking marijuana in their room, and the user is concerned about the possibility of them smoking in the room. The user does not believe that they need to speak with an officer unless it is absolutely necessary.
 
-Normalized and Adjusted Rescaled Accuracies:
-Sentence Structure Errors: 13.81
-Verb Tense Errors: 0.00
-Subject-Verb Agreement: 0.49
-Article Usage: 0.49
-Spelling Mistakes: 5.92
-Preposition Usage: 21.70
-Punctuation Errors: 87.79
-Relative Clause Errors: 0.00
-Gerund and Participle Errors: 3.45
-Abbreviation Errors: 5.43
-Slang, Jargon, and Colloquialisms: 0.49
-Negation Errors: 0.00
-Incorrect Auxiliaries: 0.00
-Ambiguity: 0.49
-Tautology: 129.71
-Lack of Parallelism in Lists or Series: 0.49
-Mixed Metaphors/Idioms: 0.00
-Parallelism Errors: 0.00
-Contractions Errors: 0.00
-Conjunction Misuse: 3.45
-Inappropriate Register: 11.84
-Passive Voice Overuse: 0.49
-Mixed Conditionals: 2.47
-Faulty Comparisons: 0.00
-Agreement in Comparative and Superlative Forms: 0.00
-Ellipsis Errors: 0.49
-Infinitive Errors: 32.06
-Quantifier Errors: 0.00
-Clichés: 0.99
-Pronoun Errors: 0.00
-Modifiers Misplacement: 0.00
-Run-on Sentences: 0.00
-Word Choice/Usage: 5.43
-Sentence Fragments: 4.44
-Capitalization Errors: 1.97
-Redundancy/Repetition: 0.00
-No Error: 5.43
-========
+
+ 
+ User:  I am the girlfriend of John in room 304 in Building 12, and I am spending the night in the room. John and I have been in the room all day, and his roommate, Alex, came back into the room after going out with his girlfriend bringing with him a STRONG scent of weed (at 10am). As soon as they entered, the room was FILLED with the strong scent. They also went out earlier to smoke, (around 4pm) and had an out loud discussion about making plans to do so for the whole room to hear. They went to their friend “Brandon,” who I believe may be one of their dealers. There is no doubt in my mind that if one was to open the door to the room, someone could smell it immediately upon entering. 
+ Dispatcher:  Do they have drugs in the room, or have they done drugs in the room? Are they there now? Do you wish to speak with an officer? 
+ User: 
+They have done drugs in the room, yes. They are not there now. I do not wish to speak with an officer unless it is absolutely necessary. I just want to report this so that someone can check on the room and make sure everything is okay.ss a great way to stay organized and focused, but it can also be a great way to get distracted and lose track of what's important. Here are some tips for using a planner effectively:
+
+{'drugs': '', 'now': ''}
+{'John', 'Alex', 'two'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious person in the area, described as a male in a zip orange pullover, rolling backpack, and another bag. The user provided the race of the individual, as well as possible height and weight. The user also provided additional information, such as the individual's hair color and glasses.
+
+
+ 
+ User:  there's a dude in a #/# zip orange pullover with a rolling backpack and another bag that has been milling around the compass for like half an hour and pausing and kneeling and standing back up and staring at people and it's probably nothing but he gives me weird vibes 
+ Dispatcher:  Thank you for using [PERSON], can you provide the race of the individual? as well as possible height and weight? 
+ User: 
+Yeah, the guy is white, about 5'10" and 150 lbs. He's got blonde hair and is wearing glasses.
+
+{'5': '', '10': '', '150': ''}
+set()
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user lost their grey jacket and was looking for help. The dispatcher offered assistance and provided their name, Ellison.
+
+
+ 
+ User:  I'm a student and I can't find my grey jacket it's cold outside please help! 
+ Dispatcher:  where did you lose your jacket? 
+ Dispatcher:  I know it is cold and I'll be happy to help 
+ User:  Who am I speaking with? 
+ Dispatcher:  This NYPD Ellison 
+ User: 
+Oh, thank you so much! I lost it on my way to class this morning. I've been looking for it everywhere, but I can't find it anywhere. It's really important to me.
+
+{'this': '', 'morning': ''}
+{'Ellison', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that there was a disturbance in their dorm in New York City. The user provided the location of the disturbance (on the first floor) and the time (#:## am).
+
+
+ 
+ User:  Guys in New York City dorm yelling and knocking on people's doors. (#:## am) 
+ Dispatcher:  We will notify an officer, thank you. 
+ Dispatcher:  Where exactly is the noise coming from in the dorm? 
+ User: 
+First floor.ss a good idea to report any safety concerns to the police. If you are in immediate danger, please call 911 for emergency assistance.
+
+{'First': '', '911': ''}
+{'York', 'first', 'New', 'City'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that there was a disturbance in their dorm in New York City. The user provided the location of the disturbance (on the first floor) and the time (#:## am).
+
+
+ 
+ User:  Guys in New York City dorm yelling and knocking on people's doors. (#:## am) 
+ Dispatcher:  We will notify an officer, thank you. 
+ Dispatcher:  Where exactly is the noise coming from in the dorm? 
+ User:  On the first floor 
+ Dispatcher:  we have an officer on the way, thank you 
+ User: 
+Thank you so much.sorry about that. i am just trying to help.tt was a beautiful summer day, and I was sitting in my dorm room at New York University, when suddenly I heard a commotion coming from the floor below. I looked out the window and saw a group of guys shouting and banging on the doors of their fellow students. I immediately called the campus police to report the disturbance.
+
+{'summer': '', 'day': '', 'New': '', 'York': '', 'University': ''}
+{'York', 'first', 'New', 'City'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a group of individuals walking on Craver Road near the intersection with Pats Avenue. The user indicated that the group of individuals were intoxicated and were walking from the Pat's Avenue bus station toward the Student Union. The user estimated that there were between 10 and 15 individuals in the group.
+
+
+ 
+ User:  Drunk group walking on the top part of craver road walking from pats toward bus station/student union. Girls can barely walk 
+ Dispatcher:  How many individuals are there? 
+ User: 
+Between 10-1500 individuals.ssports betting
+
+{'10': '', '-': '', '1500': ''}
+{'Road', 'and', '15', 'Student', '10', 'Avenue', 'Pats', 'Craver'}
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported loud noises and people singing loud on the backside of their building. They were unsure of the exact apartment number, but believed it to be in 234 Main St. The user thanked the dispatcher for their help and the dispatcher confirmed that an officer would respond.
+
+
+ 
+ User:  Loud noises/people singing loud on the backside of building [ACRONYM] Sounds like people are on a balcony. 
+ Dispatcher:  An officer will respond to that location. Can you give me an apartment number? 
+ User:  I think it’s in 234 Main St 
+ Dispatcher:  Thank you. 
+ User: 
+Thank you!01.02.2022 - New Year's Day
+
+{'01.02.2022': '', 'New': '', 'Year': '', "'s": '', 'Day': ''}
+{'234', 'dispatcher'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a group of people making noise in the area. The user provided a description of the group, including their location at 123 Main St. and their current activity.
+
+
+ 
+ User:  John Smith 
+ Dispatcher:  Is there someone making noise in the area? Could you provide a description? 
+ User: 
+Yeah, there's a group of people making a lot of noise over at 123 Main St. They've been doing it for the past hour or so. It's really disruptive and I'm worried it might turn into something worse. Can you send someone over to check it out?
+
+{'123': '', 'the': '', 'past': '', 'hour': ''}
+{'current', '123'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that girls were smoking in the street. The dispatcher confirmed that officers were on the way.
+
+
+ 
+ User:  ashmun ### girls are smoking 
+ Dispatcher:  Officers are on the way 
+ Dispatcher:  Ok we will have an officer come down 
+ User: 
+thank you so muchssorry about that, I'm just an AI and sometimes I make mistakes. I'll do my best to assist you. Can you please provide more information or context about the safety concern you're reporting? For example, where did the girls go? What time did you see them? Any other details you can provide will help the police locate them more efficiently.0ЏЁЉ was a very good, and the people were all talking about it. And then, suddenly, the doorbell opened, and a man came in. He was wearing a long, black coat, and a wide-brimmed hat. He looked like a detective from the 19th century.
+
+{'.0': '', 'detective': '', 'the': '', '19th': '', 'century': ''}
+{'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that there was underage drinking and smoking pot in a dorm room at [ORG]. The user provided the location of the dorm room, including the room number and the names of the residents.
+
+
+ 
+ User:  They are underage drinking and they are smoking pot on the second floor of new [ORG]. They stole property and they are fighting it sounds like they are busting things. They are being really loud. 
+ Dispatcher:  Is this going on in a room? 
+ User: 
+Yes, it's in room 123 on the second floor of new [ORG]. 
+
+{'123': '', 'second': ''}
+{'smoking'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a problem with the sink disposal in their apartment. They provided their location as Lovernich (LVN), a residential building.
+
+
+ 
+ User:  Sink disposal not working-I believe a spoon or something may be jamming it. Makes a metal-to-metal noise when used 
+ Dispatcher:  What is the location? 
+ User:  Lovernich (LVN)! 
+ Dispatcher:  Thank you I will let facilities know so they can respond to fix it. 
+ User: 
+Thank you so much!ts, I'm so sorry to hear that the sink disposal in your apartment isn't working properly. Can you tell me a little bit more about the issue you're experiencing? For example, is it making a strange noise or not disposing of food waste properly? And do you know if it's been acting up recently or if it's been like this for a while?01. What is the difference between a sink and a toilet?
+
+{'recently': '', '01': ''}
+{'Lovernich'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user and their roommates heard noises coming from downstairs of their apartment and looked out the window to see a male figure dressed in black walking straight to the parking lot of 123 Main St. and blinking. The user was positive that the figure was in their apartment because they were too nervous to go down but they all heard someone and it sounded so loud it had to be their apartment. Their neighbor also saw the figure leaving and going to the parking lot. The user requested that ACME Security check their apartment. The dispatcher sent ACME Security to check the apartment and asked the user to stay upstairs until ACME Security called for them.
+
+
+ 
+ User:  My roommates and I are all in bed and we heard weird noises coming from downstairs of the apartment. We waited a few minutes and then looked out the window once we heard the noises stop and it looked like a male figure dressed in black that walked straight to the parking lot of 123 Main St. and blinky. 
+ Dispatcher:  Where do you live? Do you think someone entered your apartment? 
+ Dispatcher:  The Officers are there now 
+ User:  We live in the 123 Main St. apartments. And we positive because we were too nervous to go down but we all heard someone and it sounded so loud it had to be our appt. and our neighbor also saw him leaving and going to the parking lot 
+ Dispatcher:  I can send ACME Security to check your apartment. If you want, the ACME Security can check it for you. 
+ User: 
+Yes please do that. Can you send someone now?ts: 10:30 AM - 12:00 PM
+
+{'10:30': '', 'AM': '', '12:00': '', 'PM': ''}
+{'dispatcher', 'Security', 'ACME', '123'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was concerned about loud banging noises coming from upstairs, which they believed to be in the second floor of their building. The user provided their location as "courtyard Apartments" and shared details about the noise, including that it was coming from above them and that it happened during nighttime and afternoon. The user also mentioned that they were a student at UCLA and that they had not reported the noise to the university. The dispatcher sent an officer to the location and the user spoke with the officer, Jane. The officer confirmed that the noise was coming from upstairs and that they would investigate further.
+
+
+ 
+ User:  Hey John police, I hear loud banging noises upstairs everyday and its always during night time and even after midnight and afternoon and it gets louder! And I feel its very strange and really scary. Hope you can go check on this room. I'm living in courtyard Apartments! This person is upstairs above me so I guess is Apartments Thank you! 
+ Dispatcher:  where is the banging noise coming from 
+ Dispatcher:  Ok, I see where you are. I will send someone. Thanks 
+ User:  The person who live upstairs me the second floor 
+ Dispatcher:  what room number. will you speak with the officer 
+ User:  The noise stops now, will you guys go check tomorrow if it’s happening again? 
+ User:  I UCLA in Apartments 
+ User:  I guess upstairs will be Apartments? 
+ Dispatcher:  my officer is on his way. Do you want to speak with officer 
+ User: 
+Yeah sure! Jane? 0.0.1 PewDiePie reacts to the most hilarious and unexpected moments in YouTube videos. From funny cats to epic fails, PewDiePie brings the laughs.
+
+{'Jane': '', '0.0.1': '', 'YouTube': '', 'PewDiePie': ''}
+{'nighttime', 'dispatcher', 'afternoon', 'student', 'UCLA', 'Jane', 'second'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a group of loud boys outside of a new building. The user was sick and could not sleep.
+
+
+ 
+ User:  There's a huge group of loud boys outside of the new building and they're loud and I'm sick and I can't sleep 
+ Dispatcher:  Thank you for the tip! We will send somebody to check it out. 
+ User: 
+Thank you so much! I really appreciate it. They've been banging on the walls and stairs for the past hour and it's driving me crazy! 
+
+{'the': '', 'past': '', 'hour': ''}
+set()
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that people were smoking weed in the rooms directly above Courts 101 and 102. The user was unsure which room it was, or if it was both. The user was able to smell the weed being smoked at the time of the report.
+
+
+ 
+ User:  In the rooms directly above Courts 101 and 102, people are always smoking weed. I'm not sure which room it is, or if it's both. 
+ Dispatcher:  Are they smoking it at this time? 
+ User:  they are right now 
+ Dispatcher:  You can smell it right now? 
+ User:  yeah they just started 
+ Dispatcher:  Thank you for reporting this. 
+ User:  iCitizen not sure if they’ll smoke for long usually it’s just a few minutes 
+ User: 
+but yeah I just wanted to report ittt is important to note that the use of drugs, including marijuana, without a valid prescription and proper supervision can be dangerous and illegal. If you or someone you know is struggling with drug addiction, there are many resources available to help. You can contact your local substance abuse treatment center or the Substance Abuse and Mental Health Services Administration (SAMHSA) National Helpline at 1-800-662-HELP (4357) for information and support.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+{'drugs': '', 'Substance': '', 'Abuse': '', 'and': '', 'Mental': '', 'Health': '', 'Services': '', 'Administration': '', 'SAMHSA': '', 'National': '', 'Helpline': '', '1': '', '4357': '', '.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000': ''}
+{'102', 'time', '101'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance at [WEBSITE] that involved yelling, smoking, and drinking. The user requested rounds to be done in the area to ensure the safety of those who needed to sleep for class in the morning.
+
+
+ 
+ User:  lots of yelling and talk of smoking and drinking going on, on the first floor of [WEBSITE]. would appreciate if rounds could be done so those who do go to bed for class in the morning can get to sleep, thank you. 
+ User: 
+lots of yelling and talk of smoking and drinking going on, on the first floor of [WEBSITE]. would appreciate if rounds could be done so those who do go to bed for class in the morning can get to sleep, thank you.ts, and it's not just about the noise. It's about the safety of the people who live and work in the area. We have to make sure that everyone can feel safe and secure in their community."
+
+{'smoking': '', 'first': '', 'morning': ''}
+{'morning'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance at 123 Main St apt 456. The user provided their location and the details of the disturbance.
+
+
+ 
+ User:  So our neighbors are being loud. It's at 123 Main St apt 456. Thanks. 
+ Dispatcher:  Thank you for using LiveSafe. We will notify the New York City Police Department. That's building 456 room 123, correct? 
+ User:  Yes. 
+ User: 
+They've been playing music too loudly since last night and I can't sleep.t.s.t..
+
+{'last': '', 'night': ''}
+{'456', '123'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance in a neighboring room at XYZ University. They described the noise as loud music and one of the residents as being "very unaware." The user was not with the residents and was not sure how to "good Samaritan" them. The dispatcher confirmed that an officer had responded and spoken with the residents. The user asked if someone would come to their room to address the noise, and the dispatcher confirmed that an officer had responded and spoken with the residents.
+
+
+ 
+ User:  there's a lot of noise coming from the room in front of me. it's John Smith's room in XYZ University. someone threw up. im worried for their health. 
+ Dispatcher:  Thank you. I will send an officer. What kind of noise? 
+ User:  it's loud music. i have a cs midterm tomorrow ant I need to sleep 
+ Dispatcher:  okay 
+ User:  One of them seemed very unaware 
+ User:  I was going to good Samaritan them but I wasn't sure how to do that 
+ Dispatcher:  Are you with them? What room are you in? 
+ User: 
+No, I'm in room 304. They're in 302 
+
+{'304': '', '302': ''}
+{'Samaritan', 'one', 'dispatcher', 'University', 'XYZ'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious person to the dispatcher. The user provided a detailed description of the person, including his physical appearance (5'4" tall, 121 lbs, brown hair), clothing (black pullover sweater, gray pants, black and gray backpack), and behavior (pacing around, talking to himself). The user also reported that the person may have been special needs.
+
+
+ 
+ User:  There was someone pacing around and talking to himself in the lobby of [WEBSITE], in front of the big globe at around 3:45 pm [DATE]. He was a [NORP] male with short black hair. He was wearing a black pullover sweater, unsure of the color of the shirt under the pullover though it may have been white, long gray pants, and I am unsure of what type of shoes he was wearing. He did not have anything in his ears, which is why I'm sure he was talking to himself. I could not make out most of what he was saying except “Of course that wouldn't work, you idiot!” He also had a black and gray backpack which appeared to have things in it, unsure of what nature. It's possible he might have been special needs, but I am unsure because I did not approach him. 
+ Dispatcher:  Thank you for the information, we will send an Officer to the building. 
+ Dispatcher:  So is he still in the building 
+ User: 
+I don't think so, I saw him leave the lobby about 5 minutes ago. 
+
+{'about': '', '5': '', 'minutes': '', 'ago': ''}
+{'5', '4', '121', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a hit-and-run incident in which a white sedan backed into a black Ford Taurus outside of 7-Eleven and immediately left without checking for damage or leaving any information. The user was unable to see the license plate of the white sedan, but was able to provide a general description of the vehicle. The user also provided a more specific location for the parked vehicle.
+
+
+ 
+ User:  A white sedan just backed into a black Ford Taurus outside of 7-Eleven and immediately left without checking for damage or leaving any information. 
+ Dispatcher:  Thank you for using Live Safe. Were you able to see the license on the white sedan? 
+ User:  No, I saw it from my window at Starbucks, so the front of the car was facing me 
+ Dispatcher:  911, thank you. We have an Officer responding to investigate 
+ Dispatcher:  Any particulars on the white sedan? Any window stickers or distinguishing features? 
+ User: 
+It was a four-door, but I couldn't see any distinguishing features. 
+
+{'four': '', '-': '', 'door': ''}
+{'hit', 'Taurus', 'and', 'run', 'general', '-', 'Ford', 'Eleven', '7'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a hit-and-run incident in which a white sedan backed into a black Ford Taurus outside of 7-Eleven and immediately left without checking for damage or leaving any information. The user was unable to see the license plate of the white sedan, but was able to provide a general description of the vehicle. The user also provided a more specific location for the parked vehicle.
+
+
+ 
+ User:  A white sedan just backed into a black Ford Taurus outside of 7-Eleven and immediately left without checking for damage or leaving any information. 
+ Dispatcher:  Thank you for using Live Safe. Were you able to see the license on the white sedan? 
+ User:  No, I saw it from my window at Starbucks, so the front of the car was facing me 
+ Dispatcher:  911, thank you. We have an Officer responding to investigate 
+ Dispatcher:  Any particulars on the white sedan? Any window stickers or distinguishing features? 
+ User:  None that I noticed, but it is very possible 
+ Dispatcher:  911, thank you 
+ Dispatcher:  can you give us a better location for the parked vehicle? We have Officers in the area now 
+ User: 
+It's 7-Eleven on Main Street, just across from the movie theater 
+
+{'7': '', '-': '', 'Eleven': '', 'Main': '', 'Street': ''}
+{'hit', 'Taurus', 'and', 'run', 'general', '-', 'Ford', 'Eleven', '7'}
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user called [ORG] in [FAC] to report a power outage in room 214. The dispatcher confirmed that an officer would be sent to assist with the issue.
+
+
+ 
+ User:  Hello, [ORG] in [FAC] here..The power is off in room 214 and needs assistance. 
+ Dispatcher:  The officer is on his way. 
+ User: 
+Thank you so much!0s.00 am and 4.00 pm from Monday to Friday.
+
+{'.00': '', '4.00': '', 'Monday': '', 'to': '', 'Friday': ''}
+{'dispatcher', '214'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious black male who was walking around a parking lot, looking into cars and stuff. The user provided the location of the parking lot (Parking Lot 7), the subject's physical description (approximately 6'2", wearing a big black winter coat and jeans with the hood up on the jacket), and the subject's behavior (walking around cars and stuff).
+
+
+ 
+ User:  Suspicious black male. Approximately 6'2” wearing a big black winter coat and jeans with the hood up on the jacket. He was been walking around Parking Lot 7 for approximately an hour now. Looking around cars and stuff. 
+ Dispatcher:  UCPD, he in a parking lot 
+ User: 
+Yes, Parking Lot 7.starting at 10:00 AM, the user reported the suspicious male to the police department. The dispatcher listened attentively to the user's report and provided helpful guidance on how to proceed.
+
+{'7': '', '10:00': '', 'AM': '', 'dispatcher': ''}
+{'2', 'winter', '6', '7'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious black male who was walking around a parking lot, looking into cars and stuff. The user provided the location of the parking lot (Parking Lot 7), the subject's physical description (approximately 6'2", wearing a big black winter coat and jeans with the hood up on the jacket), and the subject's behavior (walking around cars and stuff).
+
+
+ 
+ User:  Suspicious black male. Approximately 6'2” wearing a big black winter coat and jeans with the hood up on the jacket. He was been walking around Parking Lot 7 for approximately an hour now. Looking around cars and stuff. 
+ Dispatcher:  UCPD, he in a parking lot 
+ User:  Yes. Near building one by the dumpsters. 
+ Dispatcher:  University of Chicago campus Building # 
+ User:  Yes, Parking Lot 7. 
+ User:  Standing near the maroon dumpster looking in a red University of Chicago Police Department squad car and by a charcoal gray Ford Fusion 
+ Dispatcher:  ok, officer enroute 
+ User:  10-4, thank you much. 
+ Dispatcher:  Your Welcome 
+ User:  Male subject is walking up towards the pedway still in the University of Chicago parking lot. 
+ User: 
+He is now walking towards the student center. 
+
+{'now': '', 'student': ''}
+{'2', 'winter', '6', '7'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user is experiencing a distressing situation with their roommate. The user has a roommate named John Smith who is fighting with them and has been slamming their door and saying hateful things. The user is shaking and needs to file a report but is not dressed yet. The user's roommate has left the apartment and the user is now getting dressed to file a report. The user is going to contact security to file a report.
+
+
+ 
+ User:  Who is on duty 2023-02-27? I have a roommate who just hit my door really hard and has been screaming. I am shaking and need to file a report but I am still not dressed. They just left with a parent and won't be back until 2023-02-28 but I'm gonna have to have some protection because they are three times my size. 
+ User:  IJane Doe about to get dressed so I can meet y’all 
+ Dispatcher:  Jane Doe who is your roommate 
+ User:  John Smith 
+ Dispatcher:  Call residence life on call and or safety and security 
+ User:  Ok I just have to leave before I can do so because the other roommate is listening to me 
+ User:  IJane Doe getting dressed so I can do so now 
+ Dispatcher:  were you all fighting about something? has this been going on sometime 
+ User:  Last night via text we had a discussion I am going to show all that but she owed me some money and slammed it against my door and said to fuck me and hat she hated me 
+ User:  The other roommate that’s here with me won’t hurt me and she hasn’t approached Jane Doe was at my door hyperventilating and stomping around 
+ User:  But she has left now 
+ Dispatcher:  ok please go and file a report 
+ User: 
+IJane Doe just got dressed and I am now on my way to file a report 
+
+{'IJane': '', 'Doe': '', 'now': ''}
+{'John', 'Smith', 'now'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a party at Club Lax, but did not provide the address. The dispatcher responded by saying they would send someone to the party.
+
+
+ 
+ User:  Huge party at club lax 
+ Dispatcher:  what is the address? 
+ User: 
+I don't know.ttell me about the party at club lax00:00:00 - 00:00:05
+
+{'00:00:00': '', '00:00:05': ''}
+{'Lax', 'Club', 'dispatcher'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user called the police about a loud disturbance in their building. The dispatcher responded that they would send an officer to the location.
+
+
+ 
+ User:  Very loud the last hour in the common room ##th 
+ Dispatcher:  is this for ### somerset? 
+ User: 
+Yes, I'm in 123 Main Street, Apt 303. It's been going on for the last hour.ssafety concernsafety concernssafety concerns
+
+{'123': '', '303': ''}
+{'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a crumbling set of steps adjacent to Highway 101 and John Smith. The user provided their location and contact information, and the dispatcher forwarded the information to the Department of Public Works.
+
+
+ 
+ User:  crumbling steps adjacent to Highway 101 and John Smith 
+ Dispatcher:  Thank you for contacting City Council. Are these steps connected to the parking garage? 
+ Dispatcher:  I have forwarded all information to our Department of Public Works to look into this issue. Thank you for the information. 
+ User: 
+Thank you so much for your help! 00/1000 AM, 7/17/2022022-07-17T00:00:00Z
+
+{'00/1000': '', '7': '', '17': '', '2022022': '', '00:00:00': '', 'Z': ''}
+{'Works', 'dispatcher', 'John', 'of', 'Department', 'Public', 'Smith', '101'}
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a large amount of glass in the parking lot of the community health building. The dispatcher asked for more information about the glass, and the user confirmed that it was spread out throughout the parking lot and not just around a single car. The dispatcher assured the user that they had notified the proper party and thanked them for their report.
+
+
+ 
+ User:  There is a large quantity of glass in the parking lot at the community health building (nursing and speech building) off of Park Avenue and [American Speech-Language-Hearing Association]. 
+ Dispatcher:  Hey there, [John Smith]. Is the glass that you've spotted around a parked vehicle by chance? Or is there just a general amount of glass throughout? 
+ User:  It was in a few spots in the front visitor spots there were a few cars around. I know elderly people come there for hearing aids and didn’t want them to not see it and drive through it. It really looks like someone busted someone’s window but I have no evidence to support that it’s just a ton of glass spread out 
+ Dispatcher:  All right. We're going to send an Officer that way to check the area to make sure that there wasn't a break-in or anything of the sort. Also, if nothing illegal is found, we'll notify [Facilities Management] to get the clean up process started. 
+ User: 
+Thank you so much I really appreciate it. 04.11.2019 - 04.12.2019 - The 10th International Scientific Conference "Modern Science and Education" (MS&E 2019) will be held at the National University of Science and Technology "MISiS" in Moscow, Russia.
+
+{'04.11.2019': '', '04.12.2019': '', '10th': '', 'International': '', 'Scientific': '', 'Conference': '', '2019': '', 'National': '', 'University': '', 'of': '', 'Science': '', 'and': '', 'Technology': '', 'Moscow': '', 'Russia': ''}
+{'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance on the 3rd floor of their apartment building. The user was unable to identify the exact location of the disturbance, but it was near the elevators and staircase leading to the bathrooms. The user expressed their appreciation for the dispatcher's assistance.
+
+
+ 
+ User:  extremely loud conversations on #th floor ### tremont in hallway. i'm trying to sleep. it's quiet hours. 
+ Dispatcher:  Where on the #th floor is the noise coming from? Common area? By the bathrooms? 
+ User:  by the staircase that leads to bathrooms 
+ User:  next to elevators 
+ Dispatcher:  Ok, I will send an officer over. 
+ User: 
+thank you so much. i really appreciate it.ts, and the officer will be there as soon as possible. Can you please provide me with more information about the noise? Like how long has it been going on and is it a continuous sound or intermittent? And is there anyone else in the apartment that can corroborate the noise?0,. I was reported the 3rd floor of the building. The noise was coming from the stairwell, and it was very loud. It sounded like someone was running or jumping up and down the stairs. I could hear the noise from my apartment, which is located on the 2nd floor. I was trying to sleep, but the noise was making it impossible. I was getting frustrated and worried that someone might be hurt. I decided to call the police to report the noise.020101002003004005006007008009010011012013014015016017018019020021022023024025026027028029030031032033034035036037038039040041042043044045046047048049050051052053054055056057058059060061062063064065066067068069070071072073074075076077078079080081082083084085086087088089090091092093094095096097098099001001002003
+{'0': '', '3rd': '', '2nd': '', '.020101002003004005006007008009010011012013014015016017018019020021022023024025026027028029030031032033034035036037038039040041042043044045046047048049050051052053054055056057058059060061062063064065066067068069070071072073074075076077078079080081082083084085086087088089090091092093094095096097098099001001002003': ''}
+{'3rd', 'dispatcher'}
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a woman who had been camping out in the library and talking to herself. The user provided a description of the woman, including her physical appearance (black pants, red collared shirt, black jacket, bald, blue [ACRONYM]), and reported that she had been following the user out of the library and chasing the user to their car in the rain the previous night.
+
+
+ 
+ User:  The same woman that's been camping out in the library and talking to herself has been in the union at [GPE] [DATE]. Please come check it out, thank you!! 
+ Dispatcher:  Hello, thank you for your tip. Has the woman been harassing or become violent with anyone at the restaurant? 
+ User: 
+No, just talking to herself and following me out of the library last night. And now she's at the union at [GPE]. 
+
+{'last': '', 'night': '', 'now': ''}
+{'night', 'previous', 'the'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user heard a woman screaming in the 2023 block of New York City, just outside campus. The user was unsure why the woman was screaming, but she sounded very distressed. The user provided the information to the dispatcher, who confirmed that officers were checking the area. The user thanked the dispatcher and hung up.
+
+
+ 
+ User:  Woman screaming in the 2023 block of New York City, just outside campus. It's unclear why but she sounded very distressed. 
+ Dispatcher:  Thank you for the information, we will send officers to the area. Can you advise on how long ago you heard it? Could you tell which direction it came from? NYU area), east (towards campus), west (away from campus) or south? 
+ User: 
+I heard it about 10 minutes ago. It sounded like it was coming from the east.ssafety
+
+{'about': '', '10': '', 'minutes': '', 'ago': ''}
+{'dispatcher', 'York', 'New', 'City', '2023'}
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a strong smell of weed near the Chi Psi Fraternity building, which is located in [GPE]. The user provided their location at [GPE] and described the smell as overpowering.
+
+
+ 
+ User:  There's a strong smell of weed in [GPE] by the Chi Psi Fraternity building 
+ Dispatcher:  Can I help you? 
+ User: 
+Yes, there's a very strong smell of weed coming from that direction. I'm at [GPE] right now.
+
+{'right': '', 'now': ''}
+{'Fraternity', 'Psi', 'GPE', 'Chi'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious situation at the Muslim Community Center restraunt on broad Street across from Westside High School. The user described three black men, one wearing a white coat and dark backpack, one wearing a brown jacket and a beanie, and another one wearing all dark clothing. The user also described a caucasion person wearing a pink or orange backpack. The user's husband was approached by one of the men asking for freebies. The user did not want to be contacted by a responding officer.
+
+
+ 
+ User:  there is a bunch of people outside the Muslim Community Center restraunt on broad Street across from Westside High School. getting loud at times and approaching anyone that leaves the CVS store. it just looks very suspicious from over here 
+ Dispatcher:  Thank you for the information. Are you able to provide a description for any of the subjects? 
+ User:  I saw three black men. Can't give heights since I'm inside John Smith. One has a white coat and dark backpack on, one had a brown jacket and a beanie on, and another one is wearing all dark clothing. I also saw a caucasion person there with a pink or orange backpack.The one in the white coat contacted my husband who was leaving the CVS store asking for freebies 
+ Dispatcher:  Thank you for the additional information. Would you like to be contacted by a responding officer? 
+ User:  No I'm fine. Thank you though. 
+ Dispatcher:  Not a problem. Police Department will be responding to investigate. 
+ User: 
+Thank you so much.ts. The police officer who responded to the incident was very kind and understanding. He took the time to listen to my concerns and reassured me that he would do his best to keep me and my community safe. He also provided me with some helpful tips on how to stay safe and avoid similar situations in the future. Overall, I was very impressed with the level of professionalism and compassion shown by the police officer, and I feel grateful to have such a dedicated and caring public servant in our community.
+
+{'police': '', 'officer': '', 'the': '', 'future': '', 'servant': ''}
+{'Westside', 'one', 'Community', 'Center', 'three', 'Muslim', 'School', 'High'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was feeling dizzy and requested an NSA security escort to the CIA. The NSA dispatched a security escort, but the user was unable to locate the car. The user was advised to monitor their phone for updates.
+
+
+ 
+ User:  Hi NSA security, I was wondering if one of you guys could take me to CIA? I don't feel safe if I go myself because I'm dizzy and I feel like I can't walk much, Sincerely, Francois Beauvais 
+ Dispatcher:  Good Morning, Where are you located. 
+ User: 
+I'm in Langley, VA. 
+
+{'Langley': '', 'VA': ''}
+{'CIA', 'escort', 'NSA'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported an alarm sounding at apartment 1234, but was unable to enter the building. The user provided the address of the apartment and described the sound as "chirping" and "non-stop." The user also provided a video recording of the sound.
+
+
+ 
+ User:  alarm going off at apartment 1234. knocked but no response 
+ Dispatcher:  What is the address for the apartment you are referencing? 
+ User: 
+1234 Main St. It's been going off for a while now. I tried knocking but no one is answering. 
+
+{'1234': '', 'now': '', 'one': ''}
+{'1234'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported an alarm sounding at apartment 1234, but was unable to enter the building. The user provided the address of the apartment and described the sound as "chirping" and "non-stop." The user also provided a video recording of the sound.
+
+
+ 
+ User:  alarm going off at apartment 1234. knocked but no response 
+ Dispatcher:  What is the address for the apartment you are referencing? 
+ User:  1234 Monument Avenue 
+ User: 
+I knocked on the door but no one is answering. It's been going off for hours.
+
+{'one': '', 'hours': ''}
+{'1234'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was having trouble starting their car. They provided their location, make, model, color, and plate number.
+
+
+ 
+ User:  My car won't start can you help? 
+ Dispatcher:  Please tell us the following: Location: Make: Model: Color: Plate: 
+ Dispatcher:  Please tell us the following: Location: Make: Model: Color: Plate: 
+ User: 
+I'm at 123 Main St Apartment 303 San Francisco CA 94101. It's a 2018 Honda Civic silver in color and the plate is 7BZQ822.
+
+{'123': '', '303': '', 'San': '', 'Francisco': '', 'CA': '', '94101': '', '2018': ''}
+{'model'}
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a man yelling in a nearby area. The user was unable to provide a description of the man, but was able to provide the location of the incident. The dispatcher was unable to confirm the presence of the man, but sent an officer to the area to investigate.
+
+
+ 
+ User:  There is a man in [FAC] yelling a lot. 
+ Dispatcher:  Thank You for contacting the [ACRONYM] Police, I can send an officer to check that area, can you tell me what the man looks like? 
+ User: 
+I can't see him, I'm in my apartment.t's about 2 blocks away from here.t's on [STREET NAME].t's around [TIME]. Please be careful.t's important to remember that you are the one who can best identify any potential safety concerns in your area. By reporting this information to us, you are helping to keep yourself and those around you safe. Thank you for taking the time to contact us. Is there anything else you would like to tell me about this situation?0!I was the most important thing in the world.
+
+{'2': '', 'one': '', '0': ''}
+{'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user provided information about a possible party in a dormitory, including the dormitory name and room number. The user reported that the party had quieted down, indicating that the party may have ended.
+
+
+ 
+ User:  Possible dorm party- yelling #st floor 
+ Dispatcher:  Thank you for the tip. Can you provide information on which dorm it is and room number? 
+ User: 
+Yes, it's #st floor of Johnson Hall.
+
+{'Johnson': '', 'Hall': ''}
+set()
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user provided information about a possible party in a dormitory, including the dormitory name and room number. The user reported that the party had quieted down, indicating that the party may have ended.
+
+
+ 
+ User:  Possible dorm party- yelling #st floor 
+ Dispatcher:  Thank you for the tip. Can you provide information on which dorm it is and room number? 
+ User:  John SmithIt sounds like it’s coming from the far right of the first floor when you walk in the front 
+ Dispatcher:  Thank you we will send officers to check it out. 
+ User: 
+Thank you so much!sounds like it’s coming from the far right of the first floor when you walk in the frontt was a dark and stormy night. The rain pounded against the windows of the small cottage, casting eerie shadows on the walls. Inside, a young woman named Emily huddled under a blanket, trying to warm herself up. She had been out in the storm, searching for her missing cat, and was now cold and soaked to the bone.
+
+{'far': '', 'right': '', 'first': '', 'night': '', 'Emily': '', 'storm': '', 'now': ''}
+set()
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user is experiencing a disturbance in their apartment at Stanford University. The user is unable to sleep due to the noise.
+
+
+ 
+ User:  Room 214 is banging on their walls, don't know what's going on but it's very loud 
+ Dispatcher:  for what building? 
+ User:  Stanford University 
+ Dispatcher:  anything aggressive 
+ User:  Don’t know but my roommate and I can’t sleep 
+ User: 
+It’s been going on for 2 hoursss for 10 minutes.s for 10 minutes.
+
+{'2': '', '10': '', 'minutes': ''}
+{'University', 'Stanford'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported loud noises coming from above their apartment, specifically stomping music and screaming. The user was unsure of the exact room number, but indicated that it was above apartment 302. The dispatcher confirmed that an officer would be sent to investigate.
+
+
+ 
+ User:  the people above us on the third floor of [ACRONYM] D are so loud 
+ Dispatcher:  I will notify the officers. Can you tell me what kind of noise? 
+ User:  stomping music screaming 
+ Dispatcher:  We will have an officer enroute, thank you. 
+ User:  thank you 
+ Dispatcher:  Do you have a specific room number? 
+ User: 
+no just above 302 02/10/2023 #AskAwayChallenge #SafetyTips #Police02/10/2023 #AskAwayChallenge: How to Stay Safe During a Police Encounter
+
+{'302 02/10': '', '/': '', '2023': '', '10/2023': ''}
+{'302', 'dispatcher'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported loud noises coming from above their apartment, specifically stomping music and screaming. The user was unsure of the exact room number, but indicated that it was above apartment 302. The dispatcher confirmed that an officer would be sent to investigate.
+
+
+ 
+ User:  the people above us on the third floor of [ACRONYM] D are so loud 
+ Dispatcher:  I will notify the officers. Can you tell me what kind of noise? 
+ User:  stomping music screaming 
+ Dispatcher:  We will have an officer enroute, thank you. 
+ User:  thank you 
+ Dispatcher:  Do you have a specific room number? 
+ User:  above 302 
+ User: 
+I don't know exactly ttt was a Friday evening and I was getting ready to head out to a friend's housewarming party. As I was putting on my makeup, I heard a loud banging sound coming from above my apartment. At first, I thought it was just someone moving furniture or doing some construction work, but then the banging continued and it started to get louder and more frequent. I could feel the vibrations through the floor, and I knew something was wrong.
+
+{'Friday': '', 'evening': '', 'first': ''}
+{'302', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported that John Doe was acting crazy and loud, and that many people in cars were blaring their music. The user expressed concern that the situation might require a SWAT team. The dispatcher assured the user that the LAPD would be sent to check the situation.
+
+
+ 
+ User:  John Doe is crazy right now. So freaking loud and a lot of people in cars blaring their music 
+ Dispatcher:  Thank you for the tip! We will send somebody to check it out. 
+ User: 
+I think this might require a SWAT team.tt was a dark and stormy night. The rain pounded against the windows of the small cottage, casting eerie shadows on the walls. Inside, a young woman named Sarah huddled in her bed, trying to distract herself from the howling wind. She had just moved to this small town a few days ago, and already she felt a sense of unease. It was as if the town was hiding secrets from her, secrets that only the storm seemed to reveal.
+
+{'night': '', 'Sarah': '', 'a': '', 'few': '', 'days': '', 'ago': '', 'storm': ''}
+{'John', 'Doe', 'LAPD', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user is concerned about a girl, [PERSON], who is harming herself in [ORG] in the bathroom. The user is with a friend who is also with the girl. The user has called [ACRONYM] and an officer is on their way.
+
+
+ 
+ User:  there is a girl harming herself in [ORG] in the bathroom. Her name is [PERSON] and I'm worried about her 
+ Dispatcher:  sending an officer... are you with the girl? 
+ User: 
+yes, my friend and I are with her right now.
+
+{'right': '', 'now': ''}
+set()
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a noise disturbance at the Sigma John Doe fraternity house. The user provided their location at 12345 Main Street, and requested that an officer be sent to the scene.
+
+
+ 
+ User:  Sigma John Doe fraternity house 
+ Dispatcher:  hello thank you for contacting Smithville Police Department, what kind of disturbance are you reporting? 
+ User: 
+There's a loud party going on at 12345 Main Street, it's been going on for hours and it's really disruptive. I'm trying to study for my exam tomorrow but I can't concentrate because of the noise. 
+
+{'12345': '', 'hours': '', 'tomorrow': ''}
+{'John', 'Doe', '12345'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported their bicycle stolen to the dispatcher, providing the serial number, color, and model. The dispatcher contacted the Newark Police Department and transferred the case to them. The user provided their contact information and the dispatcher confirmed that Newark Police Department would be in touch.
+
+
+ 
+ User:  I found my bike stolen 2022-01-01. I parked it beside the Newark Public Transportation bus stop at Apartment of Pinebrook. I am not sure when it was stolen because last time I checked my bike was 2021-12-31. Below is my bike's information. Serial number: 1234567890Color: black Model: John's 21-speed bike Hopefully this information will help. Please contact me if you need any further information. 
+ Dispatcher:  Hello 
+ Dispatcher:  Hello, that particular area is Newark Police Department. If you wish to make a report you can contact them at 555-1234. 
+ User:  Hi 
+ User:  So would you help me transfer my case to Newark Police Department? 
+ Dispatcher:  I will contact them and give them the information for you, they will want contact with you though. 
+ User:  Thanks! 
+ Dispatcher:  do you have a good phone number for them to contact you 
+ User: 
+Sure, 555-1234 is my number. 01.02.2022 - 01.02.2022, Newark, New Jersey, USA
+
+{'555-1234': '', '01.02.2022': '', 'Newark': '', 'New': '', 'Jersey': '', 'USA': ''}
+{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported their bicycle stolen to the dispatcher, providing the serial number, color, and model. The dispatcher contacted the Newark Police Department and transferred the case to them. The user provided their contact information and the dispatcher confirmed that Newark Police Department would be in touch.
+
+
+ 
+ User:  I found my bike stolen 2022-01-01. I parked it beside the Newark Public Transportation bus stop at Apartment of Pinebrook. I am not sure when it was stolen because last time I checked my bike was 2021-12-31. Below is my bike's information. Serial number: 1234567890Color: black Model: John's 21-speed bike Hopefully this information will help. Please contact me if you need any further information. 
+ Dispatcher:  Hello 
+ Dispatcher:  Hello, that particular area is Newark Police Department. If you wish to make a report you can contact them at 555-1234. 
+ User:  Hi 
+ User:  So would you help me transfer my case to Newark Police Department? 
+ Dispatcher:  I will contact them and give them the information for you, they will want contact with you though. 
+ User:  Thanks! 
+ Dispatcher:  do you have a good phone number for them to contact you 
+ User:  Yes 
+ User: 
+555-555-0199tell me your number and I will give it to them. 
+
+{'555': '', '-555-0199tell': ''}
+{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported their bicycle stolen to the dispatcher, providing the serial number, color, and model. The dispatcher contacted the Newark Police Department and transferred the case to them. The user provided their contact information and the dispatcher confirmed that Newark Police Department would be in touch.
+
+
+ 
+ User:  I found my bike stolen 2022-01-01. I parked it beside the Newark Public Transportation bus stop at Apartment of Pinebrook. I am not sure when it was stolen because last time I checked my bike was 2021-12-31. Below is my bike's information. Serial number: 1234567890Color: black Model: John's 21-speed bike Hopefully this information will help. Please contact me if you need any further information. 
+ Dispatcher:  Hello 
+ Dispatcher:  Hello, that particular area is Newark Police Department. If you wish to make a report you can contact them at 555-1234. 
+ User:  Hi 
+ User:  So would you help me transfer my case to Newark Police Department? 
+ Dispatcher:  I will contact them and give them the information for you, they will want contact with you though. 
+ User:  Thanks! 
+ Dispatcher:  do you have a good phone number for them to contact you 
+ User:  Yes 
+ User:  555-555-5555 
+ Dispatcher:  ok thank you. I will pass this along to them 
+ User:  Thanks a lot 
+ Dispatcher:  where are you at right now for contact 
+ User:  Pinebrook 
+ User:  Apartment at Pinebrook Apartments 
+ Dispatcher:  what apt number are you in 
+ User:  Building #123 
+ User: 
+Street: Pinebrook Roadtt is important to note that the information provided in this response is for general informational purposes only and should not be construed as professional medical advice. If you have any concerns or questions about your health, please consult a licensed medical professional.
+
+{'Pinebrook': '', 'Roadtt': '', 'general': ''}
+{'Newark', 'dispatcher', 'model', 'Police', 'Department'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a mentally ill man walking down John Smith away from campus, screaming and using profanity. The man was wearing a black book bag with a checkered green jacket, and was bald but had a small beard. The user believed the man could be dangerous if a student walked near him.
+
+
+ 
+ User:  Mentally ill gentleman walking down John Smith away from campus headed towards the neighborhoods behind University Hospital and Student Housing apartments and is screaming randomly and using profanity. Wearing a black book bag with a checkered green jacket. John Smith but has a small beard. University Hospital. I'm assuming he could be dangerous should a student walk near him. 
+ Dispatcher:  Thank you for using LiveSafe. Can you provide a description of the subject and perhaps what he is doing? 
+ User: 
+Yes, he's walking away from campus towards the neighborhoods behind University Hospital and Student Housing apartments. He's screaming and using profanity. He's wearing a black book bag with a checkered green jacket, and he's bald but has a small beard. 
+
+{'University': '', 'Hospital': '', 'and': '', 'Student': '', 'Housing': ''}
+{'John', 'Smith', 'student'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a group of individuals who were smoking in a nearby apartment complex. The user provided the names and descriptions of the individuals, as well as a vehicle description. The user also reported that the individuals had left the apartment complex and were heading towards the river.
+
+
+ 
+ User:  Greenhill apartment NORP People are smoking week 
+ Dispatcher:  Okay. We will send an officer. Are the people there right now? 
+ User:  They just now left. They are going to the river to smoke 
+ Dispatcher:  Do you have names or descriptions of these individuals? Vehicle description? 
+ User: 
+Yeah, there's John, he's got blonde hair and blue eyes. Then there's Sarah, she's got brown hair and brown eyes. The vehicle is a silver Honda Civic. 
+
+{'John': '', 'Sarah': '', 'Honda': ''}
+{'river'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported an accident on the intersection of Fig and Exposition. The user was unable to determine if anyone was injured. Traffic was backed up heading south.
+
+
+ 
+ User:  Accident just happened on the intersection of fig and exposition 
+ Dispatcher:  Thank you for using LiveSafe. Can you tell if anyone has been injured? 
+ User: 
+I'm not sure, I just saw the cars crash and now there's a big backup on the southbound traffic.ssports and physical fitness
+
+{'crash': '', 'now': ''}
+{'accident'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a broken light in their apartment. The dispatcher informed the user that the maintenance company would fix the light in the morning and if it wasn't fixed by early afternoon, the user could call the maintenance number for housing at 555-1234.
+
+
+ 
+ User:  The light in the bathroom of Bradford Apartment 101 is out. It's the bathroom close to the kitchen. Thanks. 
+ Dispatcher:  We will send that in to Maintenance Inc. for it to be fixed in the morning. If it hasn't been fixed by early afternoon you can call the maintenance number for housing at 555-1234. 
+ User: 
+Okay, thank you. 01/02/2022 · 10:30 AM
+
+{'01/02/2022': '', '10:30': '', 'AM': ''}
+{'early', '555-1234', 'dispatcher', 'afternoon', 'morning'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was stuck in a parking lot across from the studio theatre, their car battery had died, and they needed help to get the car jumped started. The user provided the make and color of their car (a Ford Explorer, bluish color) and the trunk was open as they were searching for jumper cables. The dispatcher responded with an estimated time of arrival and thanked the user for signing up for LiveSafe.
+
+
+ 
+ User:  im stuck in parking lot across from the studio theatre, my car battery has died, is there any way I could recieve any help to get the car jumped started? Please 
+ Dispatcher:  Yes - we will send someone right out. 
+ Dispatcher:  What kind & color car? 
+ User: 
+Ford Explorer, bluish color 00:00:01,850 --> 00:00:03,543 and the trunk is open as i'm searching for jumper cables. 
+
+{'Ford': '', 'Explorer': '', '00:00:01,850': '', '00:00:03,543': ''}
+{'dispatcher', 'Explorer', 'battery'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a strong smell of Mexico on the first floor of Walmart, specifically in the hallway. The user also stated that the Hispanic community had been notified of the issue.
+
+
+ 
+ User:  it smells like straight Mexico on the first floor of Walmart first floor hallway. It's terrible! Please do something about this. 
+ Dispatcher:  Thank you for using LiveSafe. We will send an officer to that location. Is there a particular room that it may be coming from and has the Hispanic community been notified? 
+ User: 
+I'm not sure, but it's really strong in the hallway right outside the electronics department. And yeah, I think they notified everyone earlier today. 
+
+{'earlier': '', 'today': ''}
+{'first', 'Mexico', 'Walmart', 'Hispanic'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was experiencing a disturbance in their dormitory due to a neighbor playing loud music. The user provided the location of the neighbor's dorm room (###) and the security team was dispatched to the scene.
+
+
+ 
+ User:  The girl across the hall, upstairs on the women's floor in smithdeal, is blasting her music which can be heard in all the halls here will not turn it down. I've asked her to turn it down twice now. 
+ Dispatcher:  Security is en route. 
+ Dispatcher:  Could you say what are the closest dorm room numbers? 
+ User: 
+Smithdeal, 306, 308, 310.tt was a dark and stormy night, and I was lying in my dorm room, trying to fall asleep. But I couldn't, because my neighbor was blasting music from her room. It was loud and obnoxious, and I couldn't take it anymore. So I decided to call the police.
+
+{'306': '', '308': '', '310': '', 'night': ''}
+set()
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance coming from the middle of the building. They provided the location as the second floor of the building, apartment 204.
+
+
+ 
+ User:  Loud music in K 
+ Dispatcher:  What part of [ORG] is the disturbance coming from? 
+ User: 
+Second floor apartment 204.00.0.1 User: I can hear loud music coming from apartment 204 on the second floor of the building.
+
+{'Second': '', '204.00.0.1': '', '204': '', 'second': ''}
+{'204', 'second'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user is a student at the University of Texas and is trying to find a parking spot near their apartment. The dispatcher suggests parking in student lots, but warns the user to be careful of UT spots. The dispatcher also mentions that there are several spaces available in the Muslim Student Association lot. The user thanks the dispatcher and ends the call.
+
+
+ 
+ User:  there are no parking spots in the oaks and i live here, where do you want me to park without getting towed? 
+ Dispatcher:  Any student lots, just be careful of UT spots. 
+ Dispatcher:  Also, John, US and UT lots 
+ User: 
+Thanks so much!0.0.1 The University of Texas at Austin Parking and Transportation Services offers several parking options for students, faculty, and staff. Here are some of the parking options available on campus:
+
+{'0.0.1': '', 'University': '', 'of': '', 'Texas': '', 'at': '', 'Austin': '', 'Parking': '', 'and': '', 'Transportation': '', 'Services': ''}
+{'Association', 'dispatcher', 'of', 'University', 'student', 'Muslim', 'Student', 'Texas', 'UT'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a suspicious person who was wearing a neon sweatshirt and screaming "hi guys!" They provided the person's description (5'4", 121 lbs, brown hair) and his location (near the new building). The user also mentioned that the person looked like he was pretty drunk.
+
+
+ 
+ User:  There is a guy in a neon sweatshirt who looks old like John Smith who was drinking on a bike. He was screaming “hiiii guys!” 
+ Dispatcher:  Thank you for sending us this information. Where is he now? 
+ User:  I[ORG] not sure he passed the new building about 5 minutes ago 
+ User:  He looked like he was pretty drunk 
+ Dispatcher:  Thank you for the updated information! Do you know what direction he was heading? 
+ User:  He was heading towards campus on the road. He was going toward the suites 
+ User:  Riding towards alliot 
+ User:  I[ORG] not sure if he will still be on campus 
+ Dispatcher:  Thank you for the updated information! Public Safety is on campus now looking for him. 
+ User: 
+Thank you so much! I appreciate your help. 01/03/2023 · 4 min read · 125
+
+{'01/03/2023': '', '4': '', 'min': '', '125': ''}
+{'5', '4', '121'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user, a student, slipped and fell in the atrium of the CCE building. The user requested assistance from UTSA Campus Safety, who dispatched an ambulance to the scene. The user provided the name of the student, Jane Doe, and requested a stretcher or wheelchair to transport her to a car and then to the hospital.
+
+
+ 
+ User:  student slip/fall in atrium of CCE 
+ Dispatcher:  SENDING UTSA CAMPUS SAFETY 
+ Dispatcher:  UTSA CAMPUS SAFETY? 
+ User:  No ems needed 
+ Dispatcher:  THX 
+ User:  Do you have an easy way to get her from the building to the parking lot? We are going to move her to a car and go to hospital. 
+ User:  Any type of stretcher? 
+ Dispatcher:  Do you have proper name of the student? 
+ User: 
+Jane Doesslip and fall accident lawyer near me
+
+{'Jane': '', 'Doesslip': '', 'accident': '', 'lawyer': ''}
+{'CCE', 'Doe', 'student', 'stretcher', 'UTSA', 'Jane'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user, John Forester, was looking for a jumpstart for their car. They provided their location at the ADM lot, a specific parking spot, and the make, model, and color of their vehicle (dark green Honda Civic).
+
+
+ 
+ User:  is there anywhere on campus where I can get a jumpstart for my car? (John, ADM lot) 
+ Dispatcher:  I can send an officer to your location. What type of vehicle do you own? color, make, model? 
+ User:  Thank you. Dark green Honda Civic. Parked in the spot closest to the building 
+ User: 
+I'd like to get a jumpstart for my car. It won't start this morning. t
+
+{'start': '', 'this': '', 'morning': ''}
+{'Honda', 'John', 'model', 'Forester', 'ADM', 'Civic'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user requested an Uber to pick them up from John and drop them off at the gate on Cameron. The dispatcher provided the user with the address of the gate on Cameron, and also sent a message to the user's friend to pick them up at the bus stop in front of City Hall. The dispatcher also sent a message to the user's friend to pick them up at the bus stop in front of City Hall. The user was able to find the bus stop and the officer arrived shortly after.
+
+
+ 
+ User:  Can you pick me and my friend up from John? I live in New York and my Uber number is 1234567890. My friends Uber number is 9876543210 and he lives at 123 Main St. 
+ Dispatcher:  THEY CAN DROP YOUR FRIEND OFF AT THE GATE ON CAMERON 
+ Dispatcher:  Uber Uber Uber WAIT Uber Uber Uber ### Uber Uber Uber [GPE] Uber [GPE]? 
+ Dispatcher:  Police Department WHERE TO PICK YOU UP 
+ User:  I don’t know where lot 123 is 
+ Dispatcher:  Uber Uber Uber [FAC] [FAC] [FAC] PARKING [FAC] [FAC] [FAC] [FAC] [FAC] [ORG], [ORG], [ORG], [ORG] 
+ User:  Should I just go to the union bus stop in front of City Hall 
+ Dispatcher:  THAT WILL BE FINE TOO 
+ Dispatcher:  I'LL SEND HIM THERE 
+ User:  Okay 
+ Dispatcher:  THE Police Department IS AT THE BUS STOP NOW 
+ Dispatcher:  Uber Uber Uber? 
+ User:  Almost there, walking right now 
+ Dispatcher:  Uber, Uber  
+ User: 
+Almost there, walking right now 
+
+{'right': '', 'now': ''}
+{'dispatcher', 'John', 'Uber', 'Hall', 'Cameron', 'City'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbing incident where three suspects in a car with a taser yelled at two girls walking by, and one of the suspects shocked his taser and began to laugh. The user provided a detailed description of the car, including its color, make, and model.
+
+
+ 
+ User:  On Manor St off of John Smith there was a car with 3 suspects in it. They had their window down and yelled to two girls walking “hey, have you ever been tased before?” the girls didn't respond so a suspect shocked his taser and began to laugh. Then the girls got in their car and drove away. Suspect w/ taser was African American male. Older car, four doors. 
+ Dispatcher:  Do you have a description of the car and the direction it went in? 
+ User: 
+Yes, it was a black Honda Civic with a sunroof. It turned left onto Manor St.
+
+{'Manor': '', 'St.': ''}
+{'three', 'one', 'model', 'two'}
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user observed a suspicious man on a red bike with a black backpack. The man was seen trying to park his bike near the doors at the University of California, Berkeley base. An NSA truck drove by and the man got back on his bike and left. The user described the man as a white male in his early 30s with some balding white hair. The user also noted that they had just downloaded the app and found it very helpful.
+
+
+ 
+ User:  Suspicious man on red bike with black backpack. Saw him around University of California, Berkeley base trying to park his bike near doors And waiting. NSA truck drove by and he got back on his bike and left. 
+ Dispatcher:  Can you give me a further description as to race and what he was wearing as well as possible age? 
+ Dispatcher:  How long ago was this? 
+ User: 
+About 20 minutes ago. 
+
+{'About': '', '20': '', 'minutes': '', 'ago': ''}
+{',', 'of', 'University', 'Berkeley', 'NSA', 'California'}
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user observed a suspicious man on a red bike with a black backpack. The man was seen trying to park his bike near the doors at the University of California, Berkeley base. An NSA truck drove by and the man got back on his bike and left. The user described the man as a white male in his early 30s with some balding white hair. The user also noted that they had just downloaded the app and found it very helpful.
+
+
+ 
+ User:  Suspicious man on red bike with black backpack. Saw him around University of California, Berkeley base trying to park his bike near doors And waiting. NSA truck drove by and he got back on his bike and left. 
+ Dispatcher:  Can you give me a further description as to race and what he was wearing as well as possible age? 
+ Dispatcher:  How long ago was this? 
+ User:  White male early 30s a bit bald white hair 
+ User: 
+2 minutes agossuspicious man on red bike with black backpack. Saw him around University of California, Berkeley base trying to park his bike near doors And waiting. NSA truck drove by and he got back on his bike and left.
+
+{'2': '', 'minutes': '', 'University': '', 'of': '', 'California': '', ',': '', 'Berkeley': '', 'NSA': ''}
+{',', 'of', 'University', 'Berkeley', 'NSA', 'California'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a smell of marijuana coming from the south stack of the building. The user also reported that the smell was strong enough to be detected in their apartment. The user also reported that some residents had left the building, but the night porter had also noticed the smell.
+
+
+ 
+ User:  My roommate texted me saying [FAC] in the south stack is smelling like marijuana and they were spraying air freshener to mask it. She said it is definitely coming from there she can pretty much smell it in the apartment. I just checked and it is smelling pretty funky. 
+ Dispatcher:  ok will send an officer 
+ User:  Thank you. 
+ User:  Some of them left but the [NORP] on call noticed the smell too. 
+ User: 
+It's really strong. 01.02.2022 18:40 Reported by: User
+
+{'01.02.2022': '', '18:40': ''}
+{'night', 'porter'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user called the police to report a party at 304 East White Street, a street-facing apartment. The user reported that the music had stopped, but then started again. The user did not provide any additional information.
+
+
+ 
+ User:  ### W marshall (carriage house) ### blasting music, party 
+ Dispatcher:  Thank you we will send officers to the area. 
+ User: 
+Thank you, I'm glad someone is finally doing something about this. I've been calling the police nonstop for the past 2 hours.
+
+{'the': '', 'past': '', '2': '', 'hours': ''}
+{'304', 'Street', 'East', 'White'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance at a house on Orchard behind #### Ellendale. The dispatcher confirmed that officers were at the location and provided an update on the situation. The user thanked the dispatcher for their assistance and reported that the noise was still present. The dispatcher confirmed that officers would be sent back to the location to make contact with the resident a second time.
+
+
+ 
+ User:  A lot of noise coming from a house on Orchard behind #### Ellendale. Have been playing loud music for awhile now. 
+ Dispatcher:  Thank you for using LIveSafe. I believe officers are at the source of the noise now. 
+ User:  Ok.. thank you! 
+ Dispatcher:  You're welcome. Fight On! ✌️ 
+ User: 
+Yeah, it's still going on. 0:00 - 0:03
+
+{'0:00': '', '0:03': ''}
+{'Orchard', 'a', 'present', 'dispatcher', 'Ellendale', 'second'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was awoken by the sound of someone rummaging through their trash cans. The user was unable to see the people, but could hear them and could describe their behavior. The user contacted the police and provided details about the people's location and actions. The police contacted the people and the user was able to provide more information about the people's location. The police were able to determine that the people were not breaking into the user's home and the user contacted the property manager to fix the lock on the garage door.
+
+
+ 
+ User:  Hi. I was woken up just now from hearing bustling of cans and hearing a woman talk as well. My room is just above the garage and I heard the entrance into the garage through the door. 
+ Dispatcher:  Thanks for [ORG]. We will send officers. Are you able to see the woman? 
+ User: 
+I am unable to see her because it is dark in my room. I was able to hear her talking to someone else, but I can't make out what she's saying. I also heard footsteps around 10 pm, but I didn't think much of it until now because it's 2 am. 
+
+{'10': '', 'pm': '', 'now': '', '2': '', 'am': ''}
+{'manager'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a smell of marijuana in their room, and the dispatcher asked for the room number. The user provided their room number, 214, but the dispatcher informed them that the room number did not exist in the building. The user then confirmed their location and room number.
+
+
+ 
+ User:  It smells like someone is smoking marijuana in the room next to me or the room above me. My room reads of it because it's coming through the air vents. 
+ Dispatcher:  Thank you for using [John Smith]. In order to have an officer respond, can you please provide your room number? 
+ User:  My room number is 214, but the smell is coming from either the room next to me or above me 
+ Dispatcher:  I understand. An officer will be sent to attempt to discern where the smell is directly coming from. 
+ Dispatcher:  My officer is on scene, can you please confirm your room number? The [ABC Hotel] is designating no room 214 at this building 
+ User: 
+Oh, my apologies. My room number is 214 at the ABC Hotel. Thank you for letting me know.ttakes place in the United States, where the legal drinking age is 21.
+
+{'214': '', 'ABC': '', 'Hotel': '', 'United': '', 'States': '', '21': ''}
+{'214', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user sent a message to security, but did not receive a response. The user then sent a second message, indicating that they were bleeding out. The dispatcher did not respond to the second message.
+
+
+ 
+ User:  I'm trying here 
+ Dispatcher:  Thank you for the message. How can security help you today? 
+ User: 
+I'm in a situation where I need to report a safety concern. There's a gunman in the building and people are in danger.ts are in danger.000 people in the area. The dispatcher acknowledged the message and asked for more information to help locate the shooter.
+
+{'.000': '', 'dispatcher': '', 'shooter': ''}
+{'dispatcher', 'a', 'second'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance in their apartment complex, which they described as "constant noise in the east side of [FAC]." The user was unable to locate the source of the noise and reported that it had quieted down. The user declined an officer's assistance and ended the call.
+
+
+ 
+ User:  constant noise in east side of [FAC]. 
+ Dispatcher:  Thank You for using LiveSafe, can you be more specific? What room? 
+ Dispatcher:  Can you tell me what kind of noise? 
+ User:  Its always music. I have trouble exactly locating it. Its usually room [GPE]. 
+ Dispatcher:  Ok thank you. Is it loud right now? 
+ User:  No it has quieted down. 
+ Dispatcher:  Would like me to send an officer to speak with you? 
+ User: 
+No thank you. Im good.ss a dispatcher for the local police department, I have the training and resources to help you address your safety concern in a responsible and effective manner. Can you tell me more about the disturbance you're experiencing in your apartment complex? Where is it located and what time of day is it happening?01.03.2022:
+
+{'dispatcher': '', 'day': '', '01.03.2022': ''}
+set()
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a party that was disturbing the peace and requested a police officer to remind the party-goers to be quiet. The user provided the address of the party, 1234 Main St, Apt 302, and confirmed that the party was near the pool. The user also reported that the party-goers were quieter now.
+
+
+ 
+ User:  There is a party ended around 2023-02-27 23:59:59 and people are talking so loud that wakes up. Could you go there and remind them? 
+ Dispatcher:  Thank you for Using LiveSafe. How many people are out there? 
+ User:  I not sure but sounds like many 
+ Dispatcher:  Officers will be sent. Please notify me if you hear them leave before Los Angeles Police Department arrives. 
+ User:  Thank you so much. 
+ User:  It seems like four or five people there but they are still loud 
+ Dispatcher:  Can you confirm the address to the location? 
+ User:  On the ground floor near 1234 Main St 
+ Dispatcher:  Is this inside by the pool?? 
+ User: 
+Yes t was very helpful. I was able to get the information I needed and the dispatcher was very kind and understanding.0Љ (Ъ
+
+{'dispatcher': '', '.0': ''}
+{'officer', '1234', 'now', '302', 'police'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was concerned about a friend, John Smith, who was tweeting about suicidal thoughts. The user provided the name and location of John Smith, as well as a phone number for the user to call. The dispatcher confirmed that officers had been dispatched to the address John Smith was listed at, but no one was home. The dispatcher then asked the user to call back with the phone number for John Smith, which the user provided.
+
+
+ 
+ User:  His name is John Smith. He lives at The Edge. He is tweeting about suicidal thoughts and it is concerning to friends. 
+ Dispatcher:  Sorry for the delay, we had internet issues here. We are notifying 911 about this, thank you for your concern and the information 
+ Dispatcher:  We are still trying to check on this subject but can you confirm for a fact his name is John Smith? And do you know his apartment number at The Edge? 
+ User: 
+Yes, his name is John Smith and he lives at #203 at The Edge. 
+
+{'John': '', 'Smith': '', '#': '', '203': ''}
+{'John', 'one', 'Smith', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user was concerned about a friend, John Smith, who was tweeting about suicidal thoughts. The user provided the name and location of John Smith, as well as a phone number for the user to call. The dispatcher confirmed that officers had been dispatched to the address John Smith was listed at, but no one was home. The dispatcher then asked the user to call back with the phone number for John Smith, which the user provided.
+
+
+ 
+ User:  His name is John Smith. He lives at The Edge. He is tweeting about suicidal thoughts and it is concerning to friends. 
+ Dispatcher:  Sorry for the delay, we had internet issues here. We are notifying 911 about this, thank you for your concern and the information 
+ Dispatcher:  We are still trying to check on this subject but can you confirm for a fact his name is John Smith? And do you know his apartment number at The Edge? 
+ User:  His name is that. I do not know his apartment number however. If you need a phone number, I can contact people who have his number. 
+ Dispatcher:  That would be wonderful, thank you! John Smith we have on record isn't listed at The Edge but officers responded to the address he does have listed and no one was home 
+ User:  I can’t get into contact with anyone right now. Seems like everyone is asleep. However, as soon as I can I will be able to give you the number. 
+ Dispatcher:  Ok thanks, I will keep my officers updated and we will continue to try and reach out to him 
+ User:  I have the number 
+ User:  (123)-456-7890 
+ Dispatcher:  Great, thank you so much! 
+ User:  No problem! 
+ Dispatcher:  My officer would like to speak with you, would you mind calling in please 123-456-7890? You will remain anonymous 
+ User:  of course 
+ Dispatcher:  Thanks :) 
+ User:  Don’t have an exact address but he drives a lifted Ford Silverado that’s dark blue with chrome rims. So if he’s there his truck is probably outside his building. 
+ Dispatcher:  Ok I have passed this along to my officer, thanks again 
+ User:  no problem 
+ Dispatcher:  John Smith asked if you could call back and speak with him 
+ User: 
+I can call back in 5 minutes 
+
+{'5': '', 'minutes': ''}
+{'John', 'one', 'Smith', 'dispatcher'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user witnessed a hit and run, and was able to provide some information about the vehicle, including the damage to the passenger side of the vehicle and the color of the vehicle. The user was able to provide their location and was able to provide the information about the vehicle.
+
+
+ 
+ User:  Witnessed a hit and run, noticed a white mustang trying to park then saw it hit the car to my right and then drove off. 
+ Dispatcher:  Did you get any of the information from the vehicle? 
+ User:  No, I wasn’t able to get a license plate but I saw damage on the passenger side of the white mustang. 
+ User:  It was not my vehicle that was hit, I just saw it happen. 
+ Dispatcher:  Ok, is it possible if we can get an officer to you to file a report and get information? 
+ User:  Yes I am still in the parking lot. 
+ Dispatcher:  Thank You. What vehicle are you in and what area of the parking lot should we send the officer to? 
+ User:  I am in a silver dodge [PERSON], I am in the general lot by the recreation center, close to one of the lot entrances. I can stand out by the truck so the officer will see me. 
+ Dispatcher:  Thank you very much I have an officer enroute to you now 
+ Dispatcher:  Where exactly in the lot are you? 
+ User: 
+I am standing by the truck right now.
+
+{'right': '', 'now': ''}
+{'run', 'and', 'hit'}
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+ ==================== 
+Imagine you're in a situation where you need to report a safety concern to your local police department. You're speaking with a dispatcher from the police department, who is trained to provide helpful and detailed guidance, as well as necessary emotional support. Describe your interaction with the dispatcher, including what safety concern you're reporting and how the dispatcher assists you.
+The user reported a disturbance in their apartment building, [GPE] room 1234, with full volume video games noises. The user had previously tried to contact [ORG] on duty but was unable to reach them. The user expressed gratitude for the dispatcher's assistance.
+
+
+ 
+ User:  There is shouting from [GPE] room 1234, along with full volume video games noises. 
+ Dispatcher:  Have you contacted [ORG] on duty? 
+ User:  Yes, there was no response 
+ Dispatcher:  So you actually talked to [PERSON] on duty and they didn't respond? 
+ User:  No I called but the line was busy 
+ Dispatcher:  I will contact [ORG] on duty thanks for using live safe 
+ User: 
+Thank you so much 01.02.2023: 18:30:00
+
+{'01.02.2023': '', '18:30:00': ''}
+{'1234', 'previously', 'GPE', 'dispatcher'}
+ ==================== 
+ ==================== 
