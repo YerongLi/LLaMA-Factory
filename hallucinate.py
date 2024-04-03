@@ -42,6 +42,7 @@ with open('user4_w_key.jsonl', 'r') as jsonl_file:
         # If there are two or more extra words, print the prompt
         if extra_words_count >= 2:
             print(json_obj['prompt'])
+            print(json_obj['output'])
             print(json_obj['response'])
             print(json_obj['key'])
             print(true_key)
